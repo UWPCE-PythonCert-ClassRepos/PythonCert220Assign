@@ -1,7 +1,7 @@
 from unittest.mock import patch
 from unittest import TestCase
 
-from main import main_menu, get_price, add_new_item, itemInfo, exitProgram
+from main import main_menu, get_price, add_new_item, item_info, exit_program
 import main
 
 class test_main(TestCase):
@@ -11,18 +11,18 @@ class test_main(TestCase):
         self.assertEqual(main_menu(), add_new_item)
 
     @patch('main.get_input', return_value='2')
-    def test_main_itemInfo(self, mock_main_menu):
-        self.assertEqual(main_menu(), itemInfo)
+    def test_main_item_info(self, mock_main_menu):
+        self.assertEqual(main_menu(), item_info)
 
     @patch('main.get_input', return_value='q')
-    def test_main_exitProgram(self, mock_main_menu):
-        self.assertEqual(main_menu(), exitProgram)
+    def test_main_exit_program(self, mock_main_menu):
+        self.assertEqual(main_menu(), exit_program)
 
 class test_get_price(TestCase):
 
     def test_get_price(self):
         output = get_price(1)
-        self.assertEqual(output, 'Get price')
+        self.assertEqual(output, 'Get price for item 1.')
 
 class test_add_new_item(TestCase):
 
@@ -50,18 +50,18 @@ class test_add_new_item(TestCase):
         self.assertFalse(102 in main.FULL_INVENTORY)
         self.assertTrue(main.FULL_INVENTORY[110]['description'] == 'item 110 desc')
 
-class test_itemInfo(TestCase):
+class test_item_info(TestCase):
 
     @patch('main.get_input', return_value='100')
-    def test_itemInfo_not_in_inventory(self, mock_itemInfo):
-        self.assertEqual(itemInfo(), "Item not found in inventory")
+    def test_item_info_not_in_inventory(self, mock_item_info):
+        self.assertEqual(item_info(), "Item not found in inventory")
 
 
     @patch('main.get_input')
-    def test_itemInfo(self, mock_get_input):
+    def test_item_info(self, mock_get_input):
         mock_get_input.side_effect = [101, 'item 101 desc', 100, 'y', 'item 101 matl', 'S', ""]
         add_new_item()
         mock_get_input.side_effect = [101]
-        item_output = itemInfo()
+        item_output = item_info()
         self.assertTrue(item_output.startswith('productCode:101'))
         self.assertIn('item 101 desc', item_output)

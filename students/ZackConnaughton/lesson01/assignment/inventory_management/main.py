@@ -1,16 +1,22 @@
-# Launches the user interface for the inventory management system
+"""
+Launches the user interface for the inventory management system
+"""
 import sys
 import market_prices
 import inventoryClass
 import furnitureClass
-import electricAppliancesClass
+import elec_appliances_class
 
 FULL_INVENTORY = {}
 
 def main_menu(user_prompt=None):
+    """
+    main user entry menues
+    returns a function name to run
+    """
     valid_prompts = {"1": add_new_item,
-                     "2": itemInfo,
-                     "q": exitProgram}
+                     "2": item_info,
+                     "q": exit_program}
     options = list(valid_prompts.keys())
 
     while user_prompt not in valid_prompts:
@@ -23,16 +29,27 @@ def main_menu(user_prompt=None):
     return valid_prompts.get(user_prompt)
 
 def get_input(prompt):
+    """
+    shows user the provided prompt
+    returns the user input provided
+    """
     return input(prompt)
 
 def get_price(item_code):
-    output = "Get price"
+    """
+    gets the price of an item based on the item code provided
+    returns "Get price" currently
+    """
+    output = "Get price for item {}.".format(item_code)
     print(output)
     return output
 
 
 def add_new_item():
-    global FULL_INVENTORY
+    """
+    add a new item to the inventory based on user inputs
+    """
+    #global FULL_INVENTORY
     item_code = get_input("Enter item code: ")
     item_desc = get_input("Enter item description: ")
     item_rental_price = get_input("Enter item rental price: ")
@@ -51,8 +68,9 @@ def add_new_item():
         if is_electrical_appliance.lower() == "y":
             item_brand = get_input("Enter item brand: ")
             item_voltage = get_input("Enter item voltage: ")
-            new_item = electricAppliancesClass.electricAppliances(item_code, item_desc, item_price, item_rental_price,
-                                                                  item_brand, item_voltage)
+            new_item = elec_appliances_class.elec_appliances(item_code, item_desc,
+                                                             item_price, item_rental_price,
+                                                             item_brand, item_voltage)
         else:
             new_item = inventoryClass.inventory(item_code, item_desc, item_price, item_rental_price)
     FULL_INVENTORY[item_code] = new_item.returnAsDictionary()
@@ -60,20 +78,26 @@ def add_new_item():
     return new_item.returnAsDictionary
 
 
-def itemInfo():
+def item_info():
+    """
+    gets item info based on user input
+    """
     item_code = get_input("Enter item code: ")
     if item_code in FULL_INVENTORY:
-        printDict = FULL_INVENTORY[item_code]
+        print_dict = FULL_INVENTORY[item_code]
         output = ""
-        for k, v in printDict.items():
-            output += ("{}:{}{}".format(k, v, "\n"))
+        for key, value in print_dict.items():
+            output += ("{}:{}{}".format(key, value, "\n"))
     else:
-        output="Item not found in inventory"
+        output = "Item not found in inventory"
     print(output)
     return output
 
 
-def exitProgram():
+def exit_program():
+    """
+    exits the program
+    """
     sys.exit()
 
 if __name__ == '__main__':
