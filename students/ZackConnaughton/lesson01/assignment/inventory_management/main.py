@@ -5,10 +5,10 @@ import inventoryClass
 import furnitureClass
 import electricAppliancesClass
 
-fullInventory = {}
+FULL_INVENTORY = {}
 
-def mainMenu(user_prompt=None):
-    valid_prompts = {"1": addNewItem,
+def main_menu(user_prompt=None):
+    valid_prompts = {"1": add_new_item,
                      "2": itemInfo,
                      "q": exitProgram}
     options = list(valid_prompts.keys())
@@ -25,46 +25,48 @@ def mainMenu(user_prompt=None):
 def get_input(prompt):
     return input(prompt)
 
-def getPrice(itemCode):
+def get_price(item_code):
     output = "Get price"
     print(output)
     return output
 
 
-def addNewItem():
-    global fullInventory
-    itemCode = get_input("Enter item code: ")
-    itemDescription = get_input("Enter item description: ")
-    itemRentalPrice = get_input("Enter item rental price: ")
+def add_new_item():
+    global FULL_INVENTORY
+    item_code = get_input("Enter item code: ")
+    item_desc = get_input("Enter item description: ")
+    item_rental_price = get_input("Enter item rental price: ")
 
     # Get price from the market prices module
-    itemPrice = market_prices.get_latest_price(itemCode)
+    item_price = market_prices.get_latest_price(item_code)
 
-    isFurniture = get_input("Is this item a piece of furniture? (Y/N): ")
-    if isFurniture.lower() == "y":
-        itemMaterial = get_input("Enter item material: ")
-        itemSize = get_input("Enter item size (S,M,L,XL): ")
-        newItem = furnitureClass.furniture(itemCode,itemDescription,itemPrice,itemRentalPrice,itemMaterial,itemSize)
+    is_furniture = get_input("Is this item a piece of furniture? (Y/N): ")
+    if is_furniture.lower() == "y":
+        item_material = get_input("Enter item material: ")
+        item_size = get_input("Enter item size (S,M,L,XL): ")
+        new_item = furnitureClass.furniture(item_code, item_desc, item_price,
+                                            item_rental_price, item_material, item_size)
     else:
-        isElectricAppliance = get_input("Is this item an electric appliance? (Y/N): ")
-        if isElectricAppliance.lower() == "y":
-            itemBrand = get_input("Enter item brand: ")
-            itemVoltage = get_input("Enter item voltage: ")
-            newItem = electricAppliancesClass.electricAppliances(itemCode,itemDescription,itemPrice,itemRentalPrice,itemBrand,itemVoltage)
+        is_electrical_appliance = get_input("Is this item an electric appliance? (Y/N): ")
+        if is_electrical_appliance.lower() == "y":
+            item_brand = get_input("Enter item brand: ")
+            item_voltage = get_input("Enter item voltage: ")
+            new_item = electricAppliancesClass.electricAppliances(item_code, item_desc, item_price, item_rental_price,
+                                                                  item_brand, item_voltage)
         else:
-            newItem = inventoryClass.inventory(itemCode,itemDescription,itemPrice,itemRentalPrice)
-    fullInventory[itemCode] = newItem.returnAsDictionary()
+            new_item = inventoryClass.inventory(item_code, item_desc, item_price, item_rental_price)
+    FULL_INVENTORY[item_code] = new_item.returnAsDictionary()
     print("New inventory item added")
-    return newItem.returnAsDictionary
+    return new_item.returnAsDictionary
 
 
 def itemInfo():
-    itemCode = get_input("Enter item code: ")
-    if itemCode in fullInventory:
-        printDict = fullInventory[itemCode]
+    item_code = get_input("Enter item code: ")
+    if item_code in FULL_INVENTORY:
+        printDict = FULL_INVENTORY[item_code]
         output = ""
-        for k,v in printDict.items():
-            output += ("{}:{}{}".format(k,v,"\n"))
+        for k, v in printDict.items():
+            output += ("{}:{}{}".format(k, v, "\n"))
     else:
         output="Item not found in inventory"
     print(output)
@@ -75,8 +77,8 @@ def exitProgram():
     sys.exit()
 
 if __name__ == '__main__':
-    #fullInventory = {}
+    #FULL_INVENTORY = {}
     while True:
-        print(fullInventory)
-        mainMenu()()
+        print(FULL_INVENTORY)
+        main_menu()()
         input("Press Enter to continue...........")
