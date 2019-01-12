@@ -3,8 +3,8 @@ Launches the user interface for the inventory management system
 """
 import sys
 import market_prices
-import inventoryClass
-import furnitureClass
+import inventory_class
+import furniture_class
 import elec_appliances_class
 
 FULL_INVENTORY = {}
@@ -61,21 +61,22 @@ def add_new_item():
     if is_furniture.lower() == "y":
         item_material = get_input("Enter item material: ")
         item_size = get_input("Enter item size (S,M,L,XL): ")
-        new_item = furnitureClass.furniture(item_code, item_desc, item_price,
-                                            item_rental_price, item_material, item_size)
+        new_item = furniture_class.Furniture(item_code, item_desc, item_price,
+                                             item_rental_price, item_material, item_size)
     else:
         is_electrical_appliance = get_input("Is this item an electric appliance? (Y/N): ")
         if is_electrical_appliance.lower() == "y":
             item_brand = get_input("Enter item brand: ")
             item_voltage = get_input("Enter item voltage: ")
-            new_item = elec_appliances_class.elec_appliances(item_code, item_desc,
-                                                             item_price, item_rental_price,
-                                                             item_brand, item_voltage)
+            new_item = elec_appliances_class.ElecAppliances(item_code, item_desc,
+                                                            item_price, item_rental_price,
+                                                            item_brand, item_voltage)
         else:
-            new_item = inventoryClass.inventory(item_code, item_desc, item_price, item_rental_price)
-    FULL_INVENTORY[item_code] = new_item.returnAsDictionary()
+            new_item = inventory_class.Inventory(item_code, item_desc,
+                                                 item_price, item_rental_price)
+    FULL_INVENTORY[item_code] = new_item.return_as_dictionary()
     print("New inventory item added")
-    return new_item.returnAsDictionary
+    return new_item.return_as_dictionary
 
 
 def item_info():
