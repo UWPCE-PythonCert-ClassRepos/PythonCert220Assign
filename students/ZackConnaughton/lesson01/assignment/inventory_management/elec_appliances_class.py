@@ -4,7 +4,8 @@ from inventory_class import Inventory
 class ElecAppliances(Inventory):
 
     def __init__(self, product_code, description, market_price, rental_price, brand, voltage):
-        Inventory.__init__(self, product_code, description, market_price, rental_price) # Creates common instance variables from the parent class
+        Inventory.__init__(self, product_code, description, market_price, rental_price)
+        # Creates common instance variables from the parent class
 
 
         self.brand = brand
