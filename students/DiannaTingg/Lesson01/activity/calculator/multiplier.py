@@ -3,7 +3,7 @@ This module provides a multiplication operator
 """
 
 
-class Multiplier():
+class Multiplier:
     """
     Returns the product of two numbers.
     """

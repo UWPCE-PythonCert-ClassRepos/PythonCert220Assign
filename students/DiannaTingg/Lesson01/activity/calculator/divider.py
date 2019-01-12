@@ -3,7 +3,7 @@ This module provides a division operator
 """
 
 
-class Divider():
+class Divider:
     """
     Returns quotient of two numbers.
     """

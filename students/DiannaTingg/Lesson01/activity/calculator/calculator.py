@@ -4,7 +4,7 @@ Creates a virtual calculator
 from .exceptions import InsufficientOperands
 
 
-class Calculator():
+class Calculator:
     """
     Can add, subtract, multiply, and divide numbers.
     """

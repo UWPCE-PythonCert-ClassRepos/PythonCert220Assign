@@ -1,5 +1,5 @@
 from unittest import TestCase
-from unittest.mock import MagicMock
+
 
 from calculator.adder import Adder
 from calculator.subtracter import Subtracter
@@ -33,3 +33,11 @@ class ModuleTests(TestCase):
         result = calculator.subtract()
 
         self.assertEqual(6, result)
+
+    def test_module2(self):
+        calculator = Calculator(Adder(), Subtracter(), Multiplier(), Divider())
+
+        calculator.enter_number(5)
+
+        with self.assertRaises(InsufficientOperands):
+            calculator.multiply()

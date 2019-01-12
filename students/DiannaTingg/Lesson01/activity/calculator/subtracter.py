@@ -3,7 +3,7 @@ This module provides a subtraction operator
 """
 
 
-class Subtracter():
+class Subtracter:
     """
     Returns the difference of two numbers
     """

@@ -3,7 +3,7 @@ This module provides an addition operator
 """
 
 
-class Adder():
+class Adder:
     """
     Returns sum of two numbers.
     """
