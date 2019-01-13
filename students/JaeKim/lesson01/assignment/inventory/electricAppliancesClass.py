@@ -1,8 +1,9 @@
 """
 Docstring
 """
+
 # Electric appliances class
-from inventoryClass import inventory
+from .inventoryClass import inventory
 
 class electricAppliances(inventory):
     """

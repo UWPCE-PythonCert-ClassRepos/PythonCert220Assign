@@ -1,9 +1,9 @@
 """
 Docstring
 """
+
 # Furniture class
 from .inventoryClass import inventory
-
 
 class furniture(inventory):
     """
@@ -17,7 +17,7 @@ class furniture(inventory):
                            productCode,
                            description,
                            marketPrice,
-                           rentalPrice) # Creates common instance variables from the parent class
+                           rentalPrice)
 
         self.material = material
         self.size = size
