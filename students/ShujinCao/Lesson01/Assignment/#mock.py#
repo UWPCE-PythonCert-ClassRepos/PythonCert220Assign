@@ -1,5 +1,0 @@
-
-
-def main():
-    my_input = input("Enter some input ")
-    print("Hello")
