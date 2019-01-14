@@ -1,7 +1,7 @@
 """
 Electric appliances class
 """
-from inventoryclass import Inventory
+from .inventoryclass import Inventory
 
 
 class ElectricAppliances(Inventory):
@@ -11,7 +11,8 @@ class ElectricAppliances(Inventory):
 
     def __init__(self, product_code, description,
                  market_price, rental_price, brand, voltage):
-        super().__init__()
+        super().__init__(product_code, description,
+                         market_price, rental_price)
         self.brand = brand
         self.voltage = voltage
 

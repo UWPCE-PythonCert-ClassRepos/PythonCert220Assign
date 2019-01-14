@@ -14,7 +14,6 @@ class Inventory:
         self.market_price = market_price
         self.rental_price = rental_price
 
-    @property
     def return_as_dictionary(self):
         """
         return as a dictionary

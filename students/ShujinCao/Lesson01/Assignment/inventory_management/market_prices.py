@@ -1,9 +1,9 @@
 """
 market module
 """
-def get_latest_price(item_code):
+def get_latest_price():
     """
     get latest price func
     """
-    price = item_code + 10
+    price = 10
     return price

@@ -2,10 +2,10 @@
 Launches the user interface for the inventory management system
 """
 import sys
-import market_prices
-import inventoryclass
-import furnitureclass
-import electricappliancesclass
+from .inventoryclass import Inventory
+from .furnitureclass import Furniture
+from .electricappliancesclass import ElectricAppliances
+from .market_prices import get_latest_price
 
 def main_menu(user_prompt=None):
     """
@@ -25,13 +25,6 @@ def main_menu(user_prompt=None):
         user_prompt = input(">")
     return valid_prompts.get(user_prompt)
 
-def get_price(item_code):
-    """
-    to get price function
-    """
-    item_price = market_prices.get_latest_price(item_code)
-    print(item_price)
-
 def add_new_item():
     """
     this function is for adding a new item
@@ -41,13 +34,13 @@ def add_new_item():
     item_rental_price = input("Enter item rental price: ")
 
     # Get price from the market prices module
-    item_price = market_prices.get_latest_price(item_code)
+    item_price = get_latest_price()
 
     is_furniture = input("Is this item a piece of furniture? (Y/N): ")
     if is_furniture.lower() == "y":
         item_material = input("Enter item material: ")
         item_size = input("Enter item size (S,M,L,XL): ")
-        new_item = furnitureclass.Furniture(
+        new_item = Furniture(
             item_code,
             item_description,
             item_price,
@@ -60,11 +53,11 @@ def add_new_item():
         if is_electric_appliance.lower() == "y":
             item_brand = input("Enter item brand: ")
             item_voltage = input("Enter item voltage: ")
-            new_item = electricappliancesclass.ElectricAppliances(
+            new_item = ElectricAppliances(
                 item_code, item_description, item_price,
                 item_rental_price, item_brand, item_voltage)
         else:
-            new_item = inventoryclass.Inventory(
+            new_item = Inventory(
                 item_code, item_description, item_price, item_rental_price)
     FULLINVENTORY[item_code] = new_item.return_as_dictionary()
     print("New inventory item added")
