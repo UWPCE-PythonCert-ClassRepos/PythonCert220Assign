@@ -1,6 +1,6 @@
 """ Electric appliances class """
 
-from inventoryclass import Inventory
+from inventory_management.inventoryclass import Inventory
 
 
 class ElectricAppliances(Inventory):

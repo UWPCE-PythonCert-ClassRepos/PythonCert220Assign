@@ -1,5 +1,5 @@
 """ Furniture class """
-from inventoryclass import Inventory
+from inventory_management.inventoryclass import Inventory
 
 
 class Furniture(Inventory):
