@@ -1,6 +1,6 @@
 """This is the furnature class file."""
 
-from inventory_class import Inventory
+from .inventory_class import Inventory
 
 
 class Furniture(Inventory):
