@@ -31,3 +31,38 @@ Update test_unit.py as required to attain 90% coverage.
 
 Create a file called test_integration.py.
 """
+
+from unittest import TestCase
+from unittest.mock import MagicMock
+
+from inventory_management.electricManagement import electricAppliances
+from inventory_management.exceptions import InsufficientOperands
+from inventory_management.furnitureClass import furniture
+from inventory_management.marketprices import get_latest_price
+
+
+
+class ModuleTests(TestCase):
+
+    def test_module(self):
+
+        inventory_management = inventory_management(getPrice(), addNewItem(), itemInfo(), exitProgram())
+
+        main_menu.valid_prompts(1)
+        main_menu.valid_prompts(2)
+        main_menu.valid_prompts(q)
+        inventory_management.electricManagement()
+
+        inventory_management.enter_number(46)
+
+        calculator.add()
+
+        calculator.enter_number(8)
+
+        calculator.divide()
+
+        calculator.enter_number(1)
+
+        result = calculator.subtract()
+
+        self.assertEqual(6, result)
