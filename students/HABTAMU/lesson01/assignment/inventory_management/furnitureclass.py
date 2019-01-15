@@ -15,10 +15,6 @@ class Furniture(Inventory):
 
     def returnas_dictionary(self):
         outputdict = super(Furniture, self).returnas_dictionary()
-    #     outputdict['productcode'] = self.productcode
-    #     outputdict['description'] = self.description
-    #     outputdict['marketprice'] = self.marketprice
-    #     outputdict['rentalprice'] = self.rentalprice
         outputdict['material'] = self.material
         outputdict['size'] = self.size
 

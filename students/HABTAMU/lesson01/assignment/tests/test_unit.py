@@ -2,13 +2,28 @@
 
 
 from unittest import TestCase
-from unittest.mock import MagicMock
+from unittest.mock import MagicMock, patch
 
 # from inventory_management.electricappliancesclass import ElectricAppliances as elapp
 import inventory_management.electricappliancesclass as e_app_mod
 import inventory_management.furnitureclass as fur_mod
 import inventory_management.inventoryclass as inv_mod
-# from inventory_management.market_prices import market_prices as mp
+import inventory_management.management as mgm_mod
+from inventory_management.market_prices import market_prices as mp
+
+
+class Testmanagementclass(TestCase):
+    def test_get_price(self):
+        item_price = mgm_mod.get_price()
+        pass
+
+
+    def test_item_info(self):
+        pass
+
+    def test_exit_program(self):
+        pass
+
 
 class TestInventoryclass(TestCase):
     def test_returnas_dictionary_inventory(self):

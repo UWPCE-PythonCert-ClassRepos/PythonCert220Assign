@@ -16,10 +16,6 @@ class ElectricAppliances(Inventory):
 
     def returnas_dictionary(self):
         outputdict = super(ElectricAppliances, self).returnas_dictionary()
-    #     outputdict['productcode'] = self.productcode
-    #     outputdict['description'] = self.description
-    #     outputdict['marketprice'] = self.marketprice
-    #     outputdict['rentalprice'] = self.rentalprice
         outputdict['brand'] = self.brand
         outputdict['voltage'] = self.voltage
 

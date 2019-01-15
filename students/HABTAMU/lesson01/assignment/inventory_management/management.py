@@ -12,8 +12,8 @@ def get_price(item_code):
     print("Get price")
 
 
-def add_new_item(FULLINVENTORY):
-    """ add_new_item """
+def add_new_item(fullinventory):
+    """ add_new_item method"""
     item_code = input("Enter item code: ")
     item_description = input("Enter item description: ")
     item_rentalprice = input("Enter item rental price: ")
@@ -55,22 +55,22 @@ def add_new_item(FULLINVENTORY):
                 item_price,
                 item_rentalprice
             )
-    FULLINVENTORY[item_code] = new_item.returnas_dictionary()
+    fullinventory[item_code] = new_item.returnas_dictionary()
     print("New inventory item added")
-    return FULLINVENTORY
+    return fullinventory
 
 
-def item_info(FULLINVENTORY):
+def item_info(fullinventory):
     """ item_info """
 
     item_code = input("Enter item code: ")
-    if item_code in FULLINVENTORY:
-        print_dict = FULLINVENTORY[item_code]
+    if item_code in fullinventory:
+        print_dict = fullinventory[item_code]
         for k, value in print_dict.items():
             print("{}:{}".format(k, value))
     else:
         print("Item not found in inventory")
-    return FULLINVENTORY
+    return fullinventory
 
 
 def exit_program():
