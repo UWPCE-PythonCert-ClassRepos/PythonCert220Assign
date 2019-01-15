@@ -5,6 +5,9 @@ Inventory class
 
 class Inventory:
     ''' Base inventory object '''
+
+    inventory_type = "Inventory"
+
     def __init__(self, product_code, description, market_price, rental_price):
         self.product_code = product_code
         self.description = description
@@ -20,3 +23,10 @@ class Inventory:
         output['rental_price'] = self.rental_price
 
         return output
+
+    @staticmethod
+    def sort_key(item):
+        '''
+        Standard sort key
+        '''
+        return (item.description, item.product_code)

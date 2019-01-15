@@ -3,10 +3,13 @@ Represents furniture for inventory
 '''
 
 
-from .inventory import Inventory
+from inventory_management.inventory import Inventory
 
+# pylint: disable=R0913
 class Furniture(Inventory):
     ''' Represent an furniture '''
+
+    inventory_type = "Furniture"
 
     def __init__(self, product_code, description, market_price, rental_price, material, size):
         # Creates common instance variables from the parent class
@@ -23,3 +26,10 @@ class Furniture(Inventory):
         output['size'] = self.size
 
         return output
+
+    @staticmethod
+    def sort_key(item):
+        '''
+        Standard sort key
+        '''
+        return (item.description, item.product_code)
