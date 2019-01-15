@@ -3,20 +3,18 @@ Docstring
 """
 import sys
 
-from .market_prices import get_latest_price
-from .inventoryClass import inventory
-from .furnitureClass import furniture
-from .electricAppliancesClass import electricAppliances
+from inventory import inventory, furniture, electric_appliance, market_prices
 
 FULL_INVENTORY = {}
 
-def mainmenu(user_prompt=None):
+
+def main_menu(user_prompt=None):
     """
     Docstring
     """
-    valid_prompts = {"1": addnewitem,
-                     "2": iteminfo,
-                     "q": exitprogram}
+    valid_prompts = {"1": add_new_item,
+                     "2": item_info,
+                     "q": exit_program}
     options = list(valid_prompts.keys())
 
     while user_prompt not in valid_prompts:
@@ -28,7 +26,8 @@ def mainmenu(user_prompt=None):
         user_prompt = input(">")
     return valid_prompts.get(user_prompt)
 
-def getprice(item_code):
+
+def get_price(item_code):
     """
     Docstring
     """
@@ -37,7 +36,8 @@ def getprice(item_code):
 
     return item_code
 
-def addnewitem():
+
+def add_new_item():
     """
     Docstring
     """
@@ -46,40 +46,41 @@ def addnewitem():
     item_rental_price = input("Enter item rental price: ")
 
     # Get price from the market prices module
-    item_price = get_latest_price(item_code)
+    item_price = market_prices.get_latest_price(item_code)
 
     is_furniture = input("Is this item a piece of furniture? (Y/N): ")
     if is_furniture.lower() == "y":
         item_material = input("Enter item material: ")
         item_size = input("Enter item size (S,M,L,XL): ")
-        new_item = furniture(item_code,
-                             item_description,
-                             item_price,
-                             item_rental_price,
-                             item_material,
-                             item_size)
+        new_item = furniture.Furniture(item_code,
+                                       item_description,
+                                       item_price,
+                                       item_rental_price,
+                                       item_material,
+                                       item_size)
     else:
         is_electric_appliance = input("Is this item an electric appliance? (Y/N): ")
         if is_electric_appliance.lower() == "y":
             item_brand = input("Enter item brand: ")
             item_voltage = input("Enter item voltage: ")
-            new_item = electricAppliances(item_code,
-                                          item_description,
-                                          item_price,
-                                          item_rental_price,
-                                          item_brand,
-                                          item_voltage)
+            new_item = electric_appliance.ElectricAppliance(item_code,
+                                                            item_description,
+                                                            item_price,
+                                                            item_rental_price,
+                                                            item_brand,
+                                                            item_voltage)
         else:
-            new_item = inventory(item_code,
-                                 item_description,
-                                 item_price,
-                                 item_rental_price)
+            new_item = inventory.Inventory(item_code,
+                                           item_description,
+                                           item_price,
+                                           item_rental_price)
 
-    FULL_INVENTORY[item_code] = new_item.returnAsDictionary()
+    FULL_INVENTORY[item_code] = new_item.return_as_dictionary()
     print("New inventory item added")
     return "New inventory item added"
 
-def iteminfo():
+
+def item_info():
     """
     Docstring
     """
@@ -91,7 +92,8 @@ def iteminfo():
     else:
         print("Item not found in inventory")
 
-def exitprogram():
+
+def exit_program():
     """
     Docstring
     """
@@ -102,5 +104,5 @@ if __name__ == '__main__':
     FULL_INVENTORY = {}
     while True:
         print(FULL_INVENTORY)
-        mainmenu()()
+        main_menu()()
         input("Press Enter to continue...........")
