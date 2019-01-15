@@ -1,12 +1,12 @@
 from unittest import TestCase
 
 
-from adder import Adder
-from subtracter import Subtracter
-from multiplier import Multiplier
-from divider import Divider
-from calculator import Calculator
-from exceptions import InsufficientOperands
+from calculator.adder import Adder
+from calculator.subtracter import Subtracter
+from calculator.multiplier import Multiplier
+from calculator.divider import Divider
+from calculator.calculator import Calculator
+from calculator.exceptions import InsufficientOperands
 
 
 class ModuleTests(TestCase):
