@@ -68,6 +68,11 @@ class ElectronicAppliancesTests(TestCase):
 
         for name, value in self.data.items():
             self.assertEqual(value, result[name])
+    
+    def test_electric_appliance_sort_key(self):
+        item = ElectricAppliance(**self.data)
+        result = ElectricAppliance.sort_key(item)
+        self.assertEqual(result, (item.description, item.product_code))
 
 class FurnitureTests(TestCase):
 
@@ -99,6 +104,11 @@ class FurnitureTests(TestCase):
 
         for name, value in self.data.items():
             self.assertEqual(value, result[name])
+    
+    def test_furniture_sort_key(self):
+        item = Furniture(**self.data)
+        result = Furniture.sort_key(item)
+        self.assertEqual(result, (item.description, item.product_code))
 
 class InventoryTests(TestCase):
 
@@ -126,6 +136,11 @@ class InventoryTests(TestCase):
         
         for name, value in self.data.items():
             self.assertEqual(value, result[name])
+
+    def test_inventory_sort_key(self):
+        item = inventory.Inventory(**self.data)
+        result = inventory.Inventory.sort_key(item)
+        self.assertEqual(result, (item.description, item.product_code))
 
 class ManagementTests(TestCase):
 
