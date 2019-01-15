@@ -1,3 +1,6 @@
+"""Establish inventory details"""
+
+
 class Inventory:
     """Class to hold inventory details"""
     def __init__(self, product_code, description, market_price, rental_price):
