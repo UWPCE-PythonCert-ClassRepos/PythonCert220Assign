@@ -1,12 +1,13 @@
 from unittest import TestCase
 from unittest.mock import MagicMock
 
-from calculator.adder import Adder
-from calculator.subtracter import Subtracter
-from calculator.multiplier import Multiplier
-from calculator.divider import Divider
-from calculator.calculator import Calculator
-from calculator.exceptions import InsufficientOperands
+
+from ..calculator.adder import Adder
+from .calculator.subtracter import Subtracter
+from .calculator.multiplier import Multiplier
+from .calculator.divider import Divider
+from .calculator.calculator import Calculator
+from .calculator.exceptions import InsufficientOperands
 
 
 class AdderTests(TestCase):
