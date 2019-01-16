@@ -17,11 +17,7 @@ class ElectricAppliances(Inventory):
         self.voltage = voltage
 
     def return_as_dictionary(self):
-        output_dict = {}
-        output_dict['product_code'] = self.product_code
-        output_dict['description'] = self.description
-        output_dict['market_price'] = self.market_price
-        output_dict['rental_price'] = self.rental_price
+        output_dict = Inventory.return_as_dictionary(self)
         output_dict['brand'] = self.brand
         output_dict['voltage'] = self.voltage
 
