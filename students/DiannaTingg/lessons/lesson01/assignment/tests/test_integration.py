@@ -10,6 +10,7 @@ from inventory_management.furniture import Furniture
 from inventory_management.electric_appliances import ElectricAppliances
 from inventory_management.market_prices import get_latest_price
 
+
 class ModuleTests(TestCase):
 
     def test_module(self):
