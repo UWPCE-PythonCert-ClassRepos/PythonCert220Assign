@@ -5,12 +5,12 @@
 
 class inventory:
     """
-    docstring
+    The inventory class
     """
 
     def __init__(self, productCode, description, marketPrice, rentalPrice):
         """
-        doc docstring
+        set the attributes for this
         """
 
         self.productCode = productCode
@@ -20,7 +20,7 @@ class inventory:
 
     def return_as_dictionary(self):
         """
-        docstring
+        Create a dict, add each instance attribute to the dict and return it
         """
 
         output_dict = {}

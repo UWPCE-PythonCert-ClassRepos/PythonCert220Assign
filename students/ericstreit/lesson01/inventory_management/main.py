@@ -13,7 +13,7 @@ from inventory_management import electricAppliancesClass
 def main_menu(user_prompt=None):
 
     """
-    docstring
+    The main menu function
     """
 
     valid_prompts = {"1": add_new_item,
@@ -79,7 +79,7 @@ def add_new_item():
 
 def item_info():
     """
-    docstring
+    prints the item attributes if found
     """
 
     item_code = input("Enter item code: ")
@@ -93,7 +93,7 @@ def item_info():
 
 def exit_program():
     """
-    docstring
+    exit
     """
     sys.exit()
 
