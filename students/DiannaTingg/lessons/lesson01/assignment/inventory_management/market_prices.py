@@ -2,6 +2,7 @@
 Market prices module
 """
 
+
 def get_latest_price(item_code):
     """
     Returns latest price

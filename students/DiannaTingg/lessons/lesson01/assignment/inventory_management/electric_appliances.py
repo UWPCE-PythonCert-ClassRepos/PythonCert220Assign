@@ -4,6 +4,7 @@ Electric appliances module
 
 from .inventory import Inventory
 
+
 class ElectricAppliances(Inventory):
     """
     Class for Electric Appliances

@@ -4,6 +4,7 @@ Furniture module
 
 from .inventory import Inventory
 
+
 class Furniture(Inventory):
     """
     Class for Furniture

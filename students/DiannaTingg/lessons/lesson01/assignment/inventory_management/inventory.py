@@ -2,6 +2,7 @@
 Inventory module
 """
 
+
 class Inventory:
     """
     Class for Inventory
