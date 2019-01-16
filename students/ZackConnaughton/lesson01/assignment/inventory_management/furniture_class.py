@@ -1,11 +1,19 @@
-# Furniture class
-from inventory_class import Inventory
+"""
+creates an inventory item that has properties of Furniture
+"""
+
+from inventory_management.inventory_class import Inventory
 
 class Furniture(Inventory):
+    """
+    Furniture extends inventory
+    creates n inventory item that has furniture properties
+    """
 
-    def __init__(self, product_code, description, market_price, rental_price, material, size):
+    def __init__(self, inventory_item, material, size):
 
-        Inventory.__init__(self, product_code, description, market_price, rental_price)
+        Inventory.__init__(self, inventory_item.product_code, inventory_item.description,
+                           inventory_item.market_price, inventory_item.rental_price)
         # Creates common instance variables from the parent class
 
         self.material = material

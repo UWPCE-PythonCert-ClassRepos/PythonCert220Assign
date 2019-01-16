@@ -3,10 +3,10 @@ from unittest import TestCase
 
 from main import main_menu, get_price, add_new_item, item_info, exit_program
 import main
-from inventory_class import Inventory
-from furniture_class import Furniture
-from market_prices import get_latest_price
-from elec_appliances_class import ElecAppliances
+from inventory_management.inventory_class import Inventory
+from inventory_management.furniture_class import Furniture
+from inventory_management.market_prices import get_latest_price
+from inventory_management.elec_appliances_class import ElecAppliances
 
 class TestMain(TestCase):
     """
@@ -69,18 +69,20 @@ class TestInventoryClass(TestCase):
     """
     test for inventory_class
     """
+    def setUp(self):
+        self.new_inventory = Inventory(100, '100 description', 100, 200)
 
     def test_inventory_class(self):
-        new_inventory = Inventory(100, '100 description', 100, 200)
-        self.assertTrue(new_inventory)
-        self.assertEqual(new_inventory.product_code, 100)
-        self.assertEqual(new_inventory.description, '100 description')
-        self.assertEqual(new_inventory.market_price, 100)
-        self.assertEqual(new_inventory.rental_price, 200)
+        # new_inventory = Inventory(100, '100 description', 100, 200)
+        # self.assertTrue(new_inventory)
+        self.assertEqual(self.new_inventory.product_code, 100)
+        self.assertEqual(self.new_inventory.description, '100 description')
+        self.assertEqual(self.new_inventory.market_price, 100)
+        self.assertEqual(self.new_inventory.rental_price, 200)
 
     def test_inventory_class_dict(self):
-        new_inventory = Inventory(100, '100 description', 100, 200)
-        new_inventory_dict = new_inventory.return_as_dictionary()
+        # new_inventory = Inventory(100, '100 description', 100, 200)
+        new_inventory_dict = self.new_inventory.return_as_dictionary()
         self.assertEqual(new_inventory_dict['product_code'], 100)
         self.assertEqual(new_inventory_dict['description'], '100 description')
         self.assertEqual(new_inventory_dict['market_price'], 100)
@@ -88,17 +90,21 @@ class TestInventoryClass(TestCase):
 
 class TestFurnitureClass(TestCase):
 
+    def setUp(self):
+
+        self.new_furniture = Furniture(Inventory(100, '100 description', 100, 200), '101 material', 'S')
+
     def test_furniture_class(self):
-        new_furniture = Furniture(100, '100 description', 100, 200, '101 material', 'S')
-        self.assertTrue(new_furniture)
-        self.assertEqual(new_furniture.product_code, 100)
-        self.assertEqual(new_furniture.description, '100 description')
-        self.assertEqual(new_furniture.market_price, 100)
-        self.assertEqual(new_furniture.rental_price, 200)
+        # new_furniture = Furniture(100, '100 description', 100, 200, '101 material', 'S')
+        # self.assertTrue(new_furniture)
+        self.assertEqual(self.new_furniture.product_code, 100)
+        self.assertEqual(self.new_furniture.description, '100 description')
+        self.assertEqual(self.new_furniture.market_price, 100)
+        self.assertEqual(self.new_furniture.rental_price, 200)
 
     def test_furniture_class_dict(self):
-        new_furniture = Furniture(100, '100 description', 100, 200, '101 material', 'S')
-        new_furniture_dict = new_furniture.return_as_dictionary()
+        # new_furniture = Furniture(100, '100 description', 100, 200, '101 material', 'S')
+        new_furniture_dict = self.new_furniture.return_as_dictionary()
         self.assertEqual(new_furniture_dict['product_code'], 100)
         self.assertEqual(new_furniture_dict['description'], '100 description')
         self.assertEqual(new_furniture_dict['market_price'], 100)
@@ -114,19 +120,22 @@ class TestMarketPrices(TestCase):
 
 class TestElecAppliances(TestCase):
 
+    def setUp(self):
+        self.new_electrical_appliance = ElecAppliances(Inventory(100, '100 desc', 100, 200), '100 brand', 120)
+
     def test_elec_appliances(self):
-        new_electrical_appliance = ElecAppliances(100, '100 desc', 100, 200, '100 brand', 120)
-        self.assertTrue(new_electrical_appliance)
-        self.assertEqual(new_electrical_appliance.product_code, 100)
-        self.assertEqual(new_electrical_appliance.description, '100 desc')
-        self.assertEqual(new_electrical_appliance.market_price, 100)
-        self.assertEqual(new_electrical_appliance.rental_price, 200)
-        self.assertEqual(new_electrical_appliance.brand, '100 brand')
-        self.assertEqual(new_electrical_appliance.voltage, 120)
+        # new_electrical_appliance = ElecAppliances(100, '100 desc', 100, 200, '100 brand', 120)
+        # self.assertTrue(new_electrical_appliance)
+        self.assertEqual(self.new_electrical_appliance.product_code, 100)
+        self.assertEqual(self.new_electrical_appliance.description, '100 desc')
+        self.assertEqual(self.new_electrical_appliance.market_price, 100)
+        self.assertEqual(self.new_electrical_appliance.rental_price, 200)
+        self.assertEqual(self.new_electrical_appliance.brand, '100 brand')
+        self.assertEqual(self.new_electrical_appliance.voltage, 120)
 
     def test_elec_appliances_dict(self):
-        new_electrical_appliance = ElecAppliances(100, '100 desc', 100, 200, '100 brand', 120)
-        new_electrical_appliance_dict = new_electrical_appliance.return_as_dictionary()
+        # new_electrical_appliance = ElecAppliances(100, '100 desc', 100, 200, '100 brand', 120)
+        new_electrical_appliance_dict = self.new_electrical_appliance.return_as_dictionary()
         self.assertEqual(new_electrical_appliance_dict['product_code'], 100)
         self.assertEqual(new_electrical_appliance_dict['description'], '100 desc')
         self.assertEqual(new_electrical_appliance_dict['market_price'], 100)
