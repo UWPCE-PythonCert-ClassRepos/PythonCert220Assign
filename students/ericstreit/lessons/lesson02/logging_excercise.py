@@ -4,6 +4,7 @@
 #!/usr/bin/env python3
 
 #define function
+
 import logging
 
 log_format = "%(asctime)s %(filename)s:%(lineno)-3d %(levelname)s %(message)s"
