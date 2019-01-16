@@ -67,3 +67,4 @@ if __name__ == '__main__':
         print(fullInventory)
         mainMenu()()
         input("Press Enter to continue...........")
+        
