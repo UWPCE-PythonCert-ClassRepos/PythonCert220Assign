@@ -7,12 +7,9 @@ from .inventory import Inventory
 
 class Furniture(Inventory):
     """
-    Docstring
+    Furniture class
     """
     def __init__(self, product_code, description, market_price, rental_price, material, size):
-        """
-        Docstring
-        """
         Inventory.__init__(self, product_code, description, market_price, rental_price)
 
         self.material = material

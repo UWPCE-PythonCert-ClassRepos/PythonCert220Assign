@@ -1,18 +1,14 @@
 """
 Inventory class
 """
-# Inventory class
 
 
 class Inventory:
     """
-    Docstring
+    Inventory class
     """
 
     def __init__(self, product_code, description, market_price, rental_price):
-        """
-        Docstring
-        """
         self.product_code = product_code
         self.description = description
         self.market_price = market_price
@@ -20,7 +16,7 @@ class Inventory:
 
     def return_as_dictionary(self):
         """
-        Docstring
+        Return output as dict
         """
         output_dict = {}
         output_dict['product_code'] = self.product_code

@@ -1,10 +1,10 @@
 """
-Docstring
+Market_prices
 """
 
 
 def get_latest_price(item_code):
     """
-    Docstring
+    Function to return latest price
     """
     return 24

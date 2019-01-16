@@ -1,5 +1,5 @@
 """
-Docstring
+Main class
 """
 import sys
 
@@ -10,7 +10,7 @@ FULL_INVENTORY = {}
 
 def main_menu(user_prompt=None):
     """
-    Docstring
+    Generates main menu
     """
     valid_prompts = {"1": add_new_item,
                      "2": item_info,
@@ -29,7 +29,7 @@ def main_menu(user_prompt=None):
 
 def get_price(item_code):
     """
-    Docstring
+    Return price function
     """
     print(item_code)
     print("Get price")
@@ -39,7 +39,7 @@ def get_price(item_code):
 
 def add_new_item():
     """
-    Docstring
+    Add new item
     """
     item_code = input("Enter item code: ")
     item_description = input("Enter item description: ")
@@ -82,7 +82,7 @@ def add_new_item():
 
 def item_info():
     """
-    Docstring
+    Return item info
     """
     item_code = input("Enter item code: ")
     if item_code in FULL_INVENTORY:
@@ -95,7 +95,7 @@ def item_info():
 
 def exit_program():
     """
-    Docstring
+    Exit program
     """
     sys.exit()
 
