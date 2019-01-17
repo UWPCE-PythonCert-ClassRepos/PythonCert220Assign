@@ -7,7 +7,6 @@ import sys
 from inventory_management import inventory, furniture, electric_appliances, market_prices
 
 
-
 def main_menu(user_prompt=None):
     """
     Main Menu
@@ -62,12 +61,10 @@ def add_new_item():
         if is_electric_appliance.lower() == "y":
             item_brand = input("Enter item brand: ")
             item_voltage = input("Enter item voltage: ")
-            new_item = electric_appliances.ElectricAppliances(item_code, item_description,
-                                                              item_price, item_rental_price,
-                                                              item_brand, item_voltage)
+            new_item = electric_appliances.ElectricAppliances(item_code, item_description, item_price,
+                                                              item_rental_price, item_brand, item_voltage)
         else:
-            new_item = inventory.Inventory(item_code, item_description,
-                                           item_price, item_rental_price)
+            new_item = inventory.Inventory(item_code, item_description, item_price, item_rental_price)
     FULL_INVENTORY[item_code] = new_item.return_as_dictionary()
     print("New inventory item added")
 
@@ -92,6 +89,7 @@ def exit_program():
     :return:
     """
     sys.exit()
+
 
 if __name__ == '__main__':
     FULL_INVENTORY = {}
