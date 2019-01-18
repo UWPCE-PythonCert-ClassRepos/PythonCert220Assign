@@ -31,6 +31,8 @@ def load_rentals_file(filename):
     return data
 
 def calculate_additional_fields(data):
+    new_data = 
+
     for value in data.values():
         try:
             try:
@@ -57,7 +59,11 @@ def calculate_additional_fields(data):
             value['sqrt_total_price'] = math.sqrt(value['total_price'])
             #logging.debug(values['sqrt_total_price'])
             #logging.debug(value['sqrt_total_price'])
-            value['unit_cost'] = value['total_price'] / value['units_rented']
+            if value['units_rented'] == 0:
+                print(f"Your units_rented is equal to zero for {value['product_code']}")
+                #logging.warning("units_rented is equal to 0 and will throw an error")
+            else:
+                value['unit_cost'] = value['total_price'] / value['units_rented']
             # logging.debug(value['unit_cost'])
             # logging.debug(value['total_days'])
             # logging.debug(value['total_price'])
@@ -65,6 +71,7 @@ def calculate_additional_fields(data):
             # logging.debug(value['unit_cost'])
         except Exception as e:
             logging.debug(e)
+            print(f"An unexpected error occurred: {e}")
             exit(0)
 
     return data
