@@ -2,11 +2,12 @@
 management system """
 # Launches the user interface for the inventory management system
 import sys
-import market_prices
-import inventory_class
-import furniture_class
-import electric_appliances_class
+from inventory_management import market_prices
+from inventory_management import inventory_class
+from inventory_management import furniture_class
+from inventory_management import electric_appliances_class
 
+FULL_INVENTORY={}
 
 def main_menu(user_prompt=None):
     """
@@ -23,8 +24,11 @@ def main_menu(user_prompt=None):
         print("1. Add a new item to the inventory")
         print("2. Get item information")
         print("q. Quit")
-        user_prompt = input(">")
+        user_prompt = get_input(">")
     return valid_prompts.get(user_prompt)
+
+def get_input(prompt):
+    return input(prompt)
 
 def get_price(item_code):
     """
@@ -36,7 +40,7 @@ def add_new_item():
     """
     This is a method to add new items to the inventory
     """
-    global FULL_INVENTORY
+    
     product_info = {}
     product_info['product_code'] = input("Enter item code: ")
     product_info['description'] = input("Enter item description: ")

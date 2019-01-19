@@ -1,6 +1,6 @@
 """ This is a module for the electric appliances products """
 # Electric appliances class
-from inventory_class import Inventory
+from inventory_management.inventory_class import Inventory
 
 
 class ElectricAppliances(Inventory):

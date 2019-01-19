@@ -2,14 +2,15 @@
 This is a unit test for all classes in the inventory management system
 """
 from unittest import TestCase
-from unittest.mock import MagicMock
+from unittest.mock import patch
 
+import sys
 
 from inventory_management.inventory_class import Inventory
 from inventory_management.furniture_class import Furniture
-from inventory_management import market_prices
 from inventory_management.electric_appliances_class import ElectricAppliances
-from inventory_management import main as m
+from main import main_menu, add_new_item, get_price, item_info, exit_program, get_input
+import main
  
 
 
@@ -87,9 +88,20 @@ class MainMenuTests(TestCase):
     """
     This class tests the methods in the Main module
     """
+    @patch('main.main_menu',return_value=add_new_item)
+    def test_get_price(self, main_menu):
+        self.assertEqual(main_menu(1), add_new_item)
 
-    def test_input(self):
-        pass
+    @patch('main.main_menu',return_value=item_info)
+    def test_item_info(self, main_menu):
+        self.assertEqual(main_menu(2), item_info)
 
+    @patch('main.main_menu',return_value=exit_program)
+    def test_exit_program(self, main_menu):
+        self.assertEqual(main_menu('q'), exit_program)
 
-        
+    @patch('main.add_new_item')
+    def test_add_inventory(self, mock_add_inventory):
+        add_new_item()
+        self.assertTrue(main.FULL_INVENTORY)
+    
