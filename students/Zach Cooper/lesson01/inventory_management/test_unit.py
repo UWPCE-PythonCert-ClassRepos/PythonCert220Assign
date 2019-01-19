@@ -1,108 +1,160 @@
-from unittest import TestCase, patch
-from unittest.mock import MagicMock
+# from unittest import TestCase
+# from unittest.mock import patch
 
-from inventory_class import Inventory
+from inventoryClass import Inventory
+from electricAppliancesClass import ElectricAppliances
+from furnitureClass import Furniture
 from market_prices import get_latest_price
-from electric_appliances import ElectricAppliances
-from furntire_class import Furniture
-from main import *
-
-
-class ApplianceTests(TestCase):
-
-    def test_appliance(self):
-        item = ElectricAppliances()
-        item = electric_appliances_class.ElectricAppliances(23, 'an item',
-                                                            24, 90, 'Kenmore',
-                                                            130)
-
-        assert item.product_code == 23
-        assert item.description == 'an item'
-        assert item.market_price == 24
-        assert item.rental_price == 90
-        assert item.brand == 'kenmore'
-        assert item.voltage == 130
-        assert item.return_as_dictionary() == {'product_code': 23,
-                                               'description': 'an item',
-                                               'market_price': 24,
-                                               'rental_price': 90,
-                                               'brand': 'Kenmore',
-                                               'voltage': 130,
-                                               }
-
-
-class FurnitureTests(TestCase):
-
-    def test_furniture(self):
-        item = Furniture()
-        item = furnitrue_class.Furniture(23, 'an item', 24, 90, 'leather', 'M')
-
-        assert item.product_code == 23
-        assert item.description == 'an item'
-        assert item.market_price == 24
-        assert item.rental_price == 90
-        assert item.material == 'Leather'
-        assert item.size == 'M'
-        assert item.return_as_dictionary() == {'product_code': 23,
-                                               'description': 'an item',
-                                               'market_price': 24,
-                                               'rental_price': 90,
-                                               'size': 'M',
-                                               'material': 'Leather',
-                                               }
-
-
-class InvetoryTests(TesCase):
-
-    def test_inventory(self):
-        item = Inventory()
-        item = inventory_class.Inventory(23, 'an item', 24, 90)
-
-        assert item.product_code == 23
-        assert item.desciprtion == 'an item'
-        assert item.market_price == 24
-        assert item.rental_price == 90
-        assert item.return_as_dictionary() == {'product_code': 23,
-                                               'description': 'an item',
-                                               'market_price': 24,
-                                               'rental_price': 90,
-                                               }
-
-class 
-
- self.product_code = product_code
-        self.description = description
-        self.market_price = market_price
-        self.rental_price = rental_price
+# import main
 
 
 
+def test_electric_appliance():
+    """
+    Tests Electric Appliances Init Function
+    """
+
+    electric_stove = ElectricAppliances("C555", "electric stove", 300.00, 175.00,
+                                        "Kenmore", "150 V")
+
+    assert electric_stove.product_code == "C555"
+    assert electric_stove.description == "electric stove"
+    assert electric_stove.market_price == 300.00
+    assert electric_stove.rental_price == 175.00
+    assert electric_stove.brand == "Kenmore"
+    assert electric_stove.voltage == "150 V"
+
+
+def test_electric_appliance_return_as_dictionary():
+    """
+    Test whether ElectricAppliances Class ruturns information
+    about ElectricAppliances stored in Inventory in a dict
+    """
+    electric_stove = ElectricAppliances("C555", "electric stove", 300.00, 175.00,
+                                        "Kenmore", "150 V")
+
+    assert electric_stove.return_as_dictionary() == {"product_code": "C555",
+                                                     "description": "electric stove",
+                                                     "market_price": 300.00,
+                                                     "rental_price": 175.00,
+                                                     "brand": "Kenmore",
+                                                     "voltage": "150 V"}
+
+
+def test_furniture():
+    """
+    Test Furniture Init Function
+    """
+
+    couch = Furniture("C777", "reclining couch", 20.00, 10.00, "leather", "M")
+
+    assert couch.product_code == "C777"
+    assert couch.description == "reclining couch"
+    assert couch.market_price == 20.00
+    assert couch.rental_price == 10.00
+    assert couch.material == "leather"
+    assert couch.size == "M"
+
+
+def test_furniture_return_to_dictionary():
+
+    couch = Furniture("C777", "reclining couch", 20.00, 10.00, "leather", "M")
+
+    assert couch.return_as_dictionary() == {"product_code": "C777",
+                                            "description": "reclining couch",
+                                            "market_price": 20.00,
+                                            "rental_price": 10.00,
+                                            "material": "leather",
+                                            "size": "M"}
+
+
+def test_inventory():
+    """
+    Test for Inventory Init
+    """
+
+    couch = Inventory("C777", "reclining couch", 20.00, 10.00)
+
+    assert couch.product_code == "C777"
+    assert couch.description == "reclining couch"
+    assert couch.market_price == 20.00
+    assert couch.rental_price == 10.00
+
+
+def test_inventory_return_to_dictionary():
+    """
+    Tests InventoryClass returning a dic of information about all
+    the items in the dictionary
+    """
+
+    couch = Inventory("C777", "reclining couch", 20.00, 10.00)
+
+    assert couch.return_as_dictionary() == {"product_code": "C777",
+                                            "description": "reclining couch",
+                                            "market_price": 20.00,
+                                            "rental_price": 10.00
+                                            }
 
 
 
-class TestMain(TestCase):
+# class FurnitureTests(TestCase):
 
-    # @patch('main.get_input', return_value='1')
-    # """Changed all of the input() functions in the main to
-    # get_input() which goes to a seperate function for the input"""
+#     def test_furniture(self):
+#         item = Furniture()
+#         item = furnitureClass.Furniture('c555', 'an item', 24, 90,
+#                                         'leather', 'M')
 
-    # def test_main_addNewItem(self, mock_mainMenu):
+#         assert item.productCode == 'c555'
+#         assert item.description == 'an item'
+#         assert item.marketPrice == 24
+#         assert item.rentalPrice == 90
+#         assert item.material == 'Leather'
+#         assert item.size == 'M'
+#         assert item.returnAsDictionary() == {'productCode': 'c555',
+#                                              'description': 'an item',
+#                                              'marketPrice': 24,
+#                                              'rentalPrice': 90,
+#                                              'size': 'M',
+#                                              'material': 'Leather',
+#                                              }
 
-    #     self.assertEqual(mainMenu(), addNewItem)
+
+# class InvetoryTests(TesCase):
+
+#     def test_inventory(self):
+#         item = Inventory()
+#         item = inventoryClass.Inventory('c555', 'an item', 24, 90)
+
+#         assert item.productCode == 'c555'
+#         assert item.desciprtion == 'an item'
+#         assert item.marketPrice == 24
+#         assert item.rentalPrice == 90
+#         assert item.returnAsDictionary() == {'productCode': 'c555',
+#                                              'description': 'an item',
+#                                              'marketPrice': 24,
+#                                              'rentalPrice': 90,
+#                                              }
+
+
+# class MainTests(TestCase):
+
+#     """Can I do multiple input patches for the same
+#     function being teste???"""
+#     # Mocks input value for itemCode
+#     @patch('main.itemCode', return_value='c555')
+#     # Mock input itemDescription
+#     @patch('main.itemDescription', return_value='an item')
+#     # Mock input rentalPrice
+#     @patch('main.itemRentalPrice', return_value=90)
+#     def test_add_new_item_input(self, mock_mainMenu):
+#         self.assertEqual(itemCode, return_value)
+#         self.assertEqual(itemDescription, return_value)
+#         self.assertEqual(itemRentalPrice, return_value)
+
+    # # Mock input item description
+    # @patch('main.itemDescription', return_value='an item')
+    # def test_add_new_item_input(self, mock_addNewItemInput):
+    #     self.assertEqual(itemDescription, return_value)
 
 
 
-    # # test add_new_item is_furniture
-    # def test_main_is_furniture():
-    #     with unittest.mock.patch('builtins.input', return_value='y'):
-    #         assert input() == 'y'
-
-
-
-
-
-    """item_info function"""
-    @patch('builtins.input', return_value='1')
-    def test_item_info(self):
-
-        self.assertEqual(item_info(), '1')
