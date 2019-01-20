@@ -1,6 +1,6 @@
-'''
+"""
 Returns total price paid for individual rentals
-'''
+"""
 import argparse
 import json
 import datetime
@@ -8,6 +8,22 @@ import math
 import logging
 
 log_format = "%(asctime)s %(filename)s:%(lineno)-3d %(levelname)s %(message)s"
+
+formatter = logging.Formatter(log_format)
+
+file_handler = logging.FileHandler('charges_calc.log')
+file_handler.setLevel(logging.WARNING)
+file_handler.setFormatter(formatter)
+
+console_handler = logging.StreamHandler()
+console_handler.setLevel(logging.DEBUG)
+console_handler.setFormatter(formatter)
+
+logger = logging.getLogger()
+logger.setLevel(logging.DEBUG)
+logger.addHandler(file_handler)
+logger.addHandler(console_handler)
+
 
 def parse_cmd_arguments():
     parser = argparse.ArgumentParser(description='Process some integers.')
@@ -21,9 +37,12 @@ def load_rentals_file(filename):
     with open(filename) as file:
         try:
             data = json.load(file)
-        except:
+        except Exception as err:
+            logging.error(err)
+            print(f"Error reading the input file: {err}")
             exit(0)
     return data
+
 
 def calculate_additional_fields(data):
     for value in data.values():
@@ -39,9 +58,11 @@ def calculate_additional_fields(data):
 
     return data
 
+
 def save_to_json(filename, data):
     with open(filename, 'w') as file:
         json.dump(data, file)
+
 
 if __name__ == "__main__":
     args = parse_cmd_arguments()
