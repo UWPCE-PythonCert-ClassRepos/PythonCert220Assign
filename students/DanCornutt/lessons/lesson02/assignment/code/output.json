@@ -8530,10 +8530,10 @@
         "price_per_day": 14,
         "rental_start": "6/19/16",
         "rental_end": "",
-        "total_days": 944,
-        "total_price": 13216,
-        "sqrt_total_price": 114.96086290559931,
-        "unit_cost": 13216.0
+        "total_days": 945,
+        "total_price": 13230,
+        "sqrt_total_price": 115.02173707608489,
+        "unit_cost": 13230.0
     },
     "RNT777": {
         "product_code": "PRD15",

@@ -68,10 +68,11 @@ def calculate_additional_fields(data):
             if value['units_rented'] < 1:
                 logger.warning('units rented less than 1')
                 value['unit_cost'] = value['total_price']
-                logger.debug("Setting unit cost equal to total price.")
+                logger.error("Math failre. Setting unit cost equal to total \
+                    price.")
             else:
-                value['unit_cost'] = value['total_price'] / \
-                    value['units_rented']
+                value['unit_cost'] = \
+                    value['total_price'] / value['units_rented']
         except:
             exit(0)
 
