@@ -6,7 +6,6 @@ import json
 import datetime
 import math
 import logging
-import sys
 
 
 def log_debug_setup(debug_lvl):
@@ -28,25 +27,22 @@ def log_debug_setup(debug_lvl):
     logger.addHandler(console_handler)
 
     if debug_lvl == "0":
-        # debug_lvl 0: no debug or log file
         logger.disabled = True
     elif debug_lvl == "1":
-        # debug_lvl 1: Only error messages
         file_handler.setLevel(logging.ERROR)
         console_handler.setLevel(logging.ERROR)
     elif debug_lvl == "2":
-        # debug_lvl 2: Error messags and warnings
         file_handler.setLevel(logging.WARNING)
         console_handler.setLevel(logging.WARNING)
     elif debug_lvl == "3":
-        # debug_lvl 3: Error messages, warnings, and debug
         console_handler.setLevel(logging.DEBUG)
         file_handler.setLevel(logging.DEBUG)
+
     return logger
 
 
 def parse_cmd_arguments():
-    """Arguments for CLI"""
+    """Argument parser for CLI"""
     parser = argparse.ArgumentParser(description='Process some integers.')
     parser.add_argument(
         '-i', '--input', help='input JSON file', required=True)
@@ -59,16 +55,20 @@ def parse_cmd_arguments():
 
 
 def load_rentals_file(filename):
+    """Opens file file, returns data
+    prama1: json filename in local dir"""
     with open(filename) as file:
         try:
             data = json.load(file)
-        except (FileNotFoundError, IOError):
-            logs.error('No file "{}" available to load.'.format(filename))
+        except (json.decoder.JSONDecodeError):
+            logs.error("Error loading json. Exiting program.")
             exit(0)
     return data
 
 
 def calculate_additional_fields(data):
+    """From data in memory, calculates needed fields for transaction
+    param1: customer transaction data"""
     for value in data.values():
         logs.debug("Calculating fields for {} item".format(
             value['product_code']))
@@ -93,13 +93,17 @@ def calculate_additional_fields(data):
             else:
                 value['unit_cost'] = (value['total_price'] /
                                       value['units_rented'])
-        except:
-            exit(0)
+        except ValueError:
+            logs.error("Value error in data, continuing...")
+            continue
 
     return data
 
 
 def save_to_json(filename, data):
+    """Saves data in memory to json file in current working dir
+    param1: filename of to be saved data
+    param2: data in memory"""
     with open(filename, 'w') as file:
         json.dump(data, file, indent=4)
 
