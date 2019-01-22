@@ -35,74 +35,37 @@ Create a file called test_integration.py.
 from unittest import TestCase
 from unittest.mock import MagicMock
 
+from inventory_management.main  import main_menu
 from inventory_management.electricManagement import electricAppliances
 from inventory_management.exceptions import InsufficientOperands
 from inventory_management.furnitureClass import furniture
 from inventory_management.marketprices import get_latest_price
+from inventory_management.inventoryClass import returnAsDictionary
 
-class AdderTests(TestCase):
-
-    def test_adding(self):
-        adder = Adder()
-
-        for i in range(-10, 10):
-            for j in range(-10, 10):
-                self.assertEqual(i + j, adder.calc(i, j))
+class mainTest(TestCase):
+	
+	def mainmenu
 
 
+class marketpricesTest(TestCase):
 
-class SubtracterTests(TestCase):
+	def get_latest_price	
 
-    def test_subtracting(self):
-        subtracter = Subtracter()
+class inventoryClass(TestCase): 
 
-        for i in range(-10, 10):
-            for j in range(-10, 10):
-                self.assertEqual(i - j, subtracter.calc(i, j))
+	def returnAsDictionary
 
+class furnitureTest(TestCase):
 
-class CalculatorTests(TestCase):
+	def add_new_item
 
-    def setUp(self):
-        self.adder = Adder()
-        self.subtracter = Subtracter()
-        self.multiplier = Multiplier()
-        self.divider = Divider()
+class electricManagementTest(TestCase):
 
-        self.calculator = Calculator(self.adder, self.subtracter, self.multiplier, self.divider)
+	
 
-    def test_insufficient_operands(self):
-        self.calculator.enter_number(0)
-
-        with self.assertRaises(InsufficientOperands):
-            self.calculator.add()
-
-    def test_adder_call(self):
-        self.adder.calc = MagicMock(return_value=0)
-
-        self.calculator.enter_number(1)
-        self.calculator.enter_number(2)
-        self.calculator.add()
-
-        self.adder.calc.assert_called_with(1, 2)
+class exceptionsTest(TestCase):
 
 
 
-    def test_subtracter_call(self):
-        self.subtracter.calc = MagicMock(return_value=0)
-
-        self.calculator.enter_number(1)
-        self.calculator.enter_number(2)
-        self.calculator.multiplier()
-
-        self.subtracter.calc.assert_called_with(1, 2)
 
  
-    def test_divider_call(self):
-        self.divider.calc = MagicMock(return_value=0)
-
-        self.divider.enter_number(1)
-        self.divider.enter_number(2)
-        self.divider.divider()
-
-        self.divider.calc.assert_called_with(1, 2)
