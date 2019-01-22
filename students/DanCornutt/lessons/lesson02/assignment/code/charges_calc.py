@@ -11,7 +11,7 @@ import sys
 
 def log_debug_setup(debug_lvl):
     """Function sets up logging and debugging for script.
-    param2: debug level"""
+    param1: debug level 0 to 3"""
     log_format = ("%(asctime)s %(filename)s:%(lineno)-3d %(levelname)s \
     %(message)s")
     formatter = logging.Formatter(log_format)
@@ -62,7 +62,7 @@ def load_rentals_file(filename):
     with open(filename) as file:
         try:
             data = json.load(file)
-        except FileNotFoundError:
+        except (FileNotFoundError, IOError):
             logs.error('No file "{}" available to load.'.format(filename))
             exit(0)
     return data
@@ -77,6 +77,7 @@ def calculate_additional_fields(data):
                                                       '%m/%d/%y')
             if value['rental_end'] == "":
                 logs.warning('rental_end is null')
+                logs.error('setting rental_end date to now')
                 rental_end = datetime.datetime.now()
             else:
                 rental_end = datetime.datetime.strptime(value['rental_end'],
