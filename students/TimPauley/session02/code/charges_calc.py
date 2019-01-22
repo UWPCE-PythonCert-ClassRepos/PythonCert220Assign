@@ -26,7 +26,22 @@ Use the following filename format to timestamp your log files:
 log_file = datetime.datetime.now().strftime(“%Y-%m-%d”)+’.log’
 
 Assignment location: https://uwpce-pythoncert.github.io/PythonCertDevel220/modules/lesson02/assignment.html 
-
+Requirements:
+Your script needs to deal with data inconsistencies that could make it crash or return incorrect data (handle the exception and issue an error message for these and let the script continue) and issue warnings for missing data.
+Capture you debug work in a text file called charges_calc.log. You will need that for your submission.
+Setup logging messages so that they are disabled by default and can by enabled by using -d 1 or –debug 1 from the command line. Use the argparse module for this. You will have the following debug levels:
+            0: No debug messages or log file.
+            1: Only error messages.
+            2: Error messages and warnings.
+            3: Error messages, warnings and debug messages.
+You need to implement three types of logging messages:
+            Debug: General comments, indicating where in the script flow we are. Should be shown on screen only (i.e., never saved to logfile).
+            Warning: Used for missing elements in the source data that force a change in the flow. Shown on screen and on the log file.
+            Error: Used for inconsistencies in the source data that will cause the script to crash or report incorrect results. Shown on screen and on the log file.
+Use the following format for your log messages:
+            log_format = “%(asctime)s %(filename)s:%(lineno)-3d %(levelname)s %(message)s”
+Use the following filename format to timestamp your log files:
+            log_file = datetime.datetime.now().strftime(“%Y-%m-%d”)+’.log
 '''
 
 '''
