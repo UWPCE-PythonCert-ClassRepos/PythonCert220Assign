@@ -1,6 +1,10 @@
 #Tim Pauley
 #Date: Jan 12 2019
-#Assignment 01
+#Assignment 01 
+#Update Assignment 01
+#Jan 20 2018
+#Note: due to a new workload at my day job, i needed additional
+#time to work on updates.
 
 #Steps to complete
 
@@ -34,12 +38,28 @@ Create a file called test_integration.py.
 
 from unittest import TestCase
 from unittest.mock import MagicMock
+'''
+added addiontional namespaces
+'''
+from unittest.mock import patch
+import sys
+import io
 
 from inventory_management.main  import main_menu
 from inventory_management.electricManagement import electricAppliances
 from inventory_management.exceptions import InsufficientOperands
 from inventory_management.furnitureClass import furniture
 from inventory_management.marketprices import get_latest_price
+'''
+import additional methods
+'''
+from inventory_management.Main import generate_menu
+from inventory_management.Main import get_price
+from inventory_management.Main import add_new_item
+from inventory_management.Main import input_item_info
+from inventory_management.Main import return_item_info
+from inventory_management.Main import exit_program
+from inventory_management.Main import item_info
 
 
 class ModuleTests(TestCase):
