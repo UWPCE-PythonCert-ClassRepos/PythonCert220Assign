@@ -45,14 +45,15 @@ from unittest.mock import patch
 import sys
 import io
 
-from inventory_management.main  import main_menu
-from inventory_management.electricManagement import electricAppliances
-from inventory_management.exceptions import InsufficientOperands
-from inventory_management.furnitureClass import furniture
-from inventory_management.marketprices import get_latest_price
+from inventory_management.market_prices import get_latest_price
+from inventory_management.InventoryClass import Inventory
+from inventory_management.ElectricAppliancesClass import ElectricAppliances
+from inventory_management.FurnitureClass import Furniture
 '''
 import additional methods
 '''
+
+from inventory_management.Main import main_menu
 from inventory_management.Main import generate_menu
 from inventory_management.Main import get_price
 from inventory_management.Main import add_new_item
@@ -60,7 +61,6 @@ from inventory_management.Main import input_item_info
 from inventory_management.Main import return_item_info
 from inventory_management.Main import exit_program
 from inventory_management.Main import item_info
-
 
 class ModuleTests(TestCase):
 
