@@ -8,8 +8,16 @@ import math
 import logging
 
 def set_logging_level(level):
+    """
+    sets logging level based on level and creates a file to save the log to
+    input: level as string
+    return: None
+    """
 
-    level_dict = {'0': logging.CRITICAL, '1': logging.ERROR, '2': logging.WARNING, '3': logging.DEBUG}
+    level_dict = {'0': logging.CRITICAL,
+                  '1': logging.ERROR,
+                  '2': logging.WARNING,
+                  '3': logging.DEBUG}
 
     log_format = '%(asctime)s %(filename)s:%(lineno)-3d %(levelname)s %(message)s'
 
@@ -31,7 +39,12 @@ def set_logging_level(level):
 
     logger.addHandler(file_handler)
     logger.addHandler(console_handler)
+    return None
+
 def parse_cmd_arguments():
+    """
+    arg parser function
+    """
     debug_logging_help = 'debug logging level \n\
                         0: No debug messages or log file.\n\
                         1: Only error messages.\n\
@@ -46,20 +59,32 @@ def parse_cmd_arguments():
 
 
 def load_rentals_file(filename):
+    """
+    loads a file with furniture rental information
+    input: filename as json file
+    return: data as a dict
+    """
     with open(filename) as file:
         try:
             data = json.load(file)
-        except:
+        except ImportError:
+            logging.error("File not found: %s", repr(file))
             exit(0)
     return data
 
 def calculate_additional_fields(data):
+    """
+    calculates statistical data for each record
+    input: rental data dict
+    return: data dict with additional fields
+    """
     for index, value in data.items():
         try:
-            logging.debug("Calculating additional values for {}".format(repr(index)))
+            logging.debug("Calculating additional values for %s",repr(index))
             rental_start = datetime.datetime.strptime(value['rental_start'], '%m/%d/%y')
             if value['rental_end'] == '':
-                logging.warning("{} does not have a rental_end value. Used {} for rental_end".format(repr(index), repr(datetime.datetime.now())))
+                logging.warning("%s does not have a rental_end value. Used %s for \
+                                rental_end", repr(index), repr(datetime.datetime.now()))
                 rental_end = datetime.datetime.now()
             else:
                 rental_end = datetime.datetime.strptime(value['rental_end'], '%m/%d/%y')
@@ -68,21 +93,25 @@ def calculate_additional_fields(data):
             value['sqrt_total_price'] = math.sqrt(value['total_price'])
             value['unit_cost'] = value['total_price'] / value['units_rented']
         except ValueError:
-            logging.error("Tried to square root a negative for {} with values {}".format(repr(index), repr(value)))
+            logging.error("Tried to square root a negative \
+                          for {} with values{}".format(repr(index), repr(value)))
             continue
-            #exit(0)
-
     return data
 
 def save_to_json(filename, data):
+    """
+    save dict to JSON
+    input: filename is the file, data as dict
+    """
+    logging.debug("Saving output to json file")
     with open(filename, 'w') as file:
         json.dump(data, file, indent=4)
 
 if __name__ == "__main__":
-    args = parse_cmd_arguments()
+    ARGS = parse_cmd_arguments()
     import pdb
     pdb.set_trace()
-    set_logging_level(str(args.debug))
-    data = load_rentals_file(args.input)
+    set_logging_level(str(ARGS.debug))
+    data = load_rentals_file(ARGS.input)
     data = calculate_additional_fields(data)
-    save_to_json(args.output, data)
+    save_to_json(ARGS.output, data)
