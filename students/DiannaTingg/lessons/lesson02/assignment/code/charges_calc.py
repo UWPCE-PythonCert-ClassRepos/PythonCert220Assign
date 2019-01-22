@@ -38,16 +38,9 @@ def set_log_level(log_level):
 
     file_handler = logging.FileHandler('charges_calc.log')
 
-    # file_handler.setLevel(logging.WARNING)
     file_handler.setFormatter(FORMATTER)
 
-    # console_handler = logging.StreamHandler()
-    # console_handler.setLevel(logging.DEBUG)
-    # console_handler.setFormatter(FORMATTER)
-
-    # logger.setLevel(logging.DEBUG)
     LOGGER.addHandler(file_handler)
-    # logger.addHandler(console_handler)
 
     if log_level == 1:
         LOGGER.setLevel(logging.ERROR)
