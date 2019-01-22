@@ -24,6 +24,9 @@ log_format = “%(asctime)s %(filename)s:%(lineno)-3d %(levelname)s %(message)s�
 Use the following filename format to timestamp your log files:
 
 log_file = datetime.datetime.now().strftime(“%Y-%m-%d”)+’.log’
+
+Assignment location: https://uwpce-pythoncert.github.io/PythonCertDevel220/modules/lesson02/assignment.html 
+
 '''
 
 '''
