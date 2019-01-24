@@ -1,0 +1,994 @@
+2019-01-21 18:45:30,010 charges_calc.py:109 ERROR Invalid data: RNT001 rental start 2017-06-12 00:00:00 is greater than the end 2017-03-22 00:00:00
+2019-01-21 18:45:30,013 charges_calc.py:124 WARNING Invalid data: RNT001: math domain error
+2019-01-21 18:45:30,013 charges_calc.py:109 ERROR Invalid data: RNT006 rental start 2018-08-26 00:00:00 is greater than the end 2018-07-29 00:00:00
+2019-01-21 18:45:30,014 charges_calc.py:124 WARNING Invalid data: RNT006: math domain error
+2019-01-21 18:45:30,014 charges_calc.py:109 ERROR Invalid data: RNT007 rental start 2017-07-10 00:00:00 is greater than the end 2017-05-31 00:00:00
+2019-01-21 18:45:30,022 charges_calc.py:124 WARNING Invalid data: RNT007: math domain error
+2019-01-21 18:45:30,022 charges_calc.py:109 ERROR Invalid data: RNT008 rental start 2018-10-25 00:00:00 is greater than the end 2018-07-04 00:00:00
+2019-01-21 18:45:30,023 charges_calc.py:124 WARNING Invalid data: RNT008: math domain error
+2019-01-21 18:45:30,023 charges_calc.py:109 ERROR Invalid data: RNT009 rental start 2018-11-03 00:00:00 is greater than the end 2016-07-28 00:00:00
+2019-01-21 18:45:30,024 charges_calc.py:124 WARNING Invalid data: RNT009: math domain error
+2019-01-21 18:45:30,025 charges_calc.py:109 ERROR Invalid data: RNT010 rental start 2018-03-15 00:00:00 is greater than the end 2017-08-27 00:00:00
+2019-01-21 18:45:30,026 charges_calc.py:124 WARNING Invalid data: RNT010: math domain error
+2019-01-21 18:45:30,026 charges_calc.py:109 ERROR Invalid data: RNT011 rental start 2017-09-29 00:00:00 is greater than the end 2016-04-29 00:00:00
+2019-01-21 18:45:30,027 charges_calc.py:124 WARNING Invalid data: RNT011: math domain error
+2019-01-21 18:45:30,027 charges_calc.py:109 ERROR Invalid data: RNT012 rental start 2017-10-24 00:00:00 is greater than the end 2016-01-15 00:00:00
+2019-01-21 18:45:30,027 charges_calc.py:124 WARNING Invalid data: RNT012: math domain error
+2019-01-21 18:45:30,029 charges_calc.py:109 ERROR Invalid data: RNT014 rental start 2017-01-30 00:00:00 is greater than the end 2016-07-30 00:00:00
+2019-01-21 18:45:30,029 charges_calc.py:124 WARNING Invalid data: RNT014: math domain error
+2019-01-21 18:45:30,030 charges_calc.py:109 ERROR Invalid data: RNT016 rental start 2018-06-18 00:00:00 is greater than the end 2016-02-05 00:00:00
+2019-01-21 18:45:30,030 charges_calc.py:124 WARNING Invalid data: RNT016: math domain error
+2019-01-21 18:45:30,031 charges_calc.py:109 ERROR Invalid data: RNT017 rental start 2018-04-28 00:00:00 is greater than the end 2018-04-11 00:00:00
+2019-01-21 18:45:30,031 charges_calc.py:124 WARNING Invalid data: RNT017: math domain error
+2019-01-21 18:45:30,031 charges_calc.py:109 ERROR Invalid data: RNT018 rental start 2016-08-16 00:00:00 is greater than the end 2016-01-13 00:00:00
+2019-01-21 18:45:30,032 charges_calc.py:124 WARNING Invalid data: RNT018: math domain error
+2019-01-21 18:45:30,032 charges_calc.py:109 ERROR Invalid data: RNT019 rental start 2017-12-16 00:00:00 is greater than the end 2016-05-10 00:00:00
+2019-01-21 18:45:30,033 charges_calc.py:124 WARNING Invalid data: RNT019: math domain error
+2019-01-21 18:45:30,033 charges_calc.py:109 ERROR Invalid data: RNT020 rental start 2018-06-20 00:00:00 is greater than the end 2016-01-12 00:00:00
+2019-01-21 18:45:30,034 charges_calc.py:124 WARNING Invalid data: RNT020: math domain error
+2019-01-21 18:45:30,034 charges_calc.py:109 ERROR Invalid data: RNT021 rental start 2017-08-31 00:00:00 is greater than the end 2016-02-09 00:00:00
+2019-01-21 18:45:30,035 charges_calc.py:124 WARNING Invalid data: RNT021: math domain error
+2019-01-21 18:45:30,035 charges_calc.py:109 ERROR Invalid data: RNT025 rental start 2018-03-02 00:00:00 is greater than the end 2016-05-28 00:00:00
+2019-01-21 18:45:30,036 charges_calc.py:124 WARNING Invalid data: RNT025: math domain error
+2019-01-21 18:45:30,036 charges_calc.py:109 ERROR Invalid data: RNT026 rental start 2018-03-27 00:00:00 is greater than the end 2016-04-21 00:00:00
+2019-01-21 18:45:30,037 charges_calc.py:124 WARNING Invalid data: RNT026: math domain error
+2019-01-21 18:45:30,037 charges_calc.py:109 ERROR Invalid data: RNT028 rental start 2018-07-06 00:00:00 is greater than the end 2017-05-06 00:00:00
+2019-01-21 18:45:30,038 charges_calc.py:124 WARNING Invalid data: RNT028: math domain error
+2019-01-21 18:45:30,039 charges_calc.py:109 ERROR Invalid data: RNT030 rental start 2017-07-01 00:00:00 is greater than the end 2017-04-18 00:00:00
+2019-01-21 18:45:30,039 charges_calc.py:124 WARNING Invalid data: RNT030: math domain error
+2019-01-21 18:45:30,040 charges_calc.py:109 ERROR Invalid data: RNT031 rental start 2018-04-18 00:00:00 is greater than the end 2017-04-13 00:00:00
+2019-01-21 18:45:30,040 charges_calc.py:124 WARNING Invalid data: RNT031: math domain error
+2019-01-21 18:45:30,041 charges_calc.py:109 ERROR Invalid data: RNT034 rental start 2017-10-11 00:00:00 is greater than the end 2016-04-03 00:00:00
+2019-01-21 18:45:30,041 charges_calc.py:124 WARNING Invalid data: RNT034: math domain error
+2019-01-21 18:45:30,042 charges_calc.py:109 ERROR Invalid data: RNT040 rental start 2017-12-01 00:00:00 is greater than the end 2016-12-30 00:00:00
+2019-01-21 18:45:30,043 charges_calc.py:124 WARNING Invalid data: RNT040: math domain error
+2019-01-21 18:45:30,043 charges_calc.py:109 ERROR Invalid data: RNT041 rental start 2018-02-19 00:00:00 is greater than the end 2017-03-30 00:00:00
+2019-01-21 18:45:30,044 charges_calc.py:124 WARNING Invalid data: RNT041: math domain error
+2019-01-21 18:45:30,044 charges_calc.py:109 ERROR Invalid data: RNT044 rental start 2018-09-04 00:00:00 is greater than the end 2016-12-19 00:00:00
+2019-01-21 18:45:30,045 charges_calc.py:124 WARNING Invalid data: RNT044: math domain error
+2019-01-21 18:45:30,045 charges_calc.py:109 ERROR Invalid data: RNT045 rental start 2018-12-19 00:00:00 is greater than the end 2018-11-12 00:00:00
+2019-01-21 18:45:30,046 charges_calc.py:124 WARNING Invalid data: RNT045: math domain error
+2019-01-21 18:45:30,046 charges_calc.py:109 ERROR Invalid data: RNT046 rental start 2018-10-15 00:00:00 is greater than the end 2018-01-08 00:00:00
+2019-01-21 18:45:30,047 charges_calc.py:124 WARNING Invalid data: RNT046: math domain error
+2019-01-21 18:45:30,047 charges_calc.py:109 ERROR Invalid data: RNT047 rental start 2018-08-03 00:00:00 is greater than the end 2016-06-24 00:00:00
+2019-01-21 18:45:30,048 charges_calc.py:124 WARNING Invalid data: RNT047: math domain error
+2019-01-21 18:45:30,048 charges_calc.py:109 ERROR Invalid data: RNT048 rental start 2017-09-05 00:00:00 is greater than the end 2016-10-28 00:00:00
+2019-01-21 18:45:30,049 charges_calc.py:124 WARNING Invalid data: RNT048: math domain error
+2019-01-21 18:45:30,050 charges_calc.py:109 ERROR Invalid data: RNT050 rental start 2018-12-06 00:00:00 is greater than the end 2017-06-30 00:00:00
+2019-01-21 18:45:30,050 charges_calc.py:124 WARNING Invalid data: RNT050: math domain error
+2019-01-21 18:45:30,051 charges_calc.py:109 ERROR Invalid data: RNT056 rental start 2018-04-12 00:00:00 is greater than the end 2016-02-27 00:00:00
+2019-01-21 18:45:30,051 charges_calc.py:124 WARNING Invalid data: RNT056: math domain error
+2019-01-21 18:45:30,052 charges_calc.py:109 ERROR Invalid data: RNT058 rental start 2017-07-14 00:00:00 is greater than the end 2017-01-25 00:00:00
+2019-01-21 18:45:30,053 charges_calc.py:124 WARNING Invalid data: RNT058: math domain error
+2019-01-21 18:45:30,053 charges_calc.py:109 ERROR Invalid data: RNT060 rental start 2016-02-15 00:00:00 is greater than the end 2016-01-18 00:00:00
+2019-01-21 18:45:30,054 charges_calc.py:124 WARNING Invalid data: RNT060: math domain error
+2019-01-21 18:45:30,056 charges_calc.py:109 ERROR Invalid data: RNT061 rental start 2018-02-12 00:00:00 is greater than the end 2017-02-28 00:00:00
+2019-01-21 18:45:30,057 charges_calc.py:124 WARNING Invalid data: RNT061: math domain error
+2019-01-21 18:45:30,058 charges_calc.py:109 ERROR Invalid data: RNT062 rental start 2018-08-25 00:00:00 is greater than the end 2018-06-03 00:00:00
+2019-01-21 18:45:30,059 charges_calc.py:124 WARNING Invalid data: RNT062: math domain error
+2019-01-21 18:45:30,059 charges_calc.py:109 ERROR Invalid data: RNT065 rental start 2018-10-11 00:00:00 is greater than the end 2016-12-12 00:00:00
+2019-01-21 18:45:30,060 charges_calc.py:124 WARNING Invalid data: RNT065: math domain error
+2019-01-21 18:45:30,061 charges_calc.py:109 ERROR Invalid data: RNT067 rental start 2018-01-18 00:00:00 is greater than the end 2017-10-18 00:00:00
+2019-01-21 18:45:30,061 charges_calc.py:124 WARNING Invalid data: RNT067: math domain error
+2019-01-21 18:45:30,062 charges_calc.py:109 ERROR Invalid data: RNT071 rental start 2016-10-05 00:00:00 is greater than the end 2016-05-25 00:00:00
+2019-01-21 18:45:30,062 charges_calc.py:124 WARNING Invalid data: RNT071: math domain error
+2019-01-21 18:45:30,063 charges_calc.py:109 ERROR Invalid data: RNT074 rental start 2017-09-09 00:00:00 is greater than the end 2017-07-14 00:00:00
+2019-01-21 18:45:30,064 charges_calc.py:124 WARNING Invalid data: RNT074: math domain error
+2019-01-21 18:45:30,064 charges_calc.py:109 ERROR Invalid data: RNT076 rental start 2018-06-06 00:00:00 is greater than the end 2016-05-12 00:00:00
+2019-01-21 18:45:30,065 charges_calc.py:124 WARNING Invalid data: RNT076: math domain error
+2019-01-21 18:45:30,066 charges_calc.py:109 ERROR Invalid data: RNT077 rental start 2018-08-15 00:00:00 is greater than the end 2016-11-19 00:00:00
+2019-01-21 18:45:30,066 charges_calc.py:124 WARNING Invalid data: RNT077: math domain error
+2019-01-21 18:45:30,067 charges_calc.py:109 ERROR Invalid data: RNT079 rental start 2018-11-27 00:00:00 is greater than the end 2018-01-27 00:00:00
+2019-01-21 18:45:30,068 charges_calc.py:124 WARNING Invalid data: RNT079: math domain error
+2019-01-21 18:45:30,069 charges_calc.py:109 ERROR Invalid data: RNT084 rental start 2017-05-13 00:00:00 is greater than the end 2016-04-29 00:00:00
+2019-01-21 18:45:30,069 charges_calc.py:124 WARNING Invalid data: RNT084: math domain error
+2019-01-21 18:45:30,070 charges_calc.py:109 ERROR Invalid data: RNT086 rental start 2018-12-03 00:00:00 is greater than the end 2018-03-20 00:00:00
+2019-01-21 18:45:30,071 charges_calc.py:124 WARNING Invalid data: RNT086: math domain error
+2019-01-21 18:45:30,072 charges_calc.py:109 ERROR Invalid data: RNT087 rental start 2016-08-10 00:00:00 is greater than the end 2016-06-18 00:00:00
+2019-01-21 18:45:30,072 charges_calc.py:124 WARNING Invalid data: RNT087: math domain error
+2019-01-21 18:45:30,072 charges_calc.py:109 ERROR Invalid data: RNT089 rental start 2018-11-05 00:00:00 is greater than the end 2018-08-15 00:00:00
+2019-01-21 18:45:30,073 charges_calc.py:124 WARNING Invalid data: RNT089: math domain error
+2019-01-21 18:45:30,074 charges_calc.py:109 ERROR Invalid data: RNT092 rental start 2017-03-10 00:00:00 is greater than the end 2016-05-23 00:00:00
+2019-01-21 18:45:30,074 charges_calc.py:124 WARNING Invalid data: RNT092: math domain error
+2019-01-21 18:45:30,075 charges_calc.py:109 ERROR Invalid data: RNT095 rental start 2018-08-05 00:00:00 is greater than the end 2017-07-23 00:00:00
+2019-01-21 18:45:30,075 charges_calc.py:124 WARNING Invalid data: RNT095: math domain error
+2019-01-21 18:45:30,076 charges_calc.py:109 ERROR Invalid data: RNT097 rental start 2017-01-11 00:00:00 is greater than the end 2016-08-29 00:00:00
+2019-01-21 18:45:30,077 charges_calc.py:124 WARNING Invalid data: RNT097: math domain error
+2019-01-21 18:45:30,077 charges_calc.py:109 ERROR Invalid data: RNT099 rental start 2018-11-23 00:00:00 is greater than the end 2016-10-21 00:00:00
+2019-01-21 18:45:30,078 charges_calc.py:124 WARNING Invalid data: RNT099: math domain error
+2019-01-21 18:45:30,078 charges_calc.py:109 ERROR Invalid data: RNT100 rental start 2018-06-16 00:00:00 is greater than the end 2016-05-21 00:00:00
+2019-01-21 18:45:30,079 charges_calc.py:124 WARNING Invalid data: RNT100: math domain error
+2019-01-21 18:45:30,080 charges_calc.py:109 ERROR Invalid data: RNT101 rental start 2018-12-03 00:00:00 is greater than the end 2017-09-20 00:00:00
+2019-01-21 18:45:30,080 charges_calc.py:124 WARNING Invalid data: RNT101: math domain error
+2019-01-21 18:45:30,081 charges_calc.py:109 ERROR Invalid data: RNT102 rental start 2017-07-17 00:00:00 is greater than the end 2016-12-08 00:00:00
+2019-01-21 18:45:30,081 charges_calc.py:124 WARNING Invalid data: RNT102: math domain error
+2019-01-21 18:45:30,082 charges_calc.py:109 ERROR Invalid data: RNT103 rental start 2017-01-24 00:00:00 is greater than the end 2016-02-18 00:00:00
+2019-01-21 18:45:30,082 charges_calc.py:124 WARNING Invalid data: RNT103: math domain error
+2019-01-21 18:45:30,083 charges_calc.py:109 ERROR Invalid data: RNT104 rental start 2017-12-20 00:00:00 is greater than the end 2016-08-30 00:00:00
+2019-01-21 18:45:30,083 charges_calc.py:124 WARNING Invalid data: RNT104: math domain error
+2019-01-21 18:45:30,085 charges_calc.py:109 ERROR Invalid data: RNT105 rental start 2017-12-29 00:00:00 is greater than the end 2016-02-20 00:00:00
+2019-01-21 18:45:30,088 charges_calc.py:124 WARNING Invalid data: RNT105: math domain error
+2019-01-21 18:45:30,089 charges_calc.py:109 ERROR Invalid data: RNT106 rental start 2018-03-14 00:00:00 is greater than the end 2018-01-01 00:00:00
+2019-01-21 18:45:30,089 charges_calc.py:124 WARNING Invalid data: RNT106: math domain error
+2019-01-21 18:45:30,090 charges_calc.py:109 ERROR Invalid data: RNT107 rental start 2017-05-30 00:00:00 is greater than the end 2016-06-04 00:00:00
+2019-01-21 18:45:30,090 charges_calc.py:124 WARNING Invalid data: RNT107: math domain error
+2019-01-21 18:45:30,091 charges_calc.py:109 ERROR Invalid data: RNT109 rental start 2018-06-26 00:00:00 is greater than the end 2017-01-09 00:00:00
+2019-01-21 18:45:30,092 charges_calc.py:124 WARNING Invalid data: RNT109: math domain error
+2019-01-21 18:45:30,092 charges_calc.py:109 ERROR Invalid data: RNT114 rental start 2017-06-06 00:00:00 is greater than the end 2016-01-09 00:00:00
+2019-01-21 18:45:30,093 charges_calc.py:124 WARNING Invalid data: RNT114: math domain error
+2019-01-21 18:45:30,094 charges_calc.py:109 ERROR Invalid data: RNT115 rental start 2018-05-11 00:00:00 is greater than the end 2016-02-03 00:00:00
+2019-01-21 18:45:30,094 charges_calc.py:124 WARNING Invalid data: RNT115: math domain error
+2019-01-21 18:45:30,095 charges_calc.py:109 ERROR Invalid data: RNT116 rental start 2017-04-14 00:00:00 is greater than the end 2016-08-04 00:00:00
+2019-01-21 18:45:30,095 charges_calc.py:124 WARNING Invalid data: RNT116: math domain error
+2019-01-21 18:45:30,096 charges_calc.py:109 ERROR Invalid data: RNT118 rental start 2018-07-23 00:00:00 is greater than the end 2017-06-04 00:00:00
+2019-01-21 18:45:30,096 charges_calc.py:124 WARNING Invalid data: RNT118: math domain error
+2019-01-21 18:45:30,097 charges_calc.py:109 ERROR Invalid data: RNT119 rental start 2018-07-19 00:00:00 is greater than the end 2017-12-18 00:00:00
+2019-01-21 18:45:30,097 charges_calc.py:124 WARNING Invalid data: RNT119: math domain error
+2019-01-21 18:45:30,098 charges_calc.py:109 ERROR Invalid data: RNT120 rental start 2017-01-03 00:00:00 is greater than the end 2016-08-01 00:00:00
+2019-01-21 18:45:30,099 charges_calc.py:124 WARNING Invalid data: RNT120: math domain error
+2019-01-21 18:45:30,099 charges_calc.py:109 ERROR Invalid data: RNT121 rental start 2018-11-30 00:00:00 is greater than the end 2017-02-25 00:00:00
+2019-01-21 18:45:30,100 charges_calc.py:124 WARNING Invalid data: RNT121: math domain error
+2019-01-21 18:45:30,100 charges_calc.py:109 ERROR Invalid data: RNT122 rental start 2018-12-04 00:00:00 is greater than the end 2017-04-05 00:00:00
+2019-01-21 18:45:30,101 charges_calc.py:124 WARNING Invalid data: RNT122: math domain error
+2019-01-21 18:45:30,101 charges_calc.py:109 ERROR Invalid data: RNT123 rental start 2018-03-02 00:00:00 is greater than the end 2017-07-25 00:00:00
+2019-01-21 18:45:30,102 charges_calc.py:124 WARNING Invalid data: RNT123: math domain error
+2019-01-21 18:45:30,104 charges_calc.py:109 ERROR Invalid data: RNT125 rental start 2018-12-15 00:00:00 is greater than the end 2018-07-30 00:00:00
+2019-01-21 18:45:30,104 charges_calc.py:124 WARNING Invalid data: RNT125: math domain error
+2019-01-21 18:45:30,105 charges_calc.py:109 ERROR Invalid data: RNT129 rental start 2018-03-23 00:00:00 is greater than the end 2017-05-23 00:00:00
+2019-01-21 18:45:30,105 charges_calc.py:124 WARNING Invalid data: RNT129: math domain error
+2019-01-21 18:45:30,106 charges_calc.py:109 ERROR Invalid data: RNT130 rental start 2018-12-17 00:00:00 is greater than the end 2017-06-21 00:00:00
+2019-01-21 18:45:30,106 charges_calc.py:124 WARNING Invalid data: RNT130: math domain error
+2019-01-21 18:45:30,107 charges_calc.py:109 ERROR Invalid data: RNT135 rental start 2016-10-13 00:00:00 is greater than the end 2016-08-11 00:00:00
+2019-01-21 18:45:30,108 charges_calc.py:124 WARNING Invalid data: RNT135: math domain error
+2019-01-21 18:45:30,109 charges_calc.py:109 ERROR Invalid data: RNT139 rental start 2017-09-13 00:00:00 is greater than the end 2017-05-01 00:00:00
+2019-01-21 18:45:30,110 charges_calc.py:124 WARNING Invalid data: RNT139: math domain error
+2019-01-21 18:45:30,110 charges_calc.py:109 ERROR Invalid data: RNT141 rental start 2018-01-20 00:00:00 is greater than the end 2017-03-22 00:00:00
+2019-01-21 18:45:30,111 charges_calc.py:124 WARNING Invalid data: RNT141: math domain error
+2019-01-21 18:45:30,111 charges_calc.py:109 ERROR Invalid data: RNT142 rental start 2016-11-15 00:00:00 is greater than the end 2016-05-02 00:00:00
+2019-01-21 18:45:30,112 charges_calc.py:124 WARNING Invalid data: RNT142: math domain error
+2019-01-21 18:45:30,112 charges_calc.py:109 ERROR Invalid data: RNT143 rental start 2018-11-20 00:00:00 is greater than the end 2016-01-03 00:00:00
+2019-01-21 18:45:30,113 charges_calc.py:124 WARNING Invalid data: RNT143: math domain error
+2019-01-21 18:45:30,113 charges_calc.py:109 ERROR Invalid data: RNT145 rental start 2018-07-28 00:00:00 is greater than the end 2016-07-15 00:00:00
+2019-01-21 18:45:30,114 charges_calc.py:124 WARNING Invalid data: RNT145: math domain error
+2019-01-21 18:45:30,114 charges_calc.py:109 ERROR Invalid data: RNT148 rental start 2018-10-20 00:00:00 is greater than the end 2018-09-17 00:00:00
+2019-01-21 18:45:30,116 charges_calc.py:124 WARNING Invalid data: RNT148: math domain error
+2019-01-21 18:45:30,116 charges_calc.py:109 ERROR Invalid data: RNT149 rental start 2018-09-29 00:00:00 is greater than the end 2016-11-03 00:00:00
+2019-01-21 18:45:30,117 charges_calc.py:124 WARNING Invalid data: RNT149: math domain error
+2019-01-21 18:45:30,121 charges_calc.py:109 ERROR Invalid data: RNT151 rental start 2018-08-11 00:00:00 is greater than the end 2016-08-16 00:00:00
+2019-01-21 18:45:30,121 charges_calc.py:124 WARNING Invalid data: RNT151: math domain error
+2019-01-21 18:45:30,122 charges_calc.py:109 ERROR Invalid data: RNT154 rental start 2017-05-24 00:00:00 is greater than the end 2016-03-30 00:00:00
+2019-01-21 18:45:30,122 charges_calc.py:124 WARNING Invalid data: RNT154: math domain error
+2019-01-21 18:45:30,123 charges_calc.py:109 ERROR Invalid data: RNT155 rental start 2018-01-07 00:00:00 is greater than the end 2017-07-19 00:00:00
+2019-01-21 18:45:30,124 charges_calc.py:124 WARNING Invalid data: RNT155: math domain error
+2019-01-21 18:45:30,125 charges_calc.py:109 ERROR Invalid data: RNT157 rental start 2018-12-23 00:00:00 is greater than the end 2017-05-19 00:00:00
+2019-01-21 18:45:30,125 charges_calc.py:124 WARNING Invalid data: RNT157: math domain error
+2019-01-21 18:45:30,126 charges_calc.py:109 ERROR Invalid data: RNT158 rental start 2018-07-10 00:00:00 is greater than the end 2016-03-06 00:00:00
+2019-01-21 18:45:30,126 charges_calc.py:124 WARNING Invalid data: RNT158: math domain error
+2019-01-21 18:45:30,127 charges_calc.py:109 ERROR Invalid data: RNT160 rental start 2018-05-18 00:00:00 is greater than the end 2018-03-14 00:00:00
+2019-01-21 18:45:30,127 charges_calc.py:124 WARNING Invalid data: RNT160: math domain error
+2019-01-21 18:45:30,128 charges_calc.py:109 ERROR Invalid data: RNT163 rental start 2016-12-16 00:00:00 is greater than the end 2016-09-10 00:00:00
+2019-01-21 18:45:30,128 charges_calc.py:124 WARNING Invalid data: RNT163: math domain error
+2019-01-21 18:45:30,129 charges_calc.py:109 ERROR Invalid data: RNT164 rental start 2018-04-24 00:00:00 is greater than the end 2017-08-07 00:00:00
+2019-01-21 18:45:30,130 charges_calc.py:124 WARNING Invalid data: RNT164: math domain error
+2019-01-21 18:45:30,130 charges_calc.py:109 ERROR Invalid data: RNT166 rental start 2018-04-14 00:00:00 is greater than the end 2016-02-15 00:00:00
+2019-01-21 18:45:30,131 charges_calc.py:124 WARNING Invalid data: RNT166: math domain error
+2019-01-21 18:45:30,131 charges_calc.py:109 ERROR Invalid data: RNT167 rental start 2017-02-03 00:00:00 is greater than the end 2016-12-11 00:00:00
+2019-01-21 18:45:30,132 charges_calc.py:124 WARNING Invalid data: RNT167: math domain error
+2019-01-21 18:45:30,133 charges_calc.py:109 ERROR Invalid data: RNT168 rental start 2016-10-15 00:00:00 is greater than the end 2016-05-25 00:00:00
+2019-01-21 18:45:30,133 charges_calc.py:124 WARNING Invalid data: RNT168: math domain error
+2019-01-21 18:45:30,134 charges_calc.py:109 ERROR Invalid data: RNT169 rental start 2018-03-18 00:00:00 is greater than the end 2016-09-25 00:00:00
+2019-01-21 18:45:30,134 charges_calc.py:124 WARNING Invalid data: RNT169: math domain error
+2019-01-21 18:45:30,135 charges_calc.py:109 ERROR Invalid data: RNT170 rental start 2018-09-16 00:00:00 is greater than the end 2017-01-11 00:00:00
+2019-01-21 18:45:30,136 charges_calc.py:124 WARNING Invalid data: RNT170: math domain error
+2019-01-21 18:45:30,137 charges_calc.py:109 ERROR Invalid data: RNT175 rental start 2018-05-16 00:00:00 is greater than the end 2018-03-15 00:00:00
+2019-01-21 18:45:30,138 charges_calc.py:124 WARNING Invalid data: RNT175: math domain error
+2019-01-21 18:45:30,138 charges_calc.py:109 ERROR Invalid data: RNT178 rental start 2018-08-01 00:00:00 is greater than the end 2018-04-07 00:00:00
+2019-01-21 18:45:30,139 charges_calc.py:124 WARNING Invalid data: RNT178: math domain error
+2019-01-21 18:45:30,139 charges_calc.py:109 ERROR Invalid data: RNT179 rental start 2018-08-24 00:00:00 is greater than the end 2018-08-14 00:00:00
+2019-01-21 18:45:30,140 charges_calc.py:124 WARNING Invalid data: RNT179: math domain error
+2019-01-21 18:45:30,140 charges_calc.py:109 ERROR Invalid data: RNT180 rental start 2018-12-29 00:00:00 is greater than the end 2016-09-08 00:00:00
+2019-01-21 18:45:30,141 charges_calc.py:124 WARNING Invalid data: RNT180: math domain error
+2019-01-21 18:45:30,142 charges_calc.py:109 ERROR Invalid data: RNT183 rental start 2018-05-31 00:00:00 is greater than the end 2018-04-08 00:00:00
+2019-01-21 18:45:30,143 charges_calc.py:124 WARNING Invalid data: RNT183: math domain error
+2019-01-21 18:45:30,144 charges_calc.py:109 ERROR Invalid data: RNT184 rental start 2018-03-12 00:00:00 is greater than the end 2016-09-28 00:00:00
+2019-01-21 18:45:30,144 charges_calc.py:124 WARNING Invalid data: RNT184: math domain error
+2019-01-21 18:45:30,145 charges_calc.py:109 ERROR Invalid data: RNT187 rental start 2017-10-05 00:00:00 is greater than the end 2016-01-11 00:00:00
+2019-01-21 18:45:30,145 charges_calc.py:124 WARNING Invalid data: RNT187: math domain error
+2019-01-21 18:45:30,146 charges_calc.py:109 ERROR Invalid data: RNT189 rental start 2016-11-20 00:00:00 is greater than the end 2016-08-17 00:00:00
+2019-01-21 18:45:30,147 charges_calc.py:124 WARNING Invalid data: RNT189: math domain error
+2019-01-21 18:45:30,147 charges_calc.py:109 ERROR Invalid data: RNT192 rental start 2017-05-10 00:00:00 is greater than the end 2017-04-30 00:00:00
+2019-01-21 18:45:30,148 charges_calc.py:124 WARNING Invalid data: RNT192: math domain error
+2019-01-21 18:45:30,151 charges_calc.py:109 ERROR Invalid data: RNT195 rental start 2018-05-04 00:00:00 is greater than the end 2016-01-06 00:00:00
+2019-01-21 18:45:30,151 charges_calc.py:124 WARNING Invalid data: RNT195: math domain error
+2019-01-21 18:45:30,152 charges_calc.py:109 ERROR Invalid data: RNT196 rental start 2018-10-28 00:00:00 is greater than the end 2016-05-04 00:00:00
+2019-01-21 18:45:30,152 charges_calc.py:124 WARNING Invalid data: RNT196: math domain error
+2019-01-21 18:45:30,153 charges_calc.py:109 ERROR Invalid data: RNT197 rental start 2018-03-02 00:00:00 is greater than the end 2017-11-14 00:00:00
+2019-01-21 18:45:30,154 charges_calc.py:124 WARNING Invalid data: RNT197: math domain error
+2019-01-21 18:45:30,155 charges_calc.py:109 ERROR Invalid data: RNT201 rental start 2017-10-12 00:00:00 is greater than the end 2016-09-17 00:00:00
+2019-01-21 18:45:30,155 charges_calc.py:124 WARNING Invalid data: RNT201: math domain error
+2019-01-21 18:45:30,156 charges_calc.py:109 ERROR Invalid data: RNT202 rental start 2018-11-04 00:00:00 is greater than the end 2016-02-07 00:00:00
+2019-01-21 18:45:30,156 charges_calc.py:124 WARNING Invalid data: RNT202: math domain error
+2019-01-21 18:45:30,158 charges_calc.py:109 ERROR Invalid data: RNT207 rental start 2018-03-15 00:00:00 is greater than the end 2016-06-03 00:00:00
+2019-01-21 18:45:30,158 charges_calc.py:124 WARNING Invalid data: RNT207: math domain error
+2019-01-21 18:45:30,159 charges_calc.py:109 ERROR Invalid data: RNT208 rental start 2016-02-24 00:00:00 is greater than the end 2016-02-18 00:00:00
+2019-01-21 18:45:30,160 charges_calc.py:124 WARNING Invalid data: RNT208: math domain error
+2019-01-21 18:45:30,160 charges_calc.py:109 ERROR Invalid data: RNT210 rental start 2017-07-05 00:00:00 is greater than the end 2017-01-02 00:00:00
+2019-01-21 18:45:30,161 charges_calc.py:124 WARNING Invalid data: RNT210: math domain error
+2019-01-21 18:45:30,161 charges_calc.py:109 ERROR Invalid data: RNT214 rental start 2016-12-04 00:00:00 is greater than the end 2016-06-29 00:00:00
+2019-01-21 18:45:30,162 charges_calc.py:124 WARNING Invalid data: RNT214: math domain error
+2019-01-21 18:45:30,162 charges_calc.py:109 ERROR Invalid data: RNT216 rental start 2016-04-20 00:00:00 is greater than the end 2016-02-10 00:00:00
+2019-01-21 18:45:30,163 charges_calc.py:124 WARNING Invalid data: RNT216: math domain error
+2019-01-21 18:45:30,164 charges_calc.py:109 ERROR Invalid data: RNT217 rental start 2018-08-18 00:00:00 is greater than the end 2016-08-04 00:00:00
+2019-01-21 18:45:30,164 charges_calc.py:124 WARNING Invalid data: RNT217: math domain error
+2019-01-21 18:45:30,165 charges_calc.py:109 ERROR Invalid data: RNT218 rental start 2017-12-11 00:00:00 is greater than the end 2016-12-23 00:00:00
+2019-01-21 18:45:30,165 charges_calc.py:124 WARNING Invalid data: RNT218: math domain error
+2019-01-21 18:45:30,166 charges_calc.py:109 ERROR Invalid data: RNT221 rental start 2018-10-26 00:00:00 is greater than the end 2016-07-28 00:00:00
+2019-01-21 18:45:30,166 charges_calc.py:124 WARNING Invalid data: RNT221: math domain error
+2019-01-21 18:45:30,167 charges_calc.py:109 ERROR Invalid data: RNT223 rental start 2018-02-03 00:00:00 is greater than the end 2016-04-28 00:00:00
+2019-01-21 18:45:30,168 charges_calc.py:124 WARNING Invalid data: RNT223: math domain error
+2019-01-21 18:45:30,168 charges_calc.py:109 ERROR Invalid data: RNT224 rental start 2017-11-05 00:00:00 is greater than the end 2016-10-07 00:00:00
+2019-01-21 18:45:30,169 charges_calc.py:124 WARNING Invalid data: RNT224: math domain error
+2019-01-21 18:45:30,170 charges_calc.py:109 ERROR Invalid data: RNT225 rental start 2017-05-15 00:00:00 is greater than the end 2016-12-24 00:00:00
+2019-01-21 18:45:30,170 charges_calc.py:124 WARNING Invalid data: RNT225: math domain error
+2019-01-21 18:45:30,171 charges_calc.py:109 ERROR Invalid data: RNT227 rental start 2018-05-11 00:00:00 is greater than the end 2016-02-04 00:00:00
+2019-01-21 18:45:30,171 charges_calc.py:124 WARNING Invalid data: RNT227: math domain error
+2019-01-21 18:45:30,172 charges_calc.py:109 ERROR Invalid data: RNT229 rental start 2017-02-23 00:00:00 is greater than the end 2016-11-03 00:00:00
+2019-01-21 18:45:30,172 charges_calc.py:124 WARNING Invalid data: RNT229: math domain error
+2019-01-21 18:45:30,173 charges_calc.py:109 ERROR Invalid data: RNT233 rental start 2018-04-27 00:00:00 is greater than the end 2016-07-25 00:00:00
+2019-01-21 18:45:30,173 charges_calc.py:124 WARNING Invalid data: RNT233: math domain error
+2019-01-21 18:45:30,174 charges_calc.py:109 ERROR Invalid data: RNT234 rental start 2018-04-25 00:00:00 is greater than the end 2018-01-20 00:00:00
+2019-01-21 18:45:30,174 charges_calc.py:124 WARNING Invalid data: RNT234: math domain error
+2019-01-21 18:45:30,175 charges_calc.py:109 ERROR Invalid data: RNT236 rental start 2018-12-17 00:00:00 is greater than the end 2016-03-25 00:00:00
+2019-01-21 18:45:30,176 charges_calc.py:124 WARNING Invalid data: RNT236: math domain error
+2019-01-21 18:45:30,176 charges_calc.py:109 ERROR Invalid data: RNT238 rental start 2018-01-01 00:00:00 is greater than the end 2017-08-07 00:00:00
+2019-01-21 18:45:30,177 charges_calc.py:124 WARNING Invalid data: RNT238: math domain error
+2019-01-21 18:45:30,177 charges_calc.py:109 ERROR Invalid data: RNT241 rental start 2018-07-02 00:00:00 is greater than the end 2017-12-07 00:00:00
+2019-01-21 18:45:30,178 charges_calc.py:124 WARNING Invalid data: RNT241: math domain error
+2019-01-21 18:45:30,178 charges_calc.py:109 ERROR Invalid data: RNT242 rental start 2017-01-31 00:00:00 is greater than the end 2016-02-18 00:00:00
+2019-01-21 18:45:30,182 charges_calc.py:124 WARNING Invalid data: RNT242: math domain error
+2019-01-21 18:45:30,183 charges_calc.py:109 ERROR Invalid data: RNT243 rental start 2017-12-08 00:00:00 is greater than the end 2016-10-13 00:00:00
+2019-01-21 18:45:30,184 charges_calc.py:124 WARNING Invalid data: RNT243: math domain error
+2019-01-21 18:45:30,184 charges_calc.py:109 ERROR Invalid data: RNT244 rental start 2018-06-25 00:00:00 is greater than the end 2016-09-16 00:00:00
+2019-01-21 18:45:30,185 charges_calc.py:124 WARNING Invalid data: RNT244: math domain error
+2019-01-21 18:45:30,187 charges_calc.py:109 ERROR Invalid data: RNT246 rental start 2018-02-02 00:00:00 is greater than the end 2017-08-28 00:00:00
+2019-01-21 18:45:30,188 charges_calc.py:124 WARNING Invalid data: RNT246: math domain error
+2019-01-21 18:45:30,188 charges_calc.py:109 ERROR Invalid data: RNT247 rental start 2017-07-10 00:00:00 is greater than the end 2017-06-10 00:00:00
+2019-01-21 18:45:30,189 charges_calc.py:124 WARNING Invalid data: RNT247: math domain error
+2019-01-21 18:45:30,190 charges_calc.py:109 ERROR Invalid data: RNT254 rental start 2016-10-31 00:00:00 is greater than the end 2016-04-17 00:00:00
+2019-01-21 18:45:30,190 charges_calc.py:124 WARNING Invalid data: RNT254: math domain error
+2019-01-21 18:45:30,190 charges_calc.py:109 ERROR Invalid data: RNT258 rental start 2017-10-21 00:00:00 is greater than the end 2017-04-10 00:00:00
+2019-01-21 18:45:30,192 charges_calc.py:124 WARNING Invalid data: RNT258: math domain error
+2019-01-21 18:45:30,192 charges_calc.py:109 ERROR Invalid data: RNT259 rental start 2018-02-14 00:00:00 is greater than the end 2016-08-16 00:00:00
+2019-01-21 18:45:30,193 charges_calc.py:124 WARNING Invalid data: RNT259: math domain error
+2019-01-21 18:45:30,193 charges_calc.py:109 ERROR Invalid data: RNT260 rental start 2018-01-28 00:00:00 is greater than the end 2017-01-19 00:00:00
+2019-01-21 18:45:30,194 charges_calc.py:124 WARNING Invalid data: RNT260: math domain error
+2019-01-21 18:45:30,195 charges_calc.py:109 ERROR Invalid data: RNT261 rental start 2018-03-14 00:00:00 is greater than the end 2017-11-10 00:00:00
+2019-01-21 18:45:30,195 charges_calc.py:124 WARNING Invalid data: RNT261: math domain error
+2019-01-21 18:45:30,196 charges_calc.py:109 ERROR Invalid data: RNT264 rental start 2018-09-25 00:00:00 is greater than the end 2016-09-26 00:00:00
+2019-01-21 18:45:30,196 charges_calc.py:124 WARNING Invalid data: RNT264: math domain error
+2019-01-21 18:45:30,197 charges_calc.py:109 ERROR Invalid data: RNT265 rental start 2017-10-08 00:00:00 is greater than the end 2017-10-07 00:00:00
+2019-01-21 18:45:30,197 charges_calc.py:124 WARNING Invalid data: RNT265: math domain error
+2019-01-21 18:45:30,198 charges_calc.py:109 ERROR Invalid data: RNT270 rental start 2016-08-30 00:00:00 is greater than the end 2016-07-24 00:00:00
+2019-01-21 18:45:30,199 charges_calc.py:124 WARNING Invalid data: RNT270: math domain error
+2019-01-21 18:45:30,199 charges_calc.py:109 ERROR Invalid data: RNT271 rental start 2018-11-27 00:00:00 is greater than the end 2016-08-07 00:00:00
+2019-01-21 18:45:30,200 charges_calc.py:124 WARNING Invalid data: RNT271: math domain error
+2019-01-21 18:45:30,201 charges_calc.py:109 ERROR Invalid data: RNT272 rental start 2017-07-31 00:00:00 is greater than the end 2017-05-19 00:00:00
+2019-01-21 18:45:30,201 charges_calc.py:124 WARNING Invalid data: RNT272: math domain error
+2019-01-21 18:45:30,202 charges_calc.py:109 ERROR Invalid data: RNT274 rental start 2018-12-15 00:00:00 is greater than the end 2017-02-12 00:00:00
+2019-01-21 18:45:30,202 charges_calc.py:124 WARNING Invalid data: RNT274: math domain error
+2019-01-21 18:45:30,203 charges_calc.py:109 ERROR Invalid data: RNT277 rental start 2018-08-07 00:00:00 is greater than the end 2016-10-21 00:00:00
+2019-01-21 18:45:30,204 charges_calc.py:124 WARNING Invalid data: RNT277: math domain error
+2019-01-21 18:45:30,205 charges_calc.py:109 ERROR Invalid data: RNT282 rental start 2018-02-03 00:00:00 is greater than the end 2017-09-04 00:00:00
+2019-01-21 18:45:30,205 charges_calc.py:124 WARNING Invalid data: RNT282: math domain error
+2019-01-21 18:45:30,206 charges_calc.py:109 ERROR Invalid data: RNT283 rental start 2018-07-18 00:00:00 is greater than the end 2018-06-30 00:00:00
+2019-01-21 18:45:30,207 charges_calc.py:124 WARNING Invalid data: RNT283: math domain error
+2019-01-21 18:45:30,208 charges_calc.py:109 ERROR Invalid data: RNT288 rental start 2018-12-31 00:00:00 is greater than the end 2018-09-13 00:00:00
+2019-01-21 18:45:30,208 charges_calc.py:124 WARNING Invalid data: RNT288: math domain error
+2019-01-21 18:45:30,209 charges_calc.py:109 ERROR Invalid data: RNT290 rental start 2016-05-17 00:00:00 is greater than the end 2016-05-12 00:00:00
+2019-01-21 18:45:30,210 charges_calc.py:124 WARNING Invalid data: RNT290: math domain error
+2019-01-21 18:45:30,211 charges_calc.py:109 ERROR Invalid data: RNT295 rental start 2016-11-10 00:00:00 is greater than the end 2016-04-25 00:00:00
+2019-01-21 18:45:30,211 charges_calc.py:124 WARNING Invalid data: RNT295: math domain error
+2019-01-21 18:45:30,214 charges_calc.py:109 ERROR Invalid data: RNT296 rental start 2017-12-08 00:00:00 is greater than the end 2016-05-13 00:00:00
+2019-01-21 18:45:30,215 charges_calc.py:124 WARNING Invalid data: RNT296: math domain error
+2019-01-21 18:45:30,215 charges_calc.py:109 ERROR Invalid data: RNT298 rental start 2018-12-11 00:00:00 is greater than the end 2018-07-08 00:00:00
+2019-01-21 18:45:30,216 charges_calc.py:124 WARNING Invalid data: RNT298: math domain error
+2019-01-21 18:45:30,217 charges_calc.py:109 ERROR Invalid data: RNT299 rental start 2016-10-13 00:00:00 is greater than the end 2016-10-08 00:00:00
+2019-01-21 18:45:30,217 charges_calc.py:124 WARNING Invalid data: RNT299: math domain error
+2019-01-21 18:45:30,218 charges_calc.py:109 ERROR Invalid data: RNT300 rental start 2017-01-27 00:00:00 is greater than the end 2016-06-30 00:00:00
+2019-01-21 18:45:30,218 charges_calc.py:124 WARNING Invalid data: RNT300: math domain error
+2019-01-21 18:45:30,219 charges_calc.py:109 ERROR Invalid data: RNT301 rental start 2017-08-10 00:00:00 is greater than the end 2016-01-29 00:00:00
+2019-01-21 18:45:30,219 charges_calc.py:124 WARNING Invalid data: RNT301: math domain error
+2019-01-21 18:45:30,220 charges_calc.py:109 ERROR Invalid data: RNT302 rental start 2016-12-02 00:00:00 is greater than the end 2016-02-22 00:00:00
+2019-01-21 18:45:30,220 charges_calc.py:124 WARNING Invalid data: RNT302: math domain error
+2019-01-21 18:45:30,221 charges_calc.py:109 ERROR Invalid data: RNT303 rental start 2018-07-02 00:00:00 is greater than the end 2017-05-23 00:00:00
+2019-01-21 18:45:30,221 charges_calc.py:124 WARNING Invalid data: RNT303: math domain error
+2019-01-21 18:45:30,222 charges_calc.py:109 ERROR Invalid data: RNT304 rental start 2018-06-29 00:00:00 is greater than the end 2017-12-31 00:00:00
+2019-01-21 18:45:30,222 charges_calc.py:124 WARNING Invalid data: RNT304: math domain error
+2019-01-21 18:45:30,223 charges_calc.py:109 ERROR Invalid data: RNT305 rental start 2018-01-10 00:00:00 is greater than the end 2016-04-20 00:00:00
+2019-01-21 18:45:30,223 charges_calc.py:124 WARNING Invalid data: RNT305: math domain error
+2019-01-21 18:45:30,224 charges_calc.py:109 ERROR Invalid data: RNT306 rental start 2018-08-06 00:00:00 is greater than the end 2017-01-21 00:00:00
+2019-01-21 18:45:30,225 charges_calc.py:124 WARNING Invalid data: RNT306: math domain error
+2019-01-21 18:45:30,225 charges_calc.py:109 ERROR Invalid data: RNT308 rental start 2016-07-25 00:00:00 is greater than the end 2016-04-28 00:00:00
+2019-01-21 18:45:30,226 charges_calc.py:124 WARNING Invalid data: RNT308: math domain error
+2019-01-21 18:45:30,226 charges_calc.py:109 ERROR Invalid data: RNT309 rental start 2017-12-03 00:00:00 is greater than the end 2017-10-26 00:00:00
+2019-01-21 18:45:30,227 charges_calc.py:124 WARNING Invalid data: RNT309: math domain error
+2019-01-21 18:45:30,227 charges_calc.py:109 ERROR Invalid data: RNT310 rental start 2018-11-28 00:00:00 is greater than the end 2016-07-05 00:00:00
+2019-01-21 18:45:30,228 charges_calc.py:124 WARNING Invalid data: RNT310: math domain error
+2019-01-21 18:45:30,228 charges_calc.py:109 ERROR Invalid data: RNT311 rental start 2018-12-24 00:00:00 is greater than the end 2017-05-19 00:00:00
+2019-01-21 18:45:30,229 charges_calc.py:124 WARNING Invalid data: RNT311: math domain error
+2019-01-21 18:45:30,229 charges_calc.py:109 ERROR Invalid data: RNT312 rental start 2017-06-17 00:00:00 is greater than the end 2017-03-26 00:00:00
+2019-01-21 18:45:30,230 charges_calc.py:124 WARNING Invalid data: RNT312: math domain error
+2019-01-21 18:45:30,230 charges_calc.py:109 ERROR Invalid data: RNT313 rental start 2018-01-23 00:00:00 is greater than the end 2017-02-17 00:00:00
+2019-01-21 18:45:30,231 charges_calc.py:124 WARNING Invalid data: RNT313: math domain error
+2019-01-21 18:45:30,231 charges_calc.py:109 ERROR Invalid data: RNT314 rental start 2018-07-25 00:00:00 is greater than the end 2017-03-06 00:00:00
+2019-01-21 18:45:30,231 charges_calc.py:124 WARNING Invalid data: RNT314: math domain error
+2019-01-21 18:45:30,232 charges_calc.py:109 ERROR Invalid data: RNT315 rental start 2017-09-19 00:00:00 is greater than the end 2016-12-21 00:00:00
+2019-01-21 18:45:30,232 charges_calc.py:124 WARNING Invalid data: RNT315: math domain error
+2019-01-21 18:45:30,233 charges_calc.py:109 ERROR Invalid data: RNT316 rental start 2017-01-09 00:00:00 is greater than the end 2016-04-14 00:00:00
+2019-01-21 18:45:30,233 charges_calc.py:124 WARNING Invalid data: RNT316: math domain error
+2019-01-21 18:45:30,234 charges_calc.py:109 ERROR Invalid data: RNT320 rental start 2018-10-16 00:00:00 is greater than the end 2017-08-25 00:00:00
+2019-01-21 18:45:30,235 charges_calc.py:124 WARNING Invalid data: RNT320: math domain error
+2019-01-21 18:45:30,237 charges_calc.py:109 ERROR Invalid data: RNT321 rental start 2018-04-18 00:00:00 is greater than the end 2017-06-09 00:00:00
+2019-01-21 18:45:30,237 charges_calc.py:124 WARNING Invalid data: RNT321: math domain error
+2019-01-21 18:45:30,238 charges_calc.py:109 ERROR Invalid data: RNT324 rental start 2018-12-29 00:00:00 is greater than the end 2016-02-03 00:00:00
+2019-01-21 18:45:30,238 charges_calc.py:124 WARNING Invalid data: RNT324: math domain error
+2019-01-21 18:45:30,239 charges_calc.py:109 ERROR Invalid data: RNT325 rental start 2018-05-18 00:00:00 is greater than the end 2016-06-10 00:00:00
+2019-01-21 18:45:30,239 charges_calc.py:124 WARNING Invalid data: RNT325: math domain error
+2019-01-21 18:45:30,240 charges_calc.py:109 ERROR Invalid data: RNT331 rental start 2017-07-08 00:00:00 is greater than the end 2017-07-06 00:00:00
+2019-01-21 18:45:30,241 charges_calc.py:124 WARNING Invalid data: RNT331: math domain error
+2019-01-21 18:45:30,241 charges_calc.py:109 ERROR Invalid data: RNT335 rental start 2017-12-19 00:00:00 is greater than the end 2017-12-04 00:00:00
+2019-01-21 18:45:30,242 charges_calc.py:124 WARNING Invalid data: RNT335: math domain error
+2019-01-21 18:45:30,245 charges_calc.py:109 ERROR Invalid data: RNT336 rental start 2017-09-03 00:00:00 is greater than the end 2016-12-13 00:00:00
+2019-01-21 18:45:30,245 charges_calc.py:124 WARNING Invalid data: RNT336: math domain error
+2019-01-21 18:45:30,246 charges_calc.py:109 ERROR Invalid data: RNT337 rental start 2017-12-16 00:00:00 is greater than the end 2017-03-25 00:00:00
+2019-01-21 18:45:30,246 charges_calc.py:124 WARNING Invalid data: RNT337: math domain error
+2019-01-21 18:45:30,247 charges_calc.py:109 ERROR Invalid data: RNT339 rental start 2017-07-12 00:00:00 is greater than the end 2016-03-01 00:00:00
+2019-01-21 18:45:30,247 charges_calc.py:124 WARNING Invalid data: RNT339: math domain error
+2019-01-21 18:45:30,248 charges_calc.py:109 ERROR Invalid data: RNT343 rental start 2017-02-15 00:00:00 is greater than the end 2017-01-17 00:00:00
+2019-01-21 18:45:30,249 charges_calc.py:124 WARNING Invalid data: RNT343: math domain error
+2019-01-21 18:45:30,249 charges_calc.py:109 ERROR Invalid data: RNT345 rental start 2017-05-15 00:00:00 is greater than the end 2016-10-22 00:00:00
+2019-01-21 18:45:30,250 charges_calc.py:124 WARNING Invalid data: RNT345: math domain error
+2019-01-21 18:45:30,250 charges_calc.py:109 ERROR Invalid data: RNT346 rental start 2018-09-17 00:00:00 is greater than the end 2017-03-21 00:00:00
+2019-01-21 18:45:30,251 charges_calc.py:124 WARNING Invalid data: RNT346: math domain error
+2019-01-21 18:45:30,251 charges_calc.py:109 ERROR Invalid data: RNT347 rental start 2018-04-17 00:00:00 is greater than the end 2017-09-21 00:00:00
+2019-01-21 18:45:30,252 charges_calc.py:124 WARNING Invalid data: RNT347: math domain error
+2019-01-21 18:45:30,252 charges_calc.py:109 ERROR Invalid data: RNT352 rental start 2018-07-16 00:00:00 is greater than the end 2017-01-15 00:00:00
+2019-01-21 18:45:30,253 charges_calc.py:124 WARNING Invalid data: RNT352: math domain error
+2019-01-21 18:45:30,254 charges_calc.py:109 ERROR Invalid data: RNT353 rental start 2017-10-04 00:00:00 is greater than the end 2016-12-13 00:00:00
+2019-01-21 18:45:30,254 charges_calc.py:124 WARNING Invalid data: RNT353: math domain error
+2019-01-21 18:45:30,255 charges_calc.py:109 ERROR Invalid data: RNT355 rental start 2018-09-13 00:00:00 is greater than the end 2018-07-30 00:00:00
+2019-01-21 18:45:30,255 charges_calc.py:124 WARNING Invalid data: RNT355: math domain error
+2019-01-21 18:45:30,256 charges_calc.py:109 ERROR Invalid data: RNT356 rental start 2018-01-16 00:00:00 is greater than the end 2017-08-21 00:00:00
+2019-01-21 18:45:30,257 charges_calc.py:124 WARNING Invalid data: RNT356: math domain error
+2019-01-21 18:45:30,257 charges_calc.py:109 ERROR Invalid data: RNT361 rental start 2018-01-29 00:00:00 is greater than the end 2016-03-05 00:00:00
+2019-01-21 18:45:30,258 charges_calc.py:124 WARNING Invalid data: RNT361: math domain error
+2019-01-21 18:45:30,259 charges_calc.py:109 ERROR Invalid data: RNT363 rental start 2018-06-12 00:00:00 is greater than the end 2018-05-21 00:00:00
+2019-01-21 18:45:30,259 charges_calc.py:124 WARNING Invalid data: RNT363: math domain error
+2019-01-21 18:45:30,260 charges_calc.py:109 ERROR Invalid data: RNT364 rental start 2018-06-24 00:00:00 is greater than the end 2018-05-14 00:00:00
+2019-01-21 18:45:30,260 charges_calc.py:124 WARNING Invalid data: RNT364: math domain error
+2019-01-21 18:45:30,261 charges_calc.py:109 ERROR Invalid data: RNT366 rental start 2018-07-24 00:00:00 is greater than the end 2017-10-08 00:00:00
+2019-01-21 18:45:30,261 charges_calc.py:124 WARNING Invalid data: RNT366: math domain error
+2019-01-21 18:45:30,262 charges_calc.py:109 ERROR Invalid data: RNT371 rental start 2018-11-20 00:00:00 is greater than the end 2017-06-10 00:00:00
+2019-01-21 18:45:30,262 charges_calc.py:124 WARNING Invalid data: RNT371: math domain error
+2019-01-21 18:45:30,263 charges_calc.py:109 ERROR Invalid data: RNT372 rental start 2017-09-14 00:00:00 is greater than the end 2016-09-17 00:00:00
+2019-01-21 18:45:30,263 charges_calc.py:124 WARNING Invalid data: RNT372: math domain error
+2019-01-21 18:45:30,264 charges_calc.py:109 ERROR Invalid data: RNT374 rental start 2018-06-28 00:00:00 is greater than the end 2018-01-15 00:00:00
+2019-01-21 18:45:30,265 charges_calc.py:124 WARNING Invalid data: RNT374: math domain error
+2019-01-21 18:45:30,265 charges_calc.py:109 ERROR Invalid data: RNT376 rental start 2017-11-20 00:00:00 is greater than the end 2017-04-20 00:00:00
+2019-01-21 18:45:30,266 charges_calc.py:124 WARNING Invalid data: RNT376: math domain error
+2019-01-21 18:45:30,266 charges_calc.py:109 ERROR Invalid data: RNT379 rental start 2018-09-11 00:00:00 is greater than the end 2016-11-21 00:00:00
+2019-01-21 18:45:30,267 charges_calc.py:124 WARNING Invalid data: RNT379: math domain error
+2019-01-21 18:45:30,267 charges_calc.py:109 ERROR Invalid data: RNT381 rental start 2018-05-28 00:00:00 is greater than the end 2016-12-26 00:00:00
+2019-01-21 18:45:30,268 charges_calc.py:124 WARNING Invalid data: RNT381: math domain error
+2019-01-21 18:45:30,269 charges_calc.py:109 ERROR Invalid data: RNT383 rental start 2017-05-28 00:00:00 is greater than the end 2017-05-06 00:00:00
+2019-01-21 18:45:30,270 charges_calc.py:124 WARNING Invalid data: RNT383: math domain error
+2019-01-21 18:45:30,270 charges_calc.py:109 ERROR Invalid data: RNT384 rental start 2017-11-28 00:00:00 is greater than the end 2017-05-29 00:00:00
+2019-01-21 18:45:30,271 charges_calc.py:124 WARNING Invalid data: RNT384: math domain error
+2019-01-21 18:45:30,272 charges_calc.py:109 ERROR Invalid data: RNT386 rental start 2017-01-05 00:00:00 is greater than the end 2016-06-09 00:00:00
+2019-01-21 18:45:30,276 charges_calc.py:124 WARNING Invalid data: RNT386: math domain error
+2019-01-21 18:45:30,277 charges_calc.py:109 ERROR Invalid data: RNT387 rental start 2018-12-28 00:00:00 is greater than the end 2016-07-18 00:00:00
+2019-01-21 18:45:30,277 charges_calc.py:124 WARNING Invalid data: RNT387: math domain error
+2019-01-21 18:45:30,278 charges_calc.py:109 ERROR Invalid data: RNT388 rental start 2018-07-21 00:00:00 is greater than the end 2016-12-11 00:00:00
+2019-01-21 18:45:30,278 charges_calc.py:124 WARNING Invalid data: RNT388: math domain error
+2019-01-21 18:45:30,279 charges_calc.py:109 ERROR Invalid data: RNT391 rental start 2017-08-18 00:00:00 is greater than the end 2017-08-06 00:00:00
+2019-01-21 18:45:30,279 charges_calc.py:124 WARNING Invalid data: RNT391: math domain error
+2019-01-21 18:45:30,280 charges_calc.py:109 ERROR Invalid data: RNT392 rental start 2018-07-17 00:00:00 is greater than the end 2018-04-04 00:00:00
+2019-01-21 18:45:30,281 charges_calc.py:124 WARNING Invalid data: RNT392: math domain error
+2019-01-21 18:45:30,281 charges_calc.py:109 ERROR Invalid data: RNT394 rental start 2018-02-15 00:00:00 is greater than the end 2017-01-10 00:00:00
+2019-01-21 18:45:30,282 charges_calc.py:124 WARNING Invalid data: RNT394: math domain error
+2019-01-21 18:45:30,282 charges_calc.py:109 ERROR Invalid data: RNT395 rental start 2018-03-31 00:00:00 is greater than the end 2017-12-29 00:00:00
+2019-01-21 18:45:30,283 charges_calc.py:124 WARNING Invalid data: RNT395: math domain error
+2019-01-21 18:45:30,283 charges_calc.py:109 ERROR Invalid data: RNT397 rental start 2017-06-22 00:00:00 is greater than the end 2016-05-11 00:00:00
+2019-01-21 18:45:30,284 charges_calc.py:124 WARNING Invalid data: RNT397: math domain error
+2019-01-21 18:45:30,284 charges_calc.py:109 ERROR Invalid data: RNT400 rental start 2018-10-12 00:00:00 is greater than the end 2017-03-06 00:00:00
+2019-01-21 18:45:30,285 charges_calc.py:124 WARNING Invalid data: RNT400: math domain error
+2019-01-21 18:45:30,287 charges_calc.py:109 ERROR Invalid data: RNT405 rental start 2018-10-09 00:00:00 is greater than the end 2017-04-17 00:00:00
+2019-01-21 18:45:30,288 charges_calc.py:124 WARNING Invalid data: RNT405: math domain error
+2019-01-21 18:45:30,288 charges_calc.py:109 ERROR Invalid data: RNT408 rental start 2017-02-01 00:00:00 is greater than the end 2017-01-02 00:00:00
+2019-01-21 18:45:30,289 charges_calc.py:124 WARNING Invalid data: RNT408: math domain error
+2019-01-21 18:45:30,290 charges_calc.py:109 ERROR Invalid data: RNT409 rental start 2017-08-16 00:00:00 is greater than the end 2016-11-18 00:00:00
+2019-01-21 18:45:30,290 charges_calc.py:124 WARNING Invalid data: RNT409: math domain error
+2019-01-21 18:45:30,291 charges_calc.py:109 ERROR Invalid data: RNT412 rental start 2018-06-30 00:00:00 is greater than the end 2017-09-16 00:00:00
+2019-01-21 18:45:30,291 charges_calc.py:124 WARNING Invalid data: RNT412: math domain error
+2019-01-21 18:45:30,292 charges_calc.py:109 ERROR Invalid data: RNT413 rental start 2018-09-22 00:00:00 is greater than the end 2017-10-01 00:00:00
+2019-01-21 18:45:30,293 charges_calc.py:124 WARNING Invalid data: RNT413: math domain error
+2019-01-21 18:45:30,293 charges_calc.py:109 ERROR Invalid data: RNT414 rental start 2017-08-05 00:00:00 is greater than the end 2016-11-04 00:00:00
+2019-01-21 18:45:30,294 charges_calc.py:124 WARNING Invalid data: RNT414: math domain error
+2019-01-21 18:45:30,295 charges_calc.py:109 ERROR Invalid data: RNT416 rental start 2017-10-26 00:00:00 is greater than the end 2017-02-18 00:00:00
+2019-01-21 18:45:30,295 charges_calc.py:124 WARNING Invalid data: RNT416: math domain error
+2019-01-21 18:45:30,296 charges_calc.py:109 ERROR Invalid data: RNT421 rental start 2017-12-06 00:00:00 is greater than the end 2016-04-14 00:00:00
+2019-01-21 18:45:30,297 charges_calc.py:124 WARNING Invalid data: RNT421: math domain error
+2019-01-21 18:45:30,297 charges_calc.py:109 ERROR Invalid data: RNT422 rental start 2016-12-24 00:00:00 is greater than the end 2016-07-18 00:00:00
+2019-01-21 18:45:30,298 charges_calc.py:124 WARNING Invalid data: RNT422: math domain error
+2019-01-21 18:45:30,298 charges_calc.py:109 ERROR Invalid data: RNT423 rental start 2016-10-17 00:00:00 is greater than the end 2016-01-25 00:00:00
+2019-01-21 18:45:30,299 charges_calc.py:124 WARNING Invalid data: RNT423: math domain error
+2019-01-21 18:45:30,300 charges_calc.py:109 ERROR Invalid data: RNT424 rental start 2018-09-27 00:00:00 is greater than the end 2016-04-27 00:00:00
+2019-01-21 18:45:30,300 charges_calc.py:124 WARNING Invalid data: RNT424: math domain error
+2019-01-21 18:45:30,301 charges_calc.py:109 ERROR Invalid data: RNT427 rental start 2018-05-05 00:00:00 is greater than the end 2017-01-09 00:00:00
+2019-01-21 18:45:30,301 charges_calc.py:124 WARNING Invalid data: RNT427: math domain error
+2019-01-21 18:45:30,302 charges_calc.py:109 ERROR Invalid data: RNT428 rental start 2016-11-11 00:00:00 is greater than the end 2016-06-11 00:00:00
+2019-01-21 18:45:30,303 charges_calc.py:124 WARNING Invalid data: RNT428: math domain error
+2019-01-21 18:45:30,304 charges_calc.py:109 ERROR Invalid data: RNT430 rental start 2018-05-03 00:00:00 is greater than the end 2018-04-11 00:00:00
+2019-01-21 18:45:30,304 charges_calc.py:124 WARNING Invalid data: RNT430: math domain error
+2019-01-21 18:45:30,305 charges_calc.py:109 ERROR Invalid data: RNT435 rental start 2016-11-22 00:00:00 is greater than the end 2016-01-24 00:00:00
+2019-01-21 18:45:30,306 charges_calc.py:124 WARNING Invalid data: RNT435: math domain error
+2019-01-21 18:45:30,306 charges_calc.py:109 ERROR Invalid data: RNT436 rental start 2018-04-17 00:00:00 is greater than the end 2017-05-07 00:00:00
+2019-01-21 18:45:30,307 charges_calc.py:124 WARNING Invalid data: RNT436: math domain error
+2019-01-21 18:45:30,308 charges_calc.py:109 ERROR Invalid data: RNT440 rental start 2018-11-24 00:00:00 is greater than the end 2016-12-03 00:00:00
+2019-01-21 18:45:30,308 charges_calc.py:124 WARNING Invalid data: RNT440: math domain error
+2019-01-21 18:45:30,309 charges_calc.py:109 ERROR Invalid data: RNT443 rental start 2018-08-07 00:00:00 is greater than the end 2016-02-18 00:00:00
+2019-01-21 18:45:30,309 charges_calc.py:124 WARNING Invalid data: RNT443: math domain error
+2019-01-21 18:45:30,310 charges_calc.py:109 ERROR Invalid data: RNT445 rental start 2018-02-22 00:00:00 is greater than the end 2017-10-24 00:00:00
+2019-01-21 18:45:30,311 charges_calc.py:124 WARNING Invalid data: RNT445: math domain error
+2019-01-21 18:45:30,313 charges_calc.py:109 ERROR Invalid data: RNT446 rental start 2018-06-30 00:00:00 is greater than the end 2016-06-26 00:00:00
+2019-01-21 18:45:30,318 charges_calc.py:124 WARNING Invalid data: RNT446: math domain error
+2019-01-21 18:45:30,319 charges_calc.py:109 ERROR Invalid data: RNT447 rental start 2017-11-14 00:00:00 is greater than the end 2017-07-07 00:00:00
+2019-01-21 18:45:30,319 charges_calc.py:124 WARNING Invalid data: RNT447: math domain error
+2019-01-21 18:45:30,320 charges_calc.py:109 ERROR Invalid data: RNT449 rental start 2018-10-17 00:00:00 is greater than the end 2017-07-30 00:00:00
+2019-01-21 18:45:30,321 charges_calc.py:124 WARNING Invalid data: RNT449: math domain error
+2019-01-21 18:45:30,321 charges_calc.py:109 ERROR Invalid data: RNT451 rental start 2017-03-23 00:00:00 is greater than the end 2016-10-16 00:00:00
+2019-01-21 18:45:30,322 charges_calc.py:124 WARNING Invalid data: RNT451: math domain error
+2019-01-21 18:45:30,322 charges_calc.py:109 ERROR Invalid data: RNT453 rental start 2018-10-10 00:00:00 is greater than the end 2016-07-23 00:00:00
+2019-01-21 18:45:30,323 charges_calc.py:124 WARNING Invalid data: RNT453: math domain error
+2019-01-21 18:45:30,324 charges_calc.py:109 ERROR Invalid data: RNT454 rental start 2018-09-28 00:00:00 is greater than the end 2018-08-25 00:00:00
+2019-01-21 18:45:30,324 charges_calc.py:124 WARNING Invalid data: RNT454: math domain error
+2019-01-21 18:45:30,325 charges_calc.py:109 ERROR Invalid data: RNT457 rental start 2018-08-06 00:00:00 is greater than the end 2016-11-25 00:00:00
+2019-01-21 18:45:30,325 charges_calc.py:124 WARNING Invalid data: RNT457: math domain error
+2019-01-21 18:45:30,326 charges_calc.py:109 ERROR Invalid data: RNT461 rental start 2018-07-21 00:00:00 is greater than the end 2016-06-06 00:00:00
+2019-01-21 18:45:30,326 charges_calc.py:124 WARNING Invalid data: RNT461: math domain error
+2019-01-21 18:45:30,327 charges_calc.py:109 ERROR Invalid data: RNT462 rental start 2018-06-09 00:00:00 is greater than the end 2018-05-02 00:00:00
+2019-01-21 18:45:30,327 charges_calc.py:124 WARNING Invalid data: RNT462: math domain error
+2019-01-21 18:45:30,328 charges_calc.py:109 ERROR Invalid data: RNT463 rental start 2018-11-18 00:00:00 is greater than the end 2018-03-14 00:00:00
+2019-01-21 18:45:30,328 charges_calc.py:124 WARNING Invalid data: RNT463: math domain error
+2019-01-21 18:45:30,329 charges_calc.py:109 ERROR Invalid data: RNT465 rental start 2018-04-28 00:00:00 is greater than the end 2017-03-07 00:00:00
+2019-01-21 18:45:30,329 charges_calc.py:124 WARNING Invalid data: RNT465: math domain error
+2019-01-21 18:45:30,330 charges_calc.py:109 ERROR Invalid data: RNT467 rental start 2018-05-18 00:00:00 is greater than the end 2016-05-23 00:00:00
+2019-01-21 18:45:30,330 charges_calc.py:124 WARNING Invalid data: RNT467: math domain error
+2019-01-21 18:45:30,331 charges_calc.py:109 ERROR Invalid data: RNT472 rental start 2017-04-25 00:00:00 is greater than the end 2017-03-05 00:00:00
+2019-01-21 18:45:30,332 charges_calc.py:124 WARNING Invalid data: RNT472: math domain error
+2019-01-21 18:45:30,332 charges_calc.py:109 ERROR Invalid data: RNT476 rental start 2018-07-28 00:00:00 is greater than the end 2016-11-26 00:00:00
+2019-01-21 18:45:30,333 charges_calc.py:124 WARNING Invalid data: RNT476: math domain error
+2019-01-21 18:45:30,333 charges_calc.py:109 ERROR Invalid data: RNT480 rental start 2018-08-02 00:00:00 is greater than the end 2017-04-08 00:00:00
+2019-01-21 18:45:30,334 charges_calc.py:124 WARNING Invalid data: RNT480: math domain error
+2019-01-21 18:45:30,335 charges_calc.py:109 ERROR Invalid data: RNT485 rental start 2018-03-26 00:00:00 is greater than the end 2017-01-29 00:00:00
+2019-01-21 18:45:30,335 charges_calc.py:124 WARNING Invalid data: RNT485: math domain error
+2019-01-21 18:45:30,336 charges_calc.py:109 ERROR Invalid data: RNT487 rental start 2017-03-12 00:00:00 is greater than the end 2016-04-28 00:00:00
+2019-01-21 18:45:30,336 charges_calc.py:124 WARNING Invalid data: RNT487: math domain error
+2019-01-21 18:45:30,337 charges_calc.py:109 ERROR Invalid data: RNT489 rental start 2018-08-21 00:00:00 is greater than the end 2018-05-09 00:00:00
+2019-01-21 18:45:30,338 charges_calc.py:124 WARNING Invalid data: RNT489: math domain error
+2019-01-21 18:45:30,338 charges_calc.py:109 ERROR Invalid data: RNT490 rental start 2017-09-23 00:00:00 is greater than the end 2017-08-17 00:00:00
+2019-01-21 18:45:30,339 charges_calc.py:124 WARNING Invalid data: RNT490: math domain error
+2019-01-21 18:45:30,339 charges_calc.py:109 ERROR Invalid data: RNT491 rental start 2018-06-02 00:00:00 is greater than the end 2017-02-03 00:00:00
+2019-01-21 18:45:30,340 charges_calc.py:124 WARNING Invalid data: RNT491: math domain error
+2019-01-21 18:45:30,340 charges_calc.py:109 ERROR Invalid data: RNT493 rental start 2018-08-23 00:00:00 is greater than the end 2016-10-10 00:00:00
+2019-01-21 18:45:30,341 charges_calc.py:124 WARNING Invalid data: RNT493: math domain error
+2019-01-21 18:45:30,341 charges_calc.py:109 ERROR Invalid data: RNT495 rental start 2017-06-22 00:00:00 is greater than the end 2016-07-31 00:00:00
+2019-01-21 18:45:30,342 charges_calc.py:124 WARNING Invalid data: RNT495: math domain error
+2019-01-21 18:45:30,342 charges_calc.py:109 ERROR Invalid data: RNT496 rental start 2017-11-28 00:00:00 is greater than the end 2016-12-05 00:00:00
+2019-01-21 18:45:30,343 charges_calc.py:124 WARNING Invalid data: RNT496: math domain error
+2019-01-21 18:45:30,343 charges_calc.py:109 ERROR Invalid data: RNT497 rental start 2018-06-17 00:00:00 is greater than the end 2017-04-20 00:00:00
+2019-01-21 18:45:30,344 charges_calc.py:124 WARNING Invalid data: RNT497: math domain error
+2019-01-21 18:45:30,344 charges_calc.py:109 ERROR Invalid data: RNT501 rental start 2016-10-30 00:00:00 is greater than the end 2016-07-04 00:00:00
+2019-01-21 18:45:30,345 charges_calc.py:124 WARNING Invalid data: RNT501: math domain error
+2019-01-21 18:45:30,346 charges_calc.py:109 ERROR Invalid data: RNT503 rental start 2017-03-15 00:00:00 is greater than the end 2016-11-22 00:00:00
+2019-01-21 18:45:30,346 charges_calc.py:124 WARNING Invalid data: RNT503: math domain error
+2019-01-21 18:45:30,347 charges_calc.py:109 ERROR Invalid data: RNT507 rental start 2018-06-20 00:00:00 is greater than the end 2017-06-01 00:00:00
+2019-01-21 18:45:30,347 charges_calc.py:124 WARNING Invalid data: RNT507: math domain error
+2019-01-21 18:45:30,348 charges_calc.py:109 ERROR Invalid data: RNT508 rental start 2017-05-31 00:00:00 is greater than the end 2016-03-21 00:00:00
+2019-01-21 18:45:30,348 charges_calc.py:124 WARNING Invalid data: RNT508: math domain error
+2019-01-21 18:45:30,349 charges_calc.py:109 ERROR Invalid data: RNT509 rental start 2018-12-18 00:00:00 is greater than the end 2018-03-17 00:00:00
+2019-01-21 18:45:30,349 charges_calc.py:124 WARNING Invalid data: RNT509: math domain error
+2019-01-21 18:45:30,350 charges_calc.py:109 ERROR Invalid data: RNT512 rental start 2017-11-15 00:00:00 is greater than the end 2017-11-03 00:00:00
+2019-01-21 18:45:30,350 charges_calc.py:124 WARNING Invalid data: RNT512: math domain error
+2019-01-21 18:45:30,350 charges_calc.py:109 ERROR Invalid data: RNT513 rental start 2018-12-22 00:00:00 is greater than the end 2018-07-06 00:00:00
+2019-01-21 18:45:30,351 charges_calc.py:124 WARNING Invalid data: RNT513: math domain error
+2019-01-21 18:45:30,351 charges_calc.py:109 ERROR Invalid data: RNT514 rental start 2018-08-18 00:00:00 is greater than the end 2017-09-25 00:00:00
+2019-01-21 18:45:30,352 charges_calc.py:124 WARNING Invalid data: RNT514: math domain error
+2019-01-21 18:45:30,352 charges_calc.py:109 ERROR Invalid data: RNT515 rental start 2018-04-22 00:00:00 is greater than the end 2017-09-18 00:00:00
+2019-01-21 18:45:30,353 charges_calc.py:124 WARNING Invalid data: RNT515: math domain error
+2019-01-21 18:45:30,354 charges_calc.py:109 ERROR Invalid data: RNT516 rental start 2018-03-15 00:00:00 is greater than the end 2017-04-15 00:00:00
+2019-01-21 18:45:30,354 charges_calc.py:124 WARNING Invalid data: RNT516: math domain error
+2019-01-21 18:45:30,354 charges_calc.py:109 ERROR Invalid data: RNT517 rental start 2018-08-17 00:00:00 is greater than the end 2016-12-20 00:00:00
+2019-01-21 18:45:30,355 charges_calc.py:124 WARNING Invalid data: RNT517: math domain error
+2019-01-21 18:45:30,355 charges_calc.py:109 ERROR Invalid data: RNT518 rental start 2018-06-10 00:00:00 is greater than the end 2016-09-29 00:00:00
+2019-01-21 18:45:30,355 charges_calc.py:124 WARNING Invalid data: RNT518: math domain error
+2019-01-21 18:45:30,356 charges_calc.py:109 ERROR Invalid data: RNT520 rental start 2017-08-15 00:00:00 is greater than the end 2017-04-10 00:00:00
+2019-01-21 18:45:30,356 charges_calc.py:124 WARNING Invalid data: RNT520: math domain error
+2019-01-21 18:45:30,357 charges_calc.py:109 ERROR Invalid data: RNT522 rental start 2018-05-10 00:00:00 is greater than the end 2017-11-22 00:00:00
+2019-01-21 18:45:30,357 charges_calc.py:124 WARNING Invalid data: RNT522: math domain error
+2019-01-21 18:45:30,357 charges_calc.py:109 ERROR Invalid data: RNT524 rental start 2018-07-29 00:00:00 is greater than the end 2018-03-22 00:00:00
+2019-01-21 18:45:30,363 charges_calc.py:124 WARNING Invalid data: RNT524: math domain error
+2019-01-21 18:45:30,364 charges_calc.py:109 ERROR Invalid data: RNT525 rental start 2018-02-18 00:00:00 is greater than the end 2017-10-26 00:00:00
+2019-01-21 18:45:30,364 charges_calc.py:124 WARNING Invalid data: RNT525: math domain error
+2019-01-21 18:45:30,365 charges_calc.py:109 ERROR Invalid data: RNT528 rental start 2018-05-30 00:00:00 is greater than the end 2016-02-06 00:00:00
+2019-01-21 18:45:30,366 charges_calc.py:124 WARNING Invalid data: RNT528: math domain error
+2019-01-21 18:45:30,366 charges_calc.py:109 ERROR Invalid data: RNT532 rental start 2018-12-07 00:00:00 is greater than the end 2017-10-30 00:00:00
+2019-01-21 18:45:30,367 charges_calc.py:124 WARNING Invalid data: RNT532: math domain error
+2019-01-21 18:45:30,367 charges_calc.py:109 ERROR Invalid data: RNT533 rental start 2018-03-29 00:00:00 is greater than the end 2016-12-28 00:00:00
+2019-01-21 18:45:30,368 charges_calc.py:124 WARNING Invalid data: RNT533: math domain error
+2019-01-21 18:45:30,368 charges_calc.py:109 ERROR Invalid data: RNT535 rental start 2018-06-05 00:00:00 is greater than the end 2016-11-22 00:00:00
+2019-01-21 18:45:30,370 charges_calc.py:124 WARNING Invalid data: RNT535: math domain error
+2019-01-21 18:45:30,370 charges_calc.py:109 ERROR Invalid data: RNT536 rental start 2018-12-29 00:00:00 is greater than the end 2018-07-03 00:00:00
+2019-01-21 18:45:30,370 charges_calc.py:124 WARNING Invalid data: RNT536: math domain error
+2019-01-21 18:45:30,371 charges_calc.py:109 ERROR Invalid data: RNT537 rental start 2017-06-30 00:00:00 is greater than the end 2016-08-29 00:00:00
+2019-01-21 18:45:30,371 charges_calc.py:124 WARNING Invalid data: RNT537: math domain error
+2019-01-21 18:45:30,372 charges_calc.py:109 ERROR Invalid data: RNT538 rental start 2016-11-24 00:00:00 is greater than the end 2016-02-22 00:00:00
+2019-01-21 18:45:30,372 charges_calc.py:124 WARNING Invalid data: RNT538: math domain error
+2019-01-21 18:45:30,373 charges_calc.py:109 ERROR Invalid data: RNT539 rental start 2017-07-28 00:00:00 is greater than the end 2016-07-03 00:00:00
+2019-01-21 18:45:30,373 charges_calc.py:124 WARNING Invalid data: RNT539: math domain error
+2019-01-21 18:45:30,374 charges_calc.py:109 ERROR Invalid data: RNT541 rental start 2018-08-12 00:00:00 is greater than the end 2016-05-05 00:00:00
+2019-01-21 18:45:30,375 charges_calc.py:124 WARNING Invalid data: RNT541: math domain error
+2019-01-21 18:45:30,376 charges_calc.py:109 ERROR Invalid data: RNT544 rental start 2018-01-09 00:00:00 is greater than the end 2017-06-19 00:00:00
+2019-01-21 18:45:30,376 charges_calc.py:124 WARNING Invalid data: RNT544: math domain error
+2019-01-21 18:45:30,377 charges_calc.py:109 ERROR Invalid data: RNT545 rental start 2018-11-08 00:00:00 is greater than the end 2017-09-27 00:00:00
+2019-01-21 18:45:30,377 charges_calc.py:124 WARNING Invalid data: RNT545: math domain error
+2019-01-21 18:45:30,378 charges_calc.py:109 ERROR Invalid data: RNT546 rental start 2016-11-10 00:00:00 is greater than the end 2016-06-16 00:00:00
+2019-01-21 18:45:30,378 charges_calc.py:124 WARNING Invalid data: RNT546: math domain error
+2019-01-21 18:45:30,379 charges_calc.py:109 ERROR Invalid data: RNT548 rental start 2018-10-27 00:00:00 is greater than the end 2017-10-20 00:00:00
+2019-01-21 18:45:30,379 charges_calc.py:124 WARNING Invalid data: RNT548: math domain error
+2019-01-21 18:45:30,379 charges_calc.py:109 ERROR Invalid data: RNT550 rental start 2017-09-05 00:00:00 is greater than the end 2016-05-30 00:00:00
+2019-01-21 18:45:30,381 charges_calc.py:124 WARNING Invalid data: RNT550: math domain error
+2019-01-21 18:45:30,381 charges_calc.py:109 ERROR Invalid data: RNT551 rental start 2018-06-24 00:00:00 is greater than the end 2017-08-08 00:00:00
+2019-01-21 18:45:30,382 charges_calc.py:124 WARNING Invalid data: RNT551: math domain error
+2019-01-21 18:45:30,383 charges_calc.py:109 ERROR Invalid data: RNT555 rental start 2017-06-15 00:00:00 is greater than the end 2017-04-15 00:00:00
+2019-01-21 18:45:30,384 charges_calc.py:124 WARNING Invalid data: RNT555: math domain error
+2019-01-21 18:45:30,384 charges_calc.py:109 ERROR Invalid data: RNT558 rental start 2018-09-24 00:00:00 is greater than the end 2018-06-10 00:00:00
+2019-01-21 18:45:30,385 charges_calc.py:124 WARNING Invalid data: RNT558: math domain error
+2019-01-21 18:45:30,387 charges_calc.py:109 ERROR Invalid data: RNT561 rental start 2018-07-14 00:00:00 is greater than the end 2016-05-15 00:00:00
+2019-01-21 18:45:30,387 charges_calc.py:124 WARNING Invalid data: RNT561: math domain error
+2019-01-21 18:45:30,388 charges_calc.py:109 ERROR Invalid data: RNT562 rental start 2018-11-18 00:00:00 is greater than the end 2018-08-14 00:00:00
+2019-01-21 18:45:30,389 charges_calc.py:124 WARNING Invalid data: RNT562: math domain error
+2019-01-21 18:45:30,389 charges_calc.py:109 ERROR Invalid data: RNT566 rental start 2018-11-25 00:00:00 is greater than the end 2016-02-27 00:00:00
+2019-01-21 18:45:30,390 charges_calc.py:124 WARNING Invalid data: RNT566: math domain error
+2019-01-21 18:45:30,391 charges_calc.py:109 ERROR Invalid data: RNT569 rental start 2018-10-01 00:00:00 is greater than the end 2018-05-30 00:00:00
+2019-01-21 18:45:30,391 charges_calc.py:124 WARNING Invalid data: RNT569: math domain error
+2019-01-21 18:45:30,392 charges_calc.py:109 ERROR Invalid data: RNT570 rental start 2017-11-21 00:00:00 is greater than the end 2017-07-13 00:00:00
+2019-01-21 18:45:30,392 charges_calc.py:124 WARNING Invalid data: RNT570: math domain error
+2019-01-21 18:45:30,393 charges_calc.py:109 ERROR Invalid data: RNT572 rental start 2018-10-13 00:00:00 is greater than the end 2016-08-07 00:00:00
+2019-01-21 18:45:30,393 charges_calc.py:124 WARNING Invalid data: RNT572: math domain error
+2019-01-21 18:45:30,394 charges_calc.py:109 ERROR Invalid data: RNT575 rental start 2017-08-01 00:00:00 is greater than the end 2017-01-22 00:00:00
+2019-01-21 18:45:30,394 charges_calc.py:124 WARNING Invalid data: RNT575: math domain error
+2019-01-21 18:45:30,395 charges_calc.py:109 ERROR Invalid data: RNT580 rental start 2018-07-02 00:00:00 is greater than the end 2017-04-24 00:00:00
+2019-01-21 18:45:30,396 charges_calc.py:124 WARNING Invalid data: RNT580: math domain error
+2019-01-21 18:45:30,396 charges_calc.py:109 ERROR Invalid data: RNT582 rental start 2017-05-02 00:00:00 is greater than the end 2017-04-28 00:00:00
+2019-01-21 18:45:30,397 charges_calc.py:124 WARNING Invalid data: RNT582: math domain error
+2019-01-21 18:45:30,397 charges_calc.py:109 ERROR Invalid data: RNT585 rental start 2018-02-09 00:00:00 is greater than the end 2016-01-15 00:00:00
+2019-01-21 18:45:30,398 charges_calc.py:124 WARNING Invalid data: RNT585: math domain error
+2019-01-21 18:45:30,399 charges_calc.py:109 ERROR Invalid data: RNT586 rental start 2017-01-27 00:00:00 is greater than the end 2016-07-05 00:00:00
+2019-01-21 18:45:30,399 charges_calc.py:124 WARNING Invalid data: RNT586: math domain error
+2019-01-21 18:45:30,400 charges_calc.py:109 ERROR Invalid data: RNT587 rental start 2018-05-01 00:00:00 is greater than the end 2017-03-20 00:00:00
+2019-01-21 18:45:30,400 charges_calc.py:124 WARNING Invalid data: RNT587: math domain error
+2019-01-21 18:45:30,401 charges_calc.py:109 ERROR Invalid data: RNT590 rental start 2018-12-23 00:00:00 is greater than the end 2017-06-26 00:00:00
+2019-01-21 18:45:30,401 charges_calc.py:124 WARNING Invalid data: RNT590: math domain error
+2019-01-21 18:45:30,405 charges_calc.py:109 ERROR Invalid data: RNT591 rental start 2018-06-02 00:00:00 is greater than the end 2018-03-21 00:00:00
+2019-01-21 18:45:30,406 charges_calc.py:124 WARNING Invalid data: RNT591: math domain error
+2019-01-21 18:45:30,406 charges_calc.py:109 ERROR Invalid data: RNT592 rental start 2016-08-26 00:00:00 is greater than the end 2016-05-04 00:00:00
+2019-01-21 18:45:30,406 charges_calc.py:124 WARNING Invalid data: RNT592: math domain error
+2019-01-21 18:45:30,407 charges_calc.py:109 ERROR Invalid data: RNT593 rental start 2016-11-26 00:00:00 is greater than the end 2016-09-23 00:00:00
+2019-01-21 18:45:30,408 charges_calc.py:124 WARNING Invalid data: RNT593: math domain error
+2019-01-21 18:45:30,408 charges_calc.py:109 ERROR Invalid data: RNT595 rental start 2017-02-23 00:00:00 is greater than the end 2016-01-02 00:00:00
+2019-01-21 18:45:30,409 charges_calc.py:124 WARNING Invalid data: RNT595: math domain error
+2019-01-21 18:45:30,410 charges_calc.py:109 ERROR Invalid data: RNT597 rental start 2018-10-29 00:00:00 is greater than the end 2017-02-21 00:00:00
+2019-01-21 18:45:30,410 charges_calc.py:124 WARNING Invalid data: RNT597: math domain error
+2019-01-21 18:45:30,411 charges_calc.py:109 ERROR Invalid data: RNT598 rental start 2018-03-02 00:00:00 is greater than the end 2016-08-29 00:00:00
+2019-01-21 18:45:30,411 charges_calc.py:124 WARNING Invalid data: RNT598: math domain error
+2019-01-21 18:45:30,412 charges_calc.py:109 ERROR Invalid data: RNT599 rental start 2018-06-17 00:00:00 is greater than the end 2016-02-12 00:00:00
+2019-01-21 18:45:30,412 charges_calc.py:124 WARNING Invalid data: RNT599: math domain error
+2019-01-21 18:45:30,413 charges_calc.py:109 ERROR Invalid data: RNT601 rental start 2017-06-12 00:00:00 is greater than the end 2017-01-12 00:00:00
+2019-01-21 18:45:30,413 charges_calc.py:124 WARNING Invalid data: RNT601: math domain error
+2019-01-21 18:45:30,414 charges_calc.py:109 ERROR Invalid data: RNT602 rental start 2016-10-10 00:00:00 is greater than the end 2016-04-12 00:00:00
+2019-01-21 18:45:30,414 charges_calc.py:124 WARNING Invalid data: RNT602: math domain error
+2019-01-21 18:45:30,415 charges_calc.py:109 ERROR Invalid data: RNT603 rental start 2017-09-17 00:00:00 is greater than the end 2016-02-07 00:00:00
+2019-01-21 18:45:30,416 charges_calc.py:124 WARNING Invalid data: RNT603: math domain error
+2019-01-21 18:45:30,416 charges_calc.py:109 ERROR Invalid data: RNT604 rental start 2017-07-14 00:00:00 is greater than the end 2016-07-06 00:00:00
+2019-01-21 18:45:30,419 charges_calc.py:124 WARNING Invalid data: RNT604: math domain error
+2019-01-21 18:45:30,421 charges_calc.py:109 ERROR Invalid data: RNT605 rental start 2017-11-04 00:00:00 is greater than the end 2016-09-06 00:00:00
+2019-01-21 18:45:30,422 charges_calc.py:124 WARNING Invalid data: RNT605: math domain error
+2019-01-21 18:45:30,423 charges_calc.py:109 ERROR Invalid data: RNT606 rental start 2018-10-21 00:00:00 is greater than the end 2016-05-31 00:00:00
+2019-01-21 18:45:30,424 charges_calc.py:124 WARNING Invalid data: RNT606: math domain error
+2019-01-21 18:45:30,425 charges_calc.py:109 ERROR Invalid data: RNT611 rental start 2018-03-05 00:00:00 is greater than the end 2018-01-30 00:00:00
+2019-01-21 18:45:30,426 charges_calc.py:124 WARNING Invalid data: RNT611: math domain error
+2019-01-21 18:45:30,427 charges_calc.py:109 ERROR Invalid data: RNT613 rental start 2018-10-04 00:00:00 is greater than the end 2018-01-17 00:00:00
+2019-01-21 18:45:30,428 charges_calc.py:124 WARNING Invalid data: RNT613: math domain error
+2019-01-21 18:45:30,429 charges_calc.py:109 ERROR Invalid data: RNT615 rental start 2017-09-30 00:00:00 is greater than the end 2017-06-29 00:00:00
+2019-01-21 18:45:30,429 charges_calc.py:124 WARNING Invalid data: RNT615: math domain error
+2019-01-21 18:45:30,430 charges_calc.py:109 ERROR Invalid data: RNT622 rental start 2016-08-22 00:00:00 is greater than the end 2016-04-18 00:00:00
+2019-01-21 18:45:30,431 charges_calc.py:124 WARNING Invalid data: RNT622: math domain error
+2019-01-21 18:45:30,432 charges_calc.py:109 ERROR Invalid data: RNT626 rental start 2018-07-22 00:00:00 is greater than the end 2017-08-01 00:00:00
+2019-01-21 18:45:30,432 charges_calc.py:124 WARNING Invalid data: RNT626: math domain error
+2019-01-21 18:45:30,433 charges_calc.py:109 ERROR Invalid data: RNT630 rental start 2016-11-27 00:00:00 is greater than the end 2016-09-15 00:00:00
+2019-01-21 18:45:30,434 charges_calc.py:124 WARNING Invalid data: RNT630: math domain error
+2019-01-21 18:45:30,434 charges_calc.py:109 ERROR Invalid data: RNT632 rental start 2016-01-13 00:00:00 is greater than the end 2016-01-07 00:00:00
+2019-01-21 18:45:30,435 charges_calc.py:124 WARNING Invalid data: RNT632: math domain error
+2019-01-21 18:45:30,436 charges_calc.py:109 ERROR Invalid data: RNT633 rental start 2018-07-09 00:00:00 is greater than the end 2018-02-01 00:00:00
+2019-01-21 18:45:30,437 charges_calc.py:124 WARNING Invalid data: RNT633: math domain error
+2019-01-21 18:45:30,439 charges_calc.py:109 ERROR Invalid data: RNT634 rental start 2018-09-16 00:00:00 is greater than the end 2018-08-07 00:00:00
+2019-01-21 18:45:30,439 charges_calc.py:124 WARNING Invalid data: RNT634: math domain error
+2019-01-21 18:45:30,440 charges_calc.py:109 ERROR Invalid data: RNT636 rental start 2018-11-02 00:00:00 is greater than the end 2017-09-15 00:00:00
+2019-01-21 18:45:30,440 charges_calc.py:124 WARNING Invalid data: RNT636: math domain error
+2019-01-21 18:45:30,441 charges_calc.py:109 ERROR Invalid data: RNT638 rental start 2017-02-24 00:00:00 is greater than the end 2016-03-20 00:00:00
+2019-01-21 18:45:30,442 charges_calc.py:124 WARNING Invalid data: RNT638: math domain error
+2019-01-21 18:45:30,442 charges_calc.py:109 ERROR Invalid data: RNT639 rental start 2018-12-09 00:00:00 is greater than the end 2017-09-10 00:00:00
+2019-01-21 18:45:30,442 charges_calc.py:124 WARNING Invalid data: RNT639: math domain error
+2019-01-21 18:45:30,443 charges_calc.py:109 ERROR Invalid data: RNT640 rental start 2017-09-09 00:00:00 is greater than the end 2016-04-29 00:00:00
+2019-01-21 18:45:30,444 charges_calc.py:124 WARNING Invalid data: RNT640: math domain error
+2019-01-21 18:45:30,444 charges_calc.py:109 ERROR Invalid data: RNT642 rental start 2016-07-25 00:00:00 is greater than the end 2016-07-03 00:00:00
+2019-01-21 18:45:30,445 charges_calc.py:124 WARNING Invalid data: RNT642: math domain error
+2019-01-21 18:45:30,445 charges_calc.py:109 ERROR Invalid data: RNT643 rental start 2018-10-20 00:00:00 is greater than the end 2016-02-13 00:00:00
+2019-01-21 18:45:30,446 charges_calc.py:124 WARNING Invalid data: RNT643: math domain error
+2019-01-21 18:45:30,446 charges_calc.py:109 ERROR Invalid data: RNT647 rental start 2017-04-05 00:00:00 is greater than the end 2016-09-08 00:00:00
+2019-01-21 18:45:30,447 charges_calc.py:124 WARNING Invalid data: RNT647: math domain error
+2019-01-21 18:45:30,447 charges_calc.py:109 ERROR Invalid data: RNT648 rental start 2018-07-19 00:00:00 is greater than the end 2017-06-26 00:00:00
+2019-01-21 18:45:30,448 charges_calc.py:124 WARNING Invalid data: RNT648: math domain error
+2019-01-21 18:45:30,448 charges_calc.py:109 ERROR Invalid data: RNT649 rental start 2018-07-17 00:00:00 is greater than the end 2017-11-16 00:00:00
+2019-01-21 18:45:30,449 charges_calc.py:124 WARNING Invalid data: RNT649: math domain error
+2019-01-21 18:45:30,456 charges_calc.py:109 ERROR Invalid data: RNT651 rental start 2018-09-13 00:00:00 is greater than the end 2016-01-27 00:00:00
+2019-01-21 18:45:30,456 charges_calc.py:124 WARNING Invalid data: RNT651: math domain error
+2019-01-21 18:45:30,456 charges_calc.py:109 ERROR Invalid data: RNT653 rental start 2017-08-22 00:00:00 is greater than the end 2017-03-25 00:00:00
+2019-01-21 18:45:30,457 charges_calc.py:124 WARNING Invalid data: RNT653: math domain error
+2019-01-21 18:45:30,457 charges_calc.py:109 ERROR Invalid data: RNT656 rental start 2018-10-05 00:00:00 is greater than the end 2016-07-04 00:00:00
+2019-01-21 18:45:30,458 charges_calc.py:124 WARNING Invalid data: RNT656: math domain error
+2019-01-21 18:45:30,458 charges_calc.py:109 ERROR Invalid data: RNT659 rental start 2018-09-14 00:00:00 is greater than the end 2017-09-06 00:00:00
+2019-01-21 18:45:30,459 charges_calc.py:124 WARNING Invalid data: RNT659: math domain error
+2019-01-21 18:45:30,459 charges_calc.py:109 ERROR Invalid data: RNT662 rental start 2018-04-27 00:00:00 is greater than the end 2018-02-13 00:00:00
+2019-01-21 18:45:30,460 charges_calc.py:124 WARNING Invalid data: RNT662: math domain error
+2019-01-21 18:45:30,460 charges_calc.py:109 ERROR Invalid data: RNT663 rental start 2018-01-03 00:00:00 is greater than the end 2017-01-20 00:00:00
+2019-01-21 18:45:30,461 charges_calc.py:124 WARNING Invalid data: RNT663: math domain error
+2019-01-21 18:45:30,461 charges_calc.py:109 ERROR Invalid data: RNT664 rental start 2018-07-02 00:00:00 is greater than the end 2016-08-20 00:00:00
+2019-01-21 18:45:30,461 charges_calc.py:124 WARNING Invalid data: RNT664: math domain error
+2019-01-21 18:45:30,461 charges_calc.py:109 ERROR Invalid data: RNT665 rental start 2017-09-08 00:00:00 is greater than the end 2017-02-04 00:00:00
+2019-01-21 18:45:30,461 charges_calc.py:124 WARNING Invalid data: RNT665: math domain error
+2019-01-21 18:45:30,462 charges_calc.py:109 ERROR Invalid data: RNT667 rental start 2018-01-04 00:00:00 is greater than the end 2016-03-31 00:00:00
+2019-01-21 18:45:30,462 charges_calc.py:124 WARNING Invalid data: RNT667: math domain error
+2019-01-21 18:45:30,462 charges_calc.py:109 ERROR Invalid data: RNT668 rental start 2016-02-17 00:00:00 is greater than the end 2016-01-01 00:00:00
+2019-01-21 18:45:30,463 charges_calc.py:124 WARNING Invalid data: RNT668: math domain error
+2019-01-21 18:45:30,463 charges_calc.py:109 ERROR Invalid data: RNT670 rental start 2016-11-27 00:00:00 is greater than the end 2016-01-30 00:00:00
+2019-01-21 18:45:30,465 charges_calc.py:124 WARNING Invalid data: RNT670: math domain error
+2019-01-21 18:45:30,466 charges_calc.py:109 ERROR Invalid data: RNT671 rental start 2018-03-05 00:00:00 is greater than the end 2017-06-16 00:00:00
+2019-01-21 18:45:30,466 charges_calc.py:124 WARNING Invalid data: RNT671: math domain error
+2019-01-21 18:45:30,468 charges_calc.py:109 ERROR Invalid data: RNT674 rental start 2018-07-24 00:00:00 is greater than the end 2017-04-24 00:00:00
+2019-01-21 18:45:30,469 charges_calc.py:124 WARNING Invalid data: RNT674: math domain error
+2019-01-21 18:45:30,470 charges_calc.py:109 ERROR Invalid data: RNT677 rental start 2017-09-03 00:00:00 is greater than the end 2017-08-17 00:00:00
+2019-01-21 18:45:30,472 charges_calc.py:124 WARNING Invalid data: RNT677: math domain error
+2019-01-21 18:45:30,472 charges_calc.py:109 ERROR Invalid data: RNT678 rental start 2016-11-27 00:00:00 is greater than the end 2016-11-13 00:00:00
+2019-01-21 18:45:30,474 charges_calc.py:124 WARNING Invalid data: RNT678: math domain error
+2019-01-21 18:45:30,474 charges_calc.py:109 ERROR Invalid data: RNT679 rental start 2017-11-21 00:00:00 is greater than the end 2016-02-03 00:00:00
+2019-01-21 18:45:30,475 charges_calc.py:124 WARNING Invalid data: RNT679: math domain error
+2019-01-21 18:45:30,476 charges_calc.py:109 ERROR Invalid data: RNT682 rental start 2018-12-31 00:00:00 is greater than the end 2018-10-19 00:00:00
+2019-01-21 18:45:30,477 charges_calc.py:124 WARNING Invalid data: RNT682: math domain error
+2019-01-21 18:45:30,478 charges_calc.py:109 ERROR Invalid data: RNT684 rental start 2017-06-26 00:00:00 is greater than the end 2016-04-03 00:00:00
+2019-01-21 18:45:30,478 charges_calc.py:124 WARNING Invalid data: RNT684: math domain error
+2019-01-21 18:45:30,479 charges_calc.py:109 ERROR Invalid data: RNT688 rental start 2018-07-06 00:00:00 is greater than the end 2018-06-02 00:00:00
+2019-01-21 18:45:30,480 charges_calc.py:124 WARNING Invalid data: RNT688: math domain error
+2019-01-21 18:45:30,480 charges_calc.py:109 ERROR Invalid data: RNT691 rental start 2018-09-19 00:00:00 is greater than the end 2016-09-10 00:00:00
+2019-01-21 18:45:30,481 charges_calc.py:124 WARNING Invalid data: RNT691: math domain error
+2019-01-21 18:45:30,481 charges_calc.py:109 ERROR Invalid data: RNT692 rental start 2017-08-27 00:00:00 is greater than the end 2017-07-29 00:00:00
+2019-01-21 18:45:30,482 charges_calc.py:124 WARNING Invalid data: RNT692: math domain error
+2019-01-21 18:45:30,482 charges_calc.py:109 ERROR Invalid data: RNT694 rental start 2018-12-09 00:00:00 is greater than the end 2017-09-15 00:00:00
+2019-01-21 18:45:30,484 charges_calc.py:124 WARNING Invalid data: RNT694: math domain error
+2019-01-21 18:45:30,485 charges_calc.py:109 ERROR Invalid data: RNT695 rental start 2016-07-14 00:00:00 is greater than the end 2016-03-05 00:00:00
+2019-01-21 18:45:30,485 charges_calc.py:124 WARNING Invalid data: RNT695: math domain error
+2019-01-21 18:45:30,487 charges_calc.py:109 ERROR Invalid data: RNT698 rental start 2018-04-02 00:00:00 is greater than the end 2016-11-22 00:00:00
+2019-01-21 18:45:30,487 charges_calc.py:124 WARNING Invalid data: RNT698: math domain error
+2019-01-21 18:45:30,488 charges_calc.py:109 ERROR Invalid data: RNT702 rental start 2017-09-26 00:00:00 is greater than the end 2016-12-08 00:00:00
+2019-01-21 18:45:30,488 charges_calc.py:124 WARNING Invalid data: RNT702: math domain error
+2019-01-21 18:45:30,489 charges_calc.py:109 ERROR Invalid data: RNT703 rental start 2018-06-15 00:00:00 is greater than the end 2018-03-01 00:00:00
+2019-01-21 18:45:30,490 charges_calc.py:124 WARNING Invalid data: RNT703: math domain error
+2019-01-21 18:45:30,490 charges_calc.py:109 ERROR Invalid data: RNT704 rental start 2017-12-23 00:00:00 is greater than the end 2016-04-02 00:00:00
+2019-01-21 18:45:30,491 charges_calc.py:124 WARNING Invalid data: RNT704: math domain error
+2019-01-21 18:45:30,491 charges_calc.py:109 ERROR Invalid data: RNT706 rental start 2017-09-08 00:00:00 is greater than the end 2017-05-17 00:00:00
+2019-01-21 18:45:30,492 charges_calc.py:124 WARNING Invalid data: RNT706: math domain error
+2019-01-21 18:45:30,492 charges_calc.py:109 ERROR Invalid data: RNT709 rental start 2017-05-18 00:00:00 is greater than the end 2017-01-15 00:00:00
+2019-01-21 18:45:30,493 charges_calc.py:124 WARNING Invalid data: RNT709: math domain error
+2019-01-21 18:45:30,495 charges_calc.py:109 ERROR Invalid data: RNT711 rental start 2018-04-25 00:00:00 is greater than the end 2017-04-25 00:00:00
+2019-01-21 18:45:30,500 charges_calc.py:124 WARNING Invalid data: RNT711: math domain error
+2019-01-21 18:45:30,500 charges_calc.py:109 ERROR Invalid data: RNT712 rental start 2017-10-09 00:00:00 is greater than the end 2016-08-08 00:00:00
+2019-01-21 18:45:30,501 charges_calc.py:124 WARNING Invalid data: RNT712: math domain error
+2019-01-21 18:45:30,501 charges_calc.py:109 ERROR Invalid data: RNT715 rental start 2017-08-23 00:00:00 is greater than the end 2016-06-23 00:00:00
+2019-01-21 18:45:30,503 charges_calc.py:124 WARNING Invalid data: RNT715: math domain error
+2019-01-21 18:45:30,504 charges_calc.py:109 ERROR Invalid data: RNT717 rental start 2018-09-25 00:00:00 is greater than the end 2016-01-12 00:00:00
+2019-01-21 18:45:30,505 charges_calc.py:124 WARNING Invalid data: RNT717: math domain error
+2019-01-21 18:45:30,505 charges_calc.py:109 ERROR Invalid data: RNT719 rental start 2016-09-22 00:00:00 is greater than the end 2016-04-05 00:00:00
+2019-01-21 18:45:30,506 charges_calc.py:124 WARNING Invalid data: RNT719: math domain error
+2019-01-21 18:45:30,507 charges_calc.py:109 ERROR Invalid data: RNT721 rental start 2018-09-02 00:00:00 is greater than the end 2018-02-13 00:00:00
+2019-01-21 18:45:30,508 charges_calc.py:124 WARNING Invalid data: RNT721: math domain error
+2019-01-21 18:45:30,508 charges_calc.py:109 ERROR Invalid data: RNT722 rental start 2017-10-06 00:00:00 is greater than the end 2016-03-08 00:00:00
+2019-01-21 18:45:30,509 charges_calc.py:124 WARNING Invalid data: RNT722: math domain error
+2019-01-21 18:45:30,510 charges_calc.py:109 ERROR Invalid data: RNT725 rental start 2017-02-19 00:00:00 is greater than the end 2016-11-17 00:00:00
+2019-01-21 18:45:30,510 charges_calc.py:124 WARNING Invalid data: RNT725: math domain error
+2019-01-21 18:45:30,511 charges_calc.py:109 ERROR Invalid data: RNT726 rental start 2017-11-24 00:00:00 is greater than the end 2016-05-06 00:00:00
+2019-01-21 18:45:30,511 charges_calc.py:124 WARNING Invalid data: RNT726: math domain error
+2019-01-21 18:45:30,512 charges_calc.py:109 ERROR Invalid data: RNT729 rental start 2017-08-18 00:00:00 is greater than the end 2017-04-23 00:00:00
+2019-01-21 18:45:30,512 charges_calc.py:124 WARNING Invalid data: RNT729: math domain error
+2019-01-21 18:45:30,513 charges_calc.py:109 ERROR Invalid data: RNT731 rental start 2017-11-17 00:00:00 is greater than the end 2017-09-02 00:00:00
+2019-01-21 18:45:30,513 charges_calc.py:124 WARNING Invalid data: RNT731: math domain error
+2019-01-21 18:45:30,514 charges_calc.py:109 ERROR Invalid data: RNT732 rental start 2017-08-18 00:00:00 is greater than the end 2016-11-24 00:00:00
+2019-01-21 18:45:30,514 charges_calc.py:124 WARNING Invalid data: RNT732: math domain error
+2019-01-21 18:45:30,515 charges_calc.py:109 ERROR Invalid data: RNT733 rental start 2017-05-26 00:00:00 is greater than the end 2016-11-05 00:00:00
+2019-01-21 18:45:30,516 charges_calc.py:124 WARNING Invalid data: RNT733: math domain error
+2019-01-21 18:45:30,517 charges_calc.py:109 ERROR Invalid data: RNT740 rental start 2018-02-16 00:00:00 is greater than the end 2017-10-13 00:00:00
+2019-01-21 18:45:30,517 charges_calc.py:124 WARNING Invalid data: RNT740: math domain error
+2019-01-21 18:45:30,517 charges_calc.py:109 ERROR Invalid data: RNT745 rental start 2018-09-02 00:00:00 is greater than the end 2017-10-18 00:00:00
+2019-01-21 18:45:30,518 charges_calc.py:124 WARNING Invalid data: RNT745: math domain error
+2019-01-21 18:45:30,519 charges_calc.py:109 ERROR Invalid data: RNT746 rental start 2017-10-16 00:00:00 is greater than the end 2017-08-08 00:00:00
+2019-01-21 18:45:30,520 charges_calc.py:124 WARNING Invalid data: RNT746: math domain error
+2019-01-21 18:45:30,520 charges_calc.py:109 ERROR Invalid data: RNT748 rental start 2017-09-14 00:00:00 is greater than the end 2017-03-30 00:00:00
+2019-01-21 18:45:30,521 charges_calc.py:124 WARNING Invalid data: RNT748: math domain error
+2019-01-21 18:45:30,523 charges_calc.py:109 ERROR Invalid data: RNT750 rental start 2017-01-06 00:00:00 is greater than the end 2016-08-22 00:00:00
+2019-01-21 18:45:30,523 charges_calc.py:124 WARNING Invalid data: RNT750: math domain error
+2019-01-21 18:45:30,523 charges_calc.py:109 ERROR Invalid data: RNT751 rental start 2017-12-09 00:00:00 is greater than the end 2017-05-20 00:00:00
+2019-01-21 18:45:30,523 charges_calc.py:124 WARNING Invalid data: RNT751: math domain error
+2019-01-21 18:45:30,524 charges_calc.py:109 ERROR Invalid data: RNT753 rental start 2018-09-19 00:00:00 is greater than the end 2018-07-10 00:00:00
+2019-01-21 18:45:30,524 charges_calc.py:124 WARNING Invalid data: RNT753: math domain error
+2019-01-21 18:45:30,525 charges_calc.py:109 ERROR Invalid data: RNT756 rental start 2017-12-03 00:00:00 is greater than the end 2017-07-14 00:00:00
+2019-01-21 18:45:30,526 charges_calc.py:124 WARNING Invalid data: RNT756: math domain error
+2019-01-21 18:45:30,526 charges_calc.py:109 ERROR Invalid data: RNT757 rental start 2018-12-13 00:00:00 is greater than the end 2018-07-06 00:00:00
+2019-01-21 18:45:30,526 charges_calc.py:124 WARNING Invalid data: RNT757: math domain error
+2019-01-21 18:45:30,527 charges_calc.py:109 ERROR Invalid data: RNT759 rental start 2018-02-10 00:00:00 is greater than the end 2016-01-05 00:00:00
+2019-01-21 18:45:30,527 charges_calc.py:124 WARNING Invalid data: RNT759: math domain error
+2019-01-21 18:45:30,528 charges_calc.py:109 ERROR Invalid data: RNT766 rental start 2018-03-15 00:00:00 is greater than the end 2017-07-28 00:00:00
+2019-01-21 18:45:30,529 charges_calc.py:124 WARNING Invalid data: RNT766: math domain error
+2019-01-21 18:45:30,529 charges_calc.py:109 ERROR Invalid data: RNT770 rental start 2018-12-02 00:00:00 is greater than the end 2016-01-06 00:00:00
+2019-01-21 18:45:30,531 charges_calc.py:124 WARNING Invalid data: RNT770: math domain error
+2019-01-21 18:45:30,531 charges_calc.py:109 ERROR Invalid data: RNT772 rental start 2018-06-18 00:00:00 is greater than the end 2018-02-21 00:00:00
+2019-01-21 18:45:30,532 charges_calc.py:124 WARNING Invalid data: RNT772: math domain error
+2019-01-21 18:45:30,532 charges_calc.py:109 ERROR Invalid data: RNT773 rental start 2016-10-23 00:00:00 is greater than the end 2016-10-13 00:00:00
+2019-01-21 18:45:30,533 charges_calc.py:124 WARNING Invalid data: RNT773: math domain error
+2019-01-21 18:45:30,533 charges_calc.py:109 ERROR Invalid data: RNT774 rental start 2018-07-13 00:00:00 is greater than the end 2016-12-28 00:00:00
+2019-01-21 18:45:30,533 charges_calc.py:124 WARNING Invalid data: RNT774: math domain error
+2019-01-21 18:45:30,534 charges_calc.py:102 WARNING Invalid data: RNT776: time data '' does not match format '%m/%d/%y'
+2019-01-21 18:45:30,534 charges_calc.py:109 ERROR Invalid data: RNT778 rental start 2018-01-13 00:00:00 is greater than the end 2017-01-03 00:00:00
+2019-01-21 18:45:30,535 charges_calc.py:124 WARNING Invalid data: RNT778: math domain error
+2019-01-21 18:45:30,536 charges_calc.py:109 ERROR Invalid data: RNT779 rental start 2017-01-31 00:00:00 is greater than the end 2016-08-21 00:00:00
+2019-01-21 18:45:30,536 charges_calc.py:124 WARNING Invalid data: RNT779: math domain error
+2019-01-21 18:45:30,537 charges_calc.py:109 ERROR Invalid data: RNT782 rental start 2018-01-25 00:00:00 is greater than the end 2017-04-16 00:00:00
+2019-01-21 18:45:30,537 charges_calc.py:124 WARNING Invalid data: RNT782: math domain error
+2019-01-21 18:45:30,538 charges_calc.py:109 ERROR Invalid data: RNT783 rental start 2018-11-27 00:00:00 is greater than the end 2017-03-22 00:00:00
+2019-01-21 18:45:30,543 charges_calc.py:124 WARNING Invalid data: RNT783: math domain error
+2019-01-21 18:45:30,544 charges_calc.py:109 ERROR Invalid data: RNT790 rental start 2017-03-30 00:00:00 is greater than the end 2016-02-24 00:00:00
+2019-01-21 18:45:30,544 charges_calc.py:124 WARNING Invalid data: RNT790: math domain error
+2019-01-21 18:45:30,545 charges_calc.py:109 ERROR Invalid data: RNT791 rental start 2018-03-18 00:00:00 is greater than the end 2017-06-03 00:00:00
+2019-01-21 18:45:30,545 charges_calc.py:124 WARNING Invalid data: RNT791: math domain error
+2019-01-21 18:45:30,546 charges_calc.py:109 ERROR Invalid data: RNT794 rental start 2018-12-30 00:00:00 is greater than the end 2016-04-30 00:00:00
+2019-01-21 18:45:30,546 charges_calc.py:124 WARNING Invalid data: RNT794: math domain error
+2019-01-21 18:45:30,547 charges_calc.py:109 ERROR Invalid data: RNT795 rental start 2018-01-25 00:00:00 is greater than the end 2017-09-15 00:00:00
+2019-01-21 18:45:30,547 charges_calc.py:124 WARNING Invalid data: RNT795: math domain error
+2019-01-21 18:45:30,547 charges_calc.py:109 ERROR Invalid data: RNT796 rental start 2018-01-13 00:00:00 is greater than the end 2017-06-08 00:00:00
+2019-01-21 18:45:30,548 charges_calc.py:124 WARNING Invalid data: RNT796: math domain error
+2019-01-21 18:45:30,548 charges_calc.py:109 ERROR Invalid data: RNT803 rental start 2016-10-17 00:00:00 is greater than the end 2016-02-10 00:00:00
+2019-01-21 18:45:30,549 charges_calc.py:124 WARNING Invalid data: RNT803: math domain error
+2019-01-21 18:45:30,549 charges_calc.py:109 ERROR Invalid data: RNT807 rental start 2018-04-03 00:00:00 is greater than the end 2017-07-19 00:00:00
+2019-01-21 18:45:30,550 charges_calc.py:124 WARNING Invalid data: RNT807: math domain error
+2019-01-21 18:45:30,550 charges_calc.py:109 ERROR Invalid data: RNT808 rental start 2017-07-25 00:00:00 is greater than the end 2016-12-15 00:00:00
+2019-01-21 18:45:30,551 charges_calc.py:124 WARNING Invalid data: RNT808: math domain error
+2019-01-21 18:45:30,551 charges_calc.py:109 ERROR Invalid data: RNT809 rental start 2017-12-04 00:00:00 is greater than the end 2017-04-07 00:00:00
+2019-01-21 18:45:30,552 charges_calc.py:124 WARNING Invalid data: RNT809: math domain error
+2019-01-21 18:45:30,552 charges_calc.py:109 ERROR Invalid data: RNT812 rental start 2016-10-25 00:00:00 is greater than the end 2016-08-18 00:00:00
+2019-01-21 18:45:30,552 charges_calc.py:124 WARNING Invalid data: RNT812: math domain error
+2019-01-21 18:45:30,553 charges_calc.py:109 ERROR Invalid data: RNT814 rental start 2018-05-16 00:00:00 is greater than the end 2017-05-03 00:00:00
+2019-01-21 18:45:30,554 charges_calc.py:124 WARNING Invalid data: RNT814: math domain error
+2019-01-21 18:45:30,554 charges_calc.py:109 ERROR Invalid data: RNT815 rental start 2017-11-29 00:00:00 is greater than the end 2017-03-26 00:00:00
+2019-01-21 18:45:30,555 charges_calc.py:124 WARNING Invalid data: RNT815: math domain error
+2019-01-21 18:45:30,555 charges_calc.py:109 ERROR Invalid data: RNT816 rental start 2017-12-20 00:00:00 is greater than the end 2017-07-06 00:00:00
+2019-01-21 18:45:30,556 charges_calc.py:124 WARNING Invalid data: RNT816: math domain error
+2019-01-21 18:45:30,556 charges_calc.py:109 ERROR Invalid data: RNT817 rental start 2018-11-27 00:00:00 is greater than the end 2016-02-11 00:00:00
+2019-01-21 18:45:30,557 charges_calc.py:124 WARNING Invalid data: RNT817: math domain error
+2019-01-21 18:45:30,557 charges_calc.py:109 ERROR Invalid data: RNT818 rental start 2017-11-13 00:00:00 is greater than the end 2016-05-13 00:00:00
+2019-01-21 18:45:30,557 charges_calc.py:124 WARNING Invalid data: RNT818: math domain error
+2019-01-21 18:45:30,558 charges_calc.py:109 ERROR Invalid data: RNT819 rental start 2017-12-07 00:00:00 is greater than the end 2017-09-25 00:00:00
+2019-01-21 18:45:30,558 charges_calc.py:124 WARNING Invalid data: RNT819: math domain error
+2019-01-21 18:45:30,559 charges_calc.py:109 ERROR Invalid data: RNT820 rental start 2016-05-03 00:00:00 is greater than the end 2016-04-25 00:00:00
+2019-01-21 18:45:30,559 charges_calc.py:124 WARNING Invalid data: RNT820: math domain error
+2019-01-21 18:45:30,560 charges_calc.py:109 ERROR Invalid data: RNT822 rental start 2017-12-15 00:00:00 is greater than the end 2017-08-11 00:00:00
+2019-01-21 18:45:30,560 charges_calc.py:124 WARNING Invalid data: RNT822: math domain error
+2019-01-21 18:45:30,561 charges_calc.py:109 ERROR Invalid data: RNT825 rental start 2018-03-18 00:00:00 is greater than the end 2017-11-25 00:00:00
+2019-01-21 18:45:30,561 charges_calc.py:124 WARNING Invalid data: RNT825: math domain error
+2019-01-21 18:45:30,562 charges_calc.py:109 ERROR Invalid data: RNT831 rental start 2017-02-28 00:00:00 is greater than the end 2017-02-25 00:00:00
+2019-01-21 18:45:30,563 charges_calc.py:124 WARNING Invalid data: RNT831: math domain error
+2019-01-21 18:45:30,563 charges_calc.py:109 ERROR Invalid data: RNT835 rental start 2017-08-24 00:00:00 is greater than the end 2016-01-08 00:00:00
+2019-01-21 18:45:30,565 charges_calc.py:124 WARNING Invalid data: RNT835: math domain error
+2019-01-21 18:45:30,565 charges_calc.py:109 ERROR Invalid data: RNT836 rental start 2016-07-14 00:00:00 is greater than the end 2016-07-09 00:00:00
+2019-01-21 18:45:30,566 charges_calc.py:124 WARNING Invalid data: RNT836: math domain error
+2019-01-21 18:45:30,566 charges_calc.py:109 ERROR Invalid data: RNT839 rental start 2018-12-21 00:00:00 is greater than the end 2018-06-25 00:00:00
+2019-01-21 18:45:30,567 charges_calc.py:124 WARNING Invalid data: RNT839: math domain error
+2019-01-21 18:45:30,567 charges_calc.py:109 ERROR Invalid data: RNT840 rental start 2018-11-01 00:00:00 is greater than the end 2017-02-04 00:00:00
+2019-01-21 18:45:30,568 charges_calc.py:124 WARNING Invalid data: RNT840: math domain error
+2019-01-21 18:45:30,569 charges_calc.py:109 ERROR Invalid data: RNT842 rental start 2017-10-16 00:00:00 is greater than the end 2016-04-16 00:00:00
+2019-01-21 18:45:30,569 charges_calc.py:124 WARNING Invalid data: RNT842: math domain error
+2019-01-21 18:45:30,570 charges_calc.py:109 ERROR Invalid data: RNT843 rental start 2017-11-07 00:00:00 is greater than the end 2016-06-26 00:00:00
+2019-01-21 18:45:30,570 charges_calc.py:124 WARNING Invalid data: RNT843: math domain error
+2019-01-21 18:45:30,571 charges_calc.py:138 WARNING Invalid data: RNT843: units_rented is 0: division by zero
+2019-01-21 18:45:30,571 charges_calc.py:109 ERROR Invalid data: RNT844 rental start 2018-04-14 00:00:00 is greater than the end 2017-09-09 00:00:00
+2019-01-21 18:45:30,572 charges_calc.py:124 WARNING Invalid data: RNT844: math domain error
+2019-01-21 18:45:30,572 charges_calc.py:109 ERROR Invalid data: RNT846 rental start 2017-09-08 00:00:00 is greater than the end 2016-06-29 00:00:00
+2019-01-21 18:45:30,573 charges_calc.py:124 WARNING Invalid data: RNT846: math domain error
+2019-01-21 18:45:30,573 charges_calc.py:109 ERROR Invalid data: RNT847 rental start 2018-10-19 00:00:00 is greater than the end 2018-03-07 00:00:00
+2019-01-21 18:45:30,574 charges_calc.py:124 WARNING Invalid data: RNT847: math domain error
+2019-01-21 18:45:30,574 charges_calc.py:109 ERROR Invalid data: RNT849 rental start 2018-07-19 00:00:00 is greater than the end 2016-08-18 00:00:00
+2019-01-21 18:45:30,575 charges_calc.py:124 WARNING Invalid data: RNT849: math domain error
+2019-01-21 18:45:30,576 charges_calc.py:109 ERROR Invalid data: RNT853 rental start 2018-05-14 00:00:00 is greater than the end 2016-02-09 00:00:00
+2019-01-21 18:45:30,576 charges_calc.py:124 WARNING Invalid data: RNT853: math domain error
+2019-01-21 18:45:30,576 charges_calc.py:109 ERROR Invalid data: RNT855 rental start 2018-10-06 00:00:00 is greater than the end 2018-06-16 00:00:00
+2019-01-21 18:45:30,577 charges_calc.py:124 WARNING Invalid data: RNT855: math domain error
+2019-01-21 18:45:30,578 charges_calc.py:109 ERROR Invalid data: RNT858 rental start 2018-08-15 00:00:00 is greater than the end 2018-06-07 00:00:00
+2019-01-21 18:45:30,578 charges_calc.py:124 WARNING Invalid data: RNT858: math domain error
+2019-01-21 18:45:30,579 charges_calc.py:109 ERROR Invalid data: RNT861 rental start 2018-01-30 00:00:00 is greater than the end 2016-09-12 00:00:00
+2019-01-21 18:45:30,579 charges_calc.py:124 WARNING Invalid data: RNT861: math domain error
+2019-01-21 18:45:30,579 charges_calc.py:109 ERROR Invalid data: RNT863 rental start 2016-11-05 00:00:00 is greater than the end 2016-03-31 00:00:00
+2019-01-21 18:45:30,580 charges_calc.py:124 WARNING Invalid data: RNT863: math domain error
+2019-01-21 18:45:30,580 charges_calc.py:109 ERROR Invalid data: RNT864 rental start 2018-01-20 00:00:00 is greater than the end 2018-01-12 00:00:00
+2019-01-21 18:45:30,581 charges_calc.py:124 WARNING Invalid data: RNT864: math domain error
+2019-01-21 18:45:30,581 charges_calc.py:109 ERROR Invalid data: RNT866 rental start 2018-01-01 00:00:00 is greater than the end 2017-05-07 00:00:00
+2019-01-21 18:45:30,582 charges_calc.py:124 WARNING Invalid data: RNT866: math domain error
+2019-01-21 18:45:30,583 charges_calc.py:109 ERROR Invalid data: RNT867 rental start 2017-06-14 00:00:00 is greater than the end 2017-01-19 00:00:00
+2019-01-21 18:45:30,584 charges_calc.py:124 WARNING Invalid data: RNT867: math domain error
+2019-01-21 18:45:30,592 charges_calc.py:109 ERROR Invalid data: RNT869 rental start 2017-09-27 00:00:00 is greater than the end 2016-12-02 00:00:00
+2019-01-21 18:45:30,593 charges_calc.py:124 WARNING Invalid data: RNT869: math domain error
+2019-01-21 18:45:30,593 charges_calc.py:109 ERROR Invalid data: RNT871 rental start 2017-04-30 00:00:00 is greater than the end 2017-02-20 00:00:00
+2019-01-21 18:45:30,594 charges_calc.py:124 WARNING Invalid data: RNT871: math domain error
+2019-01-21 18:45:30,594 charges_calc.py:109 ERROR Invalid data: RNT873 rental start 2018-02-08 00:00:00 is greater than the end 2017-11-24 00:00:00
+2019-01-21 18:45:30,595 charges_calc.py:124 WARNING Invalid data: RNT873: math domain error
+2019-01-21 18:45:30,595 charges_calc.py:109 ERROR Invalid data: RNT874 rental start 2018-08-11 00:00:00 is greater than the end 2018-08-08 00:00:00
+2019-01-21 18:45:30,596 charges_calc.py:124 WARNING Invalid data: RNT874: math domain error
+2019-01-21 18:45:30,596 charges_calc.py:109 ERROR Invalid data: RNT876 rental start 2017-04-30 00:00:00 is greater than the end 2016-09-20 00:00:00
+2019-01-21 18:45:30,597 charges_calc.py:124 WARNING Invalid data: RNT876: math domain error
+2019-01-21 18:45:30,597 charges_calc.py:109 ERROR Invalid data: RNT879 rental start 2018-05-05 00:00:00 is greater than the end 2016-06-11 00:00:00
+2019-01-21 18:45:30,598 charges_calc.py:124 WARNING Invalid data: RNT879: math domain error
+2019-01-21 18:45:30,598 charges_calc.py:109 ERROR Invalid data: RNT882 rental start 2018-01-27 00:00:00 is greater than the end 2016-04-13 00:00:00
+2019-01-21 18:45:30,599 charges_calc.py:124 WARNING Invalid data: RNT882: math domain error
+2019-01-21 18:45:30,599 charges_calc.py:109 ERROR Invalid data: RNT883 rental start 2018-06-14 00:00:00 is greater than the end 2017-11-20 00:00:00
+2019-01-21 18:45:30,600 charges_calc.py:124 WARNING Invalid data: RNT883: math domain error
+2019-01-21 18:45:30,600 charges_calc.py:109 ERROR Invalid data: RNT884 rental start 2016-12-03 00:00:00 is greater than the end 2016-05-01 00:00:00
+2019-01-21 18:45:30,601 charges_calc.py:124 WARNING Invalid data: RNT884: math domain error
+2019-01-21 18:45:30,601 charges_calc.py:109 ERROR Invalid data: RNT886 rental start 2017-01-24 00:00:00 is greater than the end 2016-10-23 00:00:00
+2019-01-21 18:45:30,601 charges_calc.py:124 WARNING Invalid data: RNT886: math domain error
+2019-01-21 18:45:30,603 charges_calc.py:109 ERROR Invalid data: RNT890 rental start 2018-06-12 00:00:00 is greater than the end 2016-03-21 00:00:00
+2019-01-21 18:45:30,604 charges_calc.py:124 WARNING Invalid data: RNT890: math domain error
+2019-01-21 18:45:30,605 charges_calc.py:109 ERROR Invalid data: RNT892 rental start 2017-03-29 00:00:00 is greater than the end 2016-11-20 00:00:00
+2019-01-21 18:45:30,605 charges_calc.py:124 WARNING Invalid data: RNT892: math domain error
+2019-01-21 18:45:30,606 charges_calc.py:109 ERROR Invalid data: RNT893 rental start 2017-08-04 00:00:00 is greater than the end 2016-10-27 00:00:00
+2019-01-21 18:45:30,606 charges_calc.py:124 WARNING Invalid data: RNT893: math domain error
+2019-01-21 18:45:30,607 charges_calc.py:109 ERROR Invalid data: RNT894 rental start 2017-03-06 00:00:00 is greater than the end 2016-12-07 00:00:00
+2019-01-21 18:45:30,607 charges_calc.py:124 WARNING Invalid data: RNT894: math domain error
+2019-01-21 18:45:30,608 charges_calc.py:109 ERROR Invalid data: RNT895 rental start 2018-07-06 00:00:00 is greater than the end 2016-01-04 00:00:00
+2019-01-21 18:45:30,608 charges_calc.py:124 WARNING Invalid data: RNT895: math domain error
+2019-01-21 18:45:30,609 charges_calc.py:109 ERROR Invalid data: RNT896 rental start 2017-10-09 00:00:00 is greater than the end 2017-07-07 00:00:00
+2019-01-21 18:45:30,609 charges_calc.py:124 WARNING Invalid data: RNT896: math domain error
+2019-01-21 18:45:30,610 charges_calc.py:109 ERROR Invalid data: RNT898 rental start 2017-08-30 00:00:00 is greater than the end 2016-11-18 00:00:00
+2019-01-21 18:45:30,610 charges_calc.py:124 WARNING Invalid data: RNT898: math domain error
+2019-01-21 18:45:30,611 charges_calc.py:109 ERROR Invalid data: RNT901 rental start 2017-04-08 00:00:00 is greater than the end 2016-11-19 00:00:00
+2019-01-21 18:45:30,611 charges_calc.py:124 WARNING Invalid data: RNT901: math domain error
+2019-01-21 18:45:30,612 charges_calc.py:109 ERROR Invalid data: RNT903 rental start 2018-04-22 00:00:00 is greater than the end 2017-12-26 00:00:00
+2019-01-21 18:45:30,612 charges_calc.py:124 WARNING Invalid data: RNT903: math domain error
+2019-01-21 18:45:30,613 charges_calc.py:109 ERROR Invalid data: RNT905 rental start 2017-09-06 00:00:00 is greater than the end 2017-08-21 00:00:00
+2019-01-21 18:45:30,613 charges_calc.py:124 WARNING Invalid data: RNT905: math domain error
+2019-01-21 18:45:30,614 charges_calc.py:109 ERROR Invalid data: RNT909 rental start 2018-05-23 00:00:00 is greater than the end 2016-05-17 00:00:00
+2019-01-21 18:45:30,614 charges_calc.py:124 WARNING Invalid data: RNT909: math domain error
+2019-01-21 18:45:30,615 charges_calc.py:109 ERROR Invalid data: RNT911 rental start 2016-10-14 00:00:00 is greater than the end 2016-01-17 00:00:00
+2019-01-21 18:45:30,615 charges_calc.py:124 WARNING Invalid data: RNT911: math domain error
+2019-01-21 18:45:30,616 charges_calc.py:109 ERROR Invalid data: RNT912 rental start 2018-11-20 00:00:00 is greater than the end 2016-09-05 00:00:00
+2019-01-21 18:45:30,616 charges_calc.py:124 WARNING Invalid data: RNT912: math domain error
+2019-01-21 18:45:30,617 charges_calc.py:109 ERROR Invalid data: RNT914 rental start 2018-07-04 00:00:00 is greater than the end 2016-07-03 00:00:00
+2019-01-21 18:45:30,617 charges_calc.py:124 WARNING Invalid data: RNT914: math domain error
+2019-01-21 18:45:30,618 charges_calc.py:109 ERROR Invalid data: RNT915 rental start 2018-08-09 00:00:00 is greater than the end 2017-12-19 00:00:00
+2019-01-21 18:45:30,619 charges_calc.py:124 WARNING Invalid data: RNT915: math domain error
+2019-01-21 18:45:30,620 charges_calc.py:109 ERROR Invalid data: RNT917 rental start 2017-02-17 00:00:00 is greater than the end 2016-05-30 00:00:00
+2019-01-21 18:45:30,621 charges_calc.py:124 WARNING Invalid data: RNT917: math domain error
+2019-01-21 18:45:30,621 charges_calc.py:109 ERROR Invalid data: RNT918 rental start 2018-08-10 00:00:00 is greater than the end 2018-07-20 00:00:00
+2019-01-21 18:45:30,622 charges_calc.py:124 WARNING Invalid data: RNT918: math domain error
+2019-01-21 18:45:30,623 charges_calc.py:109 ERROR Invalid data: RNT919 rental start 2018-04-17 00:00:00 is greater than the end 2017-02-25 00:00:00
+2019-01-21 18:45:30,623 charges_calc.py:124 WARNING Invalid data: RNT919: math domain error
+2019-01-21 18:45:30,624 charges_calc.py:109 ERROR Invalid data: RNT922 rental start 2018-01-20 00:00:00 is greater than the end 2017-06-13 00:00:00
+2019-01-21 18:45:30,624 charges_calc.py:124 WARNING Invalid data: RNT922: math domain error
+2019-01-21 18:45:30,625 charges_calc.py:109 ERROR Invalid data: RNT924 rental start 2018-05-12 00:00:00 is greater than the end 2016-04-03 00:00:00
+2019-01-21 18:45:30,625 charges_calc.py:124 WARNING Invalid data: RNT924: math domain error
+2019-01-21 18:45:30,633 charges_calc.py:109 ERROR Invalid data: RNT926 rental start 2017-09-08 00:00:00 is greater than the end 2017-04-12 00:00:00
+2019-01-21 18:45:30,633 charges_calc.py:124 WARNING Invalid data: RNT926: math domain error
+2019-01-21 18:45:30,634 charges_calc.py:109 ERROR Invalid data: RNT927 rental start 2017-08-17 00:00:00 is greater than the end 2017-07-18 00:00:00
+2019-01-21 18:45:30,642 charges_calc.py:124 WARNING Invalid data: RNT927: math domain error
+2019-01-21 18:45:30,642 charges_calc.py:109 ERROR Invalid data: RNT928 rental start 2017-10-10 00:00:00 is greater than the end 2016-04-01 00:00:00
+2019-01-21 18:45:30,642 charges_calc.py:124 WARNING Invalid data: RNT928: math domain error
+2019-01-21 18:45:30,643 charges_calc.py:109 ERROR Invalid data: RNT930 rental start 2017-01-11 00:00:00 is greater than the end 2016-08-04 00:00:00
+2019-01-21 18:45:30,643 charges_calc.py:124 WARNING Invalid data: RNT930: math domain error
+2019-01-21 18:45:30,644 charges_calc.py:109 ERROR Invalid data: RNT931 rental start 2018-03-17 00:00:00 is greater than the end 2016-11-24 00:00:00
+2019-01-21 18:45:30,645 charges_calc.py:124 WARNING Invalid data: RNT931: math domain error
+2019-01-21 18:45:30,645 charges_calc.py:109 ERROR Invalid data: RNT932 rental start 2018-05-15 00:00:00 is greater than the end 2016-04-30 00:00:00
+2019-01-21 18:45:30,646 charges_calc.py:124 WARNING Invalid data: RNT932: math domain error
+2019-01-21 18:45:30,647 charges_calc.py:109 ERROR Invalid data: RNT935 rental start 2018-03-02 00:00:00 is greater than the end 2018-02-21 00:00:00
+2019-01-21 18:45:30,647 charges_calc.py:124 WARNING Invalid data: RNT935: math domain error
+2019-01-21 18:45:30,648 charges_calc.py:109 ERROR Invalid data: RNT937 rental start 2017-03-27 00:00:00 is greater than the end 2017-03-14 00:00:00
+2019-01-21 18:45:30,648 charges_calc.py:124 WARNING Invalid data: RNT937: math domain error
+2019-01-21 18:45:30,648 charges_calc.py:109 ERROR Invalid data: RNT938 rental start 2017-06-30 00:00:00 is greater than the end 2016-08-07 00:00:00
+2019-01-21 18:45:30,649 charges_calc.py:124 WARNING Invalid data: RNT938: math domain error
+2019-01-21 18:45:30,649 charges_calc.py:109 ERROR Invalid data: RNT939 rental start 2017-12-10 00:00:00 is greater than the end 2016-03-23 00:00:00
+2019-01-21 18:45:30,650 charges_calc.py:124 WARNING Invalid data: RNT939: math domain error
+2019-01-21 18:45:30,650 charges_calc.py:109 ERROR Invalid data: RNT940 rental start 2016-10-23 00:00:00 is greater than the end 2016-10-15 00:00:00
+2019-01-21 18:45:30,651 charges_calc.py:124 WARNING Invalid data: RNT940: math domain error
+2019-01-21 18:45:30,651 charges_calc.py:109 ERROR Invalid data: RNT942 rental start 2017-04-07 00:00:00 is greater than the end 2017-02-21 00:00:00
+2019-01-21 18:45:30,652 charges_calc.py:124 WARNING Invalid data: RNT942: math domain error
+2019-01-21 18:45:30,653 charges_calc.py:109 ERROR Invalid data: RNT943 rental start 2017-07-19 00:00:00 is greater than the end 2016-02-10 00:00:00
+2019-01-21 18:45:30,653 charges_calc.py:124 WARNING Invalid data: RNT943: math domain error
+2019-01-21 18:45:30,653 charges_calc.py:109 ERROR Invalid data: RNT944 rental start 2018-07-19 00:00:00 is greater than the end 2017-07-22 00:00:00
+2019-01-21 18:45:30,654 charges_calc.py:124 WARNING Invalid data: RNT944: math domain error
+2019-01-21 18:45:30,655 charges_calc.py:109 ERROR Invalid data: RNT946 rental start 2017-11-12 00:00:00 is greater than the end 2017-08-19 00:00:00
+2019-01-21 18:45:30,655 charges_calc.py:124 WARNING Invalid data: RNT946: math domain error
+2019-01-21 18:45:30,656 charges_calc.py:109 ERROR Invalid data: RNT947 rental start 2016-11-26 00:00:00 is greater than the end 2016-09-11 00:00:00
+2019-01-21 18:45:30,656 charges_calc.py:124 WARNING Invalid data: RNT947: math domain error
+2019-01-21 18:45:30,656 charges_calc.py:109 ERROR Invalid data: RNT948 rental start 2018-11-30 00:00:00 is greater than the end 2017-05-09 00:00:00
+2019-01-21 18:45:30,657 charges_calc.py:124 WARNING Invalid data: RNT948: math domain error
+2019-01-21 18:45:30,657 charges_calc.py:109 ERROR Invalid data: RNT949 rental start 2016-08-30 00:00:00 is greater than the end 2016-01-19 00:00:00
+2019-01-21 18:45:30,658 charges_calc.py:124 WARNING Invalid data: RNT949: math domain error
+2019-01-21 18:45:30,658 charges_calc.py:109 ERROR Invalid data: RNT951 rental start 2018-08-27 00:00:00 is greater than the end 2016-12-16 00:00:00
+2019-01-21 18:45:30,659 charges_calc.py:124 WARNING Invalid data: RNT951: math domain error
+2019-01-21 18:45:30,659 charges_calc.py:109 ERROR Invalid data: RNT955 rental start 2017-10-15 00:00:00 is greater than the end 2017-07-09 00:00:00
+2019-01-21 18:45:30,660 charges_calc.py:124 WARNING Invalid data: RNT955: math domain error
+2019-01-21 18:45:30,660 charges_calc.py:109 ERROR Invalid data: RNT956 rental start 2016-05-17 00:00:00 is greater than the end 2016-02-29 00:00:00
+2019-01-21 18:45:30,661 charges_calc.py:124 WARNING Invalid data: RNT956: math domain error
+2019-01-21 18:45:30,661 charges_calc.py:109 ERROR Invalid data: RNT957 rental start 2018-06-14 00:00:00 is greater than the end 2017-11-01 00:00:00
+2019-01-21 18:45:30,662 charges_calc.py:124 WARNING Invalid data: RNT957: math domain error
+2019-01-21 18:45:30,663 charges_calc.py:109 ERROR Invalid data: RNT958 rental start 2017-06-21 00:00:00 is greater than the end 2016-11-13 00:00:00
+2019-01-21 18:45:30,663 charges_calc.py:124 WARNING Invalid data: RNT958: math domain error
+2019-01-21 18:45:30,664 charges_calc.py:109 ERROR Invalid data: RNT959 rental start 2017-02-08 00:00:00 is greater than the end 2016-07-21 00:00:00
+2019-01-21 18:45:30,664 charges_calc.py:124 WARNING Invalid data: RNT959: math domain error
+2019-01-21 18:45:30,665 charges_calc.py:109 ERROR Invalid data: RNT960 rental start 2018-03-01 00:00:00 is greater than the end 2016-10-22 00:00:00
+2019-01-21 18:45:30,665 charges_calc.py:124 WARNING Invalid data: RNT960: math domain error
+2019-01-21 18:45:30,666 charges_calc.py:109 ERROR Invalid data: RNT961 rental start 2018-05-14 00:00:00 is greater than the end 2018-03-19 00:00:00
+2019-01-21 18:45:30,666 charges_calc.py:124 WARNING Invalid data: RNT961: math domain error
+2019-01-21 18:45:30,667 charges_calc.py:109 ERROR Invalid data: RNT962 rental start 2017-08-20 00:00:00 is greater than the end 2017-06-25 00:00:00
+2019-01-21 18:45:30,667 charges_calc.py:124 WARNING Invalid data: RNT962: math domain error
+2019-01-21 18:45:30,668 charges_calc.py:109 ERROR Invalid data: RNT963 rental start 2017-01-16 00:00:00 is greater than the end 2016-12-13 00:00:00
+2019-01-21 18:45:30,668 charges_calc.py:124 WARNING Invalid data: RNT963: math domain error
+2019-01-21 18:45:30,670 charges_calc.py:109 ERROR Invalid data: RNT965 rental start 2017-12-15 00:00:00 is greater than the end 2017-10-13 00:00:00
+2019-01-21 18:45:30,671 charges_calc.py:124 WARNING Invalid data: RNT965: math domain error
+2019-01-21 18:45:30,671 charges_calc.py:109 ERROR Invalid data: RNT967 rental start 2018-10-18 00:00:00 is greater than the end 2017-04-06 00:00:00
+2019-01-21 18:45:30,672 charges_calc.py:124 WARNING Invalid data: RNT967: math domain error
+2019-01-21 18:45:30,672 charges_calc.py:109 ERROR Invalid data: RNT969 rental start 2018-06-28 00:00:00 is greater than the end 2016-05-27 00:00:00
+2019-01-21 18:45:30,673 charges_calc.py:124 WARNING Invalid data: RNT969: math domain error
+2019-01-21 18:45:30,673 charges_calc.py:109 ERROR Invalid data: RNT970 rental start 2018-02-26 00:00:00 is greater than the end 2016-04-19 00:00:00
+2019-01-21 18:45:30,673 charges_calc.py:124 WARNING Invalid data: RNT970: math domain error
+2019-01-21 18:45:30,673 charges_calc.py:109 ERROR Invalid data: RNT971 rental start 2017-11-20 00:00:00 is greater than the end 2017-01-13 00:00:00
+2019-01-21 18:45:30,673 charges_calc.py:124 WARNING Invalid data: RNT971: math domain error
+2019-01-21 18:45:30,674 charges_calc.py:109 ERROR Invalid data: RNT974 rental start 2018-10-23 00:00:00 is greater than the end 2018-02-28 00:00:00
+2019-01-21 18:45:30,674 charges_calc.py:124 WARNING Invalid data: RNT974: math domain error
+2019-01-21 18:45:30,675 charges_calc.py:109 ERROR Invalid data: RNT977 rental start 2017-04-05 00:00:00 is greater than the end 2016-10-10 00:00:00
+2019-01-21 18:45:30,675 charges_calc.py:124 WARNING Invalid data: RNT977: math domain error
+2019-01-21 18:45:30,676 charges_calc.py:109 ERROR Invalid data: RNT979 rental start 2017-09-23 00:00:00 is greater than the end 2016-04-16 00:00:00
+2019-01-21 18:45:30,676 charges_calc.py:124 WARNING Invalid data: RNT979: math domain error
+2019-01-21 18:45:30,677 charges_calc.py:109 ERROR Invalid data: RNT982 rental start 2016-11-03 00:00:00 is greater than the end 2016-03-16 00:00:00
+2019-01-21 18:45:30,677 charges_calc.py:124 WARNING Invalid data: RNT982: math domain error
+2019-01-21 18:45:30,678 charges_calc.py:109 ERROR Invalid data: RNT983 rental start 2016-11-11 00:00:00 is greater than the end 2016-01-16 00:00:00
+2019-01-21 18:45:30,678 charges_calc.py:124 WARNING Invalid data: RNT983: math domain error
+2019-01-21 18:45:30,680 charges_calc.py:109 ERROR Invalid data: RNT985 rental start 2016-11-08 00:00:00 is greater than the end 2016-06-30 00:00:00
+2019-01-21 18:45:30,680 charges_calc.py:124 WARNING Invalid data: RNT985: math domain error
+2019-01-21 18:45:30,681 charges_calc.py:109 ERROR Invalid data: RNT986 rental start 2018-11-20 00:00:00 is greater than the end 2016-03-11 00:00:00
+2019-01-21 18:45:30,682 charges_calc.py:124 WARNING Invalid data: RNT986: math domain error
+2019-01-21 18:45:30,683 charges_calc.py:109 ERROR Invalid data: RNT987 rental start 2017-09-10 00:00:00 is greater than the end 2016-02-28 00:00:00
+2019-01-21 18:45:30,691 charges_calc.py:124 WARNING Invalid data: RNT987: math domain error
+2019-01-21 18:45:30,695 charges_calc.py:109 ERROR Invalid data: RNT989 rental start 2018-10-25 00:00:00 is greater than the end 2016-04-07 00:00:00
+2019-01-21 18:45:30,696 charges_calc.py:124 WARNING Invalid data: RNT989: math domain error
+2019-01-21 18:45:30,699 charges_calc.py:109 ERROR Invalid data: RNT994 rental start 2017-06-04 00:00:00 is greater than the end 2017-01-02 00:00:00
+2019-01-21 18:45:30,700 charges_calc.py:124 WARNING Invalid data: RNT994: math domain error
+2019-01-21 18:45:30,705 charges_calc.py:109 ERROR Invalid data: RNT998 rental start 2018-09-02 00:00:00 is greater than the end 2016-04-14 00:00:00
+2019-01-21 18:45:30,707 charges_calc.py:124 WARNING Invalid data: RNT998: math domain error
+2019-01-21 18:45:30,710 charges_calc.py:109 ERROR Invalid data: RNT999 rental start 2018-10-12 00:00:00 is greater than the end 2016-10-02 00:00:00
+2019-01-21 18:45:30,711 charges_calc.py:124 WARNING Invalid data: RNT999: math domain error
