@@ -34,7 +34,7 @@ def set_log_level(log_level):
     """
 
     if log_level == 0:
-        return None
+        return
 
     file_handler = logging.FileHandler('charges_calc.log')
 
@@ -48,8 +48,6 @@ def set_log_level(log_level):
         LOGGER.setLevel(logging.WARNING)
     elif log_level == 3:
         LOGGER.setLevel(logging.DEBUG)
-
-    return LOGGER
 
 
 def load_rentals_file(filename):
