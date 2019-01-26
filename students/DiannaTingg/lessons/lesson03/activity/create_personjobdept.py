@@ -1,8 +1,8 @@
 """
-    Create database example with Peewee ORM, sqlite and Python
+Create database example with Peewee ORM, sqlite and Python.
 """
 
-from personjobdept_model import *
+import personjobdept_model as pjd
 
 import logging
 
@@ -11,10 +11,11 @@ logger = logging.getLogger(__name__)
 
 logger.info('One off program to build the classes from the model in the database')
 
-database.create_tables([
-        Job,
-        Person,
-        PersonNumKey
+pjd.database.create_tables([
+        pjd.Department,
+        pjd.Job,
+        pjd.Person,
+        pjd.PersonNumKey
     ])
 
-database.close()
+pjd.database.close()
