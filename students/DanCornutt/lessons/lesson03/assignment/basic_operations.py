@@ -57,4 +57,4 @@ def update_customer_credit(customer_id, credit_limit):
 def list_active_customers():
     """This function will return an integer with the number of customers whose \
     status is currently active."""
-    return len(Customer.select().where(Customer.status is True).execute())
+    return Customer.select().where(Customer.status).count()
