@@ -3,17 +3,16 @@
 
 """
 
-import customers_model as cm
 import logging
+import customers_model as cm
 
 logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
+LOGGER = logging.getLogger(__name__)
 
-logger.info('One off program to build the classes from the model in the database')
+LOGGER.info('One off program to build the classes from the model in the database')
 
 cm.database.create_tables([
-        cm.Customer
-    ])
-
+    cm.Customer
+])
 
 cm.database.close()
