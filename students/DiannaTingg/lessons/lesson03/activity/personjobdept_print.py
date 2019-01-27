@@ -12,12 +12,14 @@ logger = logging.getLogger(__name__)
 logger.info('Selecting all people and jobs.')
 
 query = (pjd.Person
-         .select(pjd.Person, pjd.Job)
+         .select(pjd.Person, pjd.Job, pjd.Department)
          .join(pjd.Job, JOIN.LEFT_OUTER)
+         .join(pjd.Department, JOIN.LEFT_OUTER)
          )
 
 for person in query:
     try:
-        logger.info(f"{person.person_name} worked as a {person.job.job_name}.")
+        logger.info(f"{person.person_name} worked as a {person.job.job_name} in department "
+                    f"{person.job.department.dept_name}.")
     except AttributeError:
         logger.info(f"{person.person_name} didn\'t have a job.")

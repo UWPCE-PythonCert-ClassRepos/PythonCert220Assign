@@ -18,9 +18,10 @@ JOB_EMPLOYED = 3
 depts = [
     ('H123', 'Human Resources', 'Susan Bell', 'Analyst'),
     ('F245', 'Finance', 'Wally Smith', 'Senior Analyst'),
-    ('Q321', 'Quality', 'Chris Wood', 'Admin Supervisor'),
-    ('A432', 'Administration', 'Florence Cook', 'Admin Manager'),
-    ('S512', 'Safety', 'Tom Jones', 'Executive Assistant')
+    ('I309', 'Information Technology', 'Josh Brown', 'Senior Business Analyst'),
+    ('Q421', 'Quality', 'Chris Wood', 'Admin Supervisor'),
+    ('A532', 'Administration', 'Florence Cook', 'Admin Manager'),
+    ('S612', 'Safety', 'Tom Jones', 'Executive Assistant')
     ]
 
 for dept in depts:
@@ -42,6 +43,7 @@ for dept in depts:
 logger.info('Reading and printing all Department rows.')
 
 for dept in pjd.Department:
-    logger.info(f'Number: {dept.dept_num}, Name: {dept.dept_name}, Manager: {dept.dept_manager}, Job: {dept.job_employed}')
+    logger.info(f'Number: {dept.dept_num}, Name: {dept.dept_name}, Manager: {dept.dept_manager}, '
+                f'Job: {dept.job_employed}')
 
 pjd.database.close()
