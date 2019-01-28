@@ -27,49 +27,127 @@ log_file = datetime.datetime.now().strftime(“%Y-%m-%d”)+’.log’
 '''
 
 '''
-Returns total price paid for individual rentals 
+Returns total price paid for individual rentals
 '''
+
+#pylint: disable=W0703
+
 import logging
 import argparse
 import json
 import datetime
 import math
 
-logging.basicConfig(level=logging.WARNING)
-#add logging file path here
+
+
+log_format = "%(asctime)s %(filename)s:%(lineno)-3d %(levelname)s %(message)s"
+formatter = logging.Formatter(log_format)
+logger = logging.getLogger()
+
 
 def parse_cmd_arguments():
+    """
+    Parses commands from the commandline
+    """
+    debug_logging_level_help = 'debug logging level \n\
+                        0: No debug messages or log file.\n\
+                        1: Only error messages.'
+
     parser = argparse.ArgumentParser(description='Process some integers.')
     parser.add_argument('-i', '--input', help='input JSON file', required=True)
-    parser.add_argument('-o', '--output', help='ouput JSON file', required=True)
-    logging.debug(i)
+    parser.add_argument(
+        '-o', '--output', help='ouput JSON file', required=True)
+    parser.add_argument(
+        '-d', '--debug', help=debug_logging_level_help, required=False, default=0)
     return parser.parse_args()
 
 
+def confgure_logging(debug_lever):
+    """"
+    configures the logging
+    """
+    format_logger = '%(asctime)s %(filename)s:%(lineno)-3d%(levelname)s'
+    format_logger += ' %(message)s'
+    log_file = datetime.datetime.now().strptime('%Y-%m-%d') + '.log'
+    debug_leve = int(debug_level)
+    if debug_level == 0:
+        logging.basicConfig(level=logging.CRITICAL)
+    if debug_level > 0:
+        logging.basicConfig(format=format_logger, level=logging.ERROR)
+        f_handler = logging.FileHandler(log_file)
+        f_handler.setLevel(logging.WARNING)
+        logging.getLogger().addHandler(f_handler)
+    if debug_level == 2:
+        logging.getLogger().setLevel(logging.WARNING)
+    if debug_level == 3:
+        logging.getLogger().setLevel(logging.DEBUG)        
+
 def load_rentals_file(filename):
+    """
+    Loads the json file of rental data
+    """
+    logging.debug("load_rentals_file")
+    logging.debug("Opens json file and readz it in")
     with open(filename) as file:
         try:
             data = json.load(file)
         except:
-            exit(0) #add catch statement here to catch the error
+            logging.error(error_msg)
             logging.debug(i)
     return data
 
 def calculate_additional_fields(data):
-    for value in data.values():
-        try:
-            rental_start = datetime.datetime.strptime(value['rental_start'], '%m/%d/%y')
-            rental_end = datetime.datetime.strptime(value['rental_end'], '%m/%d/%y')
-            value['total_days'] = (rental_end - rental_start).days
-            value['total_price'] = value['total_days'] * value['price_per_day']
-            value['sqrt_total_price'] = math.sqrt(value['total_price'])
-            value['unit_cost'] = value['total_price'] / value['units_rented']
-        except:
-            exit(0)
-
-    return data
+    """
+    Calculates additional properties
+    """
+    logging.debug("calculate_additional_fields")
+    if data_new:
+        for value in data_new.values():
+            try:
+                warning_string = f"Incorrect date for {value['product_code']}"
+                if value["rental_start"] == '' or value["rental_end"] == '':
+                    rental_start = 0
+                    rental_end = rental_start
+                    logging.warning(warning_string)
+                    logging.debug(value)
+                else:
+                    rental_start = datetime.datetime.strptime(
+                        value['rental_start'], '%m/%d/%y')
+                    rental_end = datetime.datetime.strptime(
+                        value['rental_end'], '%m/%d/%y')
+                if rental_start >= rental_end:
+                    value['total_days'] = 0
+                    logging.warning(warning_string)
+                    logging.debug(value)
+                else:
+                    value['total_days'] = (rental_end - rental_start).days
+                value['total_price'] = value['total_days'] * value[
+                    'price_per_day']
+                value['sqrt_total_price'] = math.sqrt(value['total_price'])
+                if value["total_price"] == 0:
+                    value["unit_cost"] = 0
+                    warning_price = "Incorrect price for "
+                    warning_price += f"{value['product_code']}"
+                    logging.warning(warning_price)
+                    logging.debug(value)
+                else:
+                    value['unit_cost'] = value['total_price'] / value[
+                        'units_rented']
+            except Exception as error_msg:
+                logging.error(error_msg)
+                logging.debug(value)
+                data_new = None
+                break
+    else:
+        logging.warning("No Data loaded from file")
+    return data_new
 
 def save_to_json(filename, data):
+    """
+    Writes property data to JSON file
+    """
+    logging.debug("save_to_json")
+    logging.debug("Writes out updated json file")
     with open(filename, 'w') as file:
         json.dump(data, file)
 
