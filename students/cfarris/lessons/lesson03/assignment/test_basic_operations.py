@@ -1,11 +1,16 @@
 #!/usr/bin/env Python3
+
+'''
+This pytest suite tests basic functionality of basic_operations.py
+'''
+
 import pytest
 from basic_operations import add_customer, search_customer, delete_customer, update_customer_credit, list_active_customers
 from customer_model import Customer
 
-##note, if you get an integrity error be sure clear your database. 
+# note, if you get an integrity error be sure clear your database.
 
-ok_customer = {'customer_id': 'ABCD@#',
+OK_CUSTOMER = {'customer_id': 'ABCD@#',
                'first_name': 'Edgar',
                'last_name': 'Poe',
                'home_address': '1266 South Corrine Court, Walnut Creek CA 98125',
@@ -14,16 +19,16 @@ ok_customer = {'customer_id': 'ABCD@#',
                'status': True,
                'credit_limit': 40.00}
 
-ok_customer_2 = {'customer_id':' 0U812',
-                'first_name': 'TAMMY',
-                'last_name': 'Faye',
-                'home_address': '1266 South Corrine Court, Walnut Creek CA 98125',
-                'phone_number': '123-456-7891',
-                'email_address': 'Tammy_Faye@gmail.com',
-                'status': True,
-                'credit_limit': 4000.00}
+OK_CUSTOMER_2 = {'customer_id': ' 0U812',
+                 'first_name': 'TAMMY',
+                 'last_name': 'Faye',
+                 'home_address': '1266 South Corrine Court, Walnut Creek CA 98125',
+                 'phone_number': '123-456-7891',
+                 'email_address': 'Tammy_Faye@gmail.com',
+                 'status': True,
+                 'credit_limit': 4000.00}
 
-bad_customer = {'customer_id':'8675309',
+BAD_CUSTOMER = {'customer_id': '8675309',
                 'first_name': 'Jenny',
                 'last_name': 'Igotyonumber',
                 'home_address': 'Beverly Hills Plaza, Compton, Ca. 90210',
@@ -32,7 +37,7 @@ bad_customer = {'customer_id':'8675309',
                 'status': True,
                 'credit_limit': 40.00}
 
-ok_customer_3 = {'customer_id':'A97654',
+OK_CUSTOMER_3 = {'customer_id': 'A97654',
                  'first_name': 'Jekyll',
                  'last_name': 'Hyde',
                  'home_address': 'Beverly Hills Plaza, Beverly Hills, Ca. 90210',
@@ -42,28 +47,31 @@ ok_customer_3 = {'customer_id':'A97654',
                  'credit_limit': 40.00}
 
 
-
 def test_add_ok_customer():
-    #add_customer(**ok_customer) #works. but you cannot add more than once!
-    test_customer = Customer.get(Customer.customer_id ==ok_customer['customer_id'])
-    assert test_customer.email_address == ok_customer['email_address']
+    '''
+    tests a customer can be added to the database.
+    '''
+    delete_customer(OK_CUSTOMER['customer_id'])  # delete an existing customer
+    add_customer(**OK_CUSTOMER)  # now, add them back to the database.
+    test_customer = Customer.get(Customer.customer_id == OK_CUSTOMER['customer_id'])
+    assert test_customer.email_address == OK_CUSTOMER['email_address']
 
 
 def test_credit_limit_float():
     '''
     tests to see that adding a string to 'credit_limit' throws a ValueError
     '''
-    bad_customer['credit_limit'] = '$40'
+    BAD_CUSTOMER['credit_limit'] = '$40'
 
     with pytest.raises(ValueError):
-        add_customer(**bad_customer)
+        add_customer(**BAD_CUSTOMER)
 
 
 def test_search_customer():
     '''
-    Tests customer is retrievable. Will use test supplied ok_customer
+    Tests customer is retrievable. Will use test supplied OK_CUSTOMER
     '''
-    returned_customer = search_customer(ok_customer['customer_id'])
+    returned_customer = search_customer(OK_CUSTOMER['customer_id'])
     assert returned_customer['first_name'] == 'Edgar'
 
 
@@ -74,40 +82,38 @@ def test_search_customer_not_found():
     returned_customer = search_customer('bad id')
     assert returned_customer == {}
 
+
 def test_delete_customer():
     '''
     Tests delete_customer to verify specified customer was deleted from db
     First add the customer to be deleted, then delete them with joy!
-    Using ok_customer_2 for this test module only.
+    Using OK_CUSTOMER_2 for this test module only.
     '''
-    add_customer(**ok_customer_2)
-    test_customer_2 = Customer.get(Customer.customer_id == ok_customer_2['customer_id'])
-    assert test_customer_2.email_address == ok_customer_2['email_address']
+    add_customer(**OK_CUSTOMER_2)
+    test_customer_2 = Customer.get(Customer.customer_id == OK_CUSTOMER_2['customer_id'])
+    assert test_customer_2.email_address == OK_CUSTOMER_2['email_address']
     delete_results = delete_customer(test_customer_2.customer_id)
     assert delete_results == 'person successfully deleted'
 
 
 def test_update_customer_credit():
     '''
-    Tests update_customer_credit. 
+    Tests update_customer_credit.
     '''
-    update_customer_credit(ok_customer['customer_id'], 75.00)
-    test_customer = Customer.get(Customer.customer_id == ok_customer['customer_id'])
+    update_customer_credit(OK_CUSTOMER['customer_id'], 75.00)
+    test_customer = Customer.get(Customer.customer_id == OK_CUSTOMER['customer_id'])
     assert test_customer.credit_limit == 75.00
 
 
 def test_list_active_customers():
     '''
     Test that list_active customers returns the amount of those active.
-    The way I chose to test this was to get an accurate count of active customers, 
+    First get an accurate count of active customers,
     add a new customerthat is active
     Test to see that the active customers number has increased.
     '''
-    number_of_customers= Customer.select().count()
     num_active = list_active_customers()
-    add_customer(**ok_customer_3) #bad customer should work
+    add_customer(**OK_CUSTOMER_3)  # bad customer should work
     num_active_2 = list_active_customers()
-    delete_customer(ok_customer_3['customer_id'])
+    delete_customer(OK_CUSTOMER_3['customer_id'])
     assert (num_active + 1) == num_active_2
-
-
