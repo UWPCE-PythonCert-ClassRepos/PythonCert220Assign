@@ -24,16 +24,18 @@ customer4 = {"customer_id": "4", "first_name": "Betty", "last_name": "Rubble",
              "email_address": "barney@aol.com", "active_status": False, "credit_limit": 50.00}
 
 
-def create_empty_database():
-    cm.database.create_tables([
+def clear_database():
+    cm.database.drop_tables([
         cm.Customer
     ])
 
     cm.database.close()
 
 
-def clear_database():
-    cm.database.drop_tables([
+def create_empty_database():
+    clear_database()
+
+    cm.database.create_tables([
         cm.Customer
     ])
 
@@ -67,6 +69,8 @@ def test_add_customers_duplicate():
 
 
 def create_sample_database():
+    clear_database()
+
     cm.database.create_tables([
         cm.Customer
     ])

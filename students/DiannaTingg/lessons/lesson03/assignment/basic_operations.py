@@ -2,6 +2,7 @@
 Basic operations for the customer database.
 """
 
+import create_customers as cc
 import logging
 import peewee as pw
 import customer_model as cm
@@ -90,3 +91,7 @@ def list_active_customers():
     logger.info(f"There are {total_active} active customers in the database.")
 
     return total_active
+
+
+if __name__ == "__main__":
+    cc.main()
