@@ -1,0 +1,50 @@
+# debugger_log.txt
+
+# Run charges_calc script with raw json source file first.
+# and check values
+$ python -m pdb charges_calc.py -i source.json -o output.json
+
+    (Pdb) ll
+    (Pdb) b 52
+
+    (Pdb) b calculate_additional_fields, rental_end < rental_start
+
+    (Pdb) b calculate_additional_fields, value['total_days'] < 0
+
+    (Pdb) c 
+    (Pdb) pp value
+        {'price_per_day': 16,
+        'product_code': 'PRD11',
+        'rental_end': '9/30/18',
+        'rental_start': '7/20/16',
+        'units_rented': 1}
+    (Pdb) c
+    -> for value in data.values():
+    (Pdb) pp value
+        {'price_per_day': 12,
+        'product_code': 'PRD32',
+        'rental_end': '10/25/18',
+        'rental_start': '7/4/18',
+        'sqrt_total_price': 36.823905279043935,
+        'total_days': 113,
+        'total_price': 1356,
+        'unit_cost': 452.0,
+        'units_rented': 3}
+    (Pdb) n
+
+$ python clean_up.py
+$ python -m pdb charges_calc.py -i correct_source.json -o output.json
+    (Pdb) b calculate_additional_fields, rental_end = ''
+    -> for value in data.values():
+    (Pdb) pp value
+        {'price_per_day': 31,
+        'product_code': 'PRD80',
+        'rental_end': '6/12/17',
+        'rental_start': '3/22/17',
+        'sqrt_total_price': 50.41825066382212,
+        'total_days': 82,
+        'total_price': 2542,
+        'unit_cost': 317.75,
+        'units_rented': 8}
+    (Pdb
+
