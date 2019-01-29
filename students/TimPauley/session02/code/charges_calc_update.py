@@ -146,10 +146,9 @@ def save_to_json(filename, data):
     """
     Writes property data to JSON file
     """
-    logging.debug("save_to_json")
-    logging.debug("Writes out updated json file")
+    logging.debug("Saving file %s", filename)
     with open(filename, 'w') as file:
-        json.dump(data, file)
+        json.dump(data, file)    
 
 if __name__ == "__main__":
     args = parse_cmd_arguments()
