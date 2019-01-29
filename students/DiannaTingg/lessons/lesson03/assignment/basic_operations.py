@@ -2,17 +2,18 @@
 Basic operations for the customer database.
 """
 
-import create_customers as cc
 import logging
 import peewee as pw
+import create_customers as cc
 import customer_model as cm
 
 logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
+LOGGER = logging.getLogger(__name__)
 
 logging.info("Defining basic operations for the customer database.")
 
 
+# pylint: disable-msg=too-many-arguments
 def add_customer(customer_id, first_name, last_name, home_address, phone_number, email_address,
                  active_status, credit_limit):
     """
@@ -29,15 +30,15 @@ def add_customer(customer_id, first_name, last_name, home_address, phone_number,
             active_status=active_status,
             credit_limit=credit_limit)
         new_customer.save()
-        logger.info(f'Successfully added {first_name} {last_name} to the database.')
+        logging.info('Successfully added %s %s to the database.', first_name, last_name)
     except pw.IntegrityError as add_error:
-        logger.error(f"{add_error}. Error adding {first_name} {last_name} to the database.")
+        logging.error("%s. Error adding %s %s to the database.", add_error, first_name, last_name)
         raise pw.IntegrityError
 
 
 def search_customer(customer_id):
     """
-    Returns a dictionary object with customer's first name, last name, email address, and phone number.
+    Returns a dictionary with customer's first name, last name, email address, and phone number.
     If no customer is found, returns an empty dictionary.
     """
     try:
@@ -47,7 +48,9 @@ def search_customer(customer_id):
                          "last_name": current_customer.last_name,
                          "email_address": current_customer.email_address,
                          "phone_number": current_customer.phone_number}
-        logging.info(f"Found customer {customer_id}: {current_customer.first_name} {current_customer.last_name}")
+        logging.info("Found customer %s: %s %s.", customer_id,
+                     current_customer.first_name, current_customer.last_name)
+
         return customer_dict
     except pw.DoesNotExist:
         logging.error("Search Error: That customer id is not in the database.")
@@ -60,7 +63,8 @@ def delete_customer(customer_id):
     """
     try:
         former_customer = cm.Customer.get(cm.Customer.customer_id == customer_id)
-        logging.info(f"Deleting customer {customer_id}: {former_customer.first_name} {former_customer.last_name}.")
+        logging.info("Deleting customer %s: %s %s.", customer_id,
+                     former_customer.first_name, former_customer.last_name)
         former_customer.delete_instance()
     except pw.DoesNotExist:
         logging.error("Delete Error: That customer id is not in the database.")
@@ -74,8 +78,8 @@ def update_customer_credit(customer_id, new_credit_limit):
         update_customer = cm.Customer.get(cm.Customer.customer_id == customer_id)
         update_customer.credit_limit = new_credit_limit
         update_customer.save()
-        logging.info(f"Customer {update_customer.first_name} {update_customer.last_name} "
-                     f"now has a credit limit of {new_credit_limit}.")
+        logging.info("Customer %s %s now has a credit limit of %s.",
+                     update_customer.first_name, update_customer.last_name, new_credit_limit)
 
     except pw.DoesNotExist:
         logging.error("Update Credit Error: That customer id is not in the database.")
@@ -86,9 +90,9 @@ def list_active_customers():
     """
     Returns an integer with the number of customers whose status is currently active.
     """
-    total_active = (cm.Customer.select().where(cm.Customer.active_status == True).count())
+    total_active = (cm.Customer.select().where(cm.Customer.active_status).count())
 
-    logger.info(f"There are {total_active} active customers in the database.")
+    logging.info("There are %s active customers in the database.", total_active)
 
     return total_active
 

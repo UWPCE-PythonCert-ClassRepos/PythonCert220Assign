@@ -2,10 +2,10 @@
 Tests for basic_operations
 """
 
-import customer_model as cm
-import basic_operations as bo
 import peewee as pw
 import pytest
+import customer_model as cm
+import basic_operations as bo
 
 customer1 = {"customer_id": "1", "first_name": "Fred", "last_name": "Flintstone",
              "home_address": "301 Cobblestone Way, Bedrock, 70777", "phone_number": "928-635-2600",
@@ -162,3 +162,30 @@ def test_list_active_customers_empty():
     assert bo.list_active_customers() == 0
 
     clear_database()
+
+
+def test_integration():
+    create_empty_database()
+
+    # Add some customers
+    bo.add_customer(**customer1)
+    bo.add_customer(**customer2)
+    bo.add_customer(**customer3)
+    bo.add_customer(**customer4)
+
+    # Delete one customer
+    bo.delete_customer(customer3["customer_id"])
+
+    # Update customer credit
+    upgrade_customer = cm.Customer.get(cm.Customer.customer_id == 2)
+    bo.update_customer_credit("2", 300.00)
+
+    updated_customer = cm.Customer.get(cm.Customer.customer_id == 2)
+    assert updated_customer.credit_limit == 300.00
+
+    # Search for a customer
+    target_customer = bo.search_customer(customer4["customer_id"])
+    assert target_customer["email_address"] == customer4["email_address"]
+
+    # List active customers
+    assert bo.list_active_customers() == 1

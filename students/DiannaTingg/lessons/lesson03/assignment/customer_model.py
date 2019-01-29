@@ -32,4 +32,4 @@ class Customer(BaseModel):
     phone_number = pw.CharField(max_length=20)
     email_address = pw.CharField(max_length=100)
     active_status = pw.BooleanField()
-    credit_limit = pw.DecimalField(max_digits=7, decimal_places=2)
+    credit_limit = pw.DecimalField(max_digits=10, decimal_places=2)
