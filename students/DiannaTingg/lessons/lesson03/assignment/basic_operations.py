@@ -3,6 +3,7 @@ Basic operations for the customer database.
 """
 
 import logging
+import peewee as pw
 import customer_model as cm
 
 logging.basicConfig(level=logging.INFO)
@@ -28,8 +29,9 @@ def add_customer(customer_id, first_name, last_name, home_address, phone_number,
             credit_limit=credit_limit)
         new_customer.save()
         logger.info(f'Successfully added {first_name} {last_name} to the database.')
-    except Exception as add_error:
-        logger.error(f"{add_error}: Error adding {first_name} {last_name} to the database.")
+    except pw.IntegrityError as add_error:
+        logger.error(f"{add_error}. Error adding {first_name} {last_name} to the database.")
+        raise pw.IntegrityError
 
 
 def search_customer(customer_id):
@@ -46,7 +48,7 @@ def search_customer(customer_id):
                          "phone_number": current_customer.phone_number}
         logging.info(f"Found customer {customer_id}: {current_customer.first_name} {current_customer.last_name}")
         return customer_dict
-    except Exception:
+    except pw.DoesNotExist:
         logging.error("Search Error: That customer id is not in the database.")
         return dict()
 
@@ -59,7 +61,7 @@ def delete_customer(customer_id):
         former_customer = cm.Customer.get(cm.Customer.customer_id == customer_id)
         logging.info(f"Deleting customer {customer_id}: {former_customer.first_name} {former_customer.last_name}.")
         former_customer.delete_instance()
-    except Exception:
+    except pw.DoesNotExist:
         logging.error("Delete Error: That customer id is not in the database.")
 
 
@@ -70,11 +72,13 @@ def update_customer_credit(customer_id, new_credit_limit):
     try:
         update_customer = cm.Customer.get(cm.Customer.customer_id == customer_id)
         update_customer.credit_limit = new_credit_limit
+        update_customer.save()
         logging.info(f"Customer {update_customer.first_name} {update_customer.last_name} "
                      f"now has a credit limit of {new_credit_limit}.")
 
-    except Exception:
+    except pw.DoesNotExist:
         logging.error("Update Credit Error: That customer id is not in the database.")
+        raise pw.DoesNotExist
 
 
 def list_active_customers():
