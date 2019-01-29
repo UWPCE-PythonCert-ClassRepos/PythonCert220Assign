@@ -3,8 +3,8 @@
 ####Assignment 3###
 ##basic operations for peewee
 
-#Current progress: on delete customer. Need to finish creating function
-#then create tests for it.
+#Current progress: 
+#
 
 import logging
 from customer_model import Customer
@@ -78,7 +78,33 @@ def update_customer_credit(customer_id, credit_limit):
     A ValueError will be raised if customer does not exist in database.
     '''
     try:
-       retr_customer = Customer.get(Customer.customer_id == customer_id)
+        #below isn't correct! Just a placeholder...
+        retr_customer = Customer.get(Customer.customer_id == customer_id)
+        retr_customer.credit_limit = credit_limit
+        retr_customer.save()
+        if credit_limit < 0:
+            logging.warning('credit_limit parameter is less than 0: ', credit_limit)
+    except ValueError as err:
+        logging.error('error replacing customers credit limit: ,', err)
+        error_statement = 'An error occured while replacing customers credit.\
+                         Credit unchanged.'
+        print(error_statement)
+        return error_statement
+    check_customer = Customer.get(Customer.customer_id == customer_id)    
+    print(check_customer.customer_id, ' has had their credit limit changed to:', check_customer.credit_limit)
+    return 'operation successfully completed'
+
+
+def list_active_customers():
+    '''
+    lists active customers
+    '''
+    count = 0
+    for customer in Customer.select().where(Customer.status == True):
+        count = count + 1
+    print('There are ', count, ' active customers')
+    return count
+
 
 
 if __name__ == '__main__':
@@ -86,6 +112,8 @@ if __name__ == '__main__':
     #added customer below already
     #add_customer('2212','Jerry','Blank','19202 130th Ave, Sun City, Az. 98125', '123-456-6543', 'jb@aol.com', False, 500.00)    
     print("already added customers. name == main is just a placeholder")
-    search_customer('2212')
-    search_customer('1')
+    print(search_customer('2212'))  #function returns a dictionary
+    #search_customer('1') #confirming it will throw an error because it isn't in database.
     #delete_customer('2212') #works correctly
+    update_customer_credit('2212', 20.00)
+    list_active_customers()
