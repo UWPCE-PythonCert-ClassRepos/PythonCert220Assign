@@ -7,6 +7,10 @@ import inventory
 import furniture
 import electric_appliances
 
+
+FULL_INVENTORY = {}
+
+
 def main_menu(user_prompt=None):
     """
     Give user a menu to choose from
@@ -80,14 +84,15 @@ def get_item_info():
     else:
         print("Item not found in inventory")
 
+
 def exit_program():
     """
     Quit program
     """
     sys.exit()
 
+
 if __name__ == '__main__':
-    FULL_INVENTORY = {}
     while True:
         print(FULL_INVENTORY)
         main_menu()()
