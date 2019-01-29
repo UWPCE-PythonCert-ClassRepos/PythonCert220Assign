@@ -57,7 +57,7 @@ class Customer(BaseModel):
     logger.info('Specify the fields in our model, their lengths and if mandatory')
     logger.info('Must be a unique identifier for each person')
     customer_id = CharField(max_length = 50, primary_key = True)
-    first_name = CharField(max_length = 30)
+    name = CharField(max_length = 30)
     last_name = CharField(max_length = 30)
     home_address = CharField(max_length = 100)
     phone_number = CharField(max_length = 20)
