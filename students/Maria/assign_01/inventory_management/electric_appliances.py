@@ -11,7 +11,7 @@ class ElectricAppliances(Inventory):
     def __init__(self, product_code, description, market_price, rental_price, brand,
                  voltage):
         # Creates common instance variables from the parent class
-        super().__init__(self, product_code, description, market_price, rental_price)
+        super().__init__(product_code, description, market_price, rental_price)
         self.brand = brand
         self.voltage = voltage
 

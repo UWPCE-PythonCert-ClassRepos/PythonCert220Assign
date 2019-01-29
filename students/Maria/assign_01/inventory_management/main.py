@@ -90,5 +90,5 @@ if __name__ == '__main__':
     FULL_INVENTORY = {}
     while True:
         print(FULL_INVENTORY)
-        main_menu()
+        main_menu()()
         input("Press Enter to continue...........")
