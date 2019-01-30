@@ -177,7 +177,6 @@ def test_integration():
     bo.delete_customer(customer3["customer_id"])
 
     # Update customer credit
-    upgrade_customer = cm.Customer.get(cm.Customer.customer_id == 2)
     bo.update_customer_credit("2", 300.00)
 
     updated_customer = cm.Customer.get(cm.Customer.customer_id == 2)
