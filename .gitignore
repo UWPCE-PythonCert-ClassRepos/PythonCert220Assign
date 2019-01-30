@@ -119,3 +119,5 @@ _gsdata_/
 .pytest_cache/
 *.csv
 
+# emacs
+*.*~
