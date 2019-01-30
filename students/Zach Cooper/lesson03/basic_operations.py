@@ -40,23 +40,25 @@ def search_customer(customer_id):
         :return: Customer info if Ture, empty dict if None
         :param customer_id: customer_id to search for
     """
-
+    find_customer_dict= {}
     LOGGER.info("Search for customer name in database...")
     try:
         find_customer = Customer.get(Customer.customer_id == customer_id)
+        if find_customer:
 
-        customer_dict = {"first_name": find_customer.first_name,
-                         "last_name": find_customer.last_name,
-                         "email_address": find_customer.email_address,
-                         "phone_number": find_customer.phone_number}
+            find_customer_dict = {"first_name": find_customer.first_name,
+                                  "last_name": find_customer.last_name,
+                                  "email_address": find_customer.email_address,
+                                  "phone_number": find_customer.phone_number}
 
         LOGGER.info('%s %s is in the database. There phone # is %s',
                     find_customer.first_name, find_customer.last_name,
                     find_customer.phone_number)
-        return customer_dict
+
     except pw.DoesNotExist:
         LOGGER.info('No customer with customer id of %s', Customer.customer_id)
-        return {}
+
+        return find_customer_dict
 
 
 def delete_customer(customer_id):
@@ -71,7 +73,7 @@ def delete_customer(customer_id):
         customer_remove.delete_instance()
 
     except pw.DoesNotExist:
-        return {}
+        return None
     LOGGER.info("Customer successfully deleted in database")
 
 
@@ -85,10 +87,9 @@ def update_customer_credit(customer_id, credit_limit):
     try:
         customer = Customer.get(Customer.customer_id == customer_id)
         customer.credit_limit = credit_limit
+        customer.save()
     except pw.DoesNotExist:
         LOGGER.error("Customer_id of %s does not exist", customer_id)
-
-    customer.save()
 
 
 def list_active_customers():
@@ -98,4 +99,5 @@ def list_active_customers():
 
     customer_count = Customer.select().where(Customer.status == True).count()
     LOGGER.info('%s customers are currently active', customer_count)
+
     return customer_count
