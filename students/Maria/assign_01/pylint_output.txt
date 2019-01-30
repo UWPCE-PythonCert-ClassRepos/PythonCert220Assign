@@ -1,0 +1,35 @@
+python3 -m pylint ./inventory_management
+************* Module main
+inventory_management/main.py:40:6: W0511: TODO: this should clearly not be a constant or a global (fixme)
+inventory_management/main.py:20:8: W0612: Unused variable 'options_str' (unused-variable)
+inventory_management/main.py:29:14: W0613: Unused argument 'item_code' (unused-argument)
+inventory_management/main.py:41:4: W0603: Using the global statement (global-statement)
+************* Module electric_appliances
+inventory_management/electric_appliances.py:11:4: R0913: Too many arguments (7/5) (too-many-arguments)
+inventory_management/electric_appliances.py:7:0: R0903: Too few public methods (1/2) (too-few-public-methods)
+************* Module market_prices
+inventory_management/market_prices.py:5:2: W0511: TODO: see if this should move to another module. (fixme)
+inventory_management/market_prices.py:11:6: W0511: TODO What the hell? (fixme)
+inventory_management/market_prices.py:7:21: W0613: Unused argument 'item_code' (unused-argument)
+************* Module furniture
+inventory_management/furniture.py:10:4: R0913: Too many arguments (7/5) (too-many-arguments)
+inventory_management/furniture.py:6:0: R0903: Too few public methods (1/2) (too-few-public-methods)
+************* Module inventory
+inventory_management/inventory.py:4:2: W0511: TODO: this probably shoudn't be a class, and subclasses probably shouldn't be either (fixme)
+inventory_management/inventory.py:6:0: R0903: Too few public methods (1/2) (too-few-public-methods)
+inventory_management/inventory.py:1:0: R0801: Similar lines in 3 files
+==electric_appliances:17
+==furniture:16
+==inventory:16
+    def return_dictionary(self):
+        """
+        Returns product information as dictionary
+        """
+        product_dict = {}
+        product_dict['product_code'] = self.product_code
+        product_dict['description'] = self.description
+        product_dict['market_price'] = self.market_price
+        product_dict['rental_price'] = self.rental_price (duplicate-code)
+
+------------------------------------------------------------------
+Your code has been rated at 8.56/10 (previous run: 8.36/10, +0.19)
