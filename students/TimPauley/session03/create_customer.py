@@ -9,7 +9,6 @@
 """
 
 import customers_model as cm
-
 import logging
 
 logging.basicConfig(level=logging.INFO)

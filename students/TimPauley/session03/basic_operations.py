@@ -62,6 +62,8 @@ exist when the app is first run. Call it customers.db
 
 """
 import logging
+import pandas
+import peewee
 from customers_model import Customer
 
 '''
@@ -90,6 +92,9 @@ dictionary object with name, lastname, email address and phone number
 of a customer or an empty dictionary object if no customer was found.
 '''
 def search_customer(customer_id):
+	for data_dict in data_source:
+    MyModel.create(**data_dict)
+
 
 '''
 This function will search an existing customer by customer_id and 
@@ -97,13 +102,13 @@ update their credit limit or raise a ValueError exception if the
 customer does not exist.
 '''
 def update_customer_credit(customer_id, credit_limit)
-
+	for data_dict in data_source:
+    MyModel.create(**data_dict)
 '''
 This function will delete a customer from the sqlite3 database.
 '''
 def delete_customer(customer_id):
-
-
+	with 
 '''
 This function will search an existing customer by customer_id & update 
 their credit limit or raise a ValueError exception if the customer 
