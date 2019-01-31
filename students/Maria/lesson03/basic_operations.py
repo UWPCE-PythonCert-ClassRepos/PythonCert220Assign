@@ -1,6 +1,7 @@
 from customer_model import Customer
 import peewee as pw
 import logging
+import config
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -8,6 +9,7 @@ logger = logging.getLogger(__name__)
 
 def add_customer(customer_id, **kw):
     """
+    Add a customer to the database
     :param customer_id:
     :param name:
     :param lastname:
@@ -28,11 +30,10 @@ def add_customer(customer_id, **kw):
                                status=kw['status'],
                                credit_limit=kw['credit_limit'])
         cust.save()
-        logger.info("Customersuccessfully added!")
-
-    except Exception as e:
-        logging.info(e)
+    except Exception as err:
+        logging.error(err)
         raise
+    logger.info("Customer with id {} successfully added!".format(customer_id))
 
 
 def search_customer(customer_id):
@@ -45,19 +46,25 @@ def search_customer(customer_id):
 
     try:
         cust = Customer.get(Customer.customer_id == customer_id)
+    except pw.DoesNotExist as err:
+        logging.error(err)
+    else:
         logging.info("Cust object exists")
         output_dict['first_name'] = cust.first_name
         output_dict['last_name'] = cust.last_name
         output_dict['email_address'] = cust.email_address
         output_dict['phone_number'] = cust.phone_number
-    except Exception as e:
-        logging.info(e)
 
     return output_dict
 
 
 def delete_customer(customer_id):
-    cust = Customer.get(Customer.customer_id == customer_id)
+
+    try:
+        cust = Customer.get(Customer.customer_id == customer_id)
+    except pw.DoesNotExist as err:
+        logging.error(err)
+        raise ValueError(config.etext['not_found'].format(customer_id))
     cust.delete_instance()
 
 
