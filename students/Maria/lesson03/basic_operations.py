@@ -30,6 +30,12 @@ def add_customer(customer_id, **kw):
                                status=kw['status'],
                                credit_limit=kw['credit_limit'])
         cust.save()
+    except KeyError as err:
+        logging.error(err)
+        # I really wanted to do this:
+        # raise KeyError("my custom error that is better")
+        # but the tests hated it. not sure why, they were fine with it below
+        raise
     except Exception as err:
         logging.error(err)
         raise
