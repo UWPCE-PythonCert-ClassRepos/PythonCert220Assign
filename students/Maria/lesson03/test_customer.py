@@ -5,6 +5,12 @@ import config
 import basic_operations as bs
 from customer_model import Customer, create_tables
 
+# other tests I would add:
+# make sure inactive works, so if I add inactive customers, I can get them and only them back.
+# probably should add inactive customers when checking active customers, for that matter. As is,
+# could just be giving back the whole list, no matter what and we would not know.
+# error checking: is status really a boolean is probably important. other stuff may not be so
+# important until we know what they are going to do with the data
 
 class TestCustomer(TestCase):
 
@@ -21,13 +27,16 @@ class TestCustomer(TestCase):
         """
         Add one customer to be available for most operations
         """
+        # really should add more customers to this
         bs.add_customer(**config.customer1)
 
     def tearDown(self):
         """
         Remove all customers so can start again
         """
-        bs._delete_table()
+        bs._delete_table() # this raises a pylint error, but I think I would except it.
+        # using your own private methods in a test is okay, as long as they aren't private
+        # because they may change.
 
     def test_add_customer(self):
         bs.add_customer(**config.customer2)

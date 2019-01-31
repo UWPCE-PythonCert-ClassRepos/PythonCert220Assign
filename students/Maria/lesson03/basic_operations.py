@@ -39,7 +39,7 @@ def add_customer(customer_id, **kw):
     except Exception as err:
         logging.error(err)
         raise
-    logger.info("Customer with id {} successfully added!".format(customer_id))
+    logger.info("Customer with id %s successfully added!", customer_id)
 
 
 def search_customer(customer_id):
@@ -86,5 +86,9 @@ def list_active_customers():
 
 
 def _delete_table():
+    """
+    delete the customer table
+    private function, want people to really think before using it
+    """
     del_cust = Customer.delete()
     del_cust.execute()
