@@ -3,7 +3,7 @@ Test Configuration for Customer Model
 """
 
 TEST_DATABASE = 'test.db'
-DATABASE = test_database
+DATABASE = TEST_DATABASE
 
 
 customer1 = {

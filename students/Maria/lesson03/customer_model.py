@@ -5,7 +5,7 @@ import config
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-database = peewee.SqliteDatabase(config.database)
+database = peewee.SqliteDatabase(config.DATABASE)
 database.connect()
 database.execute_sql('PRAGMA foreign_keys = ON;')  # needed for sqlite only
 
