@@ -84,12 +84,3 @@ def update_customer_credit(customer_id, credit_limit):
 def list_active_customers():
     num_custs = Customer.select().where(Customer.status == 1)
     return num_custs.count()
-
-
-def _delete_table():
-    """
-    delete the customer table
-    private function, want people to really think before using it
-    """
-    del_cust = Customer.delete()
-    del_cust.execute()

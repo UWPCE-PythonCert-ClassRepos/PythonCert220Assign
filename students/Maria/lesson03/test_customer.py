@@ -3,7 +3,7 @@ import os
 
 import config
 import basic_operations as bs
-from customer_model import Customer, create_tables, database
+from customer_model import Customer, create_cust_table, delete_cust_table, database
 
 # other tests I would add:
 # make sure inactive works, so if I add inactive customers, I can get them and only them back.
@@ -21,7 +21,7 @@ class TestCustomer(TestCase):
         """
         database.connect()
         database.execute_sql('PRAGMA foreign_keys = ON;')  # needed for sqlite only
-        create_tables()
+        create_cust_table()
 
     @classmethod
     def tearDownClass(cls):
@@ -39,9 +39,8 @@ class TestCustomer(TestCase):
         """
         Remove all customers so can start again
         """
-        bs._delete_table() # this raises a pylint error, but I think I would except it.
-        # using your own private methods in a test is okay, as long as they aren't private
-        # because they may change.
+        delete_cust_table() # changed where I put this. now it is in customer_model,
+        # where users are unlikely to have access, so doesn't have to be private
 
     def test_add_customer(self):
         bs.add_customer(**config.customer2)

@@ -26,9 +26,17 @@ class Customer(BaseModel):
     credit_limit = peewee.FloatField()
 
 
-def create_tables():
+def create_cust_table():
     with database:
         database.create_tables([Customer])
+
+
+def delete_cust_table():
+    """
+    delete the customer table
+    """
+    del_cust = Customer.delete()
+    del_cust.execute()
 
 
 if __name__ == "__main__":
