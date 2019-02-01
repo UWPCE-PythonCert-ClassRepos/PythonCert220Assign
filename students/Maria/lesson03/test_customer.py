@@ -3,7 +3,7 @@ import os
 
 import config
 import basic_operations as bs
-from customer_model import Customer, create_tables
+from customer_model import Customer, create_tables, database
 
 # other tests I would add:
 # make sure inactive works, so if I add inactive customers, I can get them and only them back.
@@ -16,11 +16,16 @@ class TestCustomer(TestCase):
 
     @classmethod
     def setUpClass(cls):
+        """
+        Connect to the database and create our table
+        """
+        database.connect()
+        database.execute_sql('PRAGMA foreign_keys = ON;')  # needed for sqlite only
         create_tables()
 
     @classmethod
     def tearDownClass(cls):
-        # easy way. :)
+        # easy way, since it is a test database. :)
         os.remove(config.TEST_DATABASE)
 
     def setUp(self):

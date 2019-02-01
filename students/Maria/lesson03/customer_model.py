@@ -6,8 +6,6 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 database = peewee.SqliteDatabase(config.DATABASE)
-database.connect()
-database.execute_sql('PRAGMA foreign_keys = ON;')  # needed for sqlite only
 
 
 class BaseModel(peewee.Model):
@@ -30,3 +28,9 @@ class Customer(BaseModel):
 def create_tables():
     with database:
         database.create_tables([Customer])
+
+
+if __name__ == "__main__":
+    database.connect()
+    database.execute_sql('PRAGMA foreign_keys = ON;')  # needed for sqlite only
+    create_tables()
