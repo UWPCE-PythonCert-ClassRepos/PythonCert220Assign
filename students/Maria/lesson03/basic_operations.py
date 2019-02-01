@@ -75,6 +75,7 @@ def delete_customer(customer_id):
 
 
 def update_customer_credit(customer_id, credit_limit):
+    # this should be more general, and should have error handling
     cust = Customer.get(Customer.customer_id == customer_id)
     cust.credit_limit = credit_limit
     cust.save()
