@@ -66,6 +66,9 @@ import pandas
 import peewee
 from customers_model import Customer
 
+
+
+
 '''
 This function will add a new customer to the sqlite3 database.
 '''
