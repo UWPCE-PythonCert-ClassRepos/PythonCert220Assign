@@ -5,6 +5,7 @@ import config
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
+# wierdness of peewee we have to have this in global space, but not a constant
 database = peewee.SqliteDatabase(config.DATABASE)
 
 
