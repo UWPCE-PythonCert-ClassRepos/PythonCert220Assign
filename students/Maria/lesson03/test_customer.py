@@ -33,6 +33,7 @@ class TestCustomer(TestCase):
         Add one customer to be available for most operations
         """
         # really should add more customers to this
+        # maybe add a mass-add customers function in basic_operations
         bs.add_customer(**config.customer1)
 
     def tearDown(self):
