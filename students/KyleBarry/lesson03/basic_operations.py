@@ -1,10 +1,38 @@
-from customer_model import Customer
 import peewee as pw
 import logging
+import csv
+from customer_model import Customer
 
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
+log_format = "%(asctime)s %(filename)s:%(lineno)-4d %(levelname)s %(message)s"
+logging.basicConfig(level=logging.INFO, format=log_format, filename='db.log')
 
+
+def bulk_add_customers(csv_file):
+
+    try:
+        file_ = csv.DictReader(open(csv_file))
+    except FileNotFoundError:
+        logging.info(f"{csv_file} doesn't seem to exist")
+        print(f"{csv_file} doesn't seem to exist")
+        raise FileNotFoundError
+
+    for record in file_:
+        if record['status'] not in [True, False]:
+            logging.info(f"{record['customer_id']} has invalid status:\
+                         {record['status']}")
+            print(f"Status must be True or False for {record['customer_id']}")
+            pass
+        else:
+            cust = Customer.create(customer_id=record['customer_id'],
+                                   first_name=record['first_name'],
+                                   last_name=record['last_name'],
+                                   home_address=record['home_address'],
+                                   phone_number=record['phone_number'],
+                                   email_address=record['email_address'],
+                                   status=record['status'],
+                                   credit_limit=record['credit_limit'])
+            cust.save()
+            logging.info(f'Customer {record["customer_id"]} added successfully!')
 
 def add_customer(customer_id, first_name, last_name, home_address, phone_number, email_address, status, credit_limit):
     try:
@@ -17,7 +45,7 @@ def add_customer(customer_id, first_name, last_name, home_address, phone_number,
                                status=status,
                                credit_limit=credit_limit)
         cust.save()
-        logger.info("Customersuccessfully added!")
+        logging.info("Customer successfully added!")
 
     except Exception as e:
         logging.info(f"Could not add {first_name} to db")
@@ -59,3 +87,5 @@ def update_customer_credit(customer_id, credit_limit):
 def list_active_customers():
     num_custs = Customer.select().where(Customer.status == 1)
     return num_custs.count()
+
+
