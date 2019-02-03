@@ -3,10 +3,10 @@
     Create database examle with Peewee ORM, sqlite and Python
 
 """
-
+import logging
 import customer_model as cm
 
-import logging
+
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
