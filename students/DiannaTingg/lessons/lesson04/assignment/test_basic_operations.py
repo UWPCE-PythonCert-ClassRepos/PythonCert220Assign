@@ -122,4 +122,43 @@ def csv_database():
     cm.DATABASE.drop_tables([cm.Customer])
 
 
+def test_csv_add_customer(csv_database):
+    bo.add_customer(**CUSTOMER1)
+
+    test_customer = cm.Customer.get(cm.Customer.customer_id == "1")
+    assert test_customer.phone_number == CUSTOMER1["phone_number"]
+
+    with pytest.raises(pw.IntegrityError):
+        bo.add_customer(**CUSTOMER1)
+
+
+def test_csv_search_customer(csv_database):
+    test_customer = bo.search_customer("C000001")
+
+    assert test_customer["email_address"] == "Alexander.Weber@monroe.com"
+    assert bo.search_customer("100") == {}
+
+
+def test_csv_delete_customer(csv_database):
+    bo.delete_customer("C000002")
+
+    with pytest.raises(pw.DoesNotExist):
+        bo.delete_customer("C000002")
+
+
+def test_csv_update_customer_credit(csv_database):
+    bo.update_customer_credit("C000003", 100)
+
+    target_customer = cm.Customer.get(cm.Customer.customer_id == "C000003")
+
+    assert target_customer.credit_limit == 100
+
+    with pytest.raises(pw.DoesNotExist):
+        bo.update_customer_credit("200", 200)
+
+
+def test_csv_list_active_customers(csv_database):
+    assert bo.list_active_customers() == 4
+
+
 cm.DATABASE.close()

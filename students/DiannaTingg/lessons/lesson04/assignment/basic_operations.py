@@ -53,7 +53,7 @@ def add_customer(customer_id, first_name, last_name, home_address, phone_number,
             new_customer.save()
             LOGGER.info("Successfully added Customer %s: %s %s to the database.", customer_id, first_name, last_name)
     except pw.IntegrityError:
-        LOGGER.error("Error adding %s %s to the database. Customer id %s already exists.",
+        LOGGER.error("Error adding %s %s. Customer id %s already exists in the database.",
                      first_name, last_name, customer_id)
         raise pw.IntegrityError
 
