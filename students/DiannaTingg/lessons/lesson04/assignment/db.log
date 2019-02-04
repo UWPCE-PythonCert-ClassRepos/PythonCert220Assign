@@ -76,3 +76,81 @@
 2019-02-04 14:25:57,945 basic_operations.py:54  INFO Successfully added Customer C000003: Elfrieda Skiles to the database.
 2019-02-04 14:25:58,086 basic_operations.py:54  INFO Successfully added Customer C000004: Mittie Turner to the database.
 2019-02-04 14:25:58,539 basic_operations.py:117 INFO There are 4 active customers in the database.
+2019-02-04 14:29:11,775 basic_operations.py:20  INFO Defining basic operations for the customer database.
+2019-02-04 14:29:12,119 basic_operations.py:54  INFO Successfully added Customer 1: Fred Flintstone to the database.
+2019-02-04 14:29:12,244 basic_operations.py:54  INFO Successfully added Customer 2: Barney Rubble to the database.
+2019-02-04 14:29:12,541 basic_operations.py:54  INFO Successfully added Customer 3: Wilma Flintstone to the database.
+2019-02-04 14:29:13,026 basic_operations.py:54  INFO Successfully added Customer 4: Betty Rubble to the database.
+2019-02-04 14:29:13,416 basic_operations.py:54  INFO Successfully added Customer 1: Fred Flintstone to the database.
+2019-02-04 14:29:13,635 basic_operations.py:54  INFO Successfully added Customer 2: Barney Rubble to the database.
+2019-02-04 14:29:13,791 basic_operations.py:54  INFO Successfully added Customer 3: Wilma Flintstone to the database.
+2019-02-04 14:29:14,135 basic_operations.py:57  ERROR Error adding Fred Flintstone. Customer id 1 already exists in the database.
+2019-02-04 14:29:14,447 basic_operations.py:54  INFO Successfully added Customer 1: Fred Flintstone to the database.
+2019-02-04 14:29:14,619 basic_operations.py:54  INFO Successfully added Customer 2: Barney Rubble to the database.
+2019-02-04 14:29:14,901 basic_operations.py:54  INFO Successfully added Customer 3: Wilma Flintstone to the database.
+2019-02-04 14:29:15,026 basic_operations.py:73  INFO Found customer 3: Wilma Flintstone.
+2019-02-04 14:29:15,276 basic_operations.py:54  INFO Successfully added Customer 1: Fred Flintstone to the database.
+2019-02-04 14:29:15,432 basic_operations.py:54  INFO Successfully added Customer 2: Barney Rubble to the database.
+2019-02-04 14:29:15,557 basic_operations.py:54  INFO Successfully added Customer 3: Wilma Flintstone to the database.
+2019-02-04 14:29:15,776 basic_operations.py:78  ERROR Search Error: Customer id 8 is not in the database.
+2019-02-04 14:29:16,136 basic_operations.py:54  INFO Successfully added Customer 1: Fred Flintstone to the database.
+2019-02-04 14:29:16,245 basic_operations.py:54  INFO Successfully added Customer 2: Barney Rubble to the database.
+2019-02-04 14:29:16,386 basic_operations.py:54  INFO Successfully added Customer 3: Wilma Flintstone to the database.
+2019-02-04 14:29:16,495 basic_operations.py:88  INFO Deleting customer 2: Barney Rubble.
+2019-02-04 14:29:17,042 basic_operations.py:54  INFO Successfully added Customer 1: Fred Flintstone to the database.
+2019-02-04 14:29:17,167 basic_operations.py:54  INFO Successfully added Customer 2: Barney Rubble to the database.
+2019-02-04 14:29:17,292 basic_operations.py:54  INFO Successfully added Customer 3: Wilma Flintstone to the database.
+2019-02-04 14:29:17,448 basic_operations.py:91  ERROR Delete Error: Customer id 9 is not in the database.
+2019-02-04 14:29:18,122 basic_operations.py:54  INFO Successfully added Customer 1: Fred Flintstone to the database.
+2019-02-04 14:29:18,309 basic_operations.py:54  INFO Successfully added Customer 2: Barney Rubble to the database.
+2019-02-04 14:29:18,497 basic_operations.py:54  INFO Successfully added Customer 3: Wilma Flintstone to the database.
+2019-02-04 14:29:18,856 basic_operations.py:104 INFO Customer 1: Fred Flintstone now has a credit limit of 5000.
+2019-02-04 14:29:19,184 basic_operations.py:54  INFO Successfully added Customer 1: Fred Flintstone to the database.
+2019-02-04 14:29:19,309 basic_operations.py:54  INFO Successfully added Customer 2: Barney Rubble to the database.
+2019-02-04 14:29:19,544 basic_operations.py:54  INFO Successfully added Customer 3: Wilma Flintstone to the database.
+2019-02-04 14:29:19,669 basic_operations.py:107 ERROR Update Credit Error: Customer id 44 is not in the database.
+2019-02-04 14:29:19,998 basic_operations.py:54  INFO Successfully added Customer 1: Fred Flintstone to the database.
+2019-02-04 14:29:20,216 basic_operations.py:54  INFO Successfully added Customer 2: Barney Rubble to the database.
+2019-02-04 14:29:20,388 basic_operations.py:54  INFO Successfully added Customer 3: Wilma Flintstone to the database.
+2019-02-04 14:29:20,529 basic_operations.py:117 INFO There are 2 active customers in the database.
+2019-02-04 14:29:20,732 basic_operations.py:54  INFO Successfully added Customer 1: Fred Flintstone to the database.
+2019-02-04 14:29:21,044 basic_operations.py:54  INFO Successfully added Customer 2: Barney Rubble to the database.
+2019-02-04 14:29:21,169 basic_operations.py:54  INFO Successfully added Customer 3: Wilma Flintstone to the database.
+2019-02-04 14:29:21,279 basic_operations.py:88  INFO Deleting customer 3: Wilma Flintstone.
+2019-02-04 14:29:21,716 basic_operations.py:104 INFO Customer 2: Barney Rubble now has a credit limit of 300.0.
+2019-02-04 14:29:21,732 basic_operations.py:73  INFO Found customer 1: Fred Flintstone.
+2019-02-04 14:29:21,732 basic_operations.py:117 INFO There are 1 active customers in the database.
+2019-02-04 14:29:22,294 basic_operations.py:54  INFO Successfully added Customer C000000: Rickey Shanahan to the database.
+2019-02-04 14:29:22,466 basic_operations.py:54  INFO Successfully added Customer C000001: Shea Boehm to the database.
+2019-02-04 14:29:23,061 basic_operations.py:54  INFO Successfully added Customer C000002: Blanca Bashirian to the database.
+2019-02-04 14:29:23,295 basic_operations.py:54  INFO Successfully added Customer C000003: Elfrieda Skiles to the database.
+2019-02-04 14:29:23,467 basic_operations.py:54  INFO Successfully added Customer C000004: Mittie Turner to the database.
+2019-02-04 14:29:23,655 basic_operations.py:54  INFO Successfully added Customer 1: Fred Flintstone to the database.
+2019-02-04 14:29:23,748 basic_operations.py:57  ERROR Error adding Fred Flintstone. Customer id 1 already exists in the database.
+2019-02-04 14:29:23,983 basic_operations.py:54  INFO Successfully added Customer C000000: Rickey Shanahan to the database.
+2019-02-04 14:29:24,155 basic_operations.py:54  INFO Successfully added Customer C000001: Shea Boehm to the database.
+2019-02-04 14:29:24,326 basic_operations.py:54  INFO Successfully added Customer C000002: Blanca Bashirian to the database.
+2019-02-04 14:29:24,483 basic_operations.py:54  INFO Successfully added Customer C000003: Elfrieda Skiles to the database.
+2019-02-04 14:29:24,655 basic_operations.py:54  INFO Successfully added Customer C000004: Mittie Turner to the database.
+2019-02-04 14:29:24,780 basic_operations.py:73  INFO Found customer C000001: Shea Boehm.
+2019-02-04 14:29:24,780 basic_operations.py:78  ERROR Search Error: Customer id 100 is not in the database.
+2019-02-04 14:29:25,046 basic_operations.py:54  INFO Successfully added Customer C000000: Rickey Shanahan to the database.
+2019-02-04 14:29:25,233 basic_operations.py:54  INFO Successfully added Customer C000001: Shea Boehm to the database.
+2019-02-04 14:29:25,405 basic_operations.py:54  INFO Successfully added Customer C000002: Blanca Bashirian to the database.
+2019-02-04 14:29:25,577 basic_operations.py:54  INFO Successfully added Customer C000003: Elfrieda Skiles to the database.
+2019-02-04 14:29:25,749 basic_operations.py:54  INFO Successfully added Customer C000004: Mittie Turner to the database.
+2019-02-04 14:29:25,937 basic_operations.py:88  INFO Deleting customer C000002: Blanca Bashirian.
+2019-02-04 14:29:26,046 basic_operations.py:91  ERROR Delete Error: Customer id C000002 is not in the database.
+2019-02-04 14:29:26,499 basic_operations.py:54  INFO Successfully added Customer C000000: Rickey Shanahan to the database.
+2019-02-04 14:29:26,687 basic_operations.py:54  INFO Successfully added Customer C000001: Shea Boehm to the database.
+2019-02-04 14:29:26,922 basic_operations.py:54  INFO Successfully added Customer C000002: Blanca Bashirian to the database.
+2019-02-04 14:29:27,031 basic_operations.py:54  INFO Successfully added Customer C000003: Elfrieda Skiles to the database.
+2019-02-04 14:29:27,125 basic_operations.py:54  INFO Successfully added Customer C000004: Mittie Turner to the database.
+2019-02-04 14:29:27,359 basic_operations.py:104 INFO Customer C000003: Elfrieda Skiles now has a credit limit of 100.
+2019-02-04 14:29:27,375 basic_operations.py:107 ERROR Update Credit Error: Customer id 200 is not in the database.
+2019-02-04 14:29:27,797 basic_operations.py:54  INFO Successfully added Customer C000000: Rickey Shanahan to the database.
+2019-02-04 14:29:28,297 basic_operations.py:54  INFO Successfully added Customer C000001: Shea Boehm to the database.
+2019-02-04 14:29:28,469 basic_operations.py:54  INFO Successfully added Customer C000002: Blanca Bashirian to the database.
+2019-02-04 14:29:28,640 basic_operations.py:54  INFO Successfully added Customer C000003: Elfrieda Skiles to the database.
+2019-02-04 14:29:28,765 basic_operations.py:54  INFO Successfully added Customer C000004: Mittie Turner to the database.
+2019-02-04 14:29:28,890 basic_operations.py:117 INFO There are 4 active customers in the database.
