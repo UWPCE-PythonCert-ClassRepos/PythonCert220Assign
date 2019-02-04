@@ -6,19 +6,27 @@ import logging
 import peewee as pw
 import config
 
+# pylint: disable-msg=too-few-public-methods
+
 logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
+LOGGER = logging.getLogger(__name__)
 
-logger.info("Connecting to a sqlite database.")
+LOGGER.info("Connecting to a sqlite database.")
 
-database = pw.SqliteDatabase(config.DATABASE)
-database.connect()
-database.execute_sql('PRAGMA foreign_keys = ON;')
+DATABASE = pw.SqliteDatabase(config.DATABASE)
+DATABASE.connect()
+DATABASE.execute_sql('PRAGMA foreign_keys = ON;')
 
 
 class BaseModel(pw.Model):
+    """
+    Creating the BaseModel class.
+    """
     class Meta:
-        database = database
+        """
+        Creating the Meta class.
+        """
+        database = DATABASE
 
 
 class Customer(BaseModel):

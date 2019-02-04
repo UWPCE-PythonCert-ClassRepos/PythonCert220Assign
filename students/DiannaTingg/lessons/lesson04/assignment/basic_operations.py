@@ -33,13 +33,14 @@ def upload_csv(filename):
             add_customer(*row)
 
 
+# pylint: disable-msg=line-too-long
 # pylint: disable-msg=too-many-arguments
 def add_customer(customer_id, first_name, last_name, home_address, phone_number, email_address, status, credit_limit):
     """
     Adds a new customer to the database.
     """
     try:
-        with cm.database.transaction():
+        with cm.DATABASE.transaction():
             new_customer = cm.Customer.create(
                 customer_id=customer_id,
                 first_name=first_name,
@@ -88,6 +89,7 @@ def delete_customer(customer_id):
         former_customer.delete_instance()
     except pw.DoesNotExist:
         LOGGER.error("Delete Error: Customer id %s is not in the database.", customer_id)
+        raise pw.DoesNotExist
 
 
 def update_customer_credit(customer_id, new_credit_limit):
