@@ -17,6 +17,9 @@ class IntegrationTests(TestCase):
     Test that we can put stuff in inventory and then get it back out
     """
 
+    def setUp(self):
+        self.inventory = {}
+
     def test_add_and_get_new_item_furniture(self):
         """
         Add furniture and get it back
@@ -26,8 +29,8 @@ class IntegrationTests(TestCase):
         user_input = ["1", "abc", item_added, "500", "Y", "leather", "S", "", '2', 'abc']
         with patch('main.input', side_effect=user_input):
             with redirect_stdout(text_trap):
-                for i in range(2):
-                    main_menu()()
+                for _ in range(2):
+                    main_menu()(self.inventory)
         result = text_trap.getvalue()
         self.assertIn("New inventory item added", result)
         self.assertIn(item_added, result)
@@ -46,7 +49,7 @@ class IntegrationTests(TestCase):
         with patch('main.input', side_effect=user_input):
             with redirect_stdout(text_trap):
                 for i in range(2):
-                    main_menu()()
+                    main_menu()(self.inventory)
         result = text_trap.getvalue()
         self.assertIn("New inventory item added", result)
         self.assertIn(item, result)
@@ -60,7 +63,7 @@ class IntegrationTests(TestCase):
         with patch('main.input', side_effect=user_input):
             with redirect_stdout(text_trap):
                 for i in range(2):
-                    main_menu()()
+                    main_menu()(self.inventory)
         result = text_trap.getvalue()
         self.assertIn("New inventory item added", result)
         self.assertNotIn(item_test, result)
