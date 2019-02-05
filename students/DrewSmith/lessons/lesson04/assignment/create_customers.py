@@ -34,9 +34,8 @@ def get_database(env="prod"):
     finally:
         conn.close()
 
-    DATABASE = pw.SqliteDatabase(connection)
-    DATABASE.connect()
-    DATABASE.execute_sql('PRAGMA foreign_keys = ON;')
-    # LOGGER.info("Database setup")
+    database = pw.SqliteDatabase(connection)
+    database.connect()
+    database.execute_sql('PRAGMA foreign_keys = ON;')
 
-    return DATABASE
+    return database
