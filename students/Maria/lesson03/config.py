@@ -3,7 +3,9 @@ Test Configuration for Customer Model
 """
 # I would normally do this in yaml or json, but did here for simplicity
 
+##### CHANGE DATABASE VARIABLE, NOT TEST_DATABASE
 TEST_DATABASE = 'test.db'
+#DATABSE = 'customers.db'
 DATABASE = TEST_DATABASE
 
 ### Should be in every config (normally would be separate config)
