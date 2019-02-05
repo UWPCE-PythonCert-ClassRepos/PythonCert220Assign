@@ -1,6 +1,7 @@
 from unittest import TestCase
 import os
 import csv
+from builtins import RuntimeError
 
 import config
 import basic_operations as bs
@@ -20,6 +21,8 @@ class TestCustomer(TestCase):
         """
         Connect to the database and create our table
         """
+        if config.TEST_DATABASE is not config.DATABASE:
+            raise RuntimeError("Datatbase names do not match, fix your configuration")
         database.connect()
         database.execute_sql('PRAGMA foreign_keys = ON;')  # needed for sqlite only
         create_cust_table()
@@ -60,7 +63,8 @@ class TestCustomer(TestCase):
         bad_cust = 'elmer fudd'
         with self.assertRaises(ValueError) as exc:
             bs.add_customer(bad_cust)
-        # problem was I couldn't add a message to a key error, so changed from keyerror to valueerror
+        # problem was I couldn't add a message to a key error, so changed
+        # from keyerror to valueerror
         self.assertEqual(str(exc.exception), config.etext['no_save'].format(bad_cust))
 
     def test_customer_status_wrong(self):

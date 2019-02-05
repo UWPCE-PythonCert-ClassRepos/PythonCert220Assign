@@ -4,7 +4,10 @@ Test Configuration for Customer Model
 # I would normally do this in yaml or json, but did here for simplicity
 
 # prod
-# datbase = 'customers.db'
+# DATABASE = 'customers.db'
+
+##### CHANGE DATABASE VARIABLE, NOT TEST_DATABASE
+
 TEST_DATABASE = 'test.db'
 DATABASE = TEST_DATABASE
 
