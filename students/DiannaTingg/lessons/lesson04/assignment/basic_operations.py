@@ -8,6 +8,10 @@ import peewee as pw
 import customer_model as cm
 import create_customers as cc
 
+# pylint: disable-msg=line-too-long
+# pylint: disable-msg=too-many-arguments
+# pylint: disable-msg=no-value-for-parameter
+
 LOG_FORMAT = "%(asctime)s %(filename)s:%(lineno)-3d %(levelname)s %(message)s"
 FORMATTER = logging.Formatter(LOG_FORMAT)
 
@@ -20,21 +24,6 @@ LOGGER.addHandler(FILE_HANDLER)
 LOGGER.info("Defining basic operations for the customer database.")
 
 
-def upload_csv(filename):
-    """
-    Adds customer data from a csv file.
-    """
-    with open(filename, newline="") as csvfile:
-        all_customers = csv.reader(csvfile)
-
-        for row in all_customers:
-            if row[0] == "customer_id":
-                continue
-            add_customer(*row)
-
-
-# pylint: disable-msg=line-too-long
-# pylint: disable-msg=too-many-arguments
 def add_customer(customer_id, first_name, last_name, home_address, phone_number, email_address, status, credit_limit):
     """
     Adds a new customer to the database.
@@ -58,6 +47,18 @@ def add_customer(customer_id, first_name, last_name, home_address, phone_number,
         raise pw.IntegrityError
 
 
+def upload_csv(filename):
+    """
+    Adds customer data from a csv file.
+    """
+    with open(filename, newline="") as csvfile:
+        all_customers = csv.reader(csvfile)
+        headers = next(all_customers, None)  # Skip the header row
+
+        with cm.DATABASE.atomic():
+            cm.Customer.insert_many(all_customers, headers).execute()
+
+
 def search_customer(customer_id):
     """
     Returns a dictionary with customer's first name, last name, email address, and phone number.
@@ -66,10 +67,13 @@ def search_customer(customer_id):
     try:
         current_customer = cm.Customer.get(cm.Customer.customer_id == customer_id)
 
-        customer_dict = {"first_name": current_customer.first_name,
-                         "last_name": current_customer.last_name,
-                         "email_address": current_customer.email_address,
-                         "phone_number": current_customer.phone_number}
+        customer_keys = ["first_name", "last_name", "email_address", "phone_number"]
+
+        customer_values = [current_customer.first_name, current_customer.last_name,
+                           current_customer.email_address, current_customer.phone_number]
+
+        customer_dict = dict(zip(customer_keys, customer_values))
+
         LOGGER.info("Found customer %s: %s %s.", customer_id, current_customer.first_name, current_customer.last_name)
 
         return customer_dict
@@ -117,6 +121,19 @@ def list_active_customers():
     LOGGER.info("There are %s active customers in the database.", total_active)
 
     return total_active
+
+
+def print_customers():
+    """
+    Prints all customer info from the database.
+    :return:
+    """
+    all_records = cm.Customer.select()
+
+    for person in all_records:
+        print(f"Customer id: {person.customer_id}\nFirst Name: {person.first_name}\nLast Name: {person.last_name}\n"
+              f"Home Address: {person.home_address}\nPhone Number: {person.phone_number}\n"
+              f"Email Address: {person.email_address}\nStatus: {person.status}\nCredit Limit: ${person.credit_limit}\n")
 
 
 if __name__ == "__main__":
