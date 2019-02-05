@@ -1,8 +1,3 @@
-#Tim Pauley
-#Jan 22 2019
-#Assignment 03
-
-
 """
     Create database examle with Peewee ORM, sqlite and Python
 
