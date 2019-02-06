@@ -6,7 +6,7 @@
 """
 import logging
 import peewee as pw
-import create_customers as cc
+from create_customers import setup_db
 
 logging.basicConfig(level=logging.INFO)
 LOGGER = logging.getLogger(__name__)
@@ -26,7 +26,7 @@ class BaseModel(pw.Model):
     Base model
     """
     class Meta:
-        database = cc.setup_db()
+        database = setup_db()
 
 
 LOGGER.info('By inheritance only we keep our model (almost) technology neutral')
@@ -68,5 +68,3 @@ class TestCustomer(BaseModel):
     email_address = pw.CharField(max_length=100)
     status = pw.BooleanField()
     credit_limit = pw.FloatField()
-
-setup_db
