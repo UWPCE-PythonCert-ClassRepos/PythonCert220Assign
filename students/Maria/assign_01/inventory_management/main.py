@@ -8,9 +8,6 @@ import furniture
 import electric_appliances
 
 
-FULL_INVENTORY = {}
-
-
 def main_menu(user_prompt=None):
     """
     Give user a menu to choose from
@@ -30,19 +27,11 @@ def main_menu(user_prompt=None):
     return valid_prompts.get(user_prompt)
 
 
-def get_price(item_code):
-    """
-    Print Get price
-    """
-    print("Get price")
-
-
-def add_new_item():
+def add_new_item(full_inventory):
     """
     Add new item to inventory
     """
     # TODO: this should clearly not be a constant or a global
-    global FULL_INVENTORY
     item_code = input("Enter item code: ")
     item_description = input("Enter item description: ")
     item_rental_price = input("Enter item rental price: ")
@@ -68,24 +57,25 @@ def add_new_item():
         else:
             new_item = inventory.Inventory(item_code, item_description, item_price,
                                            item_rental_price)
-    FULL_INVENTORY[item_code] = new_item.return_dictionary()
+    full_inventory[item_code] = new_item.return_dictionary()
     print("New inventory item added")
 
 
-def get_item_info():
+def get_item_info(full_inventory):
     """
     Retrieve an item from the dictionary
     """
     item_code = input("Enter item code: ")
-    if item_code in FULL_INVENTORY:
-        print_dict = FULL_INVENTORY[item_code]
+    if item_code in full_inventory:
+        print_dict = full_inventory[item_code]
         for key, value in print_dict.items():
             print("{}:{}".format(key, value))
     else:
         print("Item not found in inventory")
 
 
-def exit_program():
+
+def exit_program(full_inventory):
     """
     Quit program
     """
@@ -93,7 +83,7 @@ def exit_program():
 
 
 if __name__ == '__main__':
+    full_inventory = {}
     while True:
-        print(FULL_INVENTORY)
-        main_menu()()
+        main_menu()(full_inventory)
         input("Press Enter to continue...........")

@@ -1,13 +1,8 @@
 """
 Furniture class
 """
-from inventory import Inventory
 
-class Furniture(Inventory):
-    """
-    Furntiture Class
-    """
-    def __init__(self, product_code, description, market_price, rental_price, material,
+def __init__(self, product_code, description, market_price, rental_price, material,
                  size):
         # Creates common instance variables from the parent class
         super().__init__(product_code, description, market_price, rental_price)
@@ -18,6 +13,7 @@ class Furniture(Inventory):
         """
         Return product info as dictionary
         """
+        super().return_dictionary()
         product_dict = {}
         product_dict['product_code'] = self.product_code
         product_dict['description'] = self.description
