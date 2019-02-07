@@ -15,13 +15,29 @@
 """
 
 
-# import logging
+import logging
 import csv
 from customers_model import *
 import create_customer as cc
 from peewee import SqliteDatabase
 
-DATABASE = SqliteDatabase
+
+# Create a custom logger
+logger = logging.getLogger(__name__ + '.basic_operation')
+logger.setLevel(logging.DEBUG)
+
+# Create handlers
+f_handler = logging.FileHandler('db.log')
+
+# Create formatter and add it to handlers
+f_format = logging.Formatter('%(asctime)s %(filename)s:%(lineno)-3d %(levelname)s %(message)s')
+f_handler.setLevel(logging.INFO)
+f_handler.setFormatter(f_format)
+
+# Add handlers to the logger
+logger.addHandler(f_handler)
+stream_handler = logging.StreamHandler()
+stream_handler.setFormatter(f_format)
 
 logging.info("Defining basic operations for the customer database")
 
@@ -111,7 +127,7 @@ def delete_customer(customer_id):
     except Exception as e:
         logger.error('Delete failed because Andrew has Jobs')
         logger.error(f'Delete failed: {Customer.first_name}')
-        logger.error(e)
+        logger.exception(e)
     finally:
         logger.info('database closes')
 
@@ -139,33 +155,33 @@ def update_customer_credit(customer_id, credit):
         # customer.update()
 
         Customer.update(credit_limit=credit).where(Customer.customer_id == customer_id).execute()
+        customer.credit_limit = credit
+        customer.save()
         logger.info(f' After Update customer with id: {customer.customer_id} now has a credit limit {customer.credit_limit}')
         # customer.save()
     except Exception as e:
         logger.error(f'update failed customer_id does not exist: {Customer}')
-        logger.error(e)
-
-    customer.credit_limit = credit
-    customer.save()
+        logger.exception(e)
+    #
+    # customer.credit_limit = credit
+    # customer.save()
     logger.info('database closes')
 
 
 def list_active_customers():
     """
-    :return: This function will return an integer with the number of customers whose status is currently active.
+    :return: This function will yield customer_id with the number of customers whose status is currently active.
     """
-    # try:
-    active_customers = Customer.select().where(Customer.status == True)
-    for customer in active_customers:
-        # logger.info(f'here we can finding current active customers {active_customers.customer_id}')
-        # logger.info(f'And here we can prove by finding current credit limit as {active_customers.credit_limit}')
-        yield customer.customer_id
-    # return list(active_customers)
-    # except Exception as e:
-    #     logger.info('No active customer ....')
-    #     logger.info(f'update failed: {active_customers.status}')
-    #     logger.info(e)
-    #     raise ValueError
+    try:
+        active_customers = Customer.select().where(Customer.status == True)
+        for customer in active_customers:
+            logger.info(f'here we can finding current active customers {active_customers}')
+            yield customer.customer_id
+    except Exception as e:
+        logger.error('No active customer ....')
+        logger.error(f'update failed: {active_customers.status}')
+        logger.exception(e)
+        raise ValueError
 
 
 if __name__ == "__main__":

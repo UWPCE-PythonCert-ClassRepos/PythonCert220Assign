@@ -8,18 +8,21 @@ import logging
 from peewee import Model, CharField, BooleanField, FloatField, SqliteDatabase
 
 # Create a custom logger
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(__name__ + '.customer_model')
+logger.setLevel(logging.INFO)
 
 # Create handlers
 f_handler = logging.FileHandler('db.log')
 
-# Create formatters and add it to handlers
+# Create formatter and add it to handlers
 f_format = logging.Formatter('%(asctime)s %(filename)s:%(lineno)-3d %(levelname)s %(message)s')
-f_handler.setLevel(logging.INFO)
+f_handler.setLevel(logging.DEBUG)
 f_handler.setFormatter(f_format)
 
 # Add handlers to the logger
 logger.addHandler(f_handler)
+stream_handler = logging.StreamHandler()
+stream_handler.setFormatter(f_format)
 
 logger.info('Here we create a customer model and database that can be used at HP Norton')
 logger.info('First connect to a database (sqlite here)')

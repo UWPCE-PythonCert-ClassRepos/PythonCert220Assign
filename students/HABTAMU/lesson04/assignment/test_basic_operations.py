@@ -81,15 +81,17 @@ def create_customer_db():
     bo.add_customer(**CUSTOMER_2)
     bo.add_customer(**CUSTOMER_3)
     cm.database.close()
-# def test_credit_limit_float():
-#     create_database()
-#     bad_customer = dict(CUSTOMER_1)
-#     bad_customer['credit_limit'] = '$40'
-#
-#     with pytest.raises(ValueError):
-#         add_customer(**bad_customer)
-#
-#     drop_customer()
+
+
+def test_credit_limit_float():
+    create_customer_db()
+    bad_customer = dict(CUSTOMER_1)
+    bad_customer['credit_limit'] = '$40'
+
+    with pytest.raises(ValueError):
+        bo.add_customer(**bad_customer)
+
+    drop_db()
 
 
 def test_search_for_customer_exists():
