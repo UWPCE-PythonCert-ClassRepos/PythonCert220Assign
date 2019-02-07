@@ -14,7 +14,7 @@
 
 """
 
-
+import sqlite3
 import logging
 import csv
 from customers_model import *
@@ -41,11 +41,35 @@ stream_handler.setFormatter(f_format)
 
 logging.info("Defining basic operations for the customer database")
 
-# def read_csv_data():
-#     with open('lesson04_assignment_data_customer.csv', newline='') as csvfile:
-#         customer_reader = csv.reader(csvfile, delimiter=' ', quotechar='|')
-#         for row in spamreader:
-#             print(', '.join(row))
+
+def read_csv_data():
+    """
+    Load the csv data file to sqlite3 db
+    :return:
+    """
+    f = open('lesson04_assignment_data_customer.csv', 'r', encoding="ISO-8859-1")
+    next(f, None)  # skip the header row
+    reader = csv.reader(f)
+
+    sql = sqlite3.connect('Customer.db')
+    cur = sql.cursor()
+
+    cur.execute('''CREATE TABLE IF NOT EXISTS Customer
+                (customer_id,
+                first_name,
+                last_name,
+                home_address,
+                phone_number,
+                email_address,
+                status,
+                credit_limit)''')  # create the table if it doesn't already exist
+
+    for row in reader:
+        cur.execute("INSERT INTO Customer VALUES (?, ?, ?, ?, ?, ?, ?, ?)", row)
+
+    f.close()
+    sql.commit()
+    sql.close()
 
 
 def add_customer(customer_id, first_name, last_name, home_address, phone_number, email_address, status, credit_limit):
@@ -186,3 +210,4 @@ def list_active_customers():
 
 if __name__ == "__main__":
     cc.main()
+    read_csv_data()
