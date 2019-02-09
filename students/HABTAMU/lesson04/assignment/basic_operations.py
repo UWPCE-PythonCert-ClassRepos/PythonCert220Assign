@@ -47,29 +47,37 @@ def read_csv_data():
     Load the csv data file to sqlite3 db
     :return:
     """
-    f = open('lesson04_assignment_data_customer.csv', 'r', encoding="ISO-8859-1")
-    next(f, None)  # skip the header row
-    reader = csv.reader(f)
 
-    sql = sqlite3.connect('Customer.db')
-    cur = sql.cursor()
+    with open('lesson04_assignment_data_customer.csv', 'r', encoding="ISO-8859-1") as f:
+        next(f, None)  # skip the header row
+        reader = csv.reader(f)
 
-    cur.execute('''CREATE TABLE IF NOT EXISTS Customer
-                (customer_id,
-                first_name,
-                last_name,
-                home_address,
-                phone_number,
-                email_address,
-                status,
-                credit_limit)''')  # create the table if it doesn't already exist
+        sql = sqlite3.connect('Customer.db')
+        logger.info('Customer connected successfully')
+        cur = sql.cursor()
 
-    for row in reader:
-        cur.execute("INSERT INTO Customer VALUES (?, ?, ?, ?, ?, ?, ?, ?)", row)
+        try:
+            cur.execute('''CREATE TABLE IF NOT EXISTS Customer
+                        (customer_id,
+                        first_name,
+                        last_name,
+                        home_address,
+                        phone_number,
+                        email_address,
+                        status,
+                        credit_limit)''')  # create the table if it doesn't already exist
 
-    f.close()
+            for row in reader:
+                cur.execute("INSERT INTO Customer VALUES (?, ?, ?, ?, ?, ?, ?, ?)", row)
+            logger.info('the csv data file loaded to Customer db successfully')
+        except Exception as err:
+            logger.error(f'the csv data not able to load to Customer db')
+            logger.error(err)
+
     sql.commit()
+    logger.info('db transaction commit successfully')
     sql.close()
+    logger.info('Customer db closed')
 
 
 def add_customer(customer_id, first_name, last_name, home_address, phone_number, email_address, status, credit_limit):
@@ -106,7 +114,7 @@ def add_customer(customer_id, first_name, last_name, home_address, phone_number,
         credit_limit=credit_limit
     )
     new_customer.save()
-    logging.info(f' Customer data successfully added')
+    logging.info('Customer data successfully added')
 
 
 def search_customer(customer_id):
@@ -133,7 +141,7 @@ def search_customer(customer_id):
         logger.error(e)
 
     finally:
-        logger.info(f'Finally database closes ')
+        logger.info('Finally database closes ')
     return found_customer_dict
 
 

@@ -51,6 +51,14 @@ def create_db():
     cm.database.close()
 
 
+def test_read_csv_data():
+    csv_file = bo.read_csv_data()
+    # assert csv_file.startswith("Id")
+    # assert csv_file.endwith("813")
+    # assert "C000000" in csv_file
+    # test_customer1 = cm.Customer.get(cm.Customer.customer_id == CUSTOMER_1['customer_id'])
+    pass
+
 def test_add_customer():
     create_db()
     bo.add_customer(**CUSTOMER_1)
