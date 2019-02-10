@@ -96,11 +96,13 @@ def show_available_products(db):
     available_products = {}
 
     for product in db.products.find():
-        product_dict = {"description": product["description"],
-                        "product_type": product["product_type"],
-                        "quantity_available": product["quantity_available"]}
+        if int(product["quantity_available"]) > 0:
 
-        available_products[product["product_id"]] = product_dict
+            product_dict = {"description": product["description"],
+                            "product_type": product["product_type"],
+                            "quantity_available": product["quantity_available"]}
+
+            available_products[product["product_id"]] = product_dict
 
     return available_products
 
@@ -113,11 +115,22 @@ def show_rentals(db, product_id):
     :return: user_id, name, address, phone_number, email
     """
 
-    # Example:
-    # {‘user001’:{‘name’:’Elisa Miles’, ’address’:‘4490 Union Street’, ’phone_number’:‘206-922-0882’, ’email’:’elisa.miles@yahoo.com’},
-    # ’user002’:{‘name’:’Maya Data’, ’address’:‘4936 Elliot Avenue’, ’phone_number’:‘206-777-1927’, ’email’:’mdata@uw.edu’}}
+    customer_info = {}
 
-    # TODO: Write this
+    for rental in db.rentals.find():
+        if rental["product_id"] == product_id:
+            customer_id = rental["user_id"]
+
+            customer_record = db.customers.find_one({"user_id": customer_id})
+
+            customer_dict = {"name": customer_record["name"],
+                             "address": customer_record["address"],
+                             "phone_number": customer_record["phone_number"],
+                             "email": customer_record["email"]}
+
+            customer_info[customer_id] = customer_dict
+
+    return customer_info
 
 
 def clear_data(db):
@@ -141,8 +154,8 @@ if __name__ == "__main__":
 
         import_data(db, "", "products.csv", "customers.csv", "rentals.csv")
 
-        print(show_available_products(db))
+        # show_available_products(db)
+
+        # show_rentals(db, "prd005")
 
         clear_data(db)
-
-
