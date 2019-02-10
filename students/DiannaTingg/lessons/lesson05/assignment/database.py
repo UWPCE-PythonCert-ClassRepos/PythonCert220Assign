@@ -7,7 +7,7 @@ from pymongo import MongoClient
 import csv
 
 
-class MongoDBConnection():
+class MongoDBConnection:
     """
     Creates a MongoDB Connection
     """
@@ -60,7 +60,7 @@ def import_csv(filename):
 def import_data(db, directory_name, product_file, customer_file, rentals_file):
     """
     Takes a directory name and three csv files as input.  Creates and populates a new MongoDB.
-    :param db:
+    :param db: MongoDB
     :param directory_name: directory name for files
     :param product_file: csv file with product data
     :param customer_file: csv file with customer data
@@ -78,7 +78,7 @@ def import_data(db, directory_name, product_file, customer_file, rentals_file):
     rentals = db["rentals"]
     rentals.insert_many(import_csv(rentals_file))
 
-    record_count = (db.products.find().count(), db.customers.find().count(), db.rentals.find().count())
+    record_count = (db.products.count_documents({}), db.customers.count_documents({}), db.rentals.count_documents({}))
 
     # TODO: Fix this
     error_count = (0, 0, 0)
@@ -89,21 +89,26 @@ def import_data(db, directory_name, product_file, customer_file, rentals_file):
 def show_available_products(db):
     """
     Returns a dictionary for each product listed as available.
-    :param db:
+    :param db: MongoDB
     :return: Dictionary with product_id, description, product_type, quantity_available.
     """
 
-    # Example: {‘prd001’:{‘description’:‘60-inch TV stand’,’product_type’:’livingroom’,’quantity_available’:‘3’},
-    # ’prd002’:{‘description’:’L-shaped sofa’,’product_type’:’livingroom’,’quantity_available’:‘1’}}
+    available_products = {}
 
-    # TODO: Write this
-    pass
+    for product in db.products.find():
+        product_dict = {"description": product["description"],
+                        "product_type": product["product_type"],
+                        "quantity_available": product["quantity_available"]}
+
+        available_products[product["product_id"]] = product_dict
+
+    return available_products
 
 
 def show_rentals(db, product_id):
     """
     Returns a dictionary with user information from users who have rented products matching the product_id.
-    :param db:
+    :param db: MongoDB
     :param product_id: product id
     :return: user_id, name, address, phone_number, email
     """
@@ -112,21 +117,13 @@ def show_rentals(db, product_id):
     # {‘user001’:{‘name’:’Elisa Miles’, ’address’:‘4490 Union Street’, ’phone_number’:‘206-922-0882’, ’email’:’elisa.miles@yahoo.com’},
     # ’user002’:{‘name’:’Maya Data’, ’address’:‘4936 Elliot Avenue’, ’phone_number’:‘206-777-1927’, ’email’:’mdata@uw.edu’}}
 
-
-
     # TODO: Write this
-    pass
-    # c = db.rentals.find({"product_id": product_id})
-    #
-    # for x in c:
-    #     print(x["user_id"])
-    #
 
 
 def clear_data(db):
     """
     Delete data in MongoDB.
-    :param db:
+    :param db: MongoDB
     :return: Empty MongoDB.
     """
     db.products.drop()
@@ -142,12 +139,10 @@ if __name__ == "__main__":
 
         db = mongo.connection.media
 
-        print(import_data(db, "", "products.csv", "customers.csv", "rentals.csv"))
+        import_data(db, "", "products.csv", "customers.csv", "rentals.csv")
+
+        print(show_available_products(db))
 
         clear_data(db)
-
-
-
-        # print(show_rentals(db, {"product_id": "prd005"}))
 
 
