@@ -5,6 +5,7 @@ MongoDB
 
 from pymongo import MongoClient
 import csv
+import os
 
 
 class MongoDBConnection:
@@ -70,13 +71,16 @@ def import_data(db, directory_name, product_file, customer_file, rentals_file):
     """
 
     products = db["products"]
-    products.insert_many(_import_csv(product_file))
+    products_file_path = os.path.join(directory_name, product_file)
+    products.insert_many(_import_csv(products_file_path))
 
     customers = db["customers"]
-    customers.insert_many(_import_csv(customer_file))
+    customers_file_path = os.path.join(directory_name, customer_file)
+    customers.insert_many(_import_csv(customers_file_path))
 
     rentals = db["rentals"]
-    rentals.insert_many(_import_csv(rentals_file))
+    rentals_file_path = os.path.join(directory_name, rentals_file)
+    rentals.insert_many(_import_csv(rentals_file_path))
 
     record_count = (db.products.count_documents({}), db.customers.count_documents({}), db.rentals.count_documents({}))
 
