@@ -3,9 +3,13 @@ Lesson 05 Assignment
 MongoDB
 """
 
-from pymongo import MongoClient
 import csv
 import os
+from pymongo import MongoClient
+
+# pylint: disable-msg=line-too-long
+# pylint: disable-msg=invalid-name
+# pylint: disable-msg=redefined-outer-name
 
 
 class MongoDBConnection:
@@ -26,6 +30,11 @@ class MongoDBConnection:
 
 
 def print_mdb_collection(collection_name):
+    """
+    Prints documents in a collection.
+    :param collection_name: collection
+    :return:
+    """
     for doc in collection_name.find():
         print(doc)
 
@@ -58,24 +67,24 @@ def _import_csv(filename):
         return dict_list
 
 
-def import_data(db, directory_name, product_file, customer_file, rentals_file):
+def import_data(db, directory_name, products_file, customers_file, rentals_file):
     """
     Takes a directory name and three csv files as input.  Creates and populates a new MongoDB.
     :param db: MongoDB
-    :param directory_name: directory name for files
-    :param product_file: csv file with product data
-    :param customer_file: csv file with customer data
+    :param directory_name: directory name for files.  Use "" for current directory.
+    :param products_file: csv file with product data
+    :param customers_file: csv file with customer data
     :param rentals_file: csv file with rentals data
     :return: Tuple with record count for products, customers, rentals added (in that order) and
              tuple with count of errors that occurred for products, customers, rentals (in that order).
     """
 
     products = db["products"]
-    products_file_path = os.path.join(directory_name, product_file)
+    products_file_path = os.path.join(directory_name, products_file)
     products.insert_many(_import_csv(products_file_path))
 
     customers = db["customers"]
-    customers_file_path = os.path.join(directory_name, customer_file)
+    customers_file_path = os.path.join(directory_name, customers_file)
     customers.insert_many(_import_csv(customers_file_path))
 
     rentals = db["rentals"]

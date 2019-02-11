@@ -6,9 +6,18 @@ MongoDB
 import pytest
 import database as d
 
+# pylint: disable-msg=invalid-name
+# pylint: disable-msg=redefined-outer-name
+# pylint: disable-msg=missing-docstring
+# pylint: disable-msg=protected-access
+
 
 @pytest.fixture(scope="function")
 def mongo_database():
+    """
+    Creates a MongoDB.
+    :return:
+    """
     mongo = d.MongoDBConnection()
 
     with mongo:
