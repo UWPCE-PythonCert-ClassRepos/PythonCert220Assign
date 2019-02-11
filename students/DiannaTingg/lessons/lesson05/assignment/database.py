@@ -29,7 +29,7 @@ def print_mdb_collection(collection_name):
         print(doc)
 
 
-def import_csv(filename):
+def _import_csv(filename):
     """
     Returns a list of dictionaries.  One dictionary for each row of data in a csv file.
     :param filename: csv file
@@ -70,13 +70,13 @@ def import_data(db, directory_name, product_file, customer_file, rentals_file):
     """
 
     products = db["products"]
-    products.insert_many(import_csv(product_file))
+    products.insert_many(_import_csv(product_file))
 
     customers = db["customers"]
-    customers.insert_many(import_csv(customer_file))
+    customers.insert_many(_import_csv(customer_file))
 
     rentals = db["rentals"]
-    rentals.insert_many(import_csv(rentals_file))
+    rentals.insert_many(_import_csv(rentals_file))
 
     record_count = (db.products.count_documents({}), db.customers.count_documents({}), db.rentals.count_documents({}))
 
@@ -145,17 +145,7 @@ def clear_data(db):
 
 
 if __name__ == "__main__":
-
     mongo = MongoDBConnection()
 
     with mongo:
-
         db = mongo.connection.media
-
-        import_data(db, "", "products.csv", "customers.csv", "rentals.csv")
-
-        # show_available_products(db)
-
-        # show_rentals(db, "prd005")
-
-        clear_data(db)

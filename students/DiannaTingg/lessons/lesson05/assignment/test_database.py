@@ -20,7 +20,7 @@ def mongo_database():
 
 
 def test_import_csv():
-    rentals_list = d.import_csv("rentals.csv")
+    rentals_list = d._import_csv("rentals.csv")
 
     assert {'product_id': 'prd002', 'user_id': 'user008'} in rentals_list
     assert len(rentals_list) == 9
@@ -48,7 +48,6 @@ def test_show_rentals(mongo_database):
     result = d.show_rentals(mongo_database, "prd005")
     assert len(result) == 2
 
-    print(result.keys())
     assert list(result.keys()) == ["user001", "user003"]
 
 
@@ -56,11 +55,8 @@ def test_clear_data(mongo_database):
     d.import_data(mongo_database, "", "products.csv", "customers.csv", "rentals.csv")
 
     result = mongo_database.list_collection_names()
-
     assert result == ["products", "rentals", "customers"]
 
     d.clear_data(mongo_database)
-
     result2 = mongo_database.list_collection_names()
-
     assert result2 == []
