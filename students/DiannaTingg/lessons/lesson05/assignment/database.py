@@ -5,11 +5,12 @@ MongoDB
 
 import csv
 import os
-from pymongo import MongoClient
+import pymongo
 
 # pylint: disable-msg=line-too-long
 # pylint: disable-msg=invalid-name
 # pylint: disable-msg=redefined-outer-name
+# pylint: disable-msg=too-many-locals
 
 
 class MongoDBConnection:
@@ -22,7 +23,7 @@ class MongoDBConnection:
         self.connection = None
 
     def __enter__(self):
-        self.connection = MongoClient(self.host, self.port)
+        self.connection = pymongo.MongoClient(self.host, self.port)
         return self
 
     def __exit__(self, exc_type, exc_val, exc_tb):
@@ -81,20 +82,37 @@ def import_data(db, directory_name, products_file, customers_file, rentals_file)
 
     products = db["products"]
     products_file_path = os.path.join(directory_name, products_file)
-    products.insert_many(_import_csv(products_file_path))
+    products_errors = 0
+
+    try:
+        products.insert_many(_import_csv(products_file_path))
+    except pymongo.errors.BulkWriteError as err:
+        print(err)
+        products_errors += 1
 
     customers = db["customers"]
     customers_file_path = os.path.join(directory_name, customers_file)
-    customers.insert_many(_import_csv(customers_file_path))
+    customers_errors = 0
+
+    try:
+        customers.insert_many(_import_csv(customers_file_path))
+    except pymongo.errors.BulkWriteError as err:
+        print(err)
+        customers_errors += 1
 
     rentals = db["rentals"]
     rentals_file_path = os.path.join(directory_name, rentals_file)
-    rentals.insert_many(_import_csv(rentals_file_path))
+    rentals_errors = 0
+
+    try:
+        rentals.insert_many(_import_csv(rentals_file_path))
+    except pymongo.errors.BulkWriteError as err:
+        print(err)
+        rentals_errors += 1
 
     record_count = (db.products.count_documents({}), db.customers.count_documents({}), db.rentals.count_documents({}))
 
-    # TODO: Fix this
-    error_count = (0, 0, 0)
+    error_count = (products_errors, customers_errors, rentals_errors)
 
     return record_count, error_count
 
