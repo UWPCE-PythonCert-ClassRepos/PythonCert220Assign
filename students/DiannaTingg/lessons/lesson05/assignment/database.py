@@ -10,7 +10,6 @@ import pymongo
 # pylint: disable-msg=line-too-long
 # pylint: disable-msg=invalid-name
 # pylint: disable-msg=redefined-outer-name
-# pylint: disable-msg=too-many-locals
 
 
 class MongoDBConnection:
@@ -68,6 +67,18 @@ def _import_csv(filename):
         return dict_list
 
 
+def _add_bulk_data(collection, directory_name, filename):
+    file_path = os.path.join(directory_name, filename)
+
+    try:
+        collection.insert_many(_import_csv(file_path), ordered=False)
+        return 0
+
+    except pymongo.errors.BulkWriteError as bwe:
+        print(bwe.details)
+        return len(bwe.details["writeErrors"])
+
+
 def import_data(db, directory_name, products_file, customers_file, rentals_file):
     """
     Takes a directory name and three csv files as input.  Creates and populates a new MongoDB.
@@ -81,34 +92,13 @@ def import_data(db, directory_name, products_file, customers_file, rentals_file)
     """
 
     products = db["products"]
-    products_file_path = os.path.join(directory_name, products_file)
-    products_errors = 0
-
-    try:
-        products.insert_many(_import_csv(products_file_path))
-    except pymongo.errors.BulkWriteError as err:
-        print(err)
-        products_errors += 1
+    products_errors = _add_bulk_data(products, directory_name, products_file)
 
     customers = db["customers"]
-    customers_file_path = os.path.join(directory_name, customers_file)
-    customers_errors = 0
-
-    try:
-        customers.insert_many(_import_csv(customers_file_path))
-    except pymongo.errors.BulkWriteError as err:
-        print(err)
-        customers_errors += 1
+    customers_errors = _add_bulk_data(customers, directory_name, customers_file)
 
     rentals = db["rentals"]
-    rentals_file_path = os.path.join(directory_name, rentals_file)
-    rentals_errors = 0
-
-    try:
-        rentals.insert_many(_import_csv(rentals_file_path))
-    except pymongo.errors.BulkWriteError as err:
-        print(err)
-        rentals_errors += 1
+    rentals_errors = _add_bulk_data(rentals, directory_name, rentals_file)
 
     record_count = (db.products.count_documents({}), db.customers.count_documents({}), db.rentals.count_documents({}))
 
