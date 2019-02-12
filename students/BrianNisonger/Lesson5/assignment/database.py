@@ -27,12 +27,14 @@ def import_data(directory,product_file,customer_file,rental_file):
             with open(os.path.join(directory,file)) as csv_file:
                 csv_dict = csv.DictReader(csv_file, delimiter=',')
                 collection = db[file.replace(".csv","")]
-                result = collection.insert_many(csv_dict)
-                added_count=result("insertedCount")
-                error_count=0
-                added_count_list.append(added_count)
-                error_count_list.append(error_count)
-    return added_count_list,error_count_list
+                try:
+                    result = collection.insert_many(csv_dict)
+                    added_count_list.append(len(result.inserted_ids))
+                    error_count_list.append(0)
+                except BulkWriteError as bwe:
+                    error_count_list.append(1)
+                    logging.error(bwe)
+    return (tuple(added_count_list),tuple(error_count_list))
     
     def show_available_products():
         pass

@@ -20,7 +20,7 @@ def _show_rentals():
     
 def test_import_data():
     added,error = import_data("dat","product_data.csv","customer_data.csv","rental_data.csv")
-    print(added)
-    print(error)
-    assert False
+    assert added==(3,2,4)
+    assert error==(0,0,0)
+    
     
