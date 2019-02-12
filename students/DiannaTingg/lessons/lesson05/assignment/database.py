@@ -169,4 +169,17 @@ if __name__ == "__main__":
     mongo = MongoDBConnection()
 
     with mongo:
+        print("Opening a MongoDB.\n")
         db = mongo.connection.media
+
+        print("Importing data for products, customers, and rentals.\n")
+        import_data(db, "", "products.csv", "customers.csv", "rentals.csv")
+
+        print("Showing available products:")
+        print(show_available_products(db))
+
+        print("\nShowing rental information for prd005:")
+        print(show_rentals(db, "prd005"))
+
+        print("\nClearing data from database.")
+        clear_data(db)
