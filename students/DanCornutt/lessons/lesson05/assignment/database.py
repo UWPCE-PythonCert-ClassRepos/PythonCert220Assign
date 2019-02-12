@@ -5,6 +5,7 @@ pip install pymongo
 """
 import csv
 import logging
+import pprint
 from pymongo import MongoClient
 
 
@@ -32,9 +33,55 @@ def log_setup():
                         filename='mylog.log')
 
 
-def print_mdb_collection(collection_name):
-    for doc in collection_name.find():
-        print(doc)
+def show_available_products():
+    """Returns dict of products available for rental"""
+    return db['products'].find({"quantity_available": {"$gt": "0"}})
+
+
+def return_cust(customer_id):
+    """Returns user data from customer collections
+    param1: customer_id
+    """
+    usr = db['customers'].find({"user_id": customer_id})
+    return dict((k, usr[k]) for k in ('name', 'address',
+                                      'phone_number', 'email'))
+
+
+def show_rentals(product_id):
+    """Returns a Python dictionary with the following user information from users that have rented products matching product_id:
+    user_id.
+    name.
+    address.
+    phone_number.
+    email.
+    """
+    # return_dict = {}
+    # rented_frm = db['rentals'].find({"product_id": product_id})
+    # # for each user_id in rented_frm
+    # # append user dict to previous_cust_dict
+    # for rental in rented_frm:
+    #     return_dict[rental['user_id']] = (return_cust(rental['user_id']))
+    # return return_dict
+
+    return_dict = db.rentals.aggregate([
+        {"$match": {"product_id": product_id
+                    }},
+        {"$lookup": {
+            "localField": "user_id",
+            "from": "customers",
+            "foreignField": "user_id",
+            "as": "user"
+        }},
+        {"$unwind": "$user"},
+        {"$project": {
+            "user_id": 1,
+            "name": "$user.name",
+            "address": "$user.address",
+            "phone_number": "$user.phone_number",
+            "email": "$user.email"
+        }}
+    ])
+    return return_dict
 
 
 def add_collection_csv(directory, f_name):
@@ -76,6 +123,13 @@ def import_data(dir_name, prod_f, cust_f, rent_f):
            (prod_rpt[1], cust_rpt[1], rent_rpt[1]))
 
 
+def clean_db():
+    """Deletes documents from db"""
+    db.products.deleteMany({})
+    db.customers.deleteMany({})
+    db.rentals.deleteMany({})
+
+
 def main():
     mongo = MongoDBConnection()
     with mongo:
@@ -88,3 +142,12 @@ if __name__ == "__main__":
     db = main()
     rpt = import_data("", 'products.csv', 'customers.csv', 'rentals.csv')
     logging.error(rpt)
+
+    available = show_available_products()
+    # for prod in available:
+    #     pprint.pprint(prod)
+
+    usrs = show_rentals('prd002')
+    # for usr in usrs:
+    #     pprint.pprint(usr)
+    # clean_db()
