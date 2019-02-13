@@ -1,12 +1,9 @@
 """"
-must use 127.0.0.1 on windows
-pip install pymongo
+HW5 HP Norton MongoDB Project
 
 """
 import csv
 import logging
-import pprint
-import json
 from pymongo import MongoClient
 
 
@@ -44,7 +41,6 @@ def show_available_products():
             'description', 'product_type', 'quantity_available'
         ))
         info.update({id: content})
-
     return info
 
 
@@ -57,8 +53,8 @@ def show_rentals(product_id):
     phone_number.
     email.
     """
-
-    result = db.rentals.aggregate([
+    info = {}
+    qset = db.rentals.aggregate([
         {"$match": {
             "product_id": product_id
         }},
@@ -77,7 +73,13 @@ def show_rentals(product_id):
             "email": "$cust.email"
         }}
     ])
-    return result
+    for item in qset:
+        id = item['user_id']
+        content = dict((k, item[k]) for k in (
+            'name', 'address', 'phone_number', 'email'
+        ))
+        info.update({id: content})
+    return info
 
 
 def add_collection_csv(directory, f_name):
@@ -119,13 +121,6 @@ def import_data(dir_name, prod_f, cust_f, rent_f):
            (prod_rpt[1], cust_rpt[1], rent_rpt[1]))
 
 
-def clean_db():
-    """Deletes documents from db"""
-    db.products.deleteMany({})
-    db.customers.deleteMany({})
-    db.rentals.deleteMany({})
-
-
 def main():
     mongo = MongoDBConnection()
     with mongo:
@@ -140,9 +135,4 @@ if __name__ == "__main__":
     # logging.error(rpt)
 
     available = show_available_products()
-    # for prod in available:
-    pprint.pprint(available)
-
     users = show_rentals('prd002')
-    pprint.pprint(users)
-    # clean_db()
