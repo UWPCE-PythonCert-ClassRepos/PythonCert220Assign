@@ -8,34 +8,19 @@
 import os
 from peewee import CharField, SqliteDatabase, FloatField, Model, BooleanField
 
-#reassign the global if environment is test
+def create_database(db):
+    if not os.path.isfile(db):
+        database = SqliteDatabase(db)
+        database.connect()
+        database.execute_sql('PRAGMA foreign_keys = ON;')
 
-DATABASE = None
-
-def peewee_setup(environment='prod'):
-    if environment == 'prod':
-        connection = 'customer.db'
-    elif environment == 'test':
-        connection = 'customer_test.db'
-
-    global DATABASE
-    DATABASE = SqliteDatabase(connection)
+        database.create_tables([
+            Customer
+            ])
+        database.close()
 
 
-def create_database():
-    DATABASE.connect()
-    DATABASE.execute_sql('PRAGMA foreign_keys = ON;')
-
-    DATABASE.create_tables([
-        Customer
-        ])
-    DATABASE.close()
-
-class BaseModel(Model):
-    class Meta:
-        database = DATABASE
-
-class Customer(BaseModel):
+class Customer(Model, db):
     """
         This class defines Customers info.
     """
@@ -49,4 +34,4 @@ class Customer(BaseModel):
     credit_limit = FloatField()
 
     class Meta:
-        database = DATABASE
+        database = SqliteDatabase(db)
