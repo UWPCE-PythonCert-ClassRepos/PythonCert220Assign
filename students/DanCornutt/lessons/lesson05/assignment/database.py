@@ -6,6 +6,7 @@ pip install pymongo
 import csv
 import logging
 import pprint
+import json
 from pymongo import MongoClient
 
 
@@ -35,53 +36,48 @@ def log_setup():
 
 def show_available_products():
     """Returns dict of products available for rental"""
-    return db['products'].find({"quantity_available": {"$gt": "0"}})
+    info = {}
+    qset = db['products'].find({"quantity_available": {"$gt": "0"}})
+    for item in qset:
+        id = item['product_id']
+        content = dict((k, item[k]) for k in (
+            'description', 'product_type', 'quantity_available'
+        ))
+        info.update({id: content})
 
-
-def return_cust(customer_id):
-    """Returns user data from customer collections
-    param1: customer_id
-    """
-    usr = db['customers'].find({"user_id": customer_id})
-    return dict((k, usr[k]) for k in ('name', 'address',
-                                      'phone_number', 'email'))
+    return info
 
 
 def show_rentals(product_id):
-    """Returns a Python dictionary with the following user information from users that have rented products matching product_id:
+    """Returns a Python dictionary with the following user information from
+    users that have rented products matching product_id:
     user_id.
     name.
     address.
     phone_number.
     email.
     """
-    # return_dict = {}
-    # rented_frm = db['rentals'].find({"product_id": product_id})
-    # # for each user_id in rented_frm
-    # # append user dict to previous_cust_dict
-    # for rental in rented_frm:
-    #     return_dict[rental['user_id']] = (return_cust(rental['user_id']))
-    # return return_dict
 
-    return_dict = db.rentals.aggregate([
-        {"$match": {"product_id": product_id
-                    }},
+    result = db.rentals.aggregate([
+        {"$match": {
+            "product_id": product_id
+        }},
         {"$lookup": {
             "localField": "user_id",
             "from": "customers",
             "foreignField": "user_id",
-            "as": "user"
+            "as": "cust"
         }},
-        {"$unwind": "$user"},
+        {"$unwind": "$cust"},
         {"$project": {
             "user_id": 1,
-            "name": "$user.name",
-            "address": "$user.address",
-            "phone_number": "$user.phone_number",
-            "email": "$user.email"
+            "name": "$cust.name",
+            "address": "$cust.address",
+            "phone_number": "$cust.phone_number",
+            "email": "$cust.email"
         }}
     ])
-    return return_dict
+    return result
 
 
 def add_collection_csv(directory, f_name):
@@ -94,7 +90,7 @@ def add_collection_csv(directory, f_name):
     coll = f_name.split('.')[0]
     cd = db[coll]
     err = 0
-    with open("{}".format(f_name)) as csv_f:
+    with open(f_name, mode='r', encoding='utf-8-sig') as csv_f:
         reader = csv.DictReader(csv_f)
         for row in reader:
             logging.debug("Parsing data: {}".format(row))
@@ -140,14 +136,13 @@ def main():
 if __name__ == "__main__":
     log_setup()
     db = main()
-    rpt = import_data("", 'products.csv', 'customers.csv', 'rentals.csv')
-    logging.error(rpt)
+    # rpt = import_data("", 'products.csv', 'customers.csv', 'rentals.csv')
+    # logging.error(rpt)
 
     available = show_available_products()
     # for prod in available:
-    #     pprint.pprint(prod)
+    pprint.pprint(available)
 
-    usrs = show_rentals('prd002')
-    # for usr in usrs:
-    #     pprint.pprint(usr)
+    users = show_rentals('prd002')
+    pprint.pprint(users)
     # clean_db()
