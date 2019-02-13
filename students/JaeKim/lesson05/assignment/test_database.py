@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import database as d
 import pytest
 
@@ -41,25 +40,3 @@ def test_show_available_products(mongo_database):
     with pytest.raises(KeyError):
         # An item with 1 quantity
         results['3']
-
-=======
-import database as db
-import pytest
-
-
-@pytest.fixture(autouse=True)
-def setup_teardown():
-    ''' Fixture to execute before and after tests '''
-    mongo = db.MongoDBConnection()
-    with mongo:
-        db = mongo.connection.get_database(name="db")
-
-        # db.drop_collection("customers")
-        # db.drop_collection("products")
-        # db.drop_collection("rentals")
-
-    yield
-
-def test_show_rentals():
-    print(assignment.database.cleanup())
->>>>>>> ceec382e03dae1bff50204a507d3dad8e5fcdc78
