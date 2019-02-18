@@ -2,7 +2,8 @@ import os
 import time
 import pytest
 
-
+from customer_model import peewee_setup
+peewee_setup(environment='test')
 from basic_operations import add_customer, search_customer, delete_customer, update_customer_credit, list_active_customers
 from customer_model import Customer, create_database
 
@@ -19,16 +20,15 @@ OK_CUSTOMER = {'customer_id': 'BX123456',
 
 
 def test_create_database():
-    create_database()
     assert os.path.isfile('customer.db')
-    os.remove('customer.db')
 
 
 def test_add_customer_good():
-    create_database()
+    import pdb; pdb.set_trace()
     add_customer(**OK_CUSTOMER)
     test_customer = Customer.get(Customer.customer_id == OK_CUSTOMER['customer_id'])
     assert test_customer.email_address == OK_CUSTOMER['email_address']
+    del test_customer
 
 
 def test_add_customer_bad():
