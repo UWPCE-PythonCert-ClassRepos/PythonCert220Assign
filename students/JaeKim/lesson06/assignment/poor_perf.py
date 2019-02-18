@@ -36,7 +36,7 @@ def analyze(filename):
             if new[0][6:] == '2017':
                 year_count["2017"] += 1
             if new[0][6:] == '2018':
-                year_count["2017"] += 1
+                year_count["2018"] += 1
 
         print(year_count)
 
