@@ -1,0 +1,374 @@
+"""
+Lesson 06 Assignment
+Notes
+"""
+
+
+# Fixing typo in original file.
+In poor_perf.py, there is a typo in lines 39-40:
+    if new[0][6:] == '2018':
+        year_count["2017"] += 1
+
+I will change it to:
+    if new[0][6:] == '2018':
+        year_count["2018"] += 1
+
+
+# Changing file location in original file.
+This is the file location on line 61:
+    filename = "data/exercise.csv"
+
+To make things simpler, I will change the file location to:
+    filename = "exercise.csv"
+
+
+# Printed results from original file
+{'2013': 5911, '2014': 5854, '2015': 5994, '2016': 5762, '2017': 5789, '2018': 5811}
+'ao' was found 63395 times
+
+I will disable the print statements for now.
+
+
+# Return value from original file (start, end, year_count, found)
+(datetime.datetime(2019, 2, 15, 20, 8, 18, 927114), datetime.datetime(2019, 2, 15, 20, 8, 30, 285626),
+{'2013': 5911, '2014': 5854, '2015': 5994, '2016': 5762, '2017': 5789, '2018': 5811}, 63395)
+
+Of course, the start and end times will change each time.
+
+
+# Creating tests
+I created a test in test_good_perf.py to make sure that my revised code still works properly.
+
+
+# Adding timeit
+I'm adding timeit to see how long the function takes.
+I'm also going to get rid of the main function.  I will just call the analyze function directly.
+Original code @ 10 repetitions = 110.55167843800001
+
+
+# Adding line_profiler to find bottlenecks in my code
+Initial run:
+
+Timer unit: 4.27655e-07 s
+
+Total time: 21.3349 s
+File: C:/Users/dtingg/PycharmProjects/PythonCert220Assign/students/DiannaTingg/lessons/lesson06/assignment/good_perf.py
+Function: analyze at line 11
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    11                                           def analyze(filename):
+    12         1        111.0    111.0      0.0      start = datetime.datetime.now()
+    13         1        891.0    891.0      0.0      with open(filename) as csvfile:
+    14         1         49.0     49.0      0.0          reader = csv.reader(csvfile, delimiter=',', quotechar='"')
+    15         1          6.0      6.0      0.0          new_ones = []
+    16   1000002   11744027.0     11.7     23.5          for row in reader:
+    17   1000001    2467228.0      2.5      4.9              lrow = list(row)
+    18   1000001    1924779.0      1.9      3.9              if lrow[5] > '00/00/2012':
+    19   1000000    2318761.0      2.3      4.6                  new_ones.append((lrow[5], lrow[0]))
+    20
+    21                                                   year_count = {
+    22         1          2.0      2.0      0.0              "2013": 0,
+    23         1          1.0      1.0      0.0              "2014": 0,
+    24         1          2.0      2.0      0.0              "2015": 0,
+    25         1          1.0      1.0      0.0              "2016": 0,
+    26         1          2.0      2.0      0.0              "2017": 0,
+    27         1          4.0      4.0      0.0              "2018": 0
+    28                                                   }
+    29
+    30   1000001    1636624.0      1.6      3.3          for new in new_ones:
+    31   1000000    2229208.0      2.2      4.5              if new[0][6:] == '2013':
+    32      5911      13330.0      2.3      0.0                  year_count["2013"] += 1
+    33   1000000    2170381.0      2.2      4.4              if new[0][6:] == '2014':
+    34      5854      13209.0      2.3      0.0                  year_count["2014"] += 1
+    35   1000000    2183983.0      2.2      4.4              if new[0][6:] == '2015':
+    36      5994      13736.0      2.3      0.0                  year_count["2015"] += 1
+    37   1000000    2246836.0      2.2      4.5              if new[0][6:] == '2016':
+    38      5762      13205.0      2.3      0.0                  year_count["2016"] += 1
+    39   1000000    2248834.0      2.2      4.5              if new[0][6:] == '2017':
+    40      5789      13494.0      2.3      0.0                  year_count["2017"] += 1
+    41   1000000    2153818.0      2.2      4.3              if new[0][6:] == '2018':
+    42      5811      13696.0      2.4      0.0                  year_count["2018"] += 1
+    43
+    44                                                   # print(year_count)
+    45
+    46         1        421.0    421.0      0.0      with open(filename) as csvfile:
+    47         1         44.0     44.0      0.0          reader = csv.reader(csvfile, delimiter=',', quotechar='"')
+    48
+    49         1          2.0      2.0      0.0          found = 0
+    50
+    51   1000002   11504213.0     11.5     23.1          for line in reader:
+    52   1000001    2471851.0      2.5      5.0              lrow = list(line)
+    53   1000001    2382952.0      2.4      4.8              if "ao" in line[6]:
+    54     63395     122314.0      1.9      0.2                  found += 1
+    55
+    56                                                   # print(f"'ao' was found {found} times")
+    57         1        188.0    188.0      0.0          end = datetime.datetime.now()
+    58
+    59         1          3.0      3.0      0.0      return (start, end, year_count, found)
+
+
+# For row in reader
+The "for row in reader" block at lines 16-19 takes a long time, so I'm going to change that into a list comprehension.
+
+Old:
+        new_ones = []
+        for row in reader:
+            lrow = list(row)
+            if lrow[5] > '00/00/2012':
+                new_ones.append((lrow[5], lrow[0]))
+
+New:
+        next(reader, None)  # Skip the header row.
+
+        new_ones = [row[5][-4:] for row in reader if "2012" < row[5][-4:] < "2019"]
+
+
+# New run of line_profiler
+Timer unit: 4.27655e-07 s
+
+Total time: 12.581 s
+File: C:/Users/dtingg/PycharmProjects/PythonCert220Assign/students/DiannaTingg/lessons/lesson06/assignment/good_perf.py
+Function: analyze at line 11
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    11                                           def analyze(filename):
+    12         1         41.0     41.0      0.0      start = datetime.datetime.now()
+    13         1        289.0    289.0      0.0      with open(filename) as csvfile:
+    14         1         19.0     19.0      0.0          reader = csv.reader(csvfile, delimiter=',', quotechar='"')
+    15
+    16         1        233.0    233.0      0.0          next(reader, None)  # Skip the header row.
+    17
+    18         1   10980005.0 10980005.0     37.3          new_ones = [row[5][-4:] for row in reader if "2012" < row[5][-4:] < "2019"]
+    19
+    20                                                   year_count = {
+    21         1          4.0      4.0      0.0              "2013": 0,
+    22         1          2.0      2.0      0.0              "2014": 0,
+    23         1          2.0      2.0      0.0              "2015": 0,
+    24         1          1.0      1.0      0.0              "2016": 0,
+    25         1          1.0      1.0      0.0              "2017": 0,
+    26         1         11.0     11.0      0.0              "2018": 0
+    27                                                   }
+    28
+    29     35122      71136.0      2.0      0.2          for new in new_ones:
+    30     35121      75891.0      2.2      0.3              if new == '2013':
+    31      5911      14676.0      2.5      0.0                  year_count["2013"] += 1
+    32     35121      76221.0      2.2      0.3              if new == '2014':
+    33      5854      14888.0      2.5      0.1                  year_count["2014"] += 1
+    34     35121      76759.0      2.2      0.3              if new == '2015':
+    35      5994      15582.0      2.6      0.1                  year_count["2015"] += 1
+    36     35121      75941.0      2.2      0.3              if new == '2016':
+    37      5762      14678.0      2.5      0.0                  year_count["2016"] += 1
+    38     35121      76792.0      2.2      0.3              if new == '2017':
+    39      5789      14803.0      2.6      0.1                  year_count["2017"] += 1
+    40     35121      75669.0      2.2      0.3              if new == '2018':
+    41      5811      15350.0      2.6      0.1                  year_count["2018"] += 1
+    42
+    43                                                   # print(year_count)
+    44
+    45         1        356.0    356.0      0.0      with open(filename) as csvfile:
+    46         1         42.0     42.0      0.0          reader = csv.reader(csvfile, delimiter=',', quotechar='"')
+    47
+    48         1          3.0      3.0      0.0          found = 0
+    49
+    50   1000002   12100479.0     12.1     41.1          for line in reader:
+    51   1000001    2875057.0      2.9      9.8              lrow = list(line)
+    52   1000001    2700143.0      2.7      9.2              if "ao" in line[6]:
+    53     63395     143276.0      2.3      0.5                  found += 1
+    54
+    55                                                   # print(f"'ao' was found {found} times")
+    56         1        193.0    193.0      0.0          end = datetime.datetime.now()
+    57
+    58         1          4.0      4.0      0.0      return (start, end, year_count, found)
+
+
+# That revision saved 8.7539 seconds.
+
+
+# For new in new ones
+It spends a lot of time in the "for new in new_ones" block at lines 29-41, so I will refactor that next.
+
+Old:
+        year_count = {
+            "2013": 0,
+            "2014": 0,
+            "2015": 0,
+            "2016": 0,
+            "2017": 0,
+            "2018": 0
+        }
+
+        for new in new_ones:
+            if new == '2013':
+                year_count["2013"] += 1
+            if new == '2014':
+                year_count["2014"] += 1
+            if new == '2015':
+                year_count["2015"] += 1
+            if new == '2016':
+                year_count["2016"] += 1
+            if new == '2017':
+                year_count["2017"] += 1
+            if new == '2018':
+                year_count["2018"] += 1
+
+New:
+        year_count = {}
+
+        for year in new_ones:
+            year_count[year] = year_count.get(year, 0) + 1
+
+
+# New run of line_profiler
+Timer unit: 4.27655e-07 s
+
+Total time: 11.8727 s
+File: C:/Users/dtingg/PycharmProjects/PythonCert220Assign/students/DiannaTingg/lessons/lesson06/assignment/good_perf.py
+Function: analyze at line 11
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    11                                           def analyze(filename):
+    12         1         41.0     41.0      0.0      start = datetime.datetime.now()
+    13         1        288.0    288.0      0.0      with open(filename) as csvfile:
+    14         1         18.0     18.0      0.0          reader = csv.reader(csvfile, delimiter=',', quotechar='"')
+    15
+    16         1        234.0    234.0      0.0          next(reader, None)  # Skip the header row.
+    17
+    18         1   10985960.0 10985960.0     39.6          new_ones = [row[5][-4:] for row in reader if "2012" < row[5][-4:] < "2019"]
+    19
+    20         1          6.0      6.0      0.0          year_count = {}
+    21
+    22     35122      58487.0      1.7      0.2          for year in new_ones:
+    23     35121      83491.0      2.4      0.3              year_count[year] = year_count.get(year, 0) + 1
+    24
+    25                                                   # print(year_count)
+    26
+    27         1        357.0    357.0      0.0      with open(filename) as csvfile:
+    28         1         34.0     34.0      0.0          reader = csv.reader(csvfile, delimiter=',', quotechar='"')
+    29
+    30         1          3.0      3.0      0.0          found = 0
+    31
+    32   1000002   11694361.0     11.7     42.1          for line in reader:
+    33   1000001    2484790.0      2.5      9.0              lrow = list(line)
+    34   1000001    2329100.0      2.3      8.4              if "ao" in line[6]:
+    35     63395     125014.0      2.0      0.5                  found += 1
+    36
+    37                                                   # print(f"'ao' was found {found} times")
+    38         1        184.0    184.0      0.0          end = datetime.datetime.now()
+    39
+    40         1          3.0      3.0      0.0      return (start, end, year_count, found)
+
+
+# That revision saved .7083 seconds.
+
+
+# For line in reader
+It spends a lot of time in the "for line in reader" block at lines 32-35, so I will refactor that next.
+
+Old:
+        found = 0
+
+        for line in reader:
+            lrow = list(line)
+            if "ao" in line[6]:
+                found += 1
+
+New:
+        found = sum(1 for line in reader if "ao" in line[6])
+
+
+# New run of line_profiler
+Timer unit: 4.27655e-07 s
+
+Total time: 9.43746 s
+File: C:/Users/dtingg/PycharmProjects/PythonCert220Assign/students/DiannaTingg/lessons/lesson06/assignment/good_perf.py
+Function: analyze at line 11
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    11                                           def analyze(filename):
+    12         1         37.0     37.0      0.0      start = datetime.datetime.now()
+    13         1        254.0    254.0      0.0      with open(filename) as csvfile:
+    14         1         17.0     17.0      0.0          reader = csv.reader(csvfile, delimiter=',', quotechar='"')
+    15
+    16         1        228.0    228.0      0.0          next(reader, None)  # Skip the header row.
+    17
+    18         1   11257768.0 11257768.0     51.0          new_ones = [row[5][-4:] for row in reader if "2012" < row[5][-4:] < "2019"]
+    19
+    20         1          5.0      5.0      0.0          year_count = {}
+    21
+    22     35122      63733.0      1.8      0.3          for year in new_ones:
+    23     35121      88659.0      2.5      0.4              year_count[year] = year_count.get(year, 0) + 1
+    24
+    25                                                   # print(year_count)
+    26
+    27         1        369.0    369.0      0.0      with open(filename) as csvfile:
+    28         1         38.0     38.0      0.0          reader = csv.reader(csvfile, delimiter=',', quotechar='"')
+    29
+    30         1   10656597.0 10656597.0     48.3          found = sum(1 for line in reader if "ao" in line[6])
+    31
+    32                                                   # print(f"'ao' was found {found} times")
+    33         1        243.0    243.0      0.0          end = datetime.datetime.now()
+    34
+    35         1          4.0      4.0      0.0      return (start, end, year_count, found)
+
+
+# That revision saved 2.43524 seconds.
+
+
+# Final revision
+I'm going to change the code so that it only reads the csv file once.
+I'm also going to improve the way it calculates year_count and found.
+
+
+# Final run of line_profiler
+Timer unit: 4.27655e-07 s
+
+Total time: 6.81006 s
+File: C:/Users/dtingg/PycharmProjects/PythonCert220Assign/students/DiannaTingg/lessons/lesson06/assignment/good_perf.py
+Function: analyze at line 11
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+    11                                           def analyze(filename):
+    12                                               """
+    13                                               Returns certain statistics for a file.
+    14                                               :param filename: csv file
+    15                                               :return: Start date, end date, number of times the years 2013-2018 appear, number of times "ao" appears
+    16                                               """
+    17         1         37.0     37.0      0.0      start = datetime.datetime.now()
+    18
+    19         1        255.0    255.0      0.0      with open(filename) as csvfile:
+    20         1         17.0     17.0      0.0          reader = csv.reader(csvfile, delimiter=',', quotechar='"')
+    21
+    22         1        220.0    220.0      0.0          next(reader, None)  # Skip the header row.
+    23
+    24         1          2.0      2.0      0.0          year_count = {}
+    25
+    26         1          2.0      2.0      0.0          found = 0
+    27
+    28   1000001   11540545.0     11.5     72.5          for row in reader:
+    29   1000000    2181526.0      2.2     13.7              if "2012" < row[5][-4:] < "2019":
+    30     35121     129332.0      3.7      0.8                  year_count[row[5][-4:]] = year_count.get(row[5][-4:], 0) + 1
+    31
+    32   1000000    1967831.0      2.0     12.4              if "ao" in row[6]:
+    33     63395     104250.0      1.6      0.7                  found += 1
+    34
+    35                                                   # print(year_count)
+    36
+    37                                                   # print(f"'ao' was found {found} times")
+    38
+    39         1        172.0    172.0      0.0          end = datetime.datetime.now()
+    40
+    41         1          3.0      3.0      0.0      return start, end, year_count, found
+
+
+# Those revisions saved 2.6274 seconds.
+
+
+# Final code takes 6.81006 seconds and still passes my test.
+
+
+# Final code @ 10 repetitions = 47.561372087
