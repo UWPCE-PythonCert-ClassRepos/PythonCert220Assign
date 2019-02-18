@@ -3,13 +3,18 @@
 
 """
 import logging
-import customer_model as cm
+import os
+from customer_model import Customer as cm
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-cm.database.create_tables([
+if not os.path.isfile('customer.db'):
+    cm.database.connect()
+    cm.database.execute_sql('PRAGMA foreign_keys = ON;')
+
+    cm.database.create_tables([
         cm.Customer
     ])
 
-cm.database.close()
+    cm.database.close()
