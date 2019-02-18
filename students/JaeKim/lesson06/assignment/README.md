@@ -14,6 +14,7 @@ python -m cProfile good_perf.py
  ```
 
 poor_perf.py
+
 python -m cProfile poor_perf.py
 ```
 {'2013': 5911, '2014': 5854, '2015': 5994, '2016': 5762, '2017': 5789, '2018': 5811}
