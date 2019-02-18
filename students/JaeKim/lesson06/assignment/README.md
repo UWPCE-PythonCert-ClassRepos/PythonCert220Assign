@@ -1,4 +1,4 @@
-#good_perf.py
+good_perf.py
 Changes:
 ```
 - Removed multiple for loops, reduced to one
@@ -13,7 +13,7 @@ python -m cProfile good_perf.py
 44233 function calls (44216 primitive calls) in 4.029 seconds
  ```
 
-#poor_perf.py
+poor_perf.py
 python -m cProfile poor_perf.py
 ```
 {'2013': 5911, '2014': 5854, '2015': 5994, '2016': 5762, '2017': 5789, '2018': 5811}
