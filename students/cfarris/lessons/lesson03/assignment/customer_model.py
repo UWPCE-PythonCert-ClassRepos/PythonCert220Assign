@@ -7,7 +7,7 @@
 
 """
 import logging
-from peewee import *
+from peewee import Model, CharField, BooleanField, FloatField, SqliteDatabase
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -44,10 +44,16 @@ logger.info('This means we can easily switch to a different database')
 logger.info('Enable the Peewee magic! This base class does it all')
 
 class BaseModel(Model):
+    '''
+        This class creates the basemodel
+    '''
     class Meta:
+        '''
+        This class creates the database
+        '''
         database = database
 
-#logger.info('By inheritance only we keep our model (almost) technology neutral')
+logger.info('By inheritance only we keep our model (almost) technology neutral')
 
 
 class Customer(BaseModel):
@@ -56,16 +62,16 @@ class Customer(BaseModel):
         for whom we want store their data.
     """
     logger.info('Note how we defined the class')
-    logger.info('Specify the fields in our model, their lengths and if mandatory')
+    logger.info('Specify the fields in our model, their lengths & if mandatory')
     logger.info('Must be a unique identifier for each person')
 
-    customer_id = CharField(primary_key = True, max_length=15)
-    first_name = CharField(max_length = 30)
-    last_name = CharField(max_length = 30)
-    home_address = CharField(max_length = 100)
-    nickname = CharField(max_length = 20, null = True)
-    home_address=CharField(max_length=100) #started here
+    customer_id = CharField(primary_key=True, max_length=15)
+    first_name = CharField(max_length=30)
+    last_name = CharField(max_length=30)
+    home_address = CharField(max_length=100)
+    nickname = CharField(max_length=20, null=True)
+    home_address = CharField(max_length=100)
     phone_number = CharField(max_length=20)
-    email_address= CharField(max_length=100)
+    email_address = CharField(max_length=100)
     status = BooleanField()
     credit_limit = FloatField()
