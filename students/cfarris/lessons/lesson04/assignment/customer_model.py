@@ -10,7 +10,7 @@
 """
 import logging
 from peewee import Model, CharField, BooleanField, FloatField, SqliteDatabase
-import config
+import config_db as config
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
