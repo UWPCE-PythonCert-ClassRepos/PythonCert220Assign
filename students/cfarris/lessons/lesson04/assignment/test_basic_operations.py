@@ -9,7 +9,7 @@ from basic_operations import add_customer, search_customer, delete_customer, upd
 from customer_model import Customer, BaseModel, database
 from create_database import create_tables
 import os
-import config
+import config_db
 
 # note, if you get an integrity error be sure clear your database.
 
@@ -57,7 +57,6 @@ def set_up_connection():
     print("Delete Database")
     test_database.drop_tables(Customer)
     #os.remove('test.db')
-
 
 def test_add_ok_customer(set_up_connection):
     '''
