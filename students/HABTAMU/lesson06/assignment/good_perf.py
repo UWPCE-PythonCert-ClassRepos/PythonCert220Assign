@@ -21,8 +21,9 @@ def analyze(filename):
             if "ao" in row[6]:
                 found +=1
 
-        print(f"'ao' was found {found} times")
+        year_count = dict(year_count)
         print(year_count)
+        print(f"'ao' was found {found} times")
         end = datetime.datetime.now()
 
     return (start, end, year_count, found)
