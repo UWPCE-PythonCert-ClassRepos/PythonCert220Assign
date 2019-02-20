@@ -5,8 +5,10 @@ poorly performing, poorly written module
 
 import datetime
 import csv
+import timeit
 
 def analyze(filename):
+    start_time = timeit.default_timer()
     start = datetime.datetime.now()
     with open(filename) as csvfile:
         reader = csv.reader(csvfile, delimiter=',', quotechar='"')
@@ -53,7 +55,7 @@ def analyze(filename):
 
         print(f"'ao' was found {found} times")
         end = datetime.datetime.now()
-
+    print(timeit.default_timer() - start_time)
     return (start, end, year_count, found)
 
 def main():
