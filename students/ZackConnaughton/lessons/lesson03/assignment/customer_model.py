@@ -8,24 +8,32 @@
 import os
 from peewee import CharField, SqliteDatabase, FloatField, Model, BooleanField
 
+#reassign the global if environment is test
 
-DATABASE = SqliteDatabase('customer.db')
+DATABASE = None
+
+def peewee_setup(environment='prod'):
+    if environment == 'prod':
+        connection = 'customer.db'
+    elif environment == 'test':
+        connection = 'customer_test.db'
+
+    global DATABASE
+    DATABASE = SqliteDatabase(connection)
+
 
 def create_database():
-    if not os.path.isfile('customer.db'):
-        DATABASE.connect()
-        DATABASE.execute_sql('PRAGMA foreign_keys = ON;')
+    DATABASE.connect()
+    DATABASE.execute_sql('PRAGMA foreign_keys = ON;')
 
-        DATABASE.create_tables([
-            Customer
-            ])
-        DATABASE.close()
-
+    DATABASE.create_tables([
+        Customer
+        ])
+    DATABASE.close()
 
 class BaseModel(Model):
     class Meta:
         database = DATABASE
-
 
 class Customer(BaseModel):
     """
