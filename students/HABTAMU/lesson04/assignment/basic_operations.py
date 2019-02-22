@@ -70,14 +70,15 @@ def read_csv_data():
             for row in reader:
                 cur.execute("INSERT INTO Customer VALUES (?, ?, ?, ?, ?, ?, ?, ?)", row)
             logger.info('the csv data file loaded to Customer db successfully')
+            sql.commit()
+            logger.info('db transaction commit successfully')
+            sql.close()
         except Exception as err:
             logger.error(f'the csv data not able to load to Customer db')
             logger.error(err)
 
-    sql.commit()
-    logger.info('db transaction commit successfully')
-    sql.close()
-    logger.info('Customer db closed')
+
+        logger.info('Customer db closed')
 
 
 def add_customer(customer_id, first_name, last_name, home_address, phone_number, email_address, status, credit_limit):
