@@ -1,6 +1,7 @@
 #Tim Pauley
 #Python 220, Assignment 04
 #Jan 29 2019
+#Update: Feb 20 2019
 
 #Assignment 04: 
 
@@ -13,6 +14,7 @@ import config
 import basic_operations as bs
 from customer_model import Customer, create_cust_table, delete_cust_table, database
 
+#Assignment Notes:
 # other tests I would add:
 # make sure inactive works, so if I add inactive customers, I can get them and only them back.
 # probably should add inactive customers when checking active customers, for that matter. As is,
@@ -20,100 +22,217 @@ from customer_model import Customer, create_cust_table, delete_cust_table, datab
 # error checking: is status really a boolean is probably important. other stuff may not be so
 # important until we know what they are going to do with the data
 
-class TestCustomer(TestCase):
+'''
+This is where I import the test the functions   
+'''
+from basic_operations import add_customer
+from basic_operations import search_customer
+from basic_operations import delete_customer
+from basic_operations import update_customer
+from basic_operations import list_active_customers
 
-    @classmethod
-    def setUpClass(cls):
-        """
-        Connect to the database and create our table
-        """
-        if config.TEST_DATABASE is not config.DATABASE:
-            raise RuntimeError("Datatbase names do not match, fix your configuration")
-        database.connect()
-        database.execute_sql('PRAGMA foreign_keys = ON;')  # needed for sqlite only
-        create_cust_table()
-        # add a bunch of customers to make sure works with non-empty database
-        # maybe change this so it isn't quite so many, tests take too long now
-        bs.add_from_csv('customer.csv')
-        cls.active_cust_csv = get_count('customer.csv')
-
-    @classmethod
-    def tearDownClass(cls):
-        # easy way, since it is a test database. :)
-        os.remove(config.TEST_DATABASE)
-
-    def setUp(self):
-        """
-        Add one customer to be available for most operations
-        """
-        # really should add more customers to this
-        # maybe add a mass-add customers function in basic_operations
-        bs.add_customer(**config.customer1)
-
-    def tearDown(self):
-        """
-        Remove customers from config so can start again (won't always have both)
-        """
-        for customer in (config.customer1, config.customer2):
-            try:
-                bs.delete_customer(customer['customer_id'])
-            except ValueError:
-                pass
-
-    def test_add_customer(self):
-        bs.add_customer(**config.customer2)
-        cust = Customer.get(Customer.customer_id == config.customer2['customer_id'])
-        self.assertEqual(cust.home_address, config.customer2['home_address'])
-
-    def test_add_customer_incomplete_data(self):
-        bad_cust = 'elmer fudd'
-        with self.assertRaises(ValueError) as exc:
-            bs.add_customer(bad_cust)
-        # problem was I couldn't add a message to a key error, so changed
-        # from keyerror to valueerror
-        self.assertEqual(str(exc.exception), config.etext['no_save'].format(bad_cust))
-
-    def test_customer_status_wrong(self):
-        with self.assertRaises(ValueError) as exc:
-            bs.add_customer(**config.bad_customer)
-        self.assertEqual(str(exc.exception),
-                         config.etext['req_bool'].format(config.bad_customer['status']))
-
-    def test_search_customer(self):
-        cust = bs.search_customer(config.customer1['customer_id'])
-        self.assertEqual(cust['email_address'], config.customer1['email_address'])
-
-    def test_bad_search_customer(self):
-        cust = bs.search_customer("12947242")
-        self.assertEqual(cust, {})
-
-    def test_update_customer_credit(self):
-        bs.update_customer_credit(config.customer1['customer_id'], 10000)
-        cust = Customer.get(Customer.customer_id == config.customer1['customer_id'])
-        self.assertEqual(cust.credit_limit, 10000)
-
-    def test_list_active_customers(self):
-        result = bs.list_active_customers()
-        exp_result = 1 + self.active_cust_csv
-        self.assertEqual(result, exp_result)
-
-    def test_delete_customer(self):
-        bs.delete_customer(config.customer1['customer_id'])
-        with self.assertRaises(Exception):
-            Customer.get(Customer.customer_id == config.customer1['customer_id'])
-
-    def test_delete_unknown_customer(self):
-        unk_id = 'supercalifragilisticex'
-        with self.assertRaises(Exception) as exc:
-            bs.delete_customer(unk_id)
-        self.assertEqual(str(exc.exception), config.etext['not_found'].format(unk_id))
+'''
+This is where I import the modal and customer
+'''
+from customer_model import Customer
+import pytest
 
 
-def get_count(csv_file):
-    """ Make sure what we count in the file is what the database says is true"""
-    count = 0
-    with open('customer.csv', 'r', newline='', encoding='ISO-8859-1') as myfile:
-        for row in csv.reader(myfile):
-            if row[6].lower() == 'active':
-                count += 1
-    return count
+'''
+Rename fuctional test
+'''
+ok_customer = {
+    'customer_id': 'W3434fd',
+    'first_name': 'Suzie',
+    'last_name': 'Edgar',
+    'home_address': '123 Browncroft Blvd, Rochester, NY 97235',
+    'phone_number': '234-123-4567',
+    'email_address': 'suzie@hotmail.com',
+    'status': True,
+    'credit_limit': '40'
+}
+
+'''
+Rename fuctional test
+'''
+def add_second_customer():
+    second_customer = dict(ok_customer)
+    second_customer["customer_id"] = "W3434ff"
+    second_customer["first_name"] = "Bob"
+    second_customer["email_address"] = 'bob@hotmail.com'
+    add_customer(**second_customer)
+    return second_customer
+
+
+'''
+Rename fuctional test
+'''
+def add_third_customer():
+    third_customer = dict(ok_customer)
+    third_customer["customer_id"] = "M3233bb"
+    third_customer["first_name"] = "Jackson"
+    third_customer["status"] = False
+    add_customer(**third_customer)
+    return third_customer
+
+'''
+Rename fuctional test
+'''
+def add_fourth_customer():
+    fourth_customer = dict(ok_customer)
+    fourth_customer["customer_id"] = "M3233cc"
+    fourth_customer["first_name"] = "Michael"
+    fourth_customer["status"] = False
+    add_customer(**fourth_customer)
+    return fourth_customer
+
+
+'''
+Rename fuctional test
+'''
+def clean_up(customer_id):
+    test_customer = Customer.get(Customer.customer_id == customer_id)
+    test_customer.delete_instance()
+
+
+'''
+Rename fuctional test
+'''
+def test_add_ok_customer():
+    add_customer(**ok_customer)
+    test_customer = Customer.get(
+        Customer.customer_id == ok_customer['customer_id'])
+    assert test_customer.email_address == ok_customer['email_address']
+    assert test_customer.customer_id == ok_customer['customer_id']
+    assert test_customer.first_name == ok_customer['first_name']
+    assert test_customer.last_name == ok_customer['last_name']
+    assert test_customer.phone_number == ok_customer['phone_number']
+    assert test_customer.home_address == ok_customer['home_address']
+    assert test_customer.status == ok_customer['status']
+    assert test_customer.credit_limit == float(ok_customer["credit_limit"])
+    clean_up(ok_customer['customer_id'])
+
+
+'''
+Rename fuctional test
+'''
+def test_credit_limit_float():
+    bad_customer = dict(ok_customer)
+    bad_customer['credit_limit'] = '$40'
+
+    with pytest.raises(ValueError):
+        add_customer(**bad_customer)
+
+'''
+Rename fuctional test
+'''
+def test_add_multiple_customers():
+    add_customer(**ok_customer)
+    second_customer = add_second_customer()
+    test_customer = Customer.get(
+        Customer.customer_id == ok_customer['customer_id'])
+    test_customer1 = Customer.get(
+        Customer.customer_id == second_customer["customer_id"])
+    assert test_customer != test_customer1
+    assert test_customer.first_name == 'Suzie'
+    assert test_customer1.first_name == 'Bob'
+    clean_up(ok_customer["customer_id"])
+    clean_up(second_customer["customer_id"])
+
+
+'''
+Rename fuctional test
+'''
+def test_search_customer():
+    add_customer(**ok_customer)
+    second_customer = add_second_customer()
+    customer_dict = search_customer("W3434ff")
+    second_customer["credit_limit"] = float(second_customer["credit_limit"])
+    assert customer_dict == second_customer
+    clean_up(ok_customer["customer_id"])
+    clean_up(second_customer["customer_id"])
+
+
+'''
+Rename fuctional test
+'''
+def test_search_customer_null():
+    add_customer(**ok_customer)
+    customer_dict = search_customer("12345")
+    assert customer_dict == {}
+    customer_dict = search_customer(7)
+    assert customer_dict == {}
+    customer_dict = search_customer()
+    assert customer_dict == {}
+    clean_up(ok_customer["customer_id"])
+
+'''
+Rename fuctional test
+'''
+def test_delete_customer():
+    add_customer(**ok_customer)
+    second_customer = add_second_customer()
+    delete_customer(second_customer["customer_id"])
+    customer_dict = search_customer(second_customer["customer_id"])
+    assert customer_dict == {}
+    ok_customer["credit_limit"] = float(ok_customer["credit_limit"])
+    customer_dict = search_customer(ok_customer["customer_id"])
+    assert customer_dict == ok_customer
+    clean_up(ok_customer['customer_id'])
+
+'''
+Rename fuctional test
+'''
+def test_delete_not_a_customer():
+    add_customer(**ok_customer)
+    second_customer = add_second_customer()
+    delete_customer("12345")
+    delete_customer(7)
+    delete_customer()
+    clean_up(ok_customer['customer_id'])
+    clean_up(second_customer['customer_id'])
+
+'''
+Rename fuctional test
+'''
+def test_update_customer_credit():
+    add_customer(**ok_customer)
+    second_customer = add_second_customer()
+    update_customer(
+        customer_id=second_customer["customer_id"], credit_limit=100.0)
+    customer_dict = search_customer(second_customer["customer_id"])
+    assert customer_dict["credit_limit"] == 100.0
+    clean_up(ok_customer['customer_id'])
+    clean_up(second_customer['customer_id'])
+
+'''
+Rename fuctional test
+'''
+def test_update_customer_credit_no_match():
+    add_customer(**ok_customer)
+    second_customer = add_second_customer()
+    with pytest.raises(ValueError):
+        update_customer(customer_id="12345", credit_limit=100.0)
+    clean_up(ok_customer['customer_id'])
+    clean_up(second_customer['customer_id'])
+
+'''
+Rename fuctional test
+'''
+def test_list_active_customers():
+    add_customer(**ok_customer)
+    second_customer = add_second_customer()
+    third_customer = add_third_customer()
+    fourth_customer = add_fourth_customer()
+    active_customers = list_active_customers()
+    assert active_customers == 2
+    test_customer3 = Customer.get(
+        Customer.customer_id == third_customer["customer_id"])
+    test_customer3.status = True
+    test_customer3.save()
+    active_customers = list_active_customers()
+    assert active_customers == 3
+    clean_up(ok_customer['customer_id'])
+    clean_up(second_customer['customer_id'])
+    clean_up(third_customer['customer_id'])
+    clean_up(fourth_customer['customer_id'])

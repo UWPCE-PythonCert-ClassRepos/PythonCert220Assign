@@ -1,6 +1,6 @@
 #Tim Pauley
 #Python 220, Assignment 04
-#Jan 29 2019
+#Jan 2s9 2019
 
 #Assignment 04: 
 
