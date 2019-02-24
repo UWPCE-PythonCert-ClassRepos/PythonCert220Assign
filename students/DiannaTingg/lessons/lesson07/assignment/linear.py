@@ -6,6 +6,7 @@ Concurrency & Async Programming
 import csv
 import os
 import pymongo
+from timeit import timeit
 
 # pylint: disable-msg=line-too-long
 # pylint: disable-msg=invalid-name
@@ -168,21 +169,17 @@ def clear_data(db):
     db.rentals.drop()
 
 
-if __name__ == "__main__":
+def main():
     mongo = MongoDBConnection()
 
     with mongo:
-        print("Opening a MongoDB.\n")
         db = mongo.connection.media
 
-        print("Importing data for products, customers, and rentals.\n")
         import_data(db, "", "products.csv", "customers.csv", "rentals.csv")
 
-        # print("Showing available products:")
-        # print(show_available_products(db))
-
-        print("\nShowing rental information for P000001:")
-        print(show_rentals(db, "P000001"))
-
-        print("\nClearing data from database.")
         clear_data(db)
+
+
+if __name__ == "__main__":
+    # main()
+    print(timeit("main()", globals=globals(), number=1))
