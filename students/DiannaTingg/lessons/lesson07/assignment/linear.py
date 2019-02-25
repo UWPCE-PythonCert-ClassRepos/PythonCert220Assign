@@ -6,6 +6,7 @@ Concurrency & Async Programming
 import csv
 import os
 import pymongo
+import time
 from timeit import timeit
 
 # pylint: disable-msg=line-too-long
@@ -32,9 +33,8 @@ class MongoDBConnection:
 
 def print_mdb_collection(collection_name):
     """
-    Prints documents in a collection.
+    Prints all documents in a collection.
     :param collection_name: collection
-    :return:
     """
     for doc in collection_name.find():
         print(doc)
@@ -58,10 +58,7 @@ def _import_csv(filename):
             headers[0] = headers[0][3:]
 
         for row in csv_data:
-            row_dict = {}
-
-            for index, column in enumerate(headers):
-                row_dict[column] = row[index]
+            row_dict = {column: row[index] for index, column in enumerate(headers)}
 
             dict_list.append(row_dict)
 
@@ -69,43 +66,50 @@ def _import_csv(filename):
 
 
 def _add_bulk_data(collection, directory_name, filename):
+    """
+    Adds data in bulk to database.
+    :param collection: collection
+    :param directory_name: directory
+    :param filename: csv file
+    :return: records processed (int), initial records (int), final records (int), function run time (float)
+    """
     file_path = os.path.join(directory_name, filename)
 
-    try:
-        collection.insert_many(_import_csv(file_path), ordered=False)
-        return 0
+    start_time = time.time()
+    initial_records = collection.count_documents({})
 
-    except pymongo.errors.BulkWriteError as bwe:
-        print(bwe.details)
-        return len(bwe.details["writeErrors"])
+    collection.insert_many(_import_csv(file_path), ordered=False)
+
+    final_records = collection.count_documents({})
+    records_processed = final_records - initial_records
+
+    run_time = time.time() - start_time
+
+    return records_processed, initial_records, final_records, run_time
 
 
 def import_data(db, directory_name, products_file, customers_file, rentals_file):
     """
-    Takes a directory name and three csv files as input.  Creates and populates a new MongoDB.
+    Takes a directory name and three csv files as input.  Creates and populates three collections in MongoDB.
     :param db: MongoDB
     :param directory_name: directory name for files.  Use "" for current directory.
     :param products_file: csv file with product data
     :param customers_file: csv file with customer data
     :param rentals_file: csv file with rentals data
-    :return: Tuple with record count for products, customers, rentals added (in that order) and
-             tuple with count of errors that occurred for products, customers, rentals (in that order).
+    :return: List of tuples (one for customers and one for products). Each tuple contains:
+             num of records processed, initial record count, final record count, and module run time
     """
 
     products = db["products"]
-    products_errors = _add_bulk_data(products, directory_name, products_file)
+    products_results = _add_bulk_data(products, directory_name, products_file)
 
     customers = db["customers"]
-    customers_errors = _add_bulk_data(customers, directory_name, customers_file)
+    customers_results = _add_bulk_data(customers, directory_name, customers_file)
 
     rentals = db["rentals"]
-    rentals_errors = _add_bulk_data(rentals, directory_name, rentals_file)
+    _add_bulk_data(rentals, directory_name, rentals_file)
 
-    record_count = (db.products.count_documents({}), db.customers.count_documents({}), db.rentals.count_documents({}))
-
-    error_count = (products_errors, customers_errors, rentals_errors)
-
-    return record_count, error_count
+    return [customers_results, products_results]
 
 
 def show_available_products(db):
@@ -175,11 +179,14 @@ def main():
     with mongo:
         db = mongo.connection.media
 
-        import_data(db, "", "products.csv", "customers.csv", "rentals.csv")
+        results = import_data(db, "", "products.csv", "customers.csv", "rentals.csv")
 
         clear_data(db)
 
+    return results
+
 
 if __name__ == "__main__":
-    # main()
-    print(timeit("main()", globals=globals(), number=1))
+    print(main())
+    # print(timeit("main()", globals=globals(), number=1))
+    # print(timeit("main()", globals=globals(), number=10))
