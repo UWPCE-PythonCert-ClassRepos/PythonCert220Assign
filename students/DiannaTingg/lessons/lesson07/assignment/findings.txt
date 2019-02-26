@@ -1,0 +1,16 @@
+"""
+Lesson 07 Assignment
+Notes
+"""
+
+I refactored the code from Lesson 05, so now the program returns a list of two tuples, one for customers and one for products.
+Each tuple contains: number of records processed, record count in the database prior to running, record count after running, and time taken to run the module.
+
+I'm using larger csv files for products, customers, and rentals.  Each file has 9,999 records plus a header row.
+I automatically clear the MongoDB each time the program exits.
+
+Using timeit, my linear.py file takes 3.205835777 seconds to run once.  It takes 28.792096512999997 seconds to run 10 times.
+I wrote some tests in test_linear.py and they all pass.
+
+I'm going to use multithreading in my parallel.py file to see if I can get a performance improvement.
+I will read all three csv files at the same time (in parallel).
