@@ -1,0 +1,59 @@
+Initial GNU Time Execution: 10.052s
+Initial Timeit Execution: 9.248711s
+Final Timeit: 2.04s
+Final with datetime parsing: 16.5s
+
+
+############### Detailed steps to increase performance #####################
+For the Times I run it 3 or 4 times each and take the middle value.
+
+Move 'ao' search into the first loop. This allows the file to be searched only once:
+Timeit: 5.6876039s
+
+Moved the Year Count dictionary loop into the CSV loop. This elimiates the need to generate a List and loop through it again later.
+Timeit: 5.3563539s
+
+Removed the "lrow = list(row)" as the csv reader already returns the record as a list of strings (per docs)
+Timeit: 5.057083654s
+
+Added "year = row[5][6:]" so that the string does not need to be parsed multiple times for each if statement
+Timeit: 4.205340839s
+
+Switched the extra "if" statements to elif so every record does not need to be compared when the year has alread been checked:
+Timeit: 4.316663308s --This made it worse. Quite strange
+
+Changed If logic to just look for year in the dict and add 1. Then after loop is complete move 2019 count to 2017 like the original logic was doing:
+Timeit: 4.1832102716s  --This is an improvement over all previous <thumbs up emoji>
+
+From the last update I change the update logic to the below, then I don't need to move 2018 count after the loop. I don't think this will help performance though.
+year_count[year if year != "2018" else "2017"] += 1
+Timeit: 4.11998182716s  --Well, I guess it helped a tiny bit
+
+Changed the string parse from row[5][6:] to row[5][-4:]. I'm unsure if there is a performance gain from specifying with a directy index.
+Timeit: No real gaing. The numbers were bouncing around a bit around the last number'
+
+I moved the string slicing up, so that I could remove the "if year > 2012" conditional. Now it just checks if the year is in the dictionary.
+Timeit: 4.008759308s  --Numbers were consistenly better than before. A few below 4s even.
+
+I switched the year counter in the record loop to just add ALL years in a defaultdict(int). That way no if statements are needed for that part of the loop. Then I get the values for the year_count dict after the record loop.
+Timeit: 4.1198490864s --This went back up, so it didn't help performance.
+
+Removed CSV processing and looped through file with file.readline(). Split on the comma:
+Timeit: 2.25168079012s -- This was a major improvement!!!! Down to a quarter the original time.
+
+Instead of doing a split on the record string, I did two slices to get the sentence, and year value based on the last comma in the string using rfind(','):
+comma_index = row.rfind(",")
+sentence = row[comma_index + 1:]
+year = row[comma_index - 4: comma_index]
+Timeit: 2.092112197 -- I had a few runs below 2 seconds!!
+
+############## Datetime Parsing attempts #####################
+After reading the comment on Slack about trying to parse the datetime. I decided to try that out.
+To get the whole date I used rfind(',') to find the previous comma. Then I could slice the whole date string.
+I used dateutils parse method to get the date, and the year.
+Timeit: 71s --Wow, it went from 2 seconds to over a minute!!
+
+Next I switched to using datetime.strptime() method with the format '%m/%d/%Y'.
+Timeit: 16.5s  --Much better
+
+
