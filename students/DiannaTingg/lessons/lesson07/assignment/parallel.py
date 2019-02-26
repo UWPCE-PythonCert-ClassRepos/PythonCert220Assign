@@ -6,7 +6,7 @@ Concurrency & Async Programming
 import csv
 import os
 import time
-from timeit import timeit
+# from timeit import timeit
 import threading
 import pymongo
 
@@ -200,6 +200,6 @@ def main():
 
 
 if __name__ == "__main__":
-    # main()
-    print(timeit("main()", globals=globals(), number=1))
-    print(timeit("main()", globals=globals(), number=10))
+    main()
+    # print(timeit("main()", globals=globals(), number=1))
+    # print(timeit("main()", globals=globals(), number=10))
