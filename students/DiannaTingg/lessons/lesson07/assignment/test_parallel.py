@@ -34,12 +34,13 @@ def test_import_csv():
 
 
 def test_add_bulk_data(mongo_database):
-    result = d._add_bulk_data(mongo_database.rentals, "", "rentals.csv")
+    results_dict = {}
+    d._add_bulk_data(results_dict, mongo_database.rentals, "", "rentals.csv")
 
-    assert result[0] == 9999
-    assert result[1] == 0
-    assert result[2] == 9999
-    assert isinstance(result[3], float)
+    assert results_dict["rentals"][0] == 9999
+    assert results_dict["rentals"][1] == 0
+    assert results_dict["rentals"][2] == 9999
+    assert isinstance(results_dict["rentals"][3], float)
 
 
 def test_import_data(mongo_database):
