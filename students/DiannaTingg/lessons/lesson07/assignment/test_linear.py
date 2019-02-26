@@ -58,7 +58,6 @@ def test_import_data(mongo_database):
 
 def test_show_available_products(mongo_database):
     d.import_data(mongo_database, "", "products.csv", "customers.csv", "rentals.csv")
-
     result = d.show_available_products(mongo_database)
 
     assert len(result) == 9999
@@ -68,16 +67,14 @@ def test_show_available_products(mongo_database):
 
 def test_show_rentals(mongo_database):
     d.import_data(mongo_database, "", "products.csv", "customers.csv", "rentals.csv")
-
     result = d.show_rentals(mongo_database, "P000004")
-    assert len(result) == 2
 
+    assert len(result) == 2
     assert list(result.keys()) == ["C000002", "C000004"]
 
 
 def test_clear_data(mongo_database):
     d.import_data(mongo_database, "", "products.csv", "customers.csv", "rentals.csv")
-
     result = sorted(mongo_database.list_collection_names())
     assert result == ["customers", "products", "rentals"]
 
