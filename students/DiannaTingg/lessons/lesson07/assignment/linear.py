@@ -5,9 +5,9 @@ Concurrency & Async Programming
 
 import csv
 import os
-import pymongo
 import time
-from timeit import timeit
+# from timeit import timeit
+import pymongo
 
 # pylint: disable-msg=line-too-long
 # pylint: disable-msg=invalid-name
@@ -82,7 +82,6 @@ def _add_bulk_data(collection, directory_name, filename):
 
     final_records = collection.count_documents({})
     records_processed = final_records - initial_records
-
     run_time = time.time() - start_time
 
     return records_processed, initial_records, final_records, run_time
@@ -174,6 +173,10 @@ def clear_data(db):
 
 
 def main():
+    """
+    Main function
+    :return: List of two tuples
+    """
     mongo = MongoDBConnection()
 
     with mongo:
@@ -187,6 +190,6 @@ def main():
 
 
 if __name__ == "__main__":
-    print(main())
+    main()
     # print(timeit("main()", globals=globals(), number=1))
     # print(timeit("main()", globals=globals(), number=10))
