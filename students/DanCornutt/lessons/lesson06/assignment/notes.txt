@@ -1,0 +1,10 @@
+Before Changes	
+	$python3 -m cProfile poor_perf.py ran in 4.57s
+After Changes
+	$python3 -m cProfile good_perf.py ran in 2.31s
+
+Refactored code:
+	To only loop through file once
+	Check for date newer than 2012 and check for kw 'ao' in lrow[6]
+	Used try/except block to add to year_count dict
+
