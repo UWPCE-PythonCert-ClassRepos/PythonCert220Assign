@@ -1,5 +1,5 @@
 '''
-HP Norton inventory and customer information database functions
+HP Norton customer information database functions
 '''
 
 import csv
