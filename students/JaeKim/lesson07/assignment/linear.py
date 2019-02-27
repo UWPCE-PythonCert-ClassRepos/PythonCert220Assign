@@ -1,14 +1,10 @@
 import os
 import csv
 from pymongo import MongoClient
-import threading
-from time import sleep
 
 
 class MongoDBConnection():
-    '''
-    Mongo connection
-    '''
+    """MongoDB Connection"""
 
     def __init__(self, host='127.0.0.1', port=27017):
         self.host = host
@@ -24,11 +20,6 @@ class MongoDBConnection():
 
 
 def cleanup():
-    '''
-    Used to cleanup mongo collections
-
-    :return:
-    '''
     mongo = MongoDBConnection()
 
     with mongo:
@@ -38,21 +29,13 @@ def cleanup():
 
 
 def import_data(directory_name, product_file, customer_file, rentals_file):
-    '''
-    Imports CSV files and uses threading to load them concurrently
-
-    :param directory_name:
-    :param product_file:
-    :param customer_file:
-    :param rentals_file:
-    :return:
-    '''
     mongo = MongoDBConnection()
 
     with mongo:
         database = mongo.connection.media
-
-        products_csv, customer_csv, rentals_csv = (os.path.join(directory_name, filename) for filename in (product_file, customer_file, rentals_file))
+        products_csv = os.path.join(directory_name, product_file)
+        customer_csv = os.path.join(directory_name, customer_file)
+        rentals_csv = os.path.join(directory_name, rentals_file)
 
         products_data = csv.reader(open(products_csv, encoding='utf-8-sig'))
         customers_data = csv.reader(open(customer_csv, encoding='utf-8-sig'))
@@ -61,25 +44,10 @@ def import_data(directory_name, product_file, customer_file, rentals_file):
         collection_products, collection_customers, collection_rentals = database['products'], database['customers'], database['rentals']
         data = [products_data, customers_data, rentals_data]
 
-        threads = [threading.Thread(target=_insert_data, args=[collection, data]) for collection, data in
-                   zip([collection_products, collection_customers, collection_rentals], data)]
+        [_insert_data(x, y) for x, y in zip([collection_products, collection_customers, collection_rentals], data)]
 
-        for t in threads:
-            t.start()
-
-        for t in threads:
-            t.join()
-
-    return threads
 
 def _insert_data(collection, data):
-    '''
-    Internal method to insert data set into a collection
-
-    :param collection:
-    :param data:
-    :return:
-    '''
     mongo = MongoDBConnection()
     iterproducts = iter(data)
     headers = next(iterproducts)
@@ -92,13 +60,7 @@ def _insert_data(collection, data):
 
         collection.insert_many(result)
 
-
 def show_available_products():
-    '''
-    Lists available products with a quantity of 1
-
-    :return:
-    '''
     result = {}
     mongo = MongoDBConnection()
 
@@ -107,7 +69,7 @@ def show_available_products():
         available_products = database.products.find()
 
         for i in available_products:
-            if int(i['quantity_available']) >= 1:
+            if int(i['quantity_available']) > 1:
                 product_id = i['product_id']
 
                 for e in '_id', 'product_id':
@@ -118,12 +80,6 @@ def show_available_products():
 
 
 def show_rentals(product_id):
-    '''
-    Returns product detail given a product id
-
-    :param product_id:
-    :return:
-    '''
     renters = {}
     mongo = MongoDBConnection()
 
@@ -143,7 +99,7 @@ def show_rentals(product_id):
 
 if __name__ == "__main__":
     mongo = MongoDBConnection()
-    threads = import_data("", "products.csv", "customers.csv", "rentals.csv")
+    import_data("", "products.csv", "customers.csv", "rentals.csv")
     print(show_available_products())
     print(show_rentals(3))
     cleanup()
