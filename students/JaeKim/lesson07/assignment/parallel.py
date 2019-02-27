@@ -2,7 +2,7 @@ import os
 import csv
 from pymongo import MongoClient
 import threading
-from multiprocessing import Pool
+import datetime
 from multiprocessing.pool import ThreadPool
 from time import sleep
 
@@ -39,7 +39,7 @@ def cleanup():
         [i.drop() for i in [database.products, database.customers, database.rentals]]
 
 
-def import_data(directory_name, product_file, customer_file, rentals_file):
+def import_data(directory_name, product_file, rentals_file):
     '''
     Imports CSV files and uses threading to load them concurrently
 
@@ -55,18 +55,17 @@ def import_data(directory_name, product_file, customer_file, rentals_file):
 
     with mongo:
         database = mongo.connection.media
-        products_csv, customer_csv, rentals_csv = (os.path.join(directory_name, filename) for filename in
-                                                   (product_file, customer_file, rentals_file))
+        products_csv, rentals_csv = (os.path.join(directory_name, filename) for filename in
+                                                   (product_file, rentals_file))
 
         products_data = csv.reader(open(products_csv, encoding='utf-8-sig'))
-        customers_data = csv.reader(open(customer_csv, encoding='utf-8-sig'))
         rentals_data = csv.reader(open(rentals_csv, encoding='utf-8-sig'))
 
-        collection_products, collection_customers, collection_rentals = database['products'], database['customers'], database['rentals']
-        data = [products_data, customers_data, rentals_data]
+        collection_products, collection_rentals = database['products'], database['rentals']
+        data = [products_data, rentals_data]
 
         records_inserted = [pool.apply_async(_insert_data, (collection, data)).get() for collection, data in
-                   zip([collection_products, collection_customers, collection_rentals], data)]
+                   zip([collection_products, collection_rentals], data)]
 
         print(records_inserted)
 
@@ -74,6 +73,29 @@ def import_data(directory_name, product_file, customer_file, rentals_file):
         pool.join()
 
     return records_inserted
+
+
+def import_data_customers(directory_name, customer_file):
+    mongo = MongoDBConnection()
+
+    pool = ThreadPool(processes=3)
+
+    with mongo:
+        database = mongo.connection.media
+        customers_csv = os.path.join(directory_name, customer_file)
+        customers_data = csv.reader(open(customers_csv, encoding='utf-8-sig'))
+
+        collection_customers = database['customers']
+
+        records_inserted = pool.apply_async(_insert_data, (collection_customers, customers_data)).get()
+
+        print(records_inserted)
+
+        pool.close()
+        pool.join()
+
+    return records_inserted
+
 
 def _insert_data(collection, data):
     '''
@@ -145,8 +167,20 @@ def show_rentals(product_id):
         return renters
 
 if __name__ == "__main__":
+    pool = ThreadPool(processes=3)
+    start = datetime.datetime.now()
+
     mongo = MongoDBConnection()
-    threads = import_data("", "products.csv", "customers.csv", "rentals.csv")
+    import_products_rentals = pool.apply_async(import_data("", "products.csv", "rentals.csv"))
+    import_customers =  pool.apply_async(import_data_customers("", "customers.csv"))
+
+    pool.close()
+    pool.join()
+    runtime = (start - datetime.datetime.now())
+
+    print('import_products_rentals', import_products_rentals)
+    print('import_customers', import_customers)
+
     print(show_available_products())
-    print(show_rentals(3))
+    # print(show_rentals(3))
     # # cleanup()
