@@ -153,7 +153,7 @@ def show_rentals(db, product_id):
             customer_id = rental["user_id"]
             customer_record = db.customers.find_one({"user_id": customer_id})
 
-            short_dict = {key: value for key, value in customer_record.items() if key not in ("_id", "product_id")}
+            short_dict = {key: value for key, value in customer_record.items() if key not in ("_id", "user_id")}
             customer_info[customer_id] = short_dict
 
     return customer_info
