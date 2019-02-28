@@ -9,13 +9,13 @@ Each tuple contains: number of records processed, record count in the database p
 I'm using larger csv files for products, customers, and rentals.  Each file has 9,999 records plus a header row.
 I automatically clear the MongoDB each time the program exits.
 
-Using timeit, my linear.py file takes 3.458133672 seconds to run once.  It takes 29.399097648999998 seconds to run 10 times.
+Using timeit, my linear.py file takes 2.573601484 seconds to run once.  It takes 25.389773754 seconds to run 10 times.
 I wrote some tests in test_linear.py and they all pass.
 
 I'm going to use multithreading in my parallel.py file to see if I can get a performance improvement.
 I will read all three csv files at the same time (in parallel).
 
-Using timeit, my parallel.py file takes 2.166639083 seconds to run once.  It takes 19.358340443 seconds to run 10 times.
+Using timeit, my parallel.py file takes 1.679744485 seconds to run once.  It takes 18.042013637 seconds to run 10 times.
 I wrote some tests in test_parallel.py and they all pass.
 
 I keep getting different times from timeit, but in general, parallel.py seems to be faster than linear.py, so I would recommend using that program instead.

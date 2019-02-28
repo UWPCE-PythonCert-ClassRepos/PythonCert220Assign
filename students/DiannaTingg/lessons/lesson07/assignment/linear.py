@@ -121,13 +121,9 @@ def show_available_products(db):
     available_products = {}
 
     for product in db.products.find():
-        if int(product["quantity_available"]) > 0:
-
-            product_dict = {"description": product["description"],
-                            "product_type": product["product_type"],
-                            "quantity_available": product["quantity_available"]}
-
-            available_products[product["product_id"]] = product_dict
+        if product["quantity_available"] != "0":
+            short_dict = {key: value for key, value in product.items() if key not in ("_id", "product_id")}
+            available_products[product["product_id"]] = short_dict
 
     return available_products
 
@@ -145,18 +141,10 @@ def show_rentals(db, product_id):
     for rental in db.rentals.find():
         if rental["product_id"] == product_id:
             customer_id = rental["user_id"]
-
             customer_record = db.customers.find_one({"user_id": customer_id})
 
-            customer_dict = {"first_name": customer_record["first_name"],
-                             "last_name": customer_record["last_name"],
-                             "address": customer_record["address"],
-                             "phone_number": customer_record["phone_number"],
-                             "email": customer_record["email"],
-                             "status": customer_record["status"],
-                             "credit_limit": customer_record["credit_limit"]}
-
-            customer_info[customer_id] = customer_dict
+            short_dict = {key: value for key, value in customer_record.items() if key not in ("_id", "product_id")}
+            customer_info[customer_id] = short_dict
 
     return customer_info
 
