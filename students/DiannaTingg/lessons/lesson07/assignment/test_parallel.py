@@ -68,10 +68,19 @@ def test_show_available_products(mongo_database):
 
 def test_show_rentals(mongo_database):
     d.import_data(mongo_database, "", "products.csv", "customers.csv", "rentals.csv")
+
     result = d.show_rentals(mongo_database, "P000004")
+
+    expected = {'C000002': {'first_name': 'Blanca', 'last_name': 'Bashirian', 'address': '0193 Malvina Lake',
+                            'phone_number': '(240)014-9496 x08349', 'email': 'Joana_Nienow@guy.org',
+                            'status': 'Active', 'credit_limit': '689'},
+                'C000004': {'first_name': 'Mittie', 'last_name': 'Turner', 'address': '996 Lorenza Points',
+                            'phone_number': '1-324-023-8861 x025', 'email': 'Clair_Bergstrom@rylan.io',
+                            'status': 'Active', 'credit_limit': '565'}}
 
     assert len(result) == 2
     assert list(result.keys()) == ["C000002", "C000004"]
+    assert result == expected
 
 
 def test_clear_data(mongo_database):
