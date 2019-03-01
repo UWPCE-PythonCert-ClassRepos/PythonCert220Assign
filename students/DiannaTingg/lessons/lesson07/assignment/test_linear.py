@@ -10,6 +10,7 @@ import linear as d
 # pylint: disable-msg=redefined-outer-name
 # pylint: disable-msg=missing-docstring
 # pylint: disable-msg=protected-access
+# pylint: disable-msg=line-too-long
 
 
 @pytest.fixture(scope="function")
