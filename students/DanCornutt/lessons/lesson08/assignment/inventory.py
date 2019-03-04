@@ -19,13 +19,8 @@ def add_furniture(
     """
     if os.path.isfile(invoice_file):
         open_type = 'a'
-        print("File is in path")
     else:
-        print("File is not in path, creating new")
         open_type = 'w'
-    # info = ",".join([customer_name, item_code, item_description,
-    #                  str(float(item_monthly_price))])
-    # print(info)
     with open(invoice_file, open_type, newline='') as csv_file:
         writer = csv.writer(csv_file, delimiter=',')
         writer.writerow([customer_name, item_code, item_description,
