@@ -2,6 +2,7 @@
 """HW8 Functional Methods"""
 import os.path
 import csv
+from functools import partial
 
 
 def add_furniture(
@@ -34,4 +35,12 @@ def single_customer(customer_name, invoice_file):
     param2: invoice file
     """
 
-    pass
+    # customer_func = partial(add_furniture, invoice_file=file,
+    #                         customer_name=name)
+    def cust_load_func(rentals):
+        with open(rentals, 'r') as csv_f:
+            reader = csv.reader(csv_f, delimiter=',')
+            for row in reader:
+                add_furniture(invoice_file, customer_name, row[0], row[1],
+                              row[2])
+    return cust_load_func
