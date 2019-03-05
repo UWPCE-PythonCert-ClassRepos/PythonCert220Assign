@@ -1,0 +1,37 @@
+Here is the evidence from the cProfile output below, as each module's components call each took the total time spent in and the cumulative time spent in.
+
+Tried to eliminate redundant loops, unnecessary file opening and append function which is the main one is call out 1000012 times.
+And, from 1087687 function calls (1087670 primitive calls) to 44641 function calls (44624 primitive calls) almost three times and even time wize from 8.071 to 3.327 seconds.
+
+
+$ python3 -m cProfile good_perf.py
+{'2015': 5994, '2013': 5911, '2014': 5854, '2016': 5762, '2017': 5789, '2018': 5811}
+'ao' was found 63395 times
+         44641 function calls (44624 primitive calls) in 3.327 seconds
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+    21525    0.013    0.000    0.034    0.000 codecs.py:319(decode)
+        6    0.000    0.000    0.000    0.000 good_perf.py:11(<lambda>)
+        1    0.000    0.000    3.335    3.335 good_perf.py:3(<module>)
+        1    0.000    0.000    3.332    3.332 good_perf.py:31(main)
+        1    3.298    3.298    3.332    3.332 good_perf.py:9(analyze)
+    21525    0.021    0.000    0.021    0.000 {built-in method _codecs.utf_8_decode}
+
+       12    0.000    0.000    0.000    0.000 {method 'append' of 'list' objects}
+
+
+
+$ python3 -m cProfile poor_perf.py 
+{'2013': 5911, '2014': 5854, '2015': 5994, '2016': 5762, '2017': 5789, '2018': 5811}
+'ao' was found 63395 times
+         1087687 function calls (1087670 primitive calls) in 8.071 seconds
+
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+   43050    0.031    0.000    0.075    0.000 codecs.py:319(decode)
+        1    0.000    0.000    8.071    8.071 poor_perf.py:3(<module>)
+        1    0.100    0.100    8.067    8.067 poor_perf.py:59(main)
+        1    7.821    7.821    7.968    7.968 poor_perf.py:8(analyze)
+    43050    0.045    0.000    0.045    0.000 {built-in method _codecs.utf_8_decode}
+
+  1000012    0.070    0.000    0.070    0.000 {method 'append' of 'list' objects}
