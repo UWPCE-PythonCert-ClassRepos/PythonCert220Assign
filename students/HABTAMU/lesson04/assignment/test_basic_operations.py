@@ -4,6 +4,8 @@
 import basic_operations as bo
 import customers_model as cm
 import pytest
+import csv
+import pprint
 
 CUSTOMER_1 = {'customer_id': 'WHi32145',
               'first_name': 'Daniel',
@@ -51,13 +53,26 @@ def create_db():
     cm.database.close()
 
 
-def test_read_csv_data():
-    csv_file = bo.read_csv_data()
-    # assert csv_file.startswith("Id")
-    # assert csv_file.endwith("813")
-    # assert "C000000" in csv_file
-    # test_customer1 = cm.Customer.get(cm.Customer.customer_id == CUSTOMER_1['customer_id'])
-    pass
+def test_read_csv():
+    """
+    read a csv
+    """
+    customer_data = [
+        ('A000000', 'Habtamu', 'Asfaw', '3st 45th ave, Sea, wa 98122', '123-322-4321', 'cho@uw.edu', 'Active', '740'),
+        ('A000001', 'cho', 'mr', '1st 5th ave, Sea, wa 98102', '321-322-4321', 'mrcho@uw.edu', 'Active', '700')
+        ]
+    print("Write csv file")
+    with open('lesson04_assignment_data_customer.csv', 'w', encoding="ISO-8859-1") as data_customer:
+        customerwriter = csv.writer(data_customer)
+        customerwriter.writerow(customer_data)
+
+
+    print("Read csv file back")
+    with open('lesson04_assignment_data_customer.csv', 'r', encoding="ISO-8859-1") as data_customer:
+        customer_reader = csv.reader(data_customer, delimiter=',', quotechar='"')
+        for row in customer_reader:
+            pprint.pprint(row)
+
 
 def test_add_customer():
     create_db()

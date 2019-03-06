@@ -1,0 +1,19 @@
+I pull my existing code from the customer database (sqlite3) and the products (mongodb) into one module.
+It was a little unclear if this is what the assignment was asking for, but it seemed like a good challenge
+to make both of these parallel.
+
+1000 products, 1000 contacts, and 9 rentals for mongodb
+10,000 customers for sqlite3
+
+My linear.py starting time was 2.45 seconds
+
+After refactoring the mongodb code to make it more Threading friendly I tried using threading.Thread.
+This was good, but it was hard to get the result from the functions being called.
+
+I get errors in sqlite3 when inserting more than 120 records at once.
+So I used this to use separate threads for each 120 insert batch.
+
+I switched to multiprocessing.ThreadPool. With this I could call apply_async.
+After implementing this it went to 1.47 seconds which is a semi decent improvement with mimimal code changes.
+
+While there are performance gains, they may not be enough to justify the increase development costs, and bug potential.

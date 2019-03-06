@@ -2,6 +2,7 @@ import datetime
 import csv
 import collections
 from dateutil.parser import parse
+import pandas as pd
 
 
 def analyze(filename):
@@ -41,7 +42,8 @@ def analyze_2(filename):
 
 def analyze_3(filename):
     """
-    Same as above function, but only goes through data once
+    Same as above function, this time don't pull the important data
+    into its own generator, jsut go through rows as is
     """
     start = datetime.datetime.now()
     good_years = collections.defaultdict(lambda: 0)
@@ -56,6 +58,7 @@ def analyze_3(filename):
     end = datetime.datetime.now()
     time = end - start
     return time.total_seconds(), good_years, found
+<<<<<<< HEAD
 
 
 def analyze_4(filename):
@@ -90,7 +93,82 @@ def analyze_4(filename):
     return time.total_seconds(), year_count, found
 
 
-print(analyze("exercise.csv"))
-print(analyze_2("exercise.csv"))
-print(analyze_3("exercise.csv"))
-print(analyze_4("exercise.csv"))
+def analyze_5(filename):
+    """
+    Checks date for key instead of comparison, similar to 3,
+    but no default dict
+    """
+    start = datetime.datetime.now()
+    good_years = {str(key): 0 for key in range(2013, 2019)}
+    found = 0
+    with open(filename) as csvfile:
+        reader = csv.reader(csvfile, delimiter=',', quotechar='"')
+        for data in reader:
+            try:
+                good_years[data[5][6:]] += 1
+            except KeyError:
+                pass
+            if 'ao' in data[6]:
+                found += 1
+    end = datetime.datetime.now()
+    time = end - start
+    return time.total_seconds(), good_years, found
+
+def analyze_6(filename):
+    """
+    Same as above function, but checks date for key instead of try/except
+    """
+    start = datetime.datetime.now()
+    good_years = {str(key): 0 for key in range(2013, 2019)}
+    found = 0
+    with open(filename) as csvfile:
+        reader = csv.reader(csvfile, delimiter=',', quotechar='"')
+        for data in reader:
+            if data[5][6:] in good_years:
+                good_years[data[5][6:]] += 1
+            if 'ao' in data[6]:
+                found += 1
+    end = datetime.datetime.now()
+    time = end - start
+    return time.total_seconds(), good_years, found
+
+def analyze_7(filename):
+    start = datetime.datetime.now()
+    df = pd.read_csv(filename)
+
+    year_count = {'2013': 0,
+                  '2014': 0,
+                  '2015': 0,
+                  '2016': 0,
+                  '2017': 0,
+                  '2018': 0}
+
+    sub = df[" date"][df[" date"] > '00/00/2012']
+    for i in sub.values:
+        if "2013" in i:
+            year_count["2013"] += 1
+        elif "2014" in i:
+            year_count["2014"] += 1
+        elif "2015" in i:
+            year_count["2015"] += 1
+        elif "2016" in i:
+            year_count["2016"] += 1
+        elif "2017" in i:
+            year_count["2017"] += 1
+        elif "2018" in i:
+            year_count["2018"] += 1
+
+    found = df[" sentence"].str.contains("ao").sum()
+    end = datetime.datetime.now()
+    time = end - start
+    return time.total_seconds(), year_count, found
+
+
+
+print("twice", analyze("exercise.csv"))
+print("generator", analyze_2("exercise.csv"))
+print("defaultdict", analyze_3("exercise.csv"))
+print("try/except", analyze_4("exercise.csv"))
+print("comma parse", analyze_5("exercise.csv"))
+print("check_key", analyze_6("exercise.csv"))
+print("pandas", analyze_7("exercise.csv"))
