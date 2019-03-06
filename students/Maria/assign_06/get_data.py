@@ -5,6 +5,52 @@ from dateutil.parser import parse
 import pandas as pd
 
 
+def analyze_orig(filename):
+    start = datetime.datetime.now()
+    with open(filename) as csvfile:
+        reader = csv.reader(csvfile, delimiter=',', quotechar='"')
+        new_ones = []       #
+        for row in reader:
+            lrow = list(row)  #put each row into a list
+            if lrow[5] > '00/00/2012':  #if the date is greater than 2012
+                new_ones.append((lrow[5], lrow[0]))
+
+        year_count = {   #dict to catch the number of years each was called.
+            "2013": 0,
+            "2014": 0,
+            "2015": 0,
+            "2016": 0,
+            "2017": 0,
+            "2018": 0
+        }
+
+        for new in new_ones:        #for each new row.
+            if new[0][6:] == '2013':
+                year_count["2013"] += 1
+            if new[0][6:] == '2014':
+                year_count["2014"] += 1
+            if new[0][6:] == '2015':
+                year_count["2015"] += 1
+            if new[0][6:] == '2016':
+                year_count["2016"] += 1
+            if new[0][6:] == '2017':
+                year_count["2017"] += 1
+            if new[0][6:] == '2018':
+                year_count["2017"] += 1
+
+    with open(filename) as csvfile:
+        reader = csv.reader(csvfile, delimiter=',', quotechar='"')
+        found = 0
+
+        for line in reader:
+            lrow = list(line)
+            if "ao" in line[6]:
+                found += 1
+    end = datetime.datetime.now()
+    time = end - start
+    return time.total_seconds(), year_count, found
+
+
 def analyze(filename):
     """
     Analyzes a file and produces a count of years and the number of times "ao" was found
@@ -58,8 +104,6 @@ def analyze_3(filename):
     end = datetime.datetime.now()
     time = end - start
     return time.total_seconds(), good_years, found
-<<<<<<< HEAD
-
 
 def analyze_4(filename):
     """
@@ -164,9 +208,9 @@ def analyze_7(filename):
     return time.total_seconds(), year_count, found
 
 
-
-print("twice", analyze("exercise.csv"))
-print("generator", analyze_2("exercise.csv"))
+print("original", analyze("exercise.csv"))
+print("generator", analyze("exercise.csv"))
+print("generator open once", analyze_2("exercise.csv"))
 print("defaultdict", analyze_3("exercise.csv"))
 print("try/except", analyze_4("exercise.csv"))
 print("comma parse", analyze_5("exercise.csv"))
