@@ -1,6 +1,7 @@
 import datetime
 import csv
 import collections
+from dateutil.parser import parse
 
 
 def analyze(filename):
@@ -55,8 +56,41 @@ def analyze_3(filename):
     end = datetime.datetime.now()
     time = end - start
     return time.total_seconds(), good_years, found
-    
+
+
+def analyze_4(filename):
+    """
+    Just open the file and parse commas, don't use csv library
+    """
+    start = datetime.datetime.now()
+
+    year_count = {
+            "2013": 0,
+            "2014": 0,
+            "2015": 0,
+            "2016": 0,
+            "2017": 0,
+            "2018": 0
+    }
+    found = 0
+    with open(filename) as csvfile:
+        row = csvfile.readline()
+        row = csvfile.readline()
+        while row:
+            comma_index = row.rfind(",")
+            sentence = row[comma_index + 1:]
+            year = row[comma_index - 4: comma_index]
+            if year in year_count:
+                year_count[year] += 1
+            if "ao" in sentence:
+                found += 1
+            row = csvfile.readline()
+    end = datetime.datetime.now()
+    time = end - start
+    return time.total_seconds(), year_count, found
+
 
 print(analyze("exercise.csv"))
 print(analyze_2("exercise.csv"))
 print(analyze_3("exercise.csv"))
+print(analyze_4("exercise.csv"))
