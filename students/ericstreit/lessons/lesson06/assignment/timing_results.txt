@@ -1,0 +1,92 @@
+TIMING BAD_PERF(PyPy)
+
+C:\pythonuw\PythonCert220Assign\students\ericstreit\lessons\lesson06\assignment>pypy3 -mtimeit --setup "import poor_perf" poor_perf.analyze('exercise.csv')
+WARNING: timeit is a very unreliable tool. use perf or something else for real measurements
+pypy3.exe -m pip install perf
+pypy3.exe -m perf timeit --setup 'import poor_perf' "poor_perf.analyze('exercise.csv')"
+------------------------------------------------------------
+{'2013': 5911, '2014': 5854, '2015': 5994, '2016': 5762, '2017': 11600, '2018': 0}
+'ao' was found 63395 times
+{'2013': 5911, '2014': 5854, '2015': 5994, '2016': 5762, '2017': 11600, '2018': 0}
+'ao' was found 63395 times
+{'2013': 5911, '2014': 5854, '2015': 5994, '2016': 5762, '2017': 11600, '2018': 0}
+'ao' was found 63395 times
+{'2013': 5911, '2014': 5854, '2015': 5994, '2016': 5762, '2017': 11600, '2018': 0}
+'ao' was found 63395 times
+{'2013': 5911, '2014': 5854, '2015': 5994, '2016': 5762, '2017': 11600, '2018': 0}
+'ao' was found 63395 times
+{'2013': 5911, '2014': 5854, '2015': 5994, '2016': 5762, '2017': 11600, '2018': 0}
+'ao' was found 63395 times
+{'2013': 5911, '2014': 5854, '2015': 5994, '2016': 5762, '2017': 11600, '2018': 0}
+'ao' was found 63395 times
+{'2013': 5911, '2014': 5854, '2015': 5994, '2016': 5762, '2017': 11600, '2018': 0}
+'ao' was found 63395 times
+1 loops, average of 7: 30.6 +- 0.287 sec per loop (using standard deviation)
+
+
+TIMING BAD_PERF(Python)
+
+C:\pythonuw\PythonCert220Assign\students\ericstreit\lessons\lesson06\assignment>python -mtimeit --setup "import poor_perf" poor_perf.analyze('exercise.csv')
+{'2013': 5911, '2014': 5854, '2015': 5994, '2016': 5762, '2017': 11600, '2018': 0}
+'ao' was found 63395 times
+{'2013': 5911, '2014': 5854, '2015': 5994, '2016': 5762, '2017': 11600, '2018': 0}
+'ao' was found 63395 times
+{'2013': 5911, '2014': 5854, '2015': 5994, '2016': 5762, '2017': 11600, '2018': 0}
+'ao' was found 63395 times
+{'2013': 5911, '2014': 5854, '2015': 5994, '2016': 5762, '2017': 11600, '2018': 0}
+'ao' was found 63395 times
+{'2013': 5911, '2014': 5854, '2015': 5994, '2016': 5762, '2017': 11600, '2018': 0}
+'ao' was found 63395 times
+{'2013': 5911, '2014': 5854, '2015': 5994, '2016': 5762, '2017': 11600, '2018': 0}
+'ao' was found 63395 times
+{'2013': 5911, '2014': 5854, '2015': 5994, '2016': 5762, '2017': 11600, '2018': 0}
+'ao' was found 63395 times
+10 loops, best of 3: 9.43 sec per loop
+
+
+TIMING GOOD_PERF (PyPy)
+
+C:\pythonuw\PythonCert220Assign\students\ericstreit\lessons\lesson06\assignment>pypy3 -mtimeit --setup "import good_perf" good_perf.analyze('exercise.csv')
+WARNING: timeit is a very unreliable tool. use perf or something else for real measurements
+pypy3.exe -m pip install perf
+pypy3.exe -m perf timeit --setup 'import good_perf' "good_perf.analyze('exercise.csv')"
+------------------------------------------------------------
+{'2013': 5911, '2014': 5854, '2015': 5994, '2016': 5762, '2017': 11600, '2018': 0}
+'ao' was found 63395 times
+{'2013': 5911, '2014': 5854, '2015': 5994, '2016': 5762, '2017': 11600, '2018': 0}
+'ao' was found 63395 times
+{'2013': 5911, '2014': 5854, '2015': 5994, '2016': 5762, '2017': 11600, '2018': 0}
+'ao' was found 63395 times
+{'2013': 5911, '2014': 5854, '2015': 5994, '2016': 5762, '2017': 11600, '2018': 0}
+'ao' was found 63395 times
+{'2013': 5911, '2014': 5854, '2015': 5994, '2016': 5762, '2017': 11600, '2018': 0}
+'ao' was found 63395 times
+{'2013': 5911, '2014': 5854, '2015': 5994, '2016': 5762, '2017': 11600, '2018': 0}
+'ao' was found 63395 times
+{'2013': 5911, '2014': 5854, '2015': 5994, '2016': 5762, '2017': 11600, '2018': 0}
+'ao' was found 63395 times
+{'2013': 5911, '2014': 5854, '2015': 5994, '2016': 5762, '2017': 11600, '2018': 0}
+'ao' was found 63395 times
+1 loops, average of 7: 16.4 +- 0.29 sec per loop (using standard deviation)
+
+
+TIMING GOOD_PERF (Python)
+
+C:\pythonuw\PythonCert220Assign\students\ericstreit\lessons\lesson06\assignment>python -mtimeit --setup "import good_perf" good_perf.analyze('exercise.csv')
+{'2013': 5911, '2014': 5854, '2015': 5994, '2016': 5762, '2017': 11600, '2018': 0}
+'ao' was found 63395 times
+{'2013': 5911, '2014': 5854, '2015': 5994, '2016': 5762, '2017': 11600, '2018': 0}
+'ao' was found 63395 times
+{'2013': 5911, '2014': 5854, '2015': 5994, '2016': 5762, '2017': 11600, '2018': 0}
+'ao' was found 63395 times
+{'2013': 5911, '2014': 5854, '2015': 5994, '2016': 5762, '2017': 11600, '2018': 0}
+'ao' was found 63395 times
+{'2013': 5911, '2014': 5854, '2015': 5994, '2016': 5762, '2017': 11600, '2018': 0}
+'ao' was found 63395 times
+{'2013': 5911, '2014': 5854, '2015': 5994, '2016': 5762, '2017': 11600, '2018': 0}
+'ao' was found 63395 times
+{'2013': 5911, '2014': 5854, '2015': 5994, '2016': 5762, '2017': 11600, '2018': 0}
+'ao' was found 63395 times
+10 loops, best of 3: 5.72 sec per loop
+
+
