@@ -1,6 +1,7 @@
 import datetime
 import csv
 import collections
+from dateutil.parser import parse
 import pandas as pd
 
 
@@ -57,11 +58,45 @@ def analyze_3(filename):
     end = datetime.datetime.now()
     time = end - start
     return time.total_seconds(), good_years, found
-    
+<<<<<<< HEAD
+
+
 def analyze_4(filename):
     """
-    Same as above function, but checks date for key instead of comparison
-    each time, so no default dict
+    Just open the file and parse commas, don't use csv library
+    """
+    start = datetime.datetime.now()
+
+    year_count = {
+            "2013": 0,
+            "2014": 0,
+            "2015": 0,
+            "2016": 0,
+            "2017": 0,
+            "2018": 0
+    }
+    found = 0
+    with open(filename) as csvfile:
+        row = csvfile.readline()
+        row = csvfile.readline()
+        while row:
+            comma_index = row.rfind(",")
+            sentence = row[comma_index + 1:]
+            year = row[comma_index - 4: comma_index]
+            if year in year_count:
+                year_count[year] += 1
+            if "ao" in sentence:
+                found += 1
+            row = csvfile.readline()
+    end = datetime.datetime.now()
+    time = end - start
+    return time.total_seconds(), year_count, found
+
+
+def analyze_5(filename):
+    """
+    Checks date for key instead of comparison, similar to 3,
+    but no default dict
     """
     start = datetime.datetime.now()
     good_years = {str(key): 0 for key in range(2013, 2019)}
@@ -79,7 +114,7 @@ def analyze_4(filename):
     time = end - start
     return time.total_seconds(), good_years, found
 
-def analyze_5(filename):
+def analyze_6(filename):
     """
     Same as above function, but checks date for key instead of try/except
     """
@@ -97,8 +132,7 @@ def analyze_5(filename):
     time = end - start
     return time.total_seconds(), good_years, found
 
-
-def analyze_6(filename):
+def analyze_7(filename):
     start = datetime.datetime.now()
     df = pd.read_csv(filename)
 
@@ -125,15 +159,16 @@ def analyze_6(filename):
             year_count["2018"] += 1
 
     found = df[" sentence"].str.contains("ao").sum()
-
     end = datetime.datetime.now()
     time = end - start
     return time.total_seconds(), year_count, found
+
 
 
 print("twice", analyze("exercise.csv"))
 print("generator", analyze_2("exercise.csv"))
 print("defaultdict", analyze_3("exercise.csv"))
 print("try/except", analyze_4("exercise.csv"))
-print("check_key", analyze_5("exercise.csv"))
-print("pandas", analyze_6("exercise.csv"))
+print("comma parse", analyze_5("exercise.csv"))
+print("check_key", analyze_6("exercise.csv"))
+print("pandas", analyze_7("exercise.csv"))
