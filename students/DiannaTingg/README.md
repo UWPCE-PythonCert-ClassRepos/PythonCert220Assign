@@ -2,7 +2,7 @@
 This directory will be used for assignments.
 <br>
 <br>
-##### Advanced Programming in Python  
+#### Advanced Programming in Python  
 Lesson 01: Advanced Testing  
 Lesson 02: Logging and Debugging  
 Lesson 03: Relational Databases  
