@@ -1,0 +1,10 @@
+2019-02-19 20:51:46,510 database.py:153 ERROR     None
+2019-02-19 20:51:46,511 database.py:107 ERROR     Time Start: products.csv Parsing data: Tue Feb 19 20:51:46 2019
+2019-02-19 20:51:46,512 database.py:107 ERROR     Time Start: customers.csv Parsing data: Tue Feb 19 20:51:46 2019
+2019-02-19 20:51:46,512 database.py:107 ERROR     Time Start: rentals.csv Parsing data: Tue Feb 19 20:51:46 2019
+2019-02-19 20:51:53,555 database.py:116 ERROR     Time End: rentals.csv Parsing data: Tue Feb 19 20:51:53 2019
+2019-02-19 20:51:53,637 database.py:116 ERROR     Time End: products.csv Parsing data: Tue Feb 19 20:51:53 2019
+2019-02-19 20:51:53,645 database.py:116 ERROR     Time End: customers.csv Parsing data: Tue Feb 19 20:51:53 2019
+2019-02-26 15:02:23,843 database.py:153 ERROR     9999
+2019-02-26 15:09:37,102 database.py:153 ERROR     None
+2019-02-26 15:12:06,035 database.py:154 ERROR     <queue.Queue object at 0x7f20406053c8>
