@@ -1,0 +1,6 @@
+Elisa Miles,LR04,Leather Sofa,25.00
+Edward Data,KT78,Kitchen Table,10.00
+Alex Gonzales,BR02,Queen Mattress,17.00
+Susan Wong,ZU8L,Coffee Table,444.44
+Susan Wong,RS11L,King Size Bed,2000.00
+Susan Wong,23RS,Lamp,50.00

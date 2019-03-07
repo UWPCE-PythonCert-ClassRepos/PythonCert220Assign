@@ -1,0 +1,3 @@
+Susan Wong,ZU8L,Coffee Table,444.44
+Susan Wong,RS11L,King Size Bed,2000.00
+Susan Wong,23RS,Lamp,50.00
