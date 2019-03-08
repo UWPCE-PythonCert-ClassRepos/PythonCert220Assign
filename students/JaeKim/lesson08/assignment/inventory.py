@@ -10,10 +10,8 @@ def single_customer(customer_name, invoice_file):
     def another_function(target_csv):
         with open(invoice_file) as source_csv:
             original_entries = [line.split(",") for line in source_csv if line]
+            add_furniture(customer_name, item[1], item[2], item[3])
 
-        with open(target_csv, 'a') as new_csv:
-            for item in original_entries:
-                new_csv.write("{},{},{},{}".format(customer_name, item[1], item[2], item[3]))
     return another_function
 
 if __name__ == "__main__":
