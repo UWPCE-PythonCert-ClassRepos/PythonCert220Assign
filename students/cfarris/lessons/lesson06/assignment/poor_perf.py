@@ -1,23 +1,27 @@
+#!/usr/bin/env Python3
 """
 poorly performing, poorly written module
 
 """
-
 import datetime
 import csv
+from timeit import timeit as timer
+from memory_profiler import profile
 
 
+
+@profile
 def analyze(filename):
     start = datetime.datetime.now()
     with open(filename) as csvfile:
         reader = csv.reader(csvfile, delimiter=',', quotechar='"')
-        new_ones = []
+        new_ones = []       #
         for row in reader:
-            lrow = list(row)
-            if lrow[5] > '00/00/2012':
+            lrow = list(row)  #put each row into a list
+            if lrow[5] > '00/00/2012':  #if the date is greater than 2012
                 new_ones.append((lrow[5], lrow[0]))
 
-        year_count = {
+        year_count = {   #dict to catch the number of years each was called.
             "2013": 0,
             "2014": 0,
             "2015": 0,
@@ -26,7 +30,7 @@ def analyze(filename):
             "2018": 0
         }
 
-        for new in new_ones:
+        for new in new_ones:        #for each new row. 
             if new[0][6:] == '2013':
                 year_count["2013"] += 1
             if new[0][6:] == '2014':
@@ -39,8 +43,9 @@ def analyze(filename):
                 year_count["2017"] += 1
             if new[0][6:] == '2018':
                 year_count["2017"] += 1
-
+            print("the new", new) #i added for debugging.
         print(year_count)
+
 
     with open(filename) as csvfile:
         reader = csv.reader(csvfile, delimiter=',', quotechar='"')
@@ -56,7 +61,7 @@ def analyze(filename):
         end = datetime.datetime.now()
 
     return (start, end, year_count, found)
-
+    
 
 def main():
     filename = "data/exercise.csv"

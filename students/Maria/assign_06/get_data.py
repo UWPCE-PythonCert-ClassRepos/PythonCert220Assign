@@ -208,11 +208,11 @@ def analyze_7(filename):
     return time.total_seconds(), year_count, found
 
 
-print("original", analyze("exercise.csv"))
+print("original", analyze_orig("exercise.csv"))
 print("generator", analyze("exercise.csv"))
 print("generator open once", analyze_2("exercise.csv"))
 print("defaultdict", analyze_3("exercise.csv"))
-print("try/except", analyze_4("exercise.csv"))
-print("comma parse", analyze_5("exercise.csv"))
+print("comma parse", analyze_4("exercise.csv"))
+print("try/except", analyze_5("exercise.csv"))
 print("check_key", analyze_6("exercise.csv"))
 print("pandas", analyze_7("exercise.csv"))

@@ -118,7 +118,7 @@ dmypy.json
 
 _gsdata_/
 .pytest_cache/
-*.csv
+.csv
 
 # emacs
 *.*~
