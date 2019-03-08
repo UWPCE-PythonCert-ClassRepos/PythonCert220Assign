@@ -19,12 +19,11 @@ def jpegdiscovery(directory):
             else:
                 file_dict[directory] = [file]
 
-
+    return [[file, file_dict[file]] for file in file_dict]
+    
 if __name__ == "__main__":
     """
     Correctly formats the output
     """
     file_dict = {}
-    jpegdiscovery(os.getcwd())
-    file_list = [[file, file_dict[file]] for file in file_dict]
-    print(file_list)
+    print(jpegdiscovery(os.getcwd()))
