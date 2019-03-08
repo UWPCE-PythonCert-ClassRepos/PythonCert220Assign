@@ -1,0 +1,184 @@
+Carol Farris Assignment 6 notes and reasoning.
+
+poor_perf.py notes
+
+
+This file contains the findings for the poor performing poor_perf.py
+
+
+/////////Problems:
+poor_perf.py takes a long time to run, and isn't as efficient
+
+
+/////////Goal: 
+Evaluate the file in an evidence based approach and create good_perf.py 
+with those changes fixed.
+
+/////////Summary of fixes:
+Edited the code to have the file open once.
+Doing so didn't cause too big of a change in memory but reduced the amount of time to run.
+
+
+//////////Approach to find chokepoint:
+Run timer from timeit module to evaluate slow code
+Next, run profiler to see if anything was consuming large chunks of memory
+
+
+Test 1: evaluate cost to open and analyze file
+I suspect that opening and closing a file 2x can slow performance.
+To test, I wanted to time the amount of perform both.
+So, i separated out the logic to search for ao (which could really just be a 1 liner)
+I added a timer to find the effects.
+
+
+Results of test 1:
+running poor_perf as written on my laptop:
+time to run analyze(filename)
+{'2013': 5911, '2014': 5854, '2015': 5994, '2016': 5762, '2017': 11600, '2018': 0}
+'ao' was found 63395 times
+13.897803824977018
+
+
+Opening the file to count dates, then closing it:
+time to run analyze(filename)
+{'2013': 5911, '2014': 5854, '2015': 5994, '2016': 5762, '2017': 11600, '2018': 0}
+7.522733140969649
+
+
+Opening the file a second time to find the # of 'ao' occurances in file:
+time to run find_ao(filename)
+'ao' was found 63395 times
+5.411960136960261
+
+
+Results of combining 'ao' into the first time the file opened (and keeping csv opened once)
+time to run analyze(filename)
+{'2013': 5911, '2014': 5854, '2015': 5994, '2016': 5762, '2017': 11600, '2018': 0}
+'ao' was found 63395 times
+8.803488501929678
+
+
+
+Test 2: Use profiler
+Another way to look at this is to look at memory usage when opening the file
+
+
+
+
+D-10-18-173-55:assignment carolfarris$ ./good_perf.py 
+
+
+time to run analyze(filename)
+{'2013': 5911, '2014': 5854, '2015': 5994, '2016': 5762, '2017': 11600, '2018': 0}
+'ao' was found 63395 times
+8.803488501929678
+D-10-18-173-55:assignment carolfarris$ ./good_perf.py 
+
+
+time to run analyze(filename)
+{'2013': 5911, '2014': 5854, '2015': 5994, '2016': 5762, '2017': 11600, '2018': 0}
+'ao' was found 63395 times
+Filename: ./good_perf.py
+
+Line #    Mem usage    Increment   Line Contents
+================================================
+    23     32.7 MiB     32.7 MiB   @profile
+    24                             def analyze():
+    25     32.7 MiB      0.0 MiB       filename = 'data/exercise.csv'
+    26     32.7 MiB      0.0 MiB       start = datetime.datetime.now()
+    27     32.7 MiB      0.0 MiB       with open(filename) as csvfile:
+    28     32.7 MiB      0.0 MiB           reader = csv.reader(csvfile, delimiter=',', quotechar='"')
+    29     32.7 MiB      0.0 MiB           new_ones = []       #
+    30     32.7 MiB      0.0 MiB           found = 0
+    31     36.3 MiB      0.0 MiB           for row in reader:
+    32     36.3 MiB      0.0 MiB               lrow = list(row)  #put each row into a list
+    33     36.3 MiB      0.0 MiB               if "ao" in row[6]:
+    34     36.3 MiB      0.0 MiB                   found += 1
+    35     36.3 MiB      0.0 MiB               if lrow[5] > '00/00/2012':  #if the date is greater than 2012
+    36     36.3 MiB      0.0 MiB                   new_ones.append((lrow[5], lrow[0]))
+    37                             
+    38                                     year_count = {   #dict to catch the number of years each was called.
+    39     11.3 MiB      0.0 MiB               "2013": 0,
+    40     11.3 MiB      0.0 MiB               "2014": 0,
+    41     11.3 MiB      0.0 MiB               "2015": 0,
+    42     11.3 MiB      0.0 MiB               "2016": 0,
+    43     11.3 MiB      0.0 MiB               "2017": 0,
+    44     11.3 MiB      0.0 MiB               "2018": 0
+    45                                     }
+    46                             
+    47     20.4 MiB      0.0 MiB           for new in new_ones:        #for each new row. 
+    48     20.4 MiB      0.0 MiB               if new[0][6:] == '2013':
+    49     20.4 MiB      0.0 MiB                   year_count["2013"] += 1
+    50     20.4 MiB      0.0 MiB               if new[0][6:] == '2014':
+    51     20.4 MiB      0.0 MiB                   year_count["2014"] += 1
+    52     20.4 MiB      0.0 MiB               if new[0][6:] == '2015':
+    53     20.4 MiB      0.0 MiB                   year_count["2015"] += 1
+    54     20.4 MiB      0.0 MiB               if new[0][6:] == '2016':
+    55     20.4 MiB      0.0 MiB                   year_count["2016"] += 1
+    56     20.4 MiB      0.0 MiB               if new[0][6:] == '2017':
+    57     20.4 MiB      0.0 MiB                   year_count["2017"] += 1
+    58     20.4 MiB      0.0 MiB               if new[0][6:] == '2018':
+    59     20.4 MiB      0.0 MiB                   year_count["2017"] += 1
+    60      6.2 MiB      0.0 MiB           print(year_count)
+    61      6.2 MiB      0.0 MiB           print(f"'ao' was found {found} times")
+    62      6.4 MiB      0.2 MiB           end = datetime.datetime.now()
+    63                             
+    64      6.5 MiB      0.0 MiB       return (start, end, year_count, found)
+
+
+957.8786744870013
+
+
+//////////////////////////After editing logic in good_perf.py below/////
+time to run analyze(filename)
+{'2013': 5911, '2014': 5854, '2015': 5994, '2016': 5762, '2017': 11600, '2018': 0}
+'ao' was found 63395 times
+Filename: ./good_perf.py
+
+Line #    Mem usage    Increment   Line Contents
+================================================
+    32     33.0 MiB     33.0 MiB   @profile
+    33                             def analyze():
+    34     33.0 MiB      0.0 MiB       filename = 'data/exercise.csv'
+    35     33.0 MiB      0.0 MiB       start = datetime.datetime.now()
+    36     33.0 MiB      0.0 MiB       with open(filename) as csvfile:
+    37     33.0 MiB      0.0 MiB           reader = csv.reader(csvfile, delimiter=',', quotechar='"')
+    38     33.0 MiB      0.0 MiB           new_ones = []       #
+    39     33.0 MiB      0.0 MiB           found = 0
+    40     45.5 MiB      0.0 MiB           for row in reader:
+    41     45.5 MiB      0.0 MiB               lrow = list(row)  #put each row into a list
+    42     45.5 MiB      0.0 MiB               if "ao" in row[6]:
+    43     45.5 MiB      0.0 MiB                   found += 1
+    44     45.5 MiB      0.0 MiB               if lrow[5] > '00/00/2012':  #if the date is greater than 2012
+    45     45.5 MiB      0.1 MiB                   new_ones.append((lrow[5], lrow[0]))
+    46                             
+    47                                     year_count = {   #dict to catch the number of years each was called.
+    48     22.4 MiB      0.0 MiB               "2013": 0,
+    49     22.4 MiB      0.0 MiB               "2014": 0,
+    50     22.4 MiB      0.0 MiB               "2015": 0,
+    51     22.4 MiB      0.0 MiB               "2016": 0,
+    52     22.4 MiB      0.0 MiB               "2017": 0,
+    53     22.4 MiB      0.0 MiB               "2018": 0
+    54                                     }
+    55                             
+    56     47.4 MiB      0.0 MiB           for new in new_ones:        #for each new row. 
+    57     47.4 MiB      0.0 MiB               if new[0][6:] == '2013':
+    58     47.4 MiB      0.0 MiB                   year_count["2013"] += 1
+    59     47.4 MiB      0.0 MiB               if new[0][6:] == '2014':
+    60     47.4 MiB      0.0 MiB                   year_count["2014"] += 1
+    61     47.4 MiB      0.0 MiB               if new[0][6:] == '2015':
+    62     47.3 MiB      0.0 MiB                   year_count["2015"] += 1
+    63     47.4 MiB      0.0 MiB               if new[0][6:] == '2016':
+    64     47.4 MiB      0.0 MiB                   year_count["2016"] += 1
+    65     47.4 MiB      0.0 MiB               if new[0][6:] == '2017':
+    66     47.3 MiB      0.0 MiB                   year_count["2017"] += 1
+    67     47.4 MiB      0.0 MiB               if new[0][6:] == '2018':
+    68     47.4 MiB      0.0 MiB                   year_count["2017"] += 1
+    69     15.8 MiB      0.0 MiB           print(year_count)
+    70     15.8 MiB      0.0 MiB           print(f"'ao' was found {found} times")
+    71     16.0 MiB      0.2 MiB           end = datetime.datetime.now()
+    72                             
+    73     16.0 MiB      0.0 MiB       return (start, end, year_count, found)
+
+
+730.7597495269729
