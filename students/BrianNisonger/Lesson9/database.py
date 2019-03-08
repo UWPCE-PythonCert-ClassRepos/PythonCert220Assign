@@ -3,6 +3,7 @@ import csv
 import logging
 import pymongo
 
+
 class MongoDBConnection():
     def __init__(self, host='127.0.0.1', port=27017):
         self.host = host
@@ -19,7 +20,7 @@ class MongoDBConnection():
     def __exit__(self, exc_type, exc_val, exc_tb):
         if exc_type:
             logging.error("Errors in connection")
-        else:    
+        else:
             self.connection.close()
 
 
@@ -69,7 +70,7 @@ def import_data(directory, filename):
         db = mongo.connection.furniture
         added_count_list = []
         error_count_list = []
-        file=filename
+        file = filename
         with open(os.path.join(directory, file)) as csv_file:
             csv_dict = csv.DictReader(csv_file, delimiter=',')
             collection = db[file.replace(".csv", "")]
@@ -80,7 +81,7 @@ def import_data(directory, filename):
             except BulkWriteError as bwe:
                 error_count_list.append(1)
                 logging.error(bwe)
-    return (added_count_list[0],error_count_list[0])
+    return (added_count_list[0], error_count_list[0])
 
 
 def show_available_products():

@@ -6,7 +6,7 @@ import os
 
 def jpegdiscovery(directory):
     """
-    Recursively adds files to a dict if a png, requires a dictionary to be assigned outside func
+    Recursively adds files to a dict if a png, define dictionary before calling
     """
     files = os.listdir(directory)
     for file in files:
@@ -20,7 +20,8 @@ def jpegdiscovery(directory):
                 file_dict[directory] = [file]
 
     return [[file, file_dict[file]] for file in file_dict]
-    
+
+
 if __name__ == "__main__":
     """
     Outputs the directory

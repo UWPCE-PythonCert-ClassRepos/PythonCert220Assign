@@ -11,6 +11,7 @@ from database import make_customer_dict
 from database import MongoDBConnection
 import pymongo
 
+
 @pytest.fixture
 def setup_db(request):
     mongo = MongoDBConnection()
@@ -20,7 +21,7 @@ def setup_db(request):
         db.customer_data.drop()
         db.rental_data.drop()
         files = ["customer_data.csv", "product_data.csv", "rental_data.csv"]
-        test_import_result=[import_data("dat", file) for file in files]
+        test_import_result = [import_data("dat", file) for file in files]
 
         def cleanup():
             db.product_data.drop()
@@ -29,11 +30,15 @@ def setup_db(request):
 
         request.addfinalizer(cleanup)
 
+
 @pytest.fixture
 def test_import_data_results():
-    return [(3,0),(3,0,),(5,0)]
+    return [(3, 0), (
+        3,
+        0,
+    ), (5, 0)]
 
-        
+
 @pytest.fixture
 def _show_available_products():
     product_dict = {
@@ -75,11 +80,13 @@ def test_connection():
         mongo_test = MongoDBConnection(host='')
         with mongo_test:
             db = mongo_test.connection.furniture
-    
+
+
 def test_import_data(test_import_data_results):
     files = ["customer_data.csv", "product_data.csv", "rental_data.csv"]
-    test_import_result=[import_data("dat", file) for file in files]
-    assert test_import_data_results==test_import_result
+    test_import_result = [import_data("dat", file) for file in files]
+    assert test_import_data_results == test_import_result
+
 
 def test_calculate_availability():
     rental_list = [{
