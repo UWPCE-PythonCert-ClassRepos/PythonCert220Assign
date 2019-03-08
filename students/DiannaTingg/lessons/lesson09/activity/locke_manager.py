@@ -70,7 +70,7 @@ if __name__ == "__main__":
         with LARGE_LOCKE as locke:
             locke.move_boats_through(BOATS)
     except CapacityError:
-        print(f"Sorry, {BOATS} boats will not fit in this locke.")
+        print(f"Error! {BOATS} boats will not fit in this locke.")
 
     # Too many boats through a small locke will raise an exception.
     print("\nSMALL BALLARD LOCKE")
