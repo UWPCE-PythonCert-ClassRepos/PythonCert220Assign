@@ -15,9 +15,7 @@ import datetime
 import math
 import logging
 
-LOG_FORMAT = "%(asctime)s %(filename)s:%(lineno)-3d %(levelname)s %(message)s"
-FORMATTER = logging.Formatter(LOG_FORMAT)
-LOGGER = logging.getLogger()
+logger = logging.getLogger(__name__)
 
 
 def parse_cmd_arguments():
@@ -29,6 +27,7 @@ def parse_cmd_arguments():
     parser.add_argument('-i', '--input', help='input JSON file', required=True)
     parser.add_argument('-o', '--output', help='output JSON file', required=True)
     parser.add_argument('-d', '--debug', help='enable debug logging', required=False, default=0)
+    parser.add_argument("-l", "--limit", help="set limit of logging", required=False, default=0)
 
     return parser.parse_args()
 
@@ -42,16 +41,34 @@ def set_log_level(log_level):
     if log_level == 0:
         return
 
+    log_format = "%(asctime)s %(filename)s:%(lineno)-3d %(levelname)s %(message)s"
+    formatter = logging.Formatter(log_format)
+
     file_handler = logging.FileHandler('charges_calc.log')
-    file_handler.setFormatter(FORMATTER)
-    LOGGER.addHandler(file_handler)
+    file_handler.setFormatter(formatter)
+    logger.addHandler(file_handler)
 
     if log_level == 1:
-        LOGGER.setLevel(logging.ERROR)
+        logger.setLevel(logging.ERROR)
     elif log_level == 2:
-        LOGGER.setLevel(logging.WARNING)
+        logger.setLevel(logging.WARNING)
     elif log_level == 3:
-        LOGGER.setLevel(logging.DEBUG)
+        logger.setLevel(logging.DEBUG)
+
+# def set_limit_level()
+
+
+def logged_func(func):
+    def logged(*args, **kwargs):
+
+        logging.disable(logging.CRITICAL)
+
+        result = func(*args, **kwargs)
+
+        logging.disable(logging.NOTSET)
+
+        return result
+    return logged
 
 
 def load_rentals_file(filename):
@@ -61,17 +78,18 @@ def load_rentals_file(filename):
     :return: data
     """
 
-    logging.debug("Opening file %s", filename)
+    logger.debug("Opening file %s", filename)
     with open(filename) as file:
         try:
             data = json.load(file)
         except ValueError as err:
             logging.error("Error reading input file %s", file)
-            print(f"Error reading the input file: {err}")
+            # print(f"Error reading the input file: {err}")
             exit(0)
     return data
 
 
+@logged_func
 def calculate_additional_fields(data):
     """
     Calculates additional metrics.
@@ -83,33 +101,34 @@ def calculate_additional_fields(data):
             rental_start = datetime.datetime.strptime(value['rental_start'], '%m/%d/%y')
             rental_end = datetime.datetime.strptime(value['rental_end'], '%m/%d/%y')
         except ValueError as date_error:
-            logging.error("%s Date format is incorrect.", date_error)
-            print(f"Date format is incorrect. Should be m/d/y.")
-            logging.debug(value)
+            logger.error("%s Date format is incorrect.", date_error)
+            # print(f"Date format is incorrect. Should be m/d/y.")
+            logger.debug(value)
 
         value['total_days'] = (rental_end - rental_start).days
 
         if value["total_days"] < 0:
-            logging.error("Total days is negative.")
-            print("Total days cannot be negative. Check rental start and end dates.")
-            logging.debug(value)
+            logger.error("Total days is negative.")
+            # print("Total days cannot be negative. Check rental start and end dates.")
+            logger.debug(value)
 
         value['total_price'] = value['total_days'] * value['price_per_day']
 
         try:
             value['sqrt_total_price'] = math.sqrt(value['total_price'])
         except ValueError as math_error:
-            logging.warning("%s - Error with square root of total price.", math_error)
-            print("Error with square root of total price.")
-            logging.debug(value)
+            logger.warning("%s - Error with square root of total price.", math_error)
+            # print("Error with square root of total price.")
+            logger.debug(value)
 
         try:
             value['unit_cost'] = value['total_price'] / value['units_rented']
         except ZeroDivisionError as zero_error:
-            logging.warning("%s Cannot divide by 0.", zero_error)
-            print("Error with units rented. Cannot divide by 0.")
-            logging.debug(value)
+            logger.warning("%s Cannot divide by 0.", zero_error)
+            # print("Error with units rented. Cannot divide by 0.")
+            logger.debug(value)
     return data
+
 
 
 def save_to_json(filename, data):
@@ -119,7 +138,7 @@ def save_to_json(filename, data):
     :param data: formatted data
     """
 
-    logging.debug("Saving file %s", filename)
+    logger.debug("Saving file %s", filename)
 
     with open(filename, 'w') as file:
         json.dump(data, file)
@@ -129,6 +148,10 @@ if __name__ == "__main__":
     ARGS = parse_cmd_arguments()
     DEBUG_LEVEL = int(ARGS.debug)
     set_log_level(DEBUG_LEVEL)
+
     DATA = load_rentals_file(ARGS.input)
     DATA = calculate_additional_fields(DATA)
     save_to_json(ARGS.output, DATA)
+
+
+
