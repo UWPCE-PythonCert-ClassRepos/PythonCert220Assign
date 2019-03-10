@@ -31,10 +31,6 @@ class MongoDBConnection():
         self.connection.close()
 
 
-def print_mdb_collection(collection_name):
-    for doc in collection_name.find():
-        print(doc)
-
 def import_data(products_file, customers_file, rentals_file):
 # def import_data(directory_name, products_file, customers_file, rentals_file):
     """
@@ -47,10 +43,9 @@ def import_data(products_file, customers_file, rentals_file):
 
     Imports CSV data into a MongoDB.
 
-    :param arg1: The directory name where the import files live
-    :param arg2: the name of the products csv file
-    :param arg3: the name of the customers csv file
-    :param arg4: the name of the rentals csv file
+    :param arg1: the name of the products csv file
+    :param arg2: the name of the customers csv file
+    :param arg3: the name of the rentals csv file
     """
     mongo = MongoDBConnection()
 
@@ -62,9 +57,6 @@ def import_data(products_file, customers_file, rentals_file):
         products = db["products"]
         customers = db["customers"]
         rentals = db["rentals"]
-
-        # products_ip = {"Thing": "Looks wooden", "Descrition": "You sit on it"}
-        # result = products.insert_one(products_ip)
 
         #open the first csv to import into the db
         #could this be made its own function?? probably!
@@ -80,7 +72,6 @@ def import_data(products_file, customers_file, rentals_file):
                  # yup! you were right!
                  # CONVERT ROW DATA TO DICT
                 for row in products_contents:
-                     #db_add = products.insert_one(row)
                      # this could be made into a func couldn't it?
                     logging.info(f'IMPORTING PRODUCTS DATA')
                     convert_to_dict = {'product_id': row[0],
@@ -112,8 +103,6 @@ def import_data(products_file, customers_file, rentals_file):
             logging.error(e)
 
 
-
-
 def show_available_products():
     """
     Returns a Python dictionary of products listed as available with
@@ -137,18 +126,12 @@ def show_available_products():
 
         for name in products.find():
             logging.debug(f"{name.get('product_id')} : {name.get('quantity_available')}")
-            # num_available = name.get('quantity_available')
-            # logging.info(f"{int(name.get('quantity_available'))}")
             try:
                 if int(name.get('quantity_available')) > 0:
                     print(f"{name.get('product_id')}: {name.get('description')} is available!")
             except ValueError as e:
                 logging.debug(f"skipping {name.get('product_id')} due to error")
-        #print(f'List for {name["name"]}')
-        #query = {"name": name["name"]}
-        #for a_cd in products.find(query):
-            #print(f'{name["name"]} has collected {a_cd}')
-
+                logging.error(e)
 
 
 def show_rentals(product_id):
@@ -161,6 +144,8 @@ def show_rentals(product_id):
     address.
     phone_number.
     email.
+
+    :param arg1: The product_id to search for
     """
     mongo = MongoDBConnection()
 
@@ -182,6 +167,7 @@ def show_rentals(product_id):
                     logging.debug(f"Adding {rented_item.get('user_id')} to list")
             except ValueError as e:
                 logging.debug(f"skipping {rented_item.get('product_id')} due to error")
+                logging.error(e)
 
         for name in customers.find():
             logging.debug(f"comparing found user id to the customer list")
@@ -196,12 +182,8 @@ def show_rentals(product_id):
                                                           name.get('email')]
             except ValueError as e:
                 logging.debug(f"skipping {name.get('name')} due to error")
+                logging.error(e)
         return customer_dict
-
-
-        # for names in customers.find():
-
-
 
 
 #for testing
