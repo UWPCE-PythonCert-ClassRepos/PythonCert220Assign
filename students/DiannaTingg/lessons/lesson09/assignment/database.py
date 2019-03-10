@@ -14,7 +14,7 @@ import pymongo
 
 class MongoDBConnection:
     """
-    Creates a context manager to access Mongo DB.
+    Creates a context manager to access MongoDB.
     """
     def __init__(self, host='127.0.0.1', port=27017):
         self.host = host
@@ -22,10 +22,15 @@ class MongoDBConnection:
         self.connection = None
 
     def __enter__(self):
+        print("Opening a MongoDB.\n")
         self.connection = pymongo.MongoClient(self.host, self.port)
         return self
 
     def __exit__(self, exc_type, exc_val, exc_tb):
+        print("\nClearing data from database.")
+        clear_data(db)
+
+        print("\nClosing the MongoDB connection.")
         self.connection.close()
 
 
@@ -124,7 +129,7 @@ def show_rentals(db, product_id):
     Returns a dictionary with user information from users who have rented products matching the product_id.
     :param db: MongoDB
     :param product_id: product id
-    :return: user_id, name, address, phone_number, email
+    :return: user_id, name, address, zip_code, phone_number, email
     """
 
     customer_info = {}
@@ -155,7 +160,6 @@ if __name__ == "__main__":
     mongo = MongoDBConnection()
 
     with mongo:
-        print("Opening a MongoDB.\n")
         db = mongo.connection.media
 
         print("Importing data for products, customers, and rentals.\n")
@@ -166,6 +170,3 @@ if __name__ == "__main__":
 
         print("\nShowing rental information for prd005:")
         print(show_rentals(db, "prd005"))
-
-        print("\nClearing data from database.")
-        clear_data(db)
