@@ -22,14 +22,11 @@ class MongoDBConnection:
         self.connection = None
 
     def __enter__(self):
-        print("Opening a MongoDB.\n")
+        print("Opening a MongoDB connection.\n")
         self.connection = pymongo.MongoClient(self.host, self.port)
         return self
 
     def __exit__(self, exc_type, exc_val, exc_tb):
-        print("\nClearing data from database.")
-        clear_data(db)
-
         print("\nClosing the MongoDB connection.")
         self.connection.close()
 
@@ -62,7 +59,6 @@ def _import_csv(filename):
 
         for row in csv_data:
             row_dict = {column: row[index] for index, column in enumerate(headers)}
-
             dict_list.append(row_dict)
 
         return dict_list
@@ -84,10 +80,10 @@ def import_data(db, directory_name, products_file, customers_file, rentals_file)
     """
     Takes a directory name and three csv files as input.  Creates and populates a new MongoDB.
     :param db: MongoDB
-    :param directory_name: directory name for files.  Use "" for current directory.
-    :param products_file: csv file with product data
-    :param customers_file: csv file with customer data
-    :param rentals_file: csv file with rentals data
+    :param directory_name: Directory name for files.  Use "" for current directory.
+    :param products_file: Csv file with product data.
+    :param customers_file: Csv file with customer data.
+    :param rentals_file: Csv file with rentals data.
     :return: Tuple with record count for products, customers, rentals added (in that order) and
              tuple with count of errors that occurred for products, customers, rentals (in that order).
     """
@@ -170,3 +166,6 @@ if __name__ == "__main__":
 
         print("\nShowing rental information for prd005:")
         print(show_rentals(db, "prd005"))
+
+        print("\nClearing data from database.")
+        clear_data(db)
