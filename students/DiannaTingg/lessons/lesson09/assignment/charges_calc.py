@@ -8,6 +8,7 @@ import json
 import datetime
 import math
 import logging
+from undecorated import undecorated
 
 LOGGER = logging.getLogger(__name__)
 
@@ -71,13 +72,13 @@ def load_rentals_file(filename):
     :param filename: source file
     :return: data
     """
-    LOGGER.debug("Opening file %s", filename)
+    LOGGER.debug("Opening file %s.", filename)
 
     with open(filename) as file:
         try:
             data = json.load(file)
         except ValueError:
-            logging.error("Error reading input file %s", file)
+            logging.error("Error reading input file %s.", file)
             exit(0)
     return data
 
@@ -125,7 +126,7 @@ def save_to_json(filename, data):
     :param filename: output filename
     :param data: formatted data
     """
-    LOGGER.debug("Saving file %s", filename)
+    LOGGER.debug("Saving file %s.", filename)
 
     with open(filename, 'w') as file:
         json.dump(data, file)
@@ -137,5 +138,11 @@ if __name__ == "__main__":
     set_log_level(DEBUG_LEVEL)
 
     DATA = load_rentals_file(ARGS.input)
-    FINAL_DATA = calculate_additional_fields(DATA)
+
+    if int(ARGS.conditional) == 1:
+        FINAL_DATA = calculate_additional_fields(DATA)
+    else:
+        PLAIN_FUNC = undecorated(calculate_additional_fields)
+        FINAL_DATA = PLAIN_FUNC(DATA)
+
     save_to_json(ARGS.output, FINAL_DATA)
