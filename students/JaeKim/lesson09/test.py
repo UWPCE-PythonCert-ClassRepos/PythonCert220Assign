@@ -1,18 +1,17 @@
+def logged_func(func):
+    def logged(*args, **kwargs):
+        print("Function {} called".format(func.__name__))
+        if args:
+            print("\twith args: {}".format(args))
+        if kwargs:
+            print("\twith kwargs: {}".format(kwargs))
+        result = func(*args, **kwargs)
+        print("\t Result --> {}".format(result))
+        return result
+    return logged
 
-def d(msg='my default message'):
-    def decorator(func):
-        def newfn():
-            print(msg)
-            return func()
-        return newfn
-    return decorator
+@logged_func
+def add(a, b):
+    return a + b
 
-@d(MESSAGE)
-def hello():
-    print('hello world !')
-
-@d()
-def hello2():
-    print('also hello world')
-
-hello2()
+print(add(2,2))

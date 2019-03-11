@@ -8,19 +8,12 @@ import math
 import logging
 import sys
 
-def logged_func(func, logging=True):
+def disable_logging(func):
     def logged(*args, **kwargs):
-        if logging is True:
-            print("Function {} called".format(func.__name__))
-            if args:
-                print("\twith args: {}".format(args))
-            if kwargs:
-                print("\twith kwargs: {}".format(kwargs))
-            result = func(*args, **kwargs)
-            print("\t Result --> {}".format(result))
-            return result
-        else:
-            return
+        logging.disabled = True
+        result = func(*args, **kwargs)
+        logging.disabled = False
+        return result
     return logged
 
 def parse_cmd_arguments():
@@ -44,6 +37,7 @@ def load_rentals_file(filename):
     logging.debug(f'JSON file {filename} loaded successfully')
     return data
 
+@disable_logging
 def calculate_additional_fields(data):
     for value in data.values():
 
@@ -80,14 +74,6 @@ def save_to_json(filename, data):
     with open(filename, 'w') as file:
         json.dump(data, file)
 
-
-def log(param):
-    def actual_decorator(func):
-        print("Decorating function {}, with parameter {}".format(func.__name__, param))
-        return actual_decorator(func)  # assume we defined a wrapper somewhere
-    return actual_decorator
-
-@log(0)
 def set_logging(level):
     log_format = logging.Formatter('%(asctime)s %(filename)s:%(lineno)-3d %(levelname)s %(message)s')
     log_file = datetime.datetime.now().strftime("%Y-%m-%d") + '.log'
@@ -114,6 +100,7 @@ def set_logging(level):
         logger.debug("Logging mode set to DEBUG")
         logger.setLevel(logging.DEBUG)
 
+    return level
 
 if __name__ == "__main__":
     # python charges_calc.py -i source.json -o output.json -d 3
