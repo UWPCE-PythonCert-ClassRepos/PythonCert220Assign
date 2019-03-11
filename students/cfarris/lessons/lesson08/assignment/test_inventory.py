@@ -20,7 +20,6 @@ def test_add_furniture(tmpdir):
     assert os.path.isfile(invoice_file) == True
     with open(invoice_file.strpath, 'r') as i_file:
         results = i_file.read()
-        #print(results)
         assert results == 'Elisa Miles, LR04, Leather Sofa, 25.0\n'
 
 
@@ -34,5 +33,4 @@ def test_single_customer(tmpdir):
     rentals_to_invoice(client_file)
     with open(invoice_file.strpath, 'r') as f_file:
         results = f_file.read()
-        #print(results)
     assert results == 'Mrs. McSpendy, aTeST, Leather Sofa, 25.00\nMrs. McSpendy, bTeSt, Kitchen Table, 10.00\n'
