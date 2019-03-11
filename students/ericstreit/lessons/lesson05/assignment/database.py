@@ -11,7 +11,7 @@ import csv
 
 
 #global variables here
-logging.basicConfig(level=logging.ERROR)
+logging.basicConfig(level=logging.DEBUG)
 #define function and classes
 
 class MongoDBConnection():
@@ -25,10 +25,13 @@ class MongoDBConnection():
 
     def __enter__(self):
         self.connection = MongoClient(self.host, self.port)
+        print(f"Establishing a connection to {self.host} on port {self.port}")
         return self
 
     def __exit__(self, exc_type, exc_val, exc_tb):
+        print(f"Closing the connection to {self.host} - Have a nice day!")
         self.connection.close()
+
 
 
 def import_data(products_file, customers_file, rentals_file):
@@ -58,6 +61,8 @@ def import_data(products_file, customers_file, rentals_file):
         customers = db["customers"]
         rentals = db["rentals"]
 
+        error_count = 0
+        record_count = 0
         #open the first csv to import into the db
         #could this be made its own function?? probably!
         try:
@@ -71,6 +76,7 @@ def import_data(products_file, customers_file, rentals_file):
                  #this probably won't work, we need to change the data to a dict
                  # yup! you were right!
                  # CONVERT ROW DATA TO DICT
+
                 for row in products_contents:
                      # this could be made into a func couldn't it?
                     logging.info(f'IMPORTING PRODUCTS DATA')
@@ -78,8 +84,14 @@ def import_data(products_file, customers_file, rentals_file):
                                        'description': row[1],
                                        'product_type': row[2],
                                        'quantity_available': row[3]}
-                    result = products.insert_one(convert_to_dict)
-                    logging.info(f'Adding {convert_to_dict} to the products collection')
+                    try:
+                        result = products.insert_one(convert_to_dict)
+                    # who needs comments when your logging explains it all LOL
+                        logging.info(f'Adding {convert_to_dict} to the products collection')
+                        record_count += 1
+                    except Exception as e:
+                        logging.error(f'Error adding {convert_to_dict} to the products collection!')
+                        error_count += 1
                 for row in customers_contents:
                     logging.info(f'IMPORTING CUSTOMERS DATA')
                     convert_to_dict = {'user_id': row[0],
@@ -88,20 +100,29 @@ def import_data(products_file, customers_file, rentals_file):
                                        'zip_code': row[3],
                                        'phone_number': row[4],
                                        'email': row[5]}
-                    result = customers.insert_one(convert_to_dict)
-                    logging.info(f'Adding {convert_to_dict} to the customers collection')
+                    try:
+                        result = customers.insert_one(convert_to_dict)
+                        logging.info(f'Adding {convert_to_dict} to the customers collection')
+                        record_count += 1
+                    except Exception as e:
+                        logging.error(f'Error adding {convert_to_dict} to the customers collection!')
+                        error_count += 1
                 for row in rentals_contents:
                     logging.info(f'IMPORTING RENTALS DATA')
                     convert_to_dict = {'product_id': row[0],
                                        'user_id': row[1]}
-                    result = rentals.insert_one(convert_to_dict)
-                    logging.info(f'Adding {convert_to_dict} to the rentals collection')
-
-
+                    try:
+                        result = rentals.insert_one(convert_to_dict)
+                        logging.info(f'Adding {convert_to_dict} to the rentals collection')
+                        record_count += 1
+                    except Exception as e:
+                        logging.error(f'Error adding {convert_to_dict} to the rentals collection!')
+                        error_count += 1
         except Exception as e:
             logging.error(f'Hm, we had an error here?')
             logging.error(e)
 
+    return (record_count, error_count)
 
 def show_available_products():
     """
@@ -147,6 +168,8 @@ def show_rentals(product_id):
 
     :param arg1: The product_id to search for
     """
+    # gosh, I'm repeating myself a lot here with these Mongo commands. could
+    # be simplified into its own function, yes??
     mongo = MongoDBConnection()
 
     with mongo:
@@ -183,7 +206,7 @@ def show_rentals(product_id):
             except ValueError as e:
                 logging.debug(f"skipping {name.get('name')} due to error")
                 logging.error(e)
-        return customer_dict
+    return customer_dict
 
 
 #for testing
