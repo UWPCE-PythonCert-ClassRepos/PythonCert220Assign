@@ -14,9 +14,11 @@ def turn_off_logging(func):
     """
 
     def decorated_func(*args, **kwargs):
-        logging.disabled = True
+        if logging_dict["level"]=="1":
+            logging.getLogger().disabled=True
         returned_value = func(*args, **kwargs)
-        logging.disabled = False
+        if logging_dict["level"]=="1":
+            logging.getLogger().disabled=False
         return returned_value
 
     return decorated_func
@@ -32,6 +34,8 @@ def parse_cmd_arguments():
         '-o', '--output', help='ouput JSON file', required=True)
     parser.add_argument(
         '-d', '--debug', help='debugger level', required=False, default=0)
+    parser.add_argument(
+        '-l', '--logging', help='turn off logging', required=False, default=0)
     return parser.parse_args()
 
 
@@ -71,7 +75,7 @@ def load_rentals_file(filename):
             data1 = None
     return data1
 
-
+@turn_off_logging
 def calculate_additional_fields(data_new):
     """
     Calculates additional fields from raw property data
@@ -133,6 +137,8 @@ def save_to_json(filename, data_out):
 
 if __name__ == "__main__":
     ARGS = parse_cmd_arguments()
+    logging_dict={}
+    logging_dict["level"]=ARGS.logging
     configure_logging(ARGS.debug)
     DATA = load_rentals_file(ARGS.input)
     DATA = calculate_additional_fields(DATA)
