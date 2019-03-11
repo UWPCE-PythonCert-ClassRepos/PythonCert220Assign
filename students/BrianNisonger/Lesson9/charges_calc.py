@@ -14,11 +14,11 @@ def turn_off_logging(func):
     """
 
     def decorated_func(*args, **kwargs):
-        if logging_dict["level"]=="1":
-            logging.getLogger().disabled=True
+        if logging_dict["level"] == "1":
+            logging.getLogger().disabled = True
         returned_value = func(*args, **kwargs)
-        if logging_dict["level"]=="1":
-            logging.getLogger().disabled=False
+        if logging_dict["level"] == "1":
+            logging.getLogger().disabled = False
         return returned_value
 
     return decorated_func
@@ -74,6 +74,7 @@ def load_rentals_file(filename):
             logging.error(error_msg)
             data1 = None
     return data1
+
 
 @turn_off_logging
 def calculate_additional_fields(data_new):
@@ -137,8 +138,8 @@ def save_to_json(filename, data_out):
 
 if __name__ == "__main__":
     ARGS = parse_cmd_arguments()
-    logging_dict={}
-    logging_dict["level"]=ARGS.logging
+    logging_dict = {}
+    logging_dict["level"] = ARGS.logging
     configure_logging(ARGS.debug)
     DATA = load_rentals_file(ARGS.input)
     DATA = calculate_additional_fields(DATA)
