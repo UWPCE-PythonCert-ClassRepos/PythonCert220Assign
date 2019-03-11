@@ -1,0 +1,28 @@
+1. Imported time module to calculate intial times it takes to run each csv file linearly. 
+	Results: It took 7.888537645339966 seconds to import products.csv file
+		 It took 7.687558889389038 seconds to import customers.csv file
+	         It took 7.814947605133057 seconds to import rentals.csv file
+	         Total: 23.433099777
+ - I noticed that I actually took a little less time to run the file in ipython compared to the terminal. Interesting?
+
+2. Created Class db.thread to represent an activity that is run in a seperate thread of control. In the import_data
+function I create the three indvidual threads for each csv_file to be imported. Calling the thread's start() method 
+starts the activity which invokes the run() method in a seperate thread of control. I call the join() method to block
+all the items in the queue until all have been grabbed and processed and then append each thread into the MongoDB
+database. 
+
+3. I got rid of timeit in parallel.py and used time.clock from import time. Created a return the that substituted 
+end time from start time.
+Results:
+	Program Run Time: 16.6 seconds
+
+4. Added time.clock to each thread to see how long each took.
+Customers thread took 0.00029422600000000854 seconds
+Products thread took 0.0013548100000000396 seconds
+Rentals thread took 0.01771584599999998 seconds
+
+4. One thing that ipython mentioned:
+ DeprecationWarning: time.clock has been deprecated in Python 3.3 and will be removed from Python 3.8: use time.perf_counter or time.process_time instead
+  new_start = time.clock()
+
+  

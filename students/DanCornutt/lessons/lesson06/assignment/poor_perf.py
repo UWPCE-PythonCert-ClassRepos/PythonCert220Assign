@@ -6,7 +6,6 @@ poorly performing, poorly written module
 import datetime
 import csv
 
-
 def analyze(filename):
     start = datetime.datetime.now()
     with open(filename) as csvfile:
@@ -56,7 +55,6 @@ def analyze(filename):
         end = datetime.datetime.now()
 
     return (start, end, year_count, found)
-
 
 def main():
     filename = "data/exercise.csv"
