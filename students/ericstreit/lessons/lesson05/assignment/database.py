@@ -122,6 +122,9 @@ def import_data(products_file, customers_file, rentals_file):
             logging.error(f'Hm, we had an error here?')
             logging.error(e)
 
+    print(f' the number of records in the products collection is: {db.products.count()}')
+    print(f' the number of records in the customers collection is: {db.customers.count()}')
+    print(f' the number of records in the rentals collection is: {db.rentals.count()}')
     return (record_count, error_count)
 
 def show_available_products():
