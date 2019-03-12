@@ -43,3 +43,4 @@ def jpeg_discovery(directory):
 
 if __name__ == "__main__":
     search_tree = jpeg_discovery(os.getcwd() + '/data')
+    print(search_tree)
