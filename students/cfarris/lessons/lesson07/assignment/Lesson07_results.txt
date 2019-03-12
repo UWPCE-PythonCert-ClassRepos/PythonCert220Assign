@@ -1,0 +1,41 @@
+Lesson07 notes and performance summary
+
+Summary:
+Linear.py and parallel.py are the same program except that batch addition of csv files are
+either done one right after another vs in parallel. The test suite is the same for both
+test_parallel.py and test_linear.py
+
+The module for batch addition was timed and found to have negligably faster addition compared to
+batch addition run in parallel. However, this evaluation is flawed as the batch files
+carry 9 or 10 entries, which isn't large enough to show a difference. If this was an average size csv for batch addition it isn't worth it to multithread. A more accurate test would be to test performance against a csv carrying a million or so lines of entries. 
+
+
+
+running in parallel:
+beginning rentals, customers and products:  0 0 0
+rentals_db  finished:  9 0 9 0.11623764038085938
+products_db  finished:  10 0 10 0.20810770988464355
+customers_db  finished:  10 0 10 0.2879908084869385
+
+beginning rentals, customers and products:  0 0 0
+rentals_db  finished:  9 0 9 0.12741494178771973
+products_db  finished:  10 0 10 0.22556614875793457
+customers_db  finished:  10 0 10 0.32389402389526367
+data_list:  [(9, 0, 9, 0.12741494178771973), (10, 0, 10, 0.22556614875793457), (10, 0, 10, 0.32389402389526367)]
+
+
+running linear:
+products_db  finished:  10 0 10 0.11504316329956055
+rentals_db  finished:  9 0 9 0.21419596672058105
+customers_db  finished:  10 0 10 0.35594606399536133
+data_list:  [(10, 0, 10, 0.11504316329956055), (9, 0, 9, 0.21419596672058105), (10, 0, 10, 0.35594606399536133)]
+
+
+beginning rentals, customers and products:  0 0 0
+products_db  finished:  10 0 10 0.1162419319152832
+rentals_db  finished:  9 0 9 0.2049558162689209
+customers_db  finished:  10 0 10 0.3282299041748047
+data_list:  [(10, 0, 10, 0.1162419319152832), (9, 0, 9, 0.2049558162689209), (10, 0, 10, 0.3282299041748047)]
+
+
+
