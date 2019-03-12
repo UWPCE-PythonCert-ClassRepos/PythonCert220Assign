@@ -79,6 +79,9 @@ def import_data(products_file, customers_file, rentals_file):
         customers = db["customers"]
         rentals = db["rentals"]
 
+        record_count = 0
+        error_count = 0
+
         #open the first csv to import into the db
         #could this be made its own function?? probably!
         try:
@@ -92,8 +95,7 @@ def import_data(products_file, customers_file, rentals_file):
                  #this probably won't work, we need to change the data to a dict
                  # yup! you were right!
                  # CONVERT ROW DATA TO DICT
-                record_count = 0
-                error_count = 0
+
                 for row in products_contents:
                      # this could be made into a func couldn't it?
                     logging.info(f'IMPORTING PRODUCTS DATA')
@@ -142,6 +144,7 @@ def import_data(products_file, customers_file, rentals_file):
             logging.error(f'Hm, we had an error here?')
             logging.error(e)
 
+        print(f' the number of records are: {db.products.count()}')
         return (record_count, error_count)
 
 
