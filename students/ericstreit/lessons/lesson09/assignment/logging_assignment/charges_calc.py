@@ -11,6 +11,8 @@ def logger_toggle(func):
     """ a timer decorator """
     if (ARGS.debug) == 0:
         # DO NOTHING
+        # Special thanks to:
+        # https://stackoverflow.com/questions/14636350/toggling-decorators
         return func
 
     else:
