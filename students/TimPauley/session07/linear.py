@@ -89,4 +89,7 @@ def check_time():
 
 
 if __name__ == '__main__':
+    '''
+    This is where the main method is ran
+    '''
     check_time()

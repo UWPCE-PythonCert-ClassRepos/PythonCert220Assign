@@ -78,7 +78,7 @@ from database import show_available_products
 
 def run_parallel():
     """
-    Run the import data in parallel
+    This is where I run the import data in parallel
     """
     pool = ThreadPool()
     files = ["customer_data.csv", "product_data.csv", "rental_data.csv"]
@@ -87,7 +87,7 @@ def run_parallel():
 
 def run_linear():
     """
-    Run the import data in linear
+    This is where I import data in linear
     """
     files = ["customer_data.csv", "product_data.csv", "rental_data.csv"]
     return (import_data("dat", file) for file in files)
@@ -125,4 +125,7 @@ def run_contention():
 
 
 if __name__ == '__main__':
+    '''
+    This is where the main method is run
+    '''
     print(run_contention())
