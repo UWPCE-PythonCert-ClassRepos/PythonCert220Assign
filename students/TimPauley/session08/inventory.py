@@ -64,19 +64,11 @@ single_customer needs to use functools.partial and closures, in order
 import csv
 from functools import partial
 
-# pylint: disable-msg=line-too-long
-# pylint: disable-msg=invalid-name
 
 
 def add_furniture(invoice_file="", customer_name="", item_code="", item_description="", item_monthly_price=""):
     """
-    Updates the master invoice file which lists which furniture is rented to which customer.
-    Will create a new file if one doesn't already exist.
-    :param invoice_file: master csv file
-    :param customer_name: customer name
-    :param item_code: item code
-    :param item_description: item description
-    :param item_monthly_price: item monthly price
+    Master invoice update
     """
 
     with open(invoice_file, "a+", newline='') as csvfile:
@@ -87,19 +79,16 @@ def add_furniture(invoice_file="", customer_name="", item_code="", item_descript
 
 def add_test_data():
     """
-    Adds test data to the master invoice file.
+    Test 
     """
-    add_furniture("invoice_file.csv", "Elisa Miles", "LR04", "Leather Sofa", "25.00")
-    add_furniture("invoice_file.csv", "Edward Data", "KT78", "Kitchen Table", "10.00")
-    add_furniture("invoice_file.csv", "Alex Gonzales", "BR02", "Queen Mattress", "17.00")
+    add_furniture("invoice_file.csv", "Tim Pauley", "7000", "Surfboard", "50.00")
+    add_furniture("invoice_file.csv", "Mary Kelly", "DG32", "Skateboard", "100.00")
+    add_furniture("invoice_file.csv", "Ryan Pauley", "G692", "Snowboard", "7000")
 
 
 def single_customer(customer_name, invoice_file):
     """
-    Bulk processes a list of items that have been rented to a single customer.
-    :param customer_name: customer name
-    :param invoice_file: master invoice csv file
-    :return: function that iterates through rental_items and adds each item to the master invoice_file.
+    This is my bulk process function
     """
 
     def add_rentals(rental_items):
@@ -117,5 +106,5 @@ def single_customer(customer_name, invoice_file):
 if __name__ == "__main__":
     add_test_data()
 
-    test_customer = single_customer("Susan Wong", "invoice_file.csv")
+    test_customer = single_customer("Tim Pauley", "invoice_file.csv")
     test_customer("test_items.csv")
