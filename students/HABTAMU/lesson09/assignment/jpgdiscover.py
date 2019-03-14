@@ -9,7 +9,6 @@ import sys
 import os
 from pathlib import Path
 
-
 def png_discovery(directory, png_paths=None):
     if png_paths is None:
         png_paths = []
