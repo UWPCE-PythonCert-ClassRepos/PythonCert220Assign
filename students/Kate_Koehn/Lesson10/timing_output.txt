@@ -1,0 +1,40 @@
+Original csv:
+MongoDBConnection function took 0.002 ms
+import_csv function took 0.944 ms
+import_csv function took 0.215 ms
+import_csv function took 0.936 ms
+import_data function took 218.263 ms
+show_available_products function took 0.730 ms
+show_rentals function took 1.772 ms
+csv's with 2x data:
+MongoDBConnection function took 0.003 ms
+import_csv function took 0.835 ms
+import_csv function took 0.219 ms
+import_csv function took 0.268 ms
+import_data function took 235.327 ms
+show_available_products function took 0.760 ms
+show_rentals function took 3.121 ms
+csv's with 4x data:
+MongoDBConnection function took 0.003 ms
+import_csv function took 0.267 ms
+import_csv function took 0.266 ms
+import_csv function took 0.209 ms
+import_data function took 232.240 ms
+show_available_products function took 0.888 ms
+show_rentals function took 5.115 ms
+csv's with 8x data:
+MongoDBConnection function took 0.003 ms
+import_csv function took 0.658 ms
+import_csv function took 0.424 ms
+import_csv function took 0.281 ms
+import_data function took 230.722 ms
+show_available_products function took 1.121 ms
+show_rentals function took 9.758 ms
+csv's with 13000+ lines:
+MongoDBConnection function took 0.002 ms
+import_csv function took 37.338 ms
+import_csv function took 38.525 ms
+import_csv function took 14.162 ms
+import_data function took 907.086 ms
+show_available_products function took 120.832 ms
+show_rentals function took 1394.016 ms
