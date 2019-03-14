@@ -1,0 +1,4 @@
+2019-03-13 21:49:21,680 charges_calc_2.py:100 ERROR time data '' does not match format '%m/%d/%y'
+2019-03-13 21:49:21,680 charges_calc_2.py:100 ERROR time data '' does not match format '%m/%d/%y'
+2019-03-13 21:49:21,684 charges_calc_2.py:119 ERROR Units_rented must be greater than 0: division by zero total_price:16966, units_rented0
+2019-03-13 21:49:21,684 charges_calc_2.py:119 ERROR Units_rented must be greater than 0: division by zero total_price:16966, units_rented0
