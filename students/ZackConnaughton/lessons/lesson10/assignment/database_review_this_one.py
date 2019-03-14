@@ -107,6 +107,10 @@ if __name__ == '__main__':
     customers = Database_Class("customers", "customers.csv")
     rentals = Database_Class("rentals", "rentals.csv")
     coll_list = [products, customers, rentals]
+    products2 = Database_Class("products", "products2.csv")
+    customers2 = Database_Class("customers", "customers2.csv")
+    rentals2 = Database_Class("rentals", "rentals2.csv")
+    coll_list = [products, customers, rentals, products2, customers2, rentals2]
     for coll in coll_list:
         coll.import_data()
     products.show_available_products()
