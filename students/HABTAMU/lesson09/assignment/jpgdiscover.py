@@ -1,38 +1,34 @@
-# """ Recursively go through directories looking for pngs """
-import functools
+
+'''
+A discovery program using recursion, that works from a parent directory called images provided on the command line. 
+:params: parent directory 
+:return: lists structured dir recursively go through directories looking for pngs
+'''
+
 import sys
-import csv
 import os
-import pathlib
-import logging
-import argparse
-from pymongo import MongoClient
+from pathlib import Path
+
 
 def png_discovery(directory, png_paths=None):
     if png_paths is None:
         png_paths = []
+
     current_list = [directory, []]
-    for filename in os.listdir(directory):
-        path_join = os.path.join(directory, filename)
-        if os.path.isdir(path_join):
-            png_discovery(path_join, png_paths)
-        if filename.endswith(".png"):
-            current_list[1].append(path_join)
+    # for filename in os.listdir(directory):
+    for filename in directory.iterdir():
+        if filename.is_dir():
+            png_discovery(filename, png_paths)
+        elif filename.name.endswith(".png"):
+            current_list[1].append(filename.name)
 
     if current_list[1]:
-        png_paths.extend(path_join)
-        
-    return current_list
+        png_paths.extend(current_list)
+    return png_paths
 
 
 if __name__ == '__main__':
-    directory = os.getcwd()
-    product_file = 'products.csv'
-    customer_file = 'customers.csv'
-    rental_file = 'rentals.csv'
-    database_name = 'inventory'
+    directory = Path.cwd()
+    print(*png_discovery(directory), sep='\n')
 
-    import_data(directory, product_file, customer_file,
-                rental_file, connection=None, database_name=None)
 
-    png_discovery(directory)
