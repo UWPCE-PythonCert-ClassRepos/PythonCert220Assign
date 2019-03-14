@@ -116,8 +116,6 @@ if __name__ == '__main__':
     product_file = 'products.csv'
     customer_file = 'customers.csv'
     rental_file = 'rentals.csv'
-    # database_name = 'inventory_v1'
-
     import_data(directory, product_file, customer_file,
                 rental_file, connection=None, database_name=None)
     
@@ -125,4 +123,3 @@ if __name__ == '__main__':
     # import_data(directory_name, product_file, customer_file, rentals_file)
     # print(show_available_products())
     # print(show_rentals(product_id))
-    # main()
