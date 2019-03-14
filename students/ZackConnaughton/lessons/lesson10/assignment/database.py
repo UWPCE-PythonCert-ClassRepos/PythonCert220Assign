@@ -180,7 +180,4 @@ if __name__ == '__main__':
         drop_database_data('products')
         drop_database_data('customers')
         drop_database_data('rentals')
-        drop_database_data('products2')
-        drop_database_data('customers2')
-        drop_database_data('rentals2')
         print("Data Dropped")
