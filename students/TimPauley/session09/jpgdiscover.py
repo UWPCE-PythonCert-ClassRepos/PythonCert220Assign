@@ -40,19 +40,58 @@ list of lists structured like this:
 """
 Recursively go through directories looking for pngs
 """
+from pathlib import Path
 import os
+import logging
+import timeit
+import time
+
+logging.basicConfig(level=logging.ERROR)
 
 
-def jpegdiscovery(directory, png_paths=None):
-    #import pdb; pdb.set_trace()
+def timerfunc(func):
+    """ decorator function"""
+
+    def function_timer(*args, **kwargs):
+        """ this nested function for timing """
+
+        start = time.time()
+        value = func(*args, **kwargs)
+        end = time.time()
+        runtime = end - start
+        print(f' runtime {func.__name__} timing {runtime} seconds to finish')
+        return value
+    return function_timer
+
+@timerfunc
+#this is the place where wI created a timer function
+def jpg_discovery(directory, png_paths=None):
+    logging.info(f' this passed: {directory}')
     if png_paths is None:
         png_paths = []
     for filename in os.listdir(directory):
-        if os.path.isdir(filename):
-            png_paths.extend(jpegdiscovery(filename, png_paths))
-        if filename.endswith(".png"):
-            png_paths.append(os.path.abspath(filename))
+        new_dir = os.path.join(directory, filename)
+        # this is used for logging
+        logging.info(f'looking at {directory} and {filename}')
+        logging.info(f'is {filename} a directory')
+        logging.info(f'{os.path.isdir(os.path.join(directory, filename))}')
+        # this is for logging path
+        if os.path.isdir(new_dir):
+            logging.info(f' {filename} is a directory so passing back to function using {new_dir} as the filename')
+            jpg_discovery(new_dir, png_paths)
+            png_paths.append(str(new_dir))
+        else:
+        # this handles the exception	
+            logging.info(f'checking the file extension on {filename} for PNG')
+            if filename.endswith(".png"):
+                logging.info(f'does {filename} end with png?')
+                png_paths.append([filename])
+    # printed output to see result
     return png_paths
 
+# this is where the main method is located
+if __name__=="__main__":
+    jpg_discovery(os.getcwd())
 
-print(jpegdiscovery(os.getcwd()))
+
+
