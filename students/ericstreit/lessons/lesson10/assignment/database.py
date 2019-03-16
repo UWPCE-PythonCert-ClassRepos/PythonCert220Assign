@@ -1,6 +1,8 @@
 """
-#Lesson##
-#XXXXX Exercise ##
+#Lesson10
+Metaprogramming Timing
+Special Thanks to:
+https://www.blog.pythonlibrary.org/2016/05/24/python-101-an-intro-to-benchmarking-your-code/
 """
 
 #!/usr/bin/env python3
@@ -8,11 +10,26 @@
 from pymongo import MongoClient
 import logging
 import csv
+import time
 
 
 #global variables here
-logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig(level=logging.ERROR)
 #define function and classes
+
+def timerfunc(func):
+    """ a timer decorator """
+
+    def function_timer(*args, **kwargs):
+        """ nested function for timing functions """
+
+        start = time.time()
+        value = func(*args, **kwargs)
+        end = time.time()
+        runtime = end - start
+        print(f' The runtime for {func.__name__} took {runtime} seconds to complete')
+        return value
+    return function_timer
 
 class MongoDBConnection():
     """MongoDB Connection"""
@@ -29,11 +46,12 @@ class MongoDBConnection():
         return self
 
     def __exit__(self, exc_type, exc_val, exc_tb):
-        print(f"Closing the connection to {self.host} - Have a nice day!")
+        print(f"closing the connection to {self.host}!")
         self.connection.close()
 
 
 
+@timerfunc
 def import_data(products_file, customers_file, rentals_file):
 # def import_data(directory_name, products_file, customers_file, rentals_file):
     """
@@ -61,8 +79,9 @@ def import_data(products_file, customers_file, rentals_file):
         customers = db["customers"]
         rentals = db["rentals"]
 
-        error_count = 0
         record_count = 0
+        error_count = 0
+
         #open the first csv to import into the db
         #could this be made its own function?? probably!
         try:
@@ -86,12 +105,12 @@ def import_data(products_file, customers_file, rentals_file):
                                        'quantity_available': row[3]}
                     try:
                         result = products.insert_one(convert_to_dict)
-                    # who needs comments when your logging explains it all LOL
-                        logging.info(f'Adding {convert_to_dict} to the products collection')
                         record_count += 1
                     except Exception as e:
                         logging.error(f'Error adding {convert_to_dict} to the products collection!')
                         error_count += 1
+                    # who needs comments when your logging explains it all LOL
+                    logging.info(f'Adding {convert_to_dict} to the products collection')
                 for row in customers_contents:
                     logging.info(f'IMPORTING CUSTOMERS DATA')
                     convert_to_dict = {'user_id': row[0],
@@ -116,17 +135,20 @@ def import_data(products_file, customers_file, rentals_file):
                         logging.info(f'Adding {convert_to_dict} to the rentals collection')
                         record_count += 1
                     except Exception as e:
-                        logging.error(f'Error adding {convert_to_dict} to the rentals collection!')
+                        logging.error(f'Error adding {convert_to_dict} to the customers collection!')
                         error_count += 1
+
+            print(f' total number of records added: {record_count}')
+            print(f' total number of documents in collection: {products.collection.estimated_data_count()}')
         except Exception as e:
             logging.error(f'Hm, we had an error here?')
             logging.error(e)
 
-    print(f' the number of records in the products collection is: {db.products.count()}')
-    print(f' the number of records in the customers collection is: {db.customers.count()}')
-    print(f' the number of records in the rentals collection is: {db.rentals.count()}')
-    return (record_count, error_count)
+        print(f' the number of records are: {db.products.count()}')
+        return (record_count, error_count)
 
+
+@timerfunc
 def show_available_products():
     """
     Returns a Python dictionary of products listed as available with
@@ -158,6 +180,7 @@ def show_available_products():
                 logging.error(e)
 
 
+@timerfunc
 def show_rentals(product_id):
     """
     Returns a Python dictionary with the following user information from
@@ -209,8 +232,9 @@ def show_rentals(product_id):
             except ValueError as e:
                 logging.debug(f"skipping {name.get('name')} due to error")
                 logging.error(e)
-    return customer_dict
+        return customer_dict
 
+# def record_count(collection):
 
 #for testing
 if __name__=="__main__":
