@@ -4,20 +4,20 @@ HP Norton inventory and customer information database functions
 
 
 import csv
-import pathlib
-import pymongo
 import logging
 import types
 import inspect
 from datetime import datetime
 from pathlib import Path
-from pymongo import MongoClient
-import config as config
 from multiprocessing.pool import ThreadPool
+import config
+import pymongo
+from pymongo import MongoClient
+
 
 TIMING_PATH = "timing.csv"
 
-def timefunc(func, counts, *args, **kwargs):
+def timefunc(func, counts):
     ''' Time logging decorator times function execution and logs results
     :param func: function to execute and time
     :param counts: reference to counts dictionary to log records affected
@@ -38,16 +38,20 @@ class Timer(type):
     ''' Timer meta class for logging standard timing values '''
     def __new__(cls, name, bases, attr):
         ''' Set all external functions with a timefunc decorator '''
-        for name, value in attr.items():
-            if not name.startswith("_") and (type(value) is types.FunctionType or type(value) is types.MethodType):
-                attr[name] = timefunc(value, attr["counts"])
+        for attr_name, value in attr.items():
+            if not attr_name.startswith("_") and (isinstance(value, (types.FunctionType, types.MethodType))):
+                attr[attr_name] = timefunc(value, attr["counts"])
 
         return super(Timer, cls).__new__(cls, name, bases, attr)
 
 class RentalTransactions(metaclass=Timer):
+    '''
+    Handle transactions in the products MongoDB
+    '''
+
     counts = {}
     def _read_csv(self, directory, file_name):
-        ''' Read csv file and yield records 
+        ''' Read csv file and yield records
         :param directory: file directory of the csv file
         :param file_name: csv file name
         :yield: dictionary of record values (keys are column names)
@@ -70,9 +74,9 @@ class RentalTransactions(metaclass=Timer):
         records = [record for record in self._read_csv(directory, file_name)]
         collection.insert_many(records)
         return len(records)
-            
+
     def import_product_data(self, directory_name, product_file, customer_file, rentals_file,
-                    connection=None, database_name=None):
+                            connection=None, database_name=None):
         '''
         Imports data from 3 files an inserts product, customer and rental data
 
@@ -100,9 +104,10 @@ class RentalTransactions(metaclass=Timer):
             counts[0] = prod.get()
             counts[1] = cust.get()
             counts[2] = rent.get()
-            
+
             pool.close()
             pool.join()
+
         self.counts[inspect.currentframe().f_code.co_name] = sum(counts)
         return (tuple(counts), )
 
@@ -171,7 +176,7 @@ class RentalTransactions(metaclass=Timer):
         self.counts[inspect.currentframe().f_code.co_name] = len(result)
         return result
 
-class MongoDBConnection(object):
+class MongoDBConnection:
     """MongoDB Connection"""
     def __init__(self, host='127.0.0.1', port=27017):
         self.host = host
@@ -190,7 +195,7 @@ class MongoDBConnection(object):
                 raise
             except pymongo.errors.ConnectionFailure as error:
                 logging.error(f"MongoDB ConnectionFailure: {error}")
-                raise            
+                raise
         return self
 
     def __exit__(self, exc_type, exc_val, exc_tb):
