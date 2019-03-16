@@ -18,7 +18,7 @@ def selective_log():
 
 
 def context_manager():  # 2
-    """Lesson 5 already uses context manager for MongoDB connection.
+    """Lesson 5 already uses context manager for MongoDB connection. --In work
     """
     pass
 
