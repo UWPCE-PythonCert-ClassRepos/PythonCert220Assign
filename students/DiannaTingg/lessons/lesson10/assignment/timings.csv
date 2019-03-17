@@ -1,0 +1,27 @@
+# Lesson 10 Assignment - Timings
+
+# 10 Records Each for Products, Customers, Rentals
+function_name, time_elapsed, total_records
+_import_csv, 0.0, (0, 0, 0)
+_add_bulk_data, 0.1279451847076416, (10, 0, 0)
+_import_csv, 0.0009999275207519531, (10, 0, 0)
+_add_bulk_data, 0.1519155502319336, (10, 10, 0)
+_import_csv, 0.0009996891021728516, (10, 10, 0)
+_add_bulk_data, 0.16505908966064453, (10, 10, 10)
+import_data, 0.5048630237579346, (10, 10, 10)
+show_available_products, 0.001001596450805664, (10, 10, 10)
+show_rentals, 0.0029993057250976562, (10, 10, 10)
+clear_data, 0.229888916015625, (0, 0, 0)
+
+# 10,000 Records Each for Products, Customers, Rentals
+function_name, time_elapsed, total_records
+_import_csv, 0.11993098258972168, (0, 0, 0)
+_add_bulk_data, 1.5411176681518555, (10000, 0, 0)
+_import_csv, 0.11193537712097168, (10000, 0, 0)
+_add_bulk_data, 1.1453449726104736, (10000, 10000, 0)
+_import_csv, 0.13492321968078613, (10000, 10000, 0)
+_add_bulk_data, 1.0873782634735107, (10000, 10000, 10000)
+import_data, 3.9147610664367676, (10000, 10000, 10000)
+show_available_products, 0.15690922737121582, (10000, 10000, 10000)
+show_rentals, 0.15890860557556152, (10000, 10000, 10000)
+clear_data, 0.32981228828430176, (0, 0, 0)

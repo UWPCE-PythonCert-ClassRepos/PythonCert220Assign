@@ -80,7 +80,6 @@ def show_rentals(product_id):
                 phone_number.
                 email.
     """
-    # import pdb; pdb.set_trace()
     customer_info = {}
     for rental in db.rentals.find():
         if rental["product_id"] == product_id:
@@ -94,31 +93,6 @@ def show_rentals(product_id):
                              "email": customer_record["email"]}
             customer_info[customer_id] = customer_dict
     return customer_info
-
-# def main():
-#     """ Connect to MongoDB """
-#     try:
-#         # c = Connection(host="localhost", port=27017)
-#         myclient = MongoClient("mongodb://localhost:27017/")
-#         import pdb; pdb.set_trace()
-#     except ConnectionFailure as e:
-#         sys.stderr.write("Could not connect to Mongo to MongoDB: %s" % e)
-#         logger.error("Could not connect to Mongo to MongoDB")
-#         logger.exception(e)
-#         sys.exit(1)
-#     #Get a Database handle to a database named HP_Norton
-#     db = myclient["HP_Norton"]
-#
-#     # Customers collection
-#     customers = db["customers"]
-#     # Products collection
-#     products = db["products"]
-#     # Rentals collection
-#     rentals = db["rentals"]
-#
-#     assert db.connection == myclient
-#     print("Successfully set up a database handle")
-
 
 if __name__ == "__main__":
     directory_name = '/Users/hasfaw/Documents/Study and Tutor/UW/UW_PY/py220201901habtamu/PythonCert220Assign/students/HABTAMU/lesson05/assignment'
