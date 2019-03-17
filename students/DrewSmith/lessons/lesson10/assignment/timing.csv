@@ -1,0 +1,9 @@
+method,duration,record_count
+get_prodcuts_total_record_count,0:00:00.007023,1998
+import_product_data,0:00:00.126661,1998
+import_product_data,0:00:00.105770,1509
+import_product_data,0:00:00.106654,509
+import_product_data,0:00:00.106282,29
+show_available_products,0:00:00.019978,0
+show_rentals,0:00:00.010034,2
+import_product_data,0:00:00.212112,10010
