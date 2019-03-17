@@ -1,0 +1,20 @@
+#Tim Pauley
+#Date March 02 2019
+#Assignment 07
+#File Name: Findings.txt
+
+#Concurrency & Async Programming
+
+Findings 
+
+After refactoring the code from lesson 5 so now the it returns two tuples and the following fields:
+
+1. record count in the database prior to running
+2. record count after running
+3. time taken to run the module
+4. number of records processed
+
+Using timeit my parallel.py file runs quicker than my linear.py. Therefore, the parallel.py program is superior program.
+
+Alll my tests passed in Pytest.
+

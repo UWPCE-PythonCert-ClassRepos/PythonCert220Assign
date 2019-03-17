@@ -1,3 +1,4 @@
+
 """
 Recursively go through directories looking for pngs
 """
@@ -6,7 +7,7 @@ import os
 
 def jpegdiscovery(directory, png_paths=None):
     #import pdb; pdb.set_trace()
-    if not png_paths:
+    if png_paths is None:
         png_paths = []
     for filename in os.listdir(directory):
         if os.path.isdir(filename):
