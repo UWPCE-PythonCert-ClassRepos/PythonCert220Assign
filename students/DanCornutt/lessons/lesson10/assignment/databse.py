@@ -22,8 +22,8 @@ def timefunc(fn, *args, **kwargs):
         timer.start()
         rt = fn(*args, **kwargs)
         timer.stop()
-        # open CSV append and add log timer
-        with open("timing.csv", open_type='a', newline='') as csv_file:
+        # open CSV append and add timer file
+        with open("timing.csv", 'a', newline='') as csv_file:
             writer = csv.writer(csv_file, delimiter=',')
             writer.writerow([fn.__name__, timer.elapsed])  # &items processed
         return rt
@@ -32,6 +32,9 @@ def timefunc(fn, *args, **kwargs):
 
 
 class Timer:
+    """Timer class to be used to time event
+    """
+
     def __init__(self, func=time.perf_counter):
         self.elapsed = 0.0
         self._func = func
@@ -65,7 +68,8 @@ class Timer:
 
 
 class Timed(type):
-
+    """Timed MetaClass for timing the events of instanced classes
+    """
     def __new__(cls, name, bases, attr):
         for name, value in attr.items():
             if type(value) is types.FunctionType or type(value) is \
@@ -76,7 +80,7 @@ class Timed(type):
 
 
 class MongoDBConnection():
-    """MongoDB Connection"""
+    """MongoDB Connection to database"""
 
     def __init__(self, host='127.0.0.1', port=27017):
         """ be sure to use the ip address not name for local windows"""
