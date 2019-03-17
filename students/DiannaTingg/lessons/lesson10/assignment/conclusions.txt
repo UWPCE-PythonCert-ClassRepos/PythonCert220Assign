@@ -1,0 +1,16 @@
+# Lesson 10 Assignment - Conclusions
+
+I used metaclassing to add timing information for each function in the HP Norton database.
+The results were written to timings.csv.  Unfortunately, I did not find any significant bottlenecks.
+
+I ran the program using 10 records each for products, customers, and rentals.
+Importing the csv file and adding bulk data was slightly faster for products, but customers and rentals didn't take very long at all.
+Overall, importing all the data took .50 seconds.  Showing available products takes .001 seconds and showing the rentals for one product takes .002 seconds.
+Clearing the database took .22 seconds, which I thought was kind of surprising.  Luckily, we shouldn't need to do that during production.
+
+I also ran the program using 10,000 records each for products, customers, and rentals.
+Importing the csv file for rentals (.13 seconds) took a little bit longer than products and customers (.11 seconds each).
+However, adding bulk data for products (1.54 seconds) took a little bit longer than customers (1.14 seconds) and rentals (1.08 seconds).
+Overall, importing all the data took 3.91 seconds, which is pretty good compared to the time it took to upload 10 records each.
+Showing available products takes .15 seconds and showing the rentals for one product takes .15 seconds.  It probably just takes longer since there are more records in the database now.
+Clearing the database took .32 seconds, which is also pretty good compared to the first run.
