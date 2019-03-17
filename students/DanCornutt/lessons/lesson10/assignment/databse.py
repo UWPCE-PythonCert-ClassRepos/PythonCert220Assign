@@ -4,6 +4,8 @@ Gather this data and write it to a file called timings.csv.
 The file should contain function name, time taken, and number of records
     processed, and be called timing.csv.
 
+Timing Class from:
+    https://stackabuse.com/python-metaclasses-and-metaprogramming/
 """
 
 import types
@@ -21,7 +23,9 @@ def timefunc(fn, *args, **kwargs):
         rt = fn(*args, **kwargs)
         timer.stop()
         # open CSV append and add log timer
-        print("Executing %s took %s seconds." % (fn.__name__, timer.elapsed))
+        with open("timing.csv", open_type='a', newline='') as csv_file:
+            writer = csv.writer(csv_file, delimiter=',')
+            writer.writerow([fn.__name__, timer.elapsed])  # &items processed
         return rt
     # return the composite function
     return fncomposite
